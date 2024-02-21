@@ -1,1 +1,1 @@
-worker: python -m Downloader
+worker: python -m Extractor
