@@ -3,7 +3,7 @@ import json, asyncio
 import subprocess
 import datetime
 from pyromod import listen
-from Downloader import app
+from Extractor import app
 from config import SUDO_USERS
 from pyrogram import filters, idle
 from subprocess import getstatusoutput
