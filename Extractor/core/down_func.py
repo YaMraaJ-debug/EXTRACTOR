@@ -3,9 +3,9 @@ import aiohttp
 import aiofiles
 import logging
 import subprocess
-from Downloader.core.utils import progress_bar
+from Extractor.core.utils import progress_bar
 from pyrogram import filters
-from Downloader import app
+from Extractor import app
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 
