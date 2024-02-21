@@ -7,8 +7,10 @@ import cloudscraper
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import unpad
 from base64 import b64decode
-from Downloader import app
+from Extractor import app
 from config import SUDO_USERS
+
+
 
 def decrypt_data(encoded_data, key, iv):
     decoded_data = b64decode(encoded_data)
