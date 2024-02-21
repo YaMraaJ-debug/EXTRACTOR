@@ -1,7 +1,7 @@
 import asyncio
 import importlib
 from pyrogram import idle
-from Downloader.modules import ALL_MODULES
+from Extractor.modules import ALL_MODULES
 
  
 
@@ -10,7 +10,7 @@ loop = asyncio.get_event_loop()
 
 async def sumit_boot():
     for all_module in ALL_MODULES:
-        importlib.import_module("Downloader.modules." + all_module)
+        importlib.import_module("Extractor.modules." + all_module)
 
     print("» ʙᴏᴛ ᴅᴇᴘʟᴏʏ sᴜᴄᴄᴇssғᴜʟʟʏ ✨ 🎉")
     await idle()
