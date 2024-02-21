@@ -5,8 +5,8 @@ from config import SUDO_USERS
 from aiohttp import ClientSession
 from pyromod import listen
 from subprocess import getstatusoutput
-from Downloader import app
-from Downloader.core import helper
+from Extractor import app
+from Extractor.core import down_func
 from pyrogram import filters
 from pyrogram.errors import FloodWait
 
@@ -165,7 +165,7 @@ async def account_login(_, message):
                 
                 if "drive" in url:
                     try:
-                        ka = await helper.download(url, name)
+                        ka = await down_func.download(url, name)
                         copy = await _.send_document(message.chat.id, document=ka, caption=cc1)
                         count += 1
                         os.remove(ka)
@@ -192,10 +192,10 @@ async def account_login(_, message):
                 else:
                     show = f"**⥥ Downloading »**\n\n**Name »** `{name}\nQuality » {raw_text2}`\n\n**Url »** `{url}`"
                     prog = await message.reply_text(show)
-                    res_file = await helper.download_video(url, cmd, name)
+                    res_file = await down_func.download_video(url, cmd, name)
                     filename = res_file
                     await prog.delete(True)
-                    await helper.send_vid(message, cc, filename, thumb, name, prog)
+                    await down_func.send_vid(message, cc, filename, thumb, name, prog)
                     count += 1
                     time.sleep(1)
 
