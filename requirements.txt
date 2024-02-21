@@ -1,0 +1,12 @@
+pyrogram
+aiohttp
+motor
+tgcrypto
+yt-dlp
+pyromod
+aiofiles
+requests
+wget
+hachoir
+cloudscraper
+pycryptodome
