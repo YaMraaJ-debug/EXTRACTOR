@@ -5,7 +5,7 @@ from time import time
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from config import SUDO_USERS as OWNER_ID
-from Downloader import app
+from Extractor import app
 
 
 
