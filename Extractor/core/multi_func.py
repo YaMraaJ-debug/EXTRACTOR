@@ -22,7 +22,7 @@ def decode(tn):
 
 
 
-async def winners_account(_, message, apex_api):
+async def apex_accounts(_, message, apex_api):
     global cancel
     cancel = False
     editable = await message.reply_text("Send **ID & Password** in this manner otherwise bot will not respond.\n\nSend like this:-  **ID*Password**")
@@ -102,8 +102,11 @@ async def winners_account(_, message, apex_api):
     await input3.delete(True)
     await editable1.delete(True)
     prog = await editable.edit("**Extracting Videos Links Please Wait  📥 **")
+  
+    mm_url = api_url.replace("https://", "").replace("http://", "")
+    mm_name = mm_url.split('.')[0].replace("api", "")
     try:
-        mm = "winners-Institute"
+        mm = f"{mm_name}"
         xv = raw_text3.split('&')
         for y in range(0,len(xv)):
             raw_text3 =xv[y]
