@@ -7,7 +7,7 @@ from config import SUDO_USERS
 import json
 import os
 import requests
-from pyrogram import listen
+from pyromod import listen
 import cloudscraper
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import unpad
