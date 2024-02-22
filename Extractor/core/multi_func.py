@@ -25,11 +25,12 @@ def decode(tn):
 async def apex_accounts(_, message, apex_api):
     global cancel
     cancel = False
-    login_url = f"{apex_api}/post/userLogin"
   
     editable = await message.reply_text("Send **ID & Password** in this manner otherwise bot will not respond.\n\nSend like this:-  **ID*Password**")
   
+    login_url = f"{apex_api}/post/userLogin"
     rwa_url = login_url
+    print(rwa_url)
     hdr = {"Auth-Key": "appxapi",
            "User-Id": "-2",
            "Authorization": "",
