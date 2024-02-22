@@ -67,5 +67,95 @@ async def winners_account(_, message):
         }
     
     await editable.edit(f"**login Successful {rwa_url}**")
+    cou_url = api_url+"/get/mycourse?userid="
+    res1 = requests.get(cou_url+userid, headers=hdr1)
+    batch_data = res1.json()['data']
+    
+    FFF = "**BATCH-ID - BATCH NAME - INSTRUCTOR**"
+    for data in batch_data:
+        title_name = data['course_name']
+        FFF += f" {data['id']}  -  **{data['course_name']}**\n\n"
+                    
+    await editable.edit(f"YOU HAVE THIS {title_name}\n\n{FFF}")
+    
+    editable1 = await message.reply_text("**Now send the Batch ID to Download**")
+    input2 = message = await _.listen(editable1.chat.id)
+    raw_text2 = input2.text
+    await input2.delete(True)
+    await editable1.delete(True)
+    cur2_url = api_url+"/get/course_by_id?id=" 
+    html = scraper.get(cur2_url + raw_text2,headers=hdr1).json()
+    course_title = html["data"][0]["course_name"]
+    scraper = cloudscraper.create_scraper()
+    cur3_url = api_url+"/get/allsubjectfrmlivecourseclass?courseid=" 
+    html = scraper.get(cur3_url + raw_text2,headers=hdr1).content
+    output0 = json.loads(html)
+    subjID = output0["data"]
+    
+    cool = "CHOOSE YOUR TOPIC ID\n\n"
+    sub_id = ""
+    for sub in subjID:
+      subjid = sub["subjectid"]
+      idid = f"{subjid}&"
+      subjname = sub["subject_name"]
+      cool += f"*{subjid}*  - **{subjname}**\n\n"
+      sub_id += idid
+      
+    await editable.edit(cool)
+    editable1 = await message.reply_text(f"Now send the **Topic IDs** to Download\n\nSend like this **1&2&3&4** so on\nor copy paste or edit **below ids** according to you :\n\n**Enter this to download full batch :-**\n`{sub_id}`")
+    input3 : message = await _.listen(editable1.chat.id)
+    raw_text3 = input3.text
+    await input3.delete(True)
+    await editable1.delete(True)
+    prog = await editable.edit("**Extracting Videos Links Please Wait  📥 **")
+  
+    mm_url = api_url.replace("https://", "").replace("http://", "")
+    mm_name = mm_url.split('.')[0].replace("api", "")
+    try:
+        cur4_url = api_url+"/get/alltopicfrmlivecourseclass?courseid="
+        mm = f"{mm_name}"
+        xv = raw_text3.split('&')
+        for y in range(0,len(xv)):
+            raw_text3 =xv[y]
+            res3 = requests.get(cur4_url + raw_text2,"&subjectid=" + raw_text3, headers=hdr1)
+            b_data2 = res3.json()['data']
+            for data in b_data2:
+                t_name = (data["topic_name"])
+                tid = (data["topicid"])
+                print(tid,t_name)
+                hdr11 = {
+                        "Host": clean_url,
+                        "Client-Service": "Appx",
+                        "Auth-Key": "appxapi",
+                        "User-Id": userid,
+                        "Authorization": token
+                        }
+                cur5_url = api_url+"/get/livecourseclassbycoursesubtopconceptapiv3?courseid="
+              
+                res4 = requests.get(cur5_url + raw_text2 + "&subjectid=" + raw_text3 + "&topicid=" + tid + "&start=-1",headers=hdr11).json()
+                topicid = res4["data"]
+                print(topicid)
+                for data in topicid:
+                  tid = (data["Title"])
+                  with open(f'{mm} - {title_name}.txt', 'a') as f:
+                    if len(data["download_link"])>0:
+                        tn = (data["download_link"])
+                        try:
+                          url = decode(tn)
+                        except:pass
+                        mtext = f"{tid}:{url}\n"
+                        open(f"{mm} - {course_title}.txt", "a").write(mtext)
+                    if len(data["pdf_link"])>0:
+                        try:
+                          url = decode(tn)
+                        except:pass
+                        mtext = f"{tid}:{url}\n"
+                        open(f"{mm} - {course_title}.txt", "a").write(mtext)
+        await prog.delete(True)        
+        await message.reply_document(f"{mm} - {course_title}.txt",caption = f"`{mm} - {course_title}`" )
+        os.remove(f"{mm} - {course_title}.txt")
+        await editable.delete(True)
+    except Exception as e:
+        await message.reply_text(str(e))
     
     
