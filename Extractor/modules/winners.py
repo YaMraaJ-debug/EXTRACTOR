@@ -71,7 +71,7 @@ async def winners_account(_, message):
         title_name = data['course_name']
         FFF += f" {data['id']}  -  **{data['course_name']}**\n\n"
                     
-    await message.reply_text(f"YOU HAVE THIS {title_name}\n\n{FFF}")
+    await editable.edit(f"YOU HAVE THIS {title_name}\n\n{FFF}")
     
     editable1 = await message.reply_text("**Now send the Batch ID to Download**")
     input2 = message = await _.listen(editable1.chat.id)
@@ -87,14 +87,16 @@ async def winners_account(_, message):
     subjID = output0["data"]
     
     cool = "CHOOSE YOUR TOPIC ID\n\n"
+    sub_id = ""
     for sub in subjID:
       subjid = sub["subjectid"]
       idid = f"{subjid}&"
       subjname = sub["subject_name"]
       cool += f"*{subjid}*  - **{subjname}**\n\n"
+      sub_id += idid
       
     await editable.edit(cool)
-    editable1= await message.reply_text(f"Now send the **Topic IDs** to Download\n\nSend like this **1&2&3&4** so on\nor copy paste or edit **below ids** according to you :\n\n**Enter this to download full batch :-**\n```{vj}```")
+    editable1 = await message.reply_text(f"Now send the **Topic IDs** to Download\n\nSend like this **1&2&3&4** so on\nor copy paste or edit **below ids** according to you :\n\n**Enter this to download full batch :-**\n`{sub_id}`")
     input3 : message = await _.listen(editable1.chat.id)
     raw_text3 = input3.text
     await input3.delete(True)
