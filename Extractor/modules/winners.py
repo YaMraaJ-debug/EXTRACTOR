@@ -17,7 +17,7 @@ from config import SUDO_USERS
 async def winners_account(_, message):
     global cancel
     cancel = False
-    editable = await m.reply_text("Send **ID & Password** in this manner otherwise bot will not respond.\n\nSend like this:-  **ID*Password**")
+    editable = await message.reply_text("Send **ID & Password** in this manner otherwise bot will not respond.\n\nSend like this:-  **ID*Password**")
   
     rwa_url = "https://winnersinstituteapi.classx.co.in/post/userLogin"
     hdr = {"Auth-Key": "appxapi",
@@ -52,42 +52,43 @@ async def winners_account(_, message):
         }
     
     await editable.edit("**login Successful**")
-    cour_url = "https://winnersinstituteapi.classx.co.in/get/mycourse?userid="
+    
     res1 = requests.get("https://winnersinstituteapi.classx.co.in/get/mycourse?userid="+userid, headers=hdr1)
-    b_data = res1.json()['data']
-    cool = ""
-    for data in b_data:
-        t_name1 =data['course_name']
-        FFF = "**BATCH-ID - BATCH NAME - INSTRUCTOR**"
-        aa = f" ```{data['id']}```      - **{data['course_name']}**\n\n"
+    batch_data = res1.json()['data']
+    
+    FFF = "**BATCH-ID - BATCH NAME - INSTRUCTOR**"
+    for data in batch_data:
+        title_name = data['course_name']
+        FFF += f" {data['id']}  -  **{data['course_name']}**\n\n"
+        
         if len(f'{cool}{aa}') > 4096:
             print(aa)
-            cool = ""
-        cool += aa
-    await editable.edit(f'{"**You have these batches :-**"}\n\n{FFF}\n\n{cool}')
-    editable1 = await m.reply_text("**Now send the Batch ID to Download**")
-    input2 = message = await bot.listen(editable.chat.id)
+            
+    await message.reply_text(f"YOU HAVE THIS {title_name}\n\n{FFF}")
+    
+    editable1 = await message.reply_text("**Now send the Batch ID to Download**")
+    input2 = message = await _.listen(editable1.chat.id)
     raw_text2 = input2.text
     await input2.delete(True)
     await editable1.delete(True)
+    
     html = scraper.get("https://winnersinstituteapi.classx.co.in/get/course_by_id?id=" + raw_text2,headers=hdr1).json()
     course_title = html["data"][0]["course_name"]
     scraper = cloudscraper.create_scraper()
     html = scraper.get("https://winnersinstituteapi.classx.co.in/get/allsubjectfrmlivecourseclass?courseid=" + raw_text2,headers=hdr1).content
     output0 = json.loads(html)
     subjID = output0["data"]
-    cool = ""
-    vj = ""
+    
+    cool = "CHOOSE YOUR TOPIC ID\n\n"
     for sub in subjID:
       subjid = sub["subjectid"]
       idid = f"{subjid}&"
       subjname = sub["subject_name"]
-      aa = f" ```{subjid}```      - **{subjname}**\n\n"
-      cool += aa
-      vj += idid
+      cool += f"*{subjid}*  - **{subjname}**\n\n"
+      
     await editable.edit(cool)
-    editable1= await m.reply_text(f"Now send the **Topic IDs** to Download\n\nSend like this **1&2&3&4** so on\nor copy paste or edit **below ids** according to you :\n\n**Enter this to download full batch :-**\n```{vj}```")
-    input3 = message = await bot.listen(editable.chat.id)
+    editable1= await message.reply_text(f"Now send the **Topic IDs** to Download\n\nSend like this **1&2&3&4** so on\nor copy paste or edit **below ids** according to you :\n\n**Enter this to download full batch :-**\n```{vj}```")
+    input3 : message = await _.listen(editable1.chat.id)
     raw_text3 = input3.text
     await input3.delete(True)
     await editable1.delete(True)
