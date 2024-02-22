@@ -29,7 +29,7 @@ course_buttons = [
                 [
                     InlineKeyboardButton("Vikramjeet", callback_data="maintainer_"),   
                     InlineKeyboardButton("Neet Kakaji", callback_data="maintainer_"),
-                    InlineKeyboardButton("pythics wala", callback_data="maintainer_")
+                    InlineKeyboardButton("physics whalla", callback_data="maintainer_")
                 ],
                 [
                     InlineKeyboardButton("⟲ ʙᴀᴄᴋ ⟳", callback_data="home_"),
