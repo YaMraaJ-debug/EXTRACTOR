@@ -126,7 +126,7 @@ async def winners_account(_, message):
                 print(topicid)
                 for data in topicid:
                   tid = (data["Title"])
-                  with open(f'{mm} - {t_name1}.txt', 'a') as f:
+                  with open(f'{mm} - {title_name}.txt', 'a') as f:
                     if len(data["download_link"])>0:
                         tn = (data["download_link"])
                         try:
@@ -141,7 +141,7 @@ async def winners_account(_, message):
                         mtext = f"{tid}:{url}\n"
                         open(f"{mm} - {course_title}.txt", "a").write(mtext)
         await prog.delete(True)        
-        await message.reply_document(f"{mm} - {course_title}.txt",caption = f"```{mm} - {course_title}```" )
+        await message.reply_document(f"{mm} - {course_title}.txt",caption = f"`{mm} - {course_title}`" )
         os.remove(f"{mm} - {course_title}.txt")
         await editable.delete(True)
     except Exception as e:
