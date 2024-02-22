@@ -11,6 +11,16 @@ from Extractor import app
 from config import SUDO_USERS
 
 
+def decode(tn):
+  key = "638udh3829162018".encode("utf8")
+  iv = "fedcba9876543210".encode("utf8")
+  ciphertext = bytearray.fromhex(b64decode(tn.encode()).hex())
+  cipher = AES.new(key, AES.MODE_CBC, iv)
+  plaintext = unpad(cipher.decrypt(ciphertext), AES.block_size)
+  url=plaintext.decode('utf-8')
+  return url
+
+
 
 
 @app.on_message(filters.command(["ocean"]) & filters.user(SUDO_USERS))
@@ -132,10 +142,10 @@ async def winners_account(_, message):
                         mtext = f"{tid}:{url}\n"
                         open(f"{mm} - {course_title}.txt", "a").write(mtext)
         await prog.delete(True)        
-        await m.reply_document(f"{mm} - {course_title}.txt",caption = f"```{mm} - {course_title}```" )
+        await message.reply_document(f"{mm} - {course_title}.txt",caption = f"```{mm} - {course_title}```" )
         os.remove(f"{mm} - {course_title}.txt")
         await editable.delete(True)
     except Exception as e:
-        await m.reply_text(str(e))
+        await message.reply_text(str(e))
 
 
