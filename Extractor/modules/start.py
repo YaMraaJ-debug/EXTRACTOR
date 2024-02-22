@@ -73,10 +73,11 @@ async def cb_handler(client, query):
 # ------------------------------------------------------------------------------- #
         
     elif query.data=="help_":        
+        reply_markup = InlineKeyboardMarkup(course_buttons)
         try:
             await query.edit_message_text(
                 help_txt,
-                reply_markup=course_buttons
+                reply_markup=reply_markup
             )
         except MessageNotModified:
             pass
