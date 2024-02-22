@@ -58,6 +58,8 @@ async def winners_account(_, message):
     
     userid = output["data"]["userid"]
     token = output["data"]["token"]
+  
+    clean_url = api_url.replace("https://", "").replace("http://", "")
     hdr1 = {
         "Host": "winnersinstituteapi.classx.co.in",
         "Client-Service": "Appx",
