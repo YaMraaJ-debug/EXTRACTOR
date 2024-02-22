@@ -25,9 +25,11 @@ def decode(tn):
 async def apex_accounts(_, message, apex_api):
     global cancel
     cancel = False
+    login_url = f"{apex_api}/post/userLogin"
+  
     editable = await message.reply_text("Send **ID & Password** in this manner otherwise bot will not respond.\n\nSend like this:-  **ID*Password**")
   
-    rwa_url = f"{apex_api}/post/userLogin"
+    rwa_url = login_url
     hdr = {"Auth-Key": "appxapi",
            "User-Id": "-2",
            "Authorization": "",
@@ -62,8 +64,8 @@ async def apex_accounts(_, message, apex_api):
         }
     
     await editable.edit("**login Successful**")
-    
-    res1 = requests.get(f"{apex_api}/get/mycourse?userid="+userid, headers=hdr1)
+    cou_url = f"{apex_api}/get/mycourse?userid="
+    res1 = requests.get(cou_url+userid, headers=hdr1)
     batch_data = res1.json()['data']
     
     FFF = "**BATCH-ID - BATCH NAME - INSTRUCTOR**"
@@ -78,11 +80,12 @@ async def apex_accounts(_, message, apex_api):
     raw_text2 = input2.text
     await input2.delete(True)
     await editable1.delete(True)
-    
-    html = scraper.get(f"{apex_api}/get/course_by_id?id=" + raw_text2,headers=hdr1).json()
+    cur2_url = f"{apex_api}/get/course_by_id?id=" 
+    html = scraper.get(cur2_url + raw_text2,headers=hdr1).json()
     course_title = html["data"][0]["course_name"]
     scraper = cloudscraper.create_scraper()
-    html = scraper.get(f"{apex_api}/get/allsubjectfrmlivecourseclass?courseid=" + raw_text2,headers=hdr1).content
+    cur3_url = f"{apex_api}/get/allsubjectfrmlivecourseclass?courseid=" 
+    html = scraper.get(cur3_url + raw_text2,headers=hdr1).content
     output0 = json.loads(html)
     subjID = output0["data"]
     
@@ -106,11 +109,12 @@ async def apex_accounts(_, message, apex_api):
     mm_url = api_url.replace("https://", "").replace("http://", "")
     mm_name = mm_url.split('.')[0].replace("api", "")
     try:
+        cur4_url = f"{apex_api}/get/alltopicfrmlivecourseclass?courseid="
         mm = f"{mm_name}"
         xv = raw_text3.split('&')
         for y in range(0,len(xv)):
             raw_text3 =xv[y]
-            res3 = requests.get(f"{apex_api}/get/alltopicfrmlivecourseclass?courseid=" + raw_text2,"&subjectid=" + raw_text3, headers=hdr1)
+            res3 = requests.get(cur4_url + raw_text2,"&subjectid=" + raw_text3, headers=hdr1)
             b_data2 = res3.json()['data']
             for data in b_data2:
                 t_name = (data["topic_name"])
@@ -123,8 +127,9 @@ async def apex_accounts(_, message, apex_api):
                         "User-Id": userid,
                         "Authorization": token
                         }
-                        
-                res4 = requests.get(f"{apex_api}/get/livecourseclassbycoursesubtopconceptapiv3?courseid=" + raw_text2 + "&subjectid=" + raw_text3 + "&topicid=" + tid + "&start=-1",headers=hdr11).json()
+                cur5_url = f"{apex_api}/get/livecourseclassbycoursesubtopconceptapiv3?courseid="
+              
+                res4 = requests.get(cur5_url + raw_text2 + "&subjectid=" + raw_text3 + "&topicid=" + tid + "&start=-1",headers=hdr11).json()
                 topicid = res4["data"]
                 print(topicid)
                 for data in topicid:
