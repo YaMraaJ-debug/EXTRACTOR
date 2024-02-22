@@ -17,19 +17,19 @@ button = InlineKeyboardMarkup([
 
 course_buttons = [              
                 [
-                    InlineKeyboardButton("ᴍ", callback_data="m_"),   
-                    InlineKeyboardButton("ᴀɪ", callback_data="_"),
-                    InlineKeyboardButton("ʙᴀss", callback_data="bass_")
+                    InlineKeyboardButton("Ocean", callback_data="maintainer_"),   
+                    InlineKeyboardButton("Classplus", callback_data="maintainer_"),
+                    InlineKeyboardButton("winners", callback_data="maintainer_")
                 ],
                 [
-                    InlineKeyboardButton("ʏᴏᴜᴛᴜʙᴇ", callback_data="youtube_"),   
-                    InlineKeyboardButton("ᴍɪsᴄ", callback_data="misc_"),
-                    InlineKeyboardButton("ʙʀᴏᴀᴅᴄᴀsᴛ", callback_data="broadcast_")
+                    InlineKeyboardButton("khan", callback_data="maintainer_"),   
+                    InlineKeyboardButton("Mg concept", callback_data="maintainer_"),
+                    InlineKeyboardButton("Vidhya", callback_data="maintainer_")
                 ],
                 [
-                    InlineKeyboardButton("ᴄʜᴇᴄᴋᴇʀ", callback_data="checker_"),   
-                    InlineKeyboardButton("ᴅᴇᴠs", callback_data="devs_"),
-                    InlineKeyboardButton("ɪɴsᴛᴀɢʀᴀᴍ", callback_data="maintainer_")
+                    InlineKeyboardButton("Vikramjeet", callback_data="maintainer_"),   
+                    InlineKeyboardButton("Neet Kakaji", callback_data="maintainer_"),
+                    InlineKeyboardButton("pythics wala", callback_data="maintainer_")
                 ],
                 [
                     InlineKeyboardButton("⟲ ʙᴀᴄᴋ ⟳", callback_data="home_"),
@@ -44,7 +44,7 @@ back_buttons  = [[
 
 
 help_txt = """**
-**» ˹ᴄʜɪᴢᴜʀᴜ˼ ᴄᴏᴏʟ ᴏʀ ᴇxᴄʟᴜsɪᴠᴇ ғᴇᴀᴛᴜʀᴇs** 
+**Multiple Course Extract commands** 
 """
 # ------------------------------------------------------------------------------- #
 
