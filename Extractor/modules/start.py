@@ -61,10 +61,11 @@ async def start(_,message):
 @app.on_callback_query()
 async def cb_handler(client, query):
     if query.data=="home_":
+        reply_markup = InlineKeyboardMarkup(button)
         try:
             await query.edit_message_text(
                 start_txt.format(query.from_user.mention),
-                reply_markup=button
+                reply_markup=reply_markup
             )
         except MessageNotModified:
             pass
