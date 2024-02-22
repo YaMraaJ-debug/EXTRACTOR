@@ -1,41 +1,24 @@
-import urllib
-import urllib.parse
-import requests
 import json
-import subprocess
-from pyrogram.types.messages_and_media import message
-import helper
-from pyromod import listen
-from pyrogram.types import Message
-import tgcrypto
-import pyrogram
-from pyrogram import Client, filters
-from pyrogram.types.messages_and_media import message
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-from pyrogram.errors import FloodWait
-import time
-from pyrogram.types import User, Message
-from p_bar import progress_bar
-from subprocess import getstatusoutput
-import logging
 import os
-import sys
-import re
-from pyrogram import Client as bot
+import requests
+from pyrogram import filters
+from pyromod import listen
 import cloudscraper
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import unpad
-from base64 import b64encode, b64decode
+from base64 import b64decode
+from Extractor import app
+from config import SUDO_USERS
 
 
 
 
-@app.on_message(filters.command(["ocean"]))
-async def account_login(bot: Client, m: Message):
+@app.on_message(filters.command(["ocean"]) & filters.user(SUDO_USERS))
+async def ocean_account(_, message):
     global cancel
     cancel = False
-    editable = await m.reply_text(
-        "Send **ID & Password** in this manner otherwise bot will not respond.\n\nSend like this:-  **ID*Password**")
+    editable = await message.reply_text("Send **ID & Password** in this manner otherwise bot will not respond.\n\nSend like this:-  **ID*Password**")
+    
     rwa_url = "https://oceangurukulsapi.classx.co.in/post/userLogin"
     hdr = {"Auth-Key": "appxapi",
            "User-Id": "-2",
@@ -48,8 +31,8 @@ async def account_login(bot: Client, m: Message):
            "User-Agent": "okhttp/4.9.1"
           }
     info = {"email": "", "password": ""}
-    #7355971781*73559717
-    input1: Message = await bot.listen(editable.chat.id)
+    
+    input1: message = await _.listen(editable.chat.id)
     raw_text = input1.text
     info["email"] = raw_text.split("*")[0]
     info["password"] = raw_text.split("*")[1]
@@ -57,7 +40,7 @@ async def account_login(bot: Client, m: Message):
     scraper = cloudscraper.create_scraper()
     res = scraper.post(rwa_url, data=info, headers=hdr).content
     output = json.loads(res)
-    #print(output)
+    
     userid = output["data"]["userid"]
     token = output["data"]["token"]
     hdr1 = {
@@ -67,10 +50,9 @@ async def account_login(bot: Client, m: Message):
         "User-Id": userid,
         "Authorization": token
         }
-    #print(userid)
-    #print(token)
+    
     await editable.edit("**login Successful**")
-    # await editable.edit(f"You have these Batches :-\n{raw_text}"
+
     cour_url = "https://oceangurukulsapi.classx.co.in/get/mycourse?userid="
 
     res1 = requests.get("https://oceangurukulsapi.classx.co.in/get/mycourse?userid="+userid, headers=hdr1)
