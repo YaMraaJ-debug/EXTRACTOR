@@ -1,6 +1,7 @@
 from pyrogram import filters
 from Extractor import app
 from pyromod import listen
+from config import SUDO_USERS
 from Extractor.core.multi_func import apex_accounts
 
 
