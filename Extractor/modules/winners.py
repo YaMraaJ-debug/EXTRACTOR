@@ -23,7 +23,7 @@ def decode(tn):
 
 
 
-@app.on_message(filters.command(["ocean"]) & filters.user(SUDO_USERS))
+@app.on_message(filters.command(["winners"]) & filters.user(SUDO_USERS))
 async def winners_account(_, message):
     global cancel
     cancel = False
@@ -70,10 +70,7 @@ async def winners_account(_, message):
     for data in batch_data:
         title_name = data['course_name']
         FFF += f" {data['id']}  -  **{data['course_name']}**\n\n"
-        
-        if len(f'{cool}{aa}') > 4096:
-            print(aa)
-            
+                    
     await message.reply_text(f"YOU HAVE THIS {title_name}\n\n{FFF}")
     
     editable1 = await message.reply_text("**Now send the Batch ID to Download**")
