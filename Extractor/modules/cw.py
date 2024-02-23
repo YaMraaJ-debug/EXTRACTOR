@@ -68,9 +68,23 @@ async def careerwill_account(_, message):
       
     else:
       token = raw_text
-    html1 = requests.get("https://elearn.crwilladmin.com/api/v3/comp/my-batch?&token=" + token).json()
-    topicid = html1["data"]["batchData"]
-    cool=""
+    headers = {
+        "Host": "elearn.crwilladmin.com",
+        "Token": token,
+        "Usertype": "2",
+        "Appver": "1.55",
+        "Apptype": "android",
+        "Content-Type": "application/json; charset=UTF-8",
+        "Content-Length": "313",
+        "Accept-Encoding": "gzip, deflate, br",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",
+        'Connection': 'Keep-Alive'
+       }
+    batch_url = "https://elearn.crwilladmin.com/api/v3/my-batch"
+    response = requests.get(batch_url, headers=headers)
+    data = response.json()
+    topicid = response["data"]["batchData"]
+    
     FFF = "**BATCH-ID - BATCH NAME - INSTRUCTOR**\n\n"
     for data in topicid:
         instructorName=(data["instructorName"])
