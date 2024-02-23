@@ -74,6 +74,8 @@ async def careerwill_account(_, message):
     editable = await message.reply_text(f"Now send the **Topic IDs** to Download\n\nSend like this **1&2&3&4** so on\nor copy paste or edit **below ids** according to you :\n\n**Enter this to download full batch :-**\n`{id_num}`")    
     input3 : message = await _.listen(editable.chat.id)
     raw_text3 = input3.text
+    await editable.delete(True)
+    prog = await editable.edit("**Extracting Videos Links Please Wait  📥 **")
 
     try:
         num_id = raw_text3.split('&')
@@ -131,7 +133,8 @@ async def careerwill_account(_, message):
             except Exception as e:
                 await message.reply_text(str(e))
             c_txt = f"App: `CareerWill`\n`{batch_name}`"
-        await message.reply_document(f"{batch_name}{name}.txt", caption=c_text)
+        await message.reply_document(f"{batch_name}{name}.txt", caption=c_txt)
+        await prog.delete()
         os.remove(f"{batch_name}{name}.txt")
     except Exception as e:
         await message.reply_text(str(e))
