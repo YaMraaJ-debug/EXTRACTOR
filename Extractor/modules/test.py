@@ -98,7 +98,8 @@ async def careerwill_account(_, message):
                     lesson_name = data["lessonName"]
                     video_link = data["lessonUrl"]
                     
-                    if bcvid.startswith("62"):
+                    if vid_id.startswith("62"):
+                        """
                         try:
                             html5 = requests.get("https://web.careerwill.com/api/v3/livestreamToken?type=brightcove&vid="+vidid+"&token="+token).content
                             surl = json.loads(html5)
@@ -107,8 +108,10 @@ async def careerwill_account(_, message):
                             link = (video_url+"&bcov_auth="+stoken)       
                         except Exception as e:
                             print(str(e))
+                        """
                     
-                    elif bcvid.startswith("63"):
+                    elif vid_id.startswith("63"):
+                        """
                         try:
                             html8 = s.get("https://web.careerwill.com/api/v3/livestreamToken?type=brightcove&vid="+vidid+"&token="+token).content
                             surl1 = json.loads(html8)
@@ -117,6 +120,7 @@ async def careerwill_account(_, message):
                             link = (video_url1+"&bcov_auth="+stoken1)  
                         except Exception as e:
                             print(str(e))
+                        """
                     
                     else:
                         link=("https://www.youtube.com/embed/"+video_link)
@@ -126,9 +130,9 @@ async def careerwill_account(_, message):
                     
             except Exception as e:
                 await message.reply_text(str(e))
-        await message.reply_document(f"{lesson_name}{name}.txt")
+        await message.reply_document(f"{batch_name}{name}.txt")
         os.remove(f"{batch_name}{name}.txt")
     except Exception as e:
-        await m.reply_text(str(e))
+        await message.reply_text(str(e))
 
 
