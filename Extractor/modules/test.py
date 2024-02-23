@@ -78,7 +78,7 @@ async def careerwill_account(_, message):
     try:
         num_id = raw_text3.split('&')
         for x in range(0,len(num_id)):
-            id_text = xv[x]
+            id_text = num_id[x]
         
             details_url = "https://elearn.crwilladmin.com/api/v3/batch-detail/"+raw_text2+"?topicId="+id_text
             response = requests.get(url, headers=headers)
