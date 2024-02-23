@@ -81,7 +81,7 @@ async def careerwill_account(_, message):
             id_text = num_id[x]
         
             details_url = "https://elearn.crwilladmin.com/api/v3/batch-detail/"+raw_text2+"?topicId="+id_text
-            response = requests.get(url, headers=headers)
+            response = requests.get(details_url, headers=headers)
             data = response.json()
             
             details_list = data["data"]["class_list"]
