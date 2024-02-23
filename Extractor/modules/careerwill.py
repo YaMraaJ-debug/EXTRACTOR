@@ -19,7 +19,7 @@ bc_url = (f"https://edge.api.brightcove.com/playback/v1/accounts/{ACCOUNT_ID}/vi
 bc_hdr = {"BCOV-POLICY": BCOV_POLICY}
 
 
-@app.on_message(filters.command(["tw"]) & filters.user(SUDO_USERS))
+@app.on_message(filters.command(["cw"]) & filters.user(SUDO_USERS))
 async def careerwill_account(_, message):
     global cancel
     cancel = False
