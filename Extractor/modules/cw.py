@@ -68,18 +68,7 @@ async def careerwill_account(_, message):
       
     else:
       token = raw_text
-    headers = {
-        "Host": "elearn.crwilladmin.com",
-        "Token": token,
-        "Usertype": "2",
-        "Appver": "1.55",
-        "Apptype": "android",
-        "Content-Type": "application/json; charset=UTF-8",
-        "Content-Length": "313",
-        "Accept-Encoding": "gzip, deflate, br",
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",
-        'Connection': 'Keep-Alive'
-       }
+    
     batch_url = "https://elearn.crwilladmin.com/api/v3/my-batch"
     response = requests.get(batch_url, headers=headers)
     data = response.json()
