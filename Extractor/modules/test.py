@@ -126,11 +126,12 @@ async def careerwill_account(_, message):
                         link=("https://www.youtube.com/embed/"+video_link)
             
                     with open(f"{batch_name}{name}.txt", 'a') as f:
-                        f.write(f"{lesson_name}:{link}\n")
+                        f.write(f"{lesson_name}\n{link}\n")
                     
             except Exception as e:
                 await message.reply_text(str(e))
-        await message.reply_document(f"{batch_name}{name}.txt")
+            c_txt = f"App: `CareerWill`\n`{batch_name}`"
+        await message.reply_document(f"{batch_name}{name}.txt", caption=c_text)
         os.remove(f"{batch_name}{name}.txt")
     except Exception as e:
         await message.reply_text(str(e))
