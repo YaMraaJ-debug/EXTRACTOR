@@ -21,7 +21,7 @@ bc_url = (f"https://edge.api.brightcove.com/playback/v1/accounts/{ACCOUNT_ID}/vi
 bc_hdr = {"BCOV-POLICY": BCOV_POLICY}
 
 
-@app.on_message(filters.command(["cw"]) & filters.user(SUDO_USERS)
+@app.on_message(filters.command(["cw"]) & filters.user(SUDO_USERS))
 async def careerwill_account(_, message):
     global cancel
     cancel = False
@@ -52,40 +52,35 @@ async def careerwill_account(_, message):
     editable = await message.reply_text("Send **ID & Password** in this manner otherwise bot will not respond.\n\nSend like this:-  **ID*Password** \n or \nSend **TOKEN** like This this:-  **TOKEN**" )
     input1: message = await _.listen(editable.chat.id)
     raw_text = input1.text
-    s = requests.Session()
     if "*" in raw_text:
       data["email"] = raw_text.split("*")[0]
       data["password"] = raw_text.split("*")[1]
       await input1.delete(True)
 
-      response = s.post(url = url, headers=headers, json=data, timeout=10)
+      response = requests.get(url = url, headers=headers, json=data, timeout=10)
       if response.status_code == 200:
           data = response.json()
           token = data["data"]["token"]
-          await m.reply_text(token)
+          await message.reply_text(token)
       else:
-           await m.reply_text("go back to response")
+           await message.reply_text("go back to response")
      
-      await m.reply_text(f"`{token}`")
+      
     else:
       token = raw_text
-    html1 = s.get("https://web.careerwill.com/api/v3/comp/my-batch?&token=" + token).json()
+    html1 = requests.get("https://elearn.crwilladmin.com/api/v3/comp/my-batch?&token=" + token).json()
     topicid = html1["data"]["batchData"]
     cool=""
+    FFF = "**BATCH-ID - BATCH NAME - INSTRUCTOR**\n\n"
     for data in topicid:
         instructorName=(data["instructorName"])
-        FFF="**BATCH-ID - BATCH NAME - INSTRUCTOR**"
-        aa =f" ```{data['id']}```      - **{data['batchName']}**\n{data['instructorName']}\n\n"
-        #aa=f"**Batch Name -** {data['batchName']}\n**Batch ID -** ```{data['id']}```\n**By -** {data['instructorName']}\n\n"
-        if len(f'{cool}{aa}')>4096:
-            await m.reply_text(aa)
-            cool =""
-        cool+=aa
-    await editable.edit(f'{"**You have these batches :-**"}\n\n{FFF}\n\n{cool}')
-    editable1= await m.reply_text("**Now send the Batch ID to Download**")
-    input2 = message = await bot.listen(editable.chat.id)
+        FFF += f"`{data['id']}`  - `{data['batchName']}` \n{data['instructorName']}\n\n"
+       
+    await editable.edit(f"Here your details\n{FFF}")
+    editable1= await message.reply_text("**Now send the Batch ID to Download**")
+    input2 = message = await _.listen(editable1.chat.id)
     raw_text2 = input2.text
-    html2 = s.get("https://web.careerwill.com/api/v3/comp/batch-topic/"+raw_text2+"?type=class&token="+token).json()
+    html2 = requests.get("https://web.careerwill.com/api/v3/comp/batch-topic/"+raw_text2+"?type=class&token="+token).json()
     topicid = html2["data"]["batch_topic"]
     bn = html2["data"]["batch_detail"]["name"]
     vj=""
