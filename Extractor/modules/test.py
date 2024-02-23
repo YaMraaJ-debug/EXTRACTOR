@@ -31,17 +31,14 @@ async def careerwill_account(_, message):
     input1: message = await _.listen(editable.chat.id)
     raw_text = input1.text
     headers = {
-        "Host": "elearn.crwilladmin.com",
-        "Token": raw_text,
-        "Usertype": "2",
-        "Appver": "1.55",
-        "Apptype": "android",
-        "Content-Type": "application/json; charset=UTF-8",
-        "Content-Length": "313",
-        "Accept-Encoding": "gzip, deflate, br",
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",
-        'Connection': 'Keep-Alive'
-       }
+    "Host": "elearn.crwilladmin.com",
+    "origintype": "web",
+    "usertype": "2",
+    "token": raw_text,
+    "accept-encoding": "gzip",
+    "user-agent": "okhttp/3.9.1"
+}
+
       
         
     batch_url = "https://elearn.crwilladmin.com/api/v3/my-batch"
