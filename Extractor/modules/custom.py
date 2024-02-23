@@ -27,7 +27,7 @@ def decode(tn):
 async def winners_account(_, message):
     global cancel
     cancel = False
-    editable = await message.reply_text("send me your apex link")
+    editable = await message.reply_text("**𝐒𝐄𝐍𝐃 𝐀𝐏𝐏𝐗 𝐀𝐏𝐈**\n\n✅ __Example:__\n**https://tcsexamzoneapi.classx.co.in**")
     input1: message = await _.listen(editable.chat.id)
     api_url = input1.text
     raw_text = input1.text
@@ -73,7 +73,7 @@ async def winners_account(_, message):
     res1 = requests.get(cou_url+userid, headers=hdr1)
     batch_data = res1.json()['data']
     
-    FFF = "**BATCH-ID - BATCH NAME - INSTRUCTOR**"
+    FFF = "**BATCH-ID - BATCH NAME - INSTRUCTOR**\n\n"
     for data in batch_data:
         title_name = data['course_name']
         FFF += f" {data['id']}  -  **{data['course_name']}**\n\n"
