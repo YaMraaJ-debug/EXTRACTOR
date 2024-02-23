@@ -87,7 +87,7 @@ async def careerwill_account(_, message):
             details_list = data["data"]["class_list"]
             batch_name = details_list["batchName"]
             batch_descript = details_list["batchDescription"]
-            batch_class = details_list["classes"]:
+            batch_class = details_list["classes"]
             
             batch_class.reverse()
             count = 1
