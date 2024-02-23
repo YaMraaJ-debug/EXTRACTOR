@@ -59,11 +59,12 @@ async def careerwill_account(_, message):
     response = requests.get(topic_url, headers=headers)
     topic_data = response.json()
     print(data)
-    batch_data = topic_data["data"]["batch_topic"]
+    batch_data = topic_data['data']['batch_topic']
     name = topic_data["data"]["batch_detail"]["name"]
+    
     BBB = "**TOPIC-ID - TOPIC - VIDEOS**\n\n"
     id_num = ""
-    for data in topicid:
+    for data in batch_data:
         topic_id = data["id"]
         topic_name = data["topicName"]
         id_num += f"{topic_id}&"
