@@ -61,7 +61,7 @@ async def winners_account(_, message):
   
     clean_url = api_url.replace("https://", "").replace("http://", "")
     hdr1 = {
-        "Host": "winnersinstituteapi.classx.co.in",
+        "Host": clean_url,
         "Client-Service": "Appx",
         "Auth-Key": "appxapi",
         "User-Id": userid,
