@@ -47,11 +47,10 @@ async def careerwill_account(_, message):
     topicid = response["data"]["batchData"]
     
     FFF = "**BATCH-ID - BATCH NAME - INSTRUCTOR**\n\n"
-    for data in topicid:
-        instructorName=(data["instructorName"])
+    for data in topicid:       
         FFF += f"`{data['id']}`  - `{data['batchName']}` \n{data['instructorName']}\n\n"
        
-    await editable.edit(f"Here your details\n{FFF}")
+    await editable.edit(f"HERE IS YOUR BATCH\n\n{FFF}")
     editable1= await message.reply_text("**Now send the Batch ID to Download**")
     input2 = message = await _.listen(editable1.chat.id)
     raw_text2 = input2.text
