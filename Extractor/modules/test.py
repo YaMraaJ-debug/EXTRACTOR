@@ -75,9 +75,60 @@ async def careerwill_account(_, message):
     input3 : message = await _.listen(editable.chat.id)
     raw_text3 = input3.text
 
-
-
-
-
+    try:
+        num_id = raw_text3.split('&')
+        for x in range(0,len(num_id)):
+            id_text = xv[x]
+        
+            details_url = "https://elearn.crwilladmin.com/api/v3/batch-detail/"+raw_text2+"?topicId="+id_text
+            response = requests.get(url, headers=headers)
+            data = response.json()
+            
+            details_list = data["data"]["class_list"]
+            batch_name = details_list["batchName"]
+            batch_descript = details_list["batchDescription"]
+            batch_class = details_list["classes"]:
+            
+            batch_class.reverse()
+            count = 1
+            
+            try:
+                for data in batch_class:
+                    vid_id = data["id"]
+                    lesson_name = data["lessonName"]
+                    video_link = data["lessonUrl"]
+                    
+                    if bcvid.startswith("62"):
+                        try:
+                            html5 = requests.get("https://web.careerwill.com/api/v3/livestreamToken?type=brightcove&vid="+vidid+"&token="+token).content
+                            surl = json.loads(html5)
+                            stoken = surl["data"]["token"]
+                                           
+                            link = (video_url+"&bcov_auth="+stoken)       
+                        except Exception as e:
+                            print(str(e))
+                    
+                    elif bcvid.startswith("63"):
+                        try:
+                            html8 = s.get("https://web.careerwill.com/api/v3/livestreamToken?type=brightcove&vid="+vidid+"&token="+token).content
+                            surl1 = json.loads(html8)
+                            stoken1 = surl1["data"]["token"]
+                            
+                            link = (video_url1+"&bcov_auth="+stoken1)  
+                        except Exception as e:
+                            print(str(e))
+                    
+                    else:
+                        link=("https://www.youtube.com/embed/"+video_link)
+            
+                    with open(f"{batch_name}{name}.txt", 'a') as f:
+                        f.write(f"{lesson_name}:{link}\n")
+                    
+            except Exception as e:
+                await message.reply_text(str(e))
+        await message.reply_document(f"{lesson_name}{name}.txt")
+        os.remove(f"{batch_name}{name}.txt")
+    except Exception as e:
+        await m.reply_text(str(e))
 
 
