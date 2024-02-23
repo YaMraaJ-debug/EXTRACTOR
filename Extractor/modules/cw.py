@@ -1,32 +1,18 @@
-
-import urllib
-import urllib.parse
-import requests
 import json
-import subprocess
-from pyrogram.types.messages_and_media import message
-import helper
-from pyromod import listen
-from pyrogram.types import Message
-import tgcrypto
-import pyrogram
-from pyrogram import Client, filters
-from pyrogram.types.messages_and_media import message
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-from pyrogram.errors import FloodWait
-import time
-from pyrogram.types import User, Message
-from p_bar import progress_bar
-from subprocess import getstatusoutput
-import logging
 import os
-import sys
-import re
-from pyrogram import Client as bot
+import requests
+from pyrogram import filters
+from pyromod import listen
 import cloudscraper
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import unpad
-from base64 import b64encode, b64decode
+from base64 import b64decode
+from Extractor import app
+from config import SUDO_USERS
+
+
+
+
 
 
 ACCOUNT_ID = "6206459123001"
@@ -35,8 +21,8 @@ bc_url = (f"https://edge.api.brightcove.com/playback/v1/accounts/{ACCOUNT_ID}/vi
 bc_hdr = {"BCOV-POLICY": BCOV_POLICY}
 
 
-@bot.on_message(filters.command(["cw"])& ~filters.edited)
-async def account_login(bot: Client, m: Message):
+@app.on_message(filters.command(["cw"]) & filters.user(SUDO_USERS)
+async def careerwill_account(_, message):
     global cancel
     cancel = False
 
@@ -51,7 +37,7 @@ async def account_login(bot: Client, m: Message):
         "deviceToken": "fYdfgaUaQZmYP7vV4r2rjr:APA91bFPn3Z4m_YS8kYQSthrueUh-lyfxLghL9ka-MT0m_4TRtlUu7cy90L8H6VbtWorg95Car6aU9zjA-59bZypta9GNNuAdUxTnIiGFxMCr2G3P4Gf054Kdgwje44XWzS9ZGa4iPZh"
        }
     headers = {
-        "Host": "web.careerwill.com",
+        "Host": "elearn.crwilladmin.com",
         "Token": "",
         "Usertype": "2",
         "Appver": "1.55",
@@ -62,20 +48,16 @@ async def account_login(bot: Client, m: Message):
         "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",
         'Connection': 'Keep-Alive'
        }
-    #proxy_host = ['47.254.153.200:80']
-    #proxies = {
-     #       'https': proxy_host,
-     #       'http': proxy_host,
-     #   }
-    editable = await m.reply_text("Send **ID & Password** in this manner otherwise bot will not respond.\n\nSend like this:-  **ID*Password** \n or \nSend **TOKEN** like This this:-  **TOKEN**" )
-    input1: Message = await bot.listen(editable.chat.id)
+    
+    editable = await message.reply_text("Send **ID & Password** in this manner otherwise bot will not respond.\n\nSend like this:-  **ID*Password** \n or \nSend **TOKEN** like This this:-  **TOKEN**" )
+    input1: message = await _.listen(editable.chat.id)
     raw_text = input1.text
     s = requests.Session()
     if "*" in raw_text:
       data["email"] = raw_text.split("*")[0]
       data["password"] = raw_text.split("*")[1]
       await input1.delete(True)
-      #s = requests.Session()
+
       response = s.post(url = url, headers=headers, json=data, timeout=10)
       if response.status_code == 200:
           data = response.json()
@@ -83,8 +65,8 @@ async def account_login(bot: Client, m: Message):
           await m.reply_text(token)
       else:
            await m.reply_text("go back to response")
-      #token = "4ffd1627981589c0a1261f7a114fbbf8bc87c6d9"
-      await m.reply_text(f"```{token}```")
+     
+      await m.reply_text(f"`{token}`")
     else:
       token = raw_text
     html1 = s.get("https://web.careerwill.com/api/v3/comp/my-batch?&token=" + token).json()
