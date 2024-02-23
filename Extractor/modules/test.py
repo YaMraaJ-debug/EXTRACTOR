@@ -52,8 +52,27 @@ async def careerwill_account(_, message):
         FFF += f"`{data['id']}`  - `{data['batchName']}` \n{data['instructorName']}\n\n"
        
     await editable.edit(f"HERE IS YOUR BATCH\n\n{FFF}")
+    editable1= await message.reply_text("**Now send the Batch ID to Download**")
+    input2 = message = await _.listen(editable1.chat.id)
+    raw_text2 = input2.text
+    topic_url = "https://elearn.crwilladmin.com/api/v3/batch-topic/"+raw_text2+"?type=class"
+    response = requests.get(topic_url, headers=headers)
+    topic_data = response.json()
+    print(data)
+    batch_data = topic_data["data"]["batch_topic"]
+    name = topic_data["data"]["batch_detail"]["name"]
+    BBB = "**TOPIC-ID - TOPIC - VIDEOS**\n\n"
+    id_num = ""
+    for data in topicid:
+        topic_id = data["id"]
+        topic_name = data["topicName"]
+        id_num += f"{topic_id}&"
+        BBB += f"{topic_id} -  {topic_name} \n\n"
 
-
+    await message.reply_text(f"Batches details of {name}\n\n{BBB}")
+    editable = await message.reply_text(f"Now send the **Topic IDs** to Download\n\nSend like this **1&2&3&4** so on\nor copy paste or edit **below ids** according to you :\n\n**Enter this to download full batch :-**\n`{id_num}`")    
+    input3 : message = await _.listen(editable.chat.id)
+    raw_text3 = input3.text
 
 
 
