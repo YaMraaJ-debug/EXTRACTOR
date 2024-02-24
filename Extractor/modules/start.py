@@ -156,7 +156,7 @@ async def handle_callback(_, query):
         
         
     elif query.data=="manual_":        
-        reply_markup = InlineKeyboardMarkup(course_buttons)
+        reply_markup = InlineKeyboardMarkup(course_button1)
         await query.message.edit_text(
               script.MANUAL_TXT,
               reply_markup=reply_markup
