@@ -99,7 +99,7 @@ async def handle_callback(_, query):
     elif query.data=="modes_":        
         reply_markup = InlineKeyboardMarkup(modes_button)
         await query.message.edit_text(
-              scrip.MODES_TXT,
+              script.MODES_TXT,
               reply_markup=reply_markup)
         
 
