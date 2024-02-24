@@ -115,7 +115,7 @@ async def careerwill_account(_, message):
                         stoken = response.json()["data"]["token"]
 
                         link = bc_url + video_link + "/master.m3u8?bcov_auth=" + stoken
-                                       
+                        print(link)               
                     else:
                         link = "https://www.youtube.com/embed/"+video_link
             
@@ -124,7 +124,7 @@ async def careerwill_account(_, message):
                     
             except Exception as e:
                 await message.reply_text(str(e))
-            c_txt = f"App: `CareerWill`\n`{batch_name}`"
+            c_txt = f"App: `CareerWill`\n\n`{batch_name}`"
         await message.reply_document(document=f"{batch_name}{name}.txt", caption=c_txt)
         await prog.delete()
         os.remove(f"{batch_name}{name}.txt")
