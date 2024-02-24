@@ -1,5 +1,6 @@
 from pyrogram import filters
 from Extractor import app
+from Extractor.core import script
 from pyrogram.types import CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton
 
 
@@ -8,48 +9,57 @@ from pyrogram.types import CallbackQuery, InlineKeyboardMarkup, InlineKeyboardBu
 
 button = InlineKeyboardMarkup([
                 [
-                  InlineKeyboardButton("ʜᴇʟᴘ", callback_data="help_")
+                  InlineKeyboardButton("ᴍᴏᴅᴇs", callback_data="help_")
                 ],[
                   InlineKeyboardButton("ᴄʜᴀɴɴᴇʟ", url="https://t.me/DevsCreations"),
                   InlineKeyboardButton("sᴜᴘᴘᴏʀᴛ", url="https://t.me/DevsOops")
                 ]])
 
 
+modes_button = InlineKeyboardMarkup([
+                [
+                  InlineKeyboardButton("ᴄᴜsᴛᴏᴍ", callback_data="custom_"),
+                  InlineKeyboardButton("ᴍᴀɴᴜᴀʟ", callback_data="manual_")
+                ],[
+                  InlineKeyboardButton("𝐁 𝐀 𝐂 𝐊", callback_data="home_")
+                ]])
+
+
 course_buttons = [              
                 [
-                    InlineKeyboardButton("SSC MAKER", callback_data="maintainer_"),   
-                    InlineKeyboardButton("Perfect Academy", callback_data="maintainer_"),
-                    InlineKeyboardButton("Aman Sir", callback_data="maintainer_")
+                    InlineKeyboardButton("ssᴄ ᴍᴀᴋᴇʀ", callback_data="maintainer_"),   
+                    InlineKeyboardButton("ᴘᴇʀғᴇᴄᴛ ᴀᴄᴀᴅᴇᴍʏ", callback_data="maintainer_"),
+                    InlineKeyboardButton("ᴀᴍᴀɴ sɪʀ", callback_data="maintainer_")
                 ],
                 [
-                    InlineKeyboardButton("Classplus", callback_data="maintainer_"),   
-                    InlineKeyboardButton("E1 Coaching", callback_data="maintainer_"),
-                    InlineKeyboardButton("Permar Ssc", callback_data="maintainer_")
+                    InlineKeyboardButton("ᴄʟᴀssᴘʟᴜs", callback_data="maintainer_"),   
+                    InlineKeyboardButton("ᴇ1 ᴄᴏᴀᴄʜɪɴɢ", callback_data="maintainer_"),
+                    InlineKeyboardButton("ᴘᴇʀᴍᴀʀ ssᴄ", callback_data="maintainer_")
                 ],
                 [
-                    InlineKeyboardButton("Samyak Ras", callback_data="maintainer_"),   
-                    InlineKeyboardButton("Vj Education", callback_data="maintainer_"),
-                    InlineKeyboardButton("Md Classes", callback_data="maintainer_")
+                    InlineKeyboardButton("sᴀᴍʏᴀᴋ ʀᴀs", callback_data="maintainer_"),   
+                    InlineKeyboardButton("ᴠᴊ ᴇᴅᴜᴄᴀᴛɪᴏɴ", callback_data="maintainer_"),
+                    InlineKeyboardButton("ᴍᴅ ᴄʟᴀssᴇs", callback_data="maintainer_")
                 ],
                 [
-                    InlineKeyboardButton("GYAN BINDU", callback_data="maintainer_"),   
-                    InlineKeyboardButton("DHANANJAY IAS", callback_data="maintainer_"),
-                    InlineKeyboardButton("SSC GURUKUL", callback_data="maintainer_")
+                    InlineKeyboardButton("ɢʏᴀɴ ʙɪɴᴅᴜ", callback_data="maintainer_"),   
+                    InlineKeyboardButton("ᴅʜᴀɴᴀɴᴊᴀʏ ɪᴀs", callback_data="maintainer_"),
+                    InlineKeyboardButton("ssᴄ ɢᴜʀᴜᴋᴜʟ", callback_data="maintainer_")
                 ],
                 [
-                    InlineKeyboardButton("Think Ssc", callback_data="maintainer_"),   
-                    InlineKeyboardButton("Ashish Singh LC", callback_data="maintainer_"),
-                    InlineKeyboardButton("NG LEARNERS", callback_data="maintainer_")
+                    InlineKeyboardButton("ᴛʜɪɴᴋ ssᴄ", callback_data="maintainer_"),   
+                    InlineKeyboardButton("ᴀsʜɪsʜ sɪɴɢ ʟᴇᴄ.", callback_data="maintainer_"),
+                    InlineKeyboardButton("ɴɢ ʟᴇᴀʀɴᴇʀs", callback_data="maintainer_")
                 ],
                 [
-                    InlineKeyboardButton("⟲ ʙᴀᴄᴋ ⟳", callback_data="home_"),
-                    InlineKeyboardButton("⟲ ᴄʟᴏꜱᴇ ⟳", callback_data="close_data")
+                    InlineKeyboardButton("ʙᴀᴄᴋ", callback_data="home_"),
+                    InlineKeyboardButton("ᴄʟᴏꜱᴇ", callback_data="close_data")
                 ]
                 ]
 
 
 back_buttons  = [[
-                    InlineKeyboardButton("⟲ ʙᴀᴄᴋ ⟳", callback_data="help_"),                    
+                    InlineKeyboardButton("ʙᴀᴄᴋ", callback_data="modes_"),                    
                 ]]
 
 
@@ -61,8 +71,10 @@ back_buttons  = [[
 
 @app.on_message(filters.command("start"))
 async def start(_,message):
-  await message.reply_photo(photo="https://telegra.ph/file/9456751a4ca1a346e631f.jpg", caption="**ʜᴇʏ ᴛʜᴇʀᴇ!  ᴜɴʟᴇᴀsʜ ᴛʜᴇ ᴘᴏᴡᴇʀ ᴏғ ᴛʜᴇ ᴜʟᴛɪᴍᴀᴛᴇ ᴄᴏᴜʀsᴇ ᴅᴏᴡɴʟᴏᴀᴅ ᴡɪᴢᴀʀᴅ – ɪ'ᴍ ɴᴏᴛ Jᴜsᴛ ʏᴏᴜʀ ᴀᴠᴇʀᴀɢᴇ ᴠɪᴅᴇᴏ ᴅᴏᴡɴʟᴏᴀᴅᴇʀ ʙᴏᴛ; ɪ'ᴍ ʏᴏᴜʀ ᴠɪᴘ ᴘᴀss ᴛᴏ ɢʀᴀʙʙɪɴɢ ᴏɴʟɪɴᴇ ᴄᴏᴜʀsᴇs ɪɴ sᴛʏʟᴇ!  ʀᴇᴀᴅʏ ᴛᴏ ᴇʟᴇᴠᴀᴛᴇ ʏᴏᴜʀ ʟᴇᴀʀɴɪɴɢ ɢᴀᴍᴇ? ʟᴇᴛ's ᴅɪᴠᴇ ɪɴᴛᴏ ᴛʜᴇ ᴡᴏʀʟᴅ ᴏғ ᴋɴᴏᴡʟᴇᴅɢᴇ ᴛᴏɢᴇᴛʜᴇʀ! 🎓✨**",
+  await message.reply_photo(photo="https://telegra.ph/file/9456751a4ca1a346e631f.jpg", 
+                            caption=script.START_TXT.format(message.from_user.mention),
                             reply_markup=button)
+
 
 
 
