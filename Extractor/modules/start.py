@@ -8,7 +8,7 @@ from pyrogram.types import CallbackQuery, InlineKeyboardMarkup, InlineKeyboardBu
 
 # ------------------------------------------------------------------------------- #
 
-button = InlineKeyboardMarkup([
+buttons = InlineKeyboardMarkup([
                 [
                   InlineKeyboardButton("ᴍᴏᴅᴇs", callback_data="modes_")
                 ],[
@@ -17,13 +17,12 @@ button = InlineKeyboardMarkup([
                 ]])
 
 
-modes_button = InlineKeyboardMarkup([
-                [
+modes_button = [[
                   InlineKeyboardButton("ᴄᴜsᴛᴏᴍ", callback_data="custom_"),
                   InlineKeyboardButton("ᴍᴀɴᴜᴀʟ", callback_data="manual_"),
                 ],[
                   InlineKeyboardButton("𝐁 𝐀 𝐂 𝐊", callback_data="home_")
-                ]])
+                ]]
 
 
 course_buttons = [              
@@ -74,58 +73,23 @@ back_button  = [[
 async def start(_,message):
   await message.reply_photo(photo="https://graph.org/file/dbd48ba7093582ab20063.jpg", 
                             caption=script.START_TXT.format(message.from_user.mention),
-                            reply_markup=button)
+                            reply_markup=buttons)
 
 
 
 
 
 
-@app.on_callback_query(filters.regex("home_"))
-async def cb_handler(client, query):
-    buttons = [[
-                       InlineKeyboardButton("ᴍᴏᴅᴇs", callback_data="modes_")
-                  ],[
-                       InlineKeyboardButton("ᴄʜᴀɴɴᴇʟ", url="https://t.me/DevsCreations"),
-                       InlineKeyboardButton("sᴜᴘᴘᴏʀᴛ", url="https://t.me/DevsOops")
-                  ]]
-    reply_markup = InlineKeyboardMarkup(buttons)
-    try:
-        await query.edit_message_text(
-            script.START_TXT.format(query.from_user.mention),
-            reply_markup=reply_markup
-        )
-    except:
-        pass
 
-
-# ------------------------------------------------------------------------------- #
-
-@app.on_callback_query(filters.regex("modes_"))
-async def cb_handler(client, query):
-    reply_markup = InlineKeyboardMarkup(course_buttons)
-    try:
-        await query.edit_message_text(
-            script.MODES_TXT,
-            reply_markup=reply_markup
-        )
-    except:
-        pass
-
-
-
-
-
-"""
 
 @app.on_callback_query(re.compile(r"^(home_|modes_|custom_|manual_|maintainer_|close_data.+)$"))
 async def handle_callback(_, query):
 
     if query.data=="home_":        
-        reply_markup = InlineKeyboardMarkup(buttons)
+        
         await query.message.edit_text(
               script.START_TXT.format(query.from_user.mention),
-              reply_markup=reply_markup
+              reply_markup=buttons
             )
         
     elif query.data=="modes_":        
@@ -160,4 +124,4 @@ async def handle_callback(_, query):
         await query.message.reply_to_message.delete()
 
 
-"""
+
