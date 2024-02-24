@@ -99,9 +99,9 @@ async def careerwill_account(_, message):
                     vid_id = data["id"]
                     lesson_name = data["lessonName"]
                     video_link = data["lessonUrl"]
-                    print(vid_id)
+                    print(f" id : {vid_id}")
                     print(lesson_name)
-                    print(video_link)
+                    print(f" link: {video_link}")
                     
                     if video_link.startswith("62"):
                         try:
@@ -142,7 +142,7 @@ async def careerwill_account(_, message):
                         
                     
                     else:
-                        link=("https://www.youtube.com/embed/"+video_link)
+                        link = "https://www.youtube.com/embed/"+video_link
             
                     with open(f"{batch_name}{name}.txt", 'a') as f:
                         f.write(f"{lesson_name}: {link}\n")
