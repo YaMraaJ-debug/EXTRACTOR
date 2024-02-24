@@ -9,7 +9,7 @@ from pyrogram.types import CallbackQuery, InlineKeyboardMarkup, InlineKeyboardBu
 
 button = InlineKeyboardMarkup([
                 [
-                  InlineKeyboardButton("ᴍᴏᴅᴇs", callback_data="help_")
+                  InlineKeyboardButton("ᴍᴏᴅᴇs", callback_data="modes_")
                 ],[
                   InlineKeyboardButton("ᴄʜᴀɴɴᴇʟ", url="https://t.me/DevsCreations"),
                   InlineKeyboardButton("sᴜᴘᴘᴏʀᴛ", url="https://t.me/DevsOops")
@@ -52,7 +52,7 @@ course_buttons = [
                     InlineKeyboardButton("ɴɢ ʟᴇᴀʀɴᴇʀs", callback_data="maintainer_")
                 ],
                 [
-                    InlineKeyboardButton("ʙᴀᴄᴋ", callback_data="home_"),
+                    InlineKeyboardButton("ʙᴀᴄᴋ", callback_data="modes_"),
                     InlineKeyboardButton("ᴄʟᴏꜱᴇ", callback_data="close_data")
                 ]
                 ]
@@ -81,10 +81,28 @@ async def start(_,message):
 @app.on_callback_query()
 async def cb_handler(client, query):
     if query.data=="home_":
-        reply_markup = InlineKeyboardMarkup(button)
+        buttons = [[
+                       InlineKeyboardButton("ᴍᴏᴅᴇs", callback_data="modes_")
+                  ],[
+                       InlineKeyboardButton("ᴄʜᴀɴɴᴇʟ", url="https://t.me/DevsCreations"),
+                       InlineKeyboardButton("sᴜᴘᴘᴏʀᴛ", url="https://t.me/DevsOops")
+                  ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
         try:
             await query.edit_message_text(
-                start_txt.format(query.from_user.mention),
+                script.START_TXT.format(query.from_user.mention),
+                reply_markup=reply_markup
+            )
+        except MessageNotModified:
+            pass
+
+# ------------------------------------------------------------------------------- #
+        
+    elif query.data=="modes_":        
+        reply_markup = InlineKeyboardMarkup(modes_button)
+        try:
+            await query.edit_message_text(
+                script.MODES_TXT,
                 reply_markup=reply_markup
             )
         except MessageNotModified:
@@ -93,16 +111,29 @@ async def cb_handler(client, query):
 
 # ------------------------------------------------------------------------------- #
         
-    elif query.data=="help_":        
-        reply_markup = InlineKeyboardMarkup(course_buttons)
+    elif query.data=="custom_":        
+        reply_markup = InlineKeyboardMarkup(back_button)
         try:
             await query.edit_message_text(
-                help_txt,
+                script.CUSTOM_TXT,
                 reply_markup=reply_markup
             )
         except MessageNotModified:
             pass
 
+
+# ------------------------------------------------------------------------------- #
+        
+    elif query.data=="manual_":        
+        reply_markup = InlineKeyboardMarkup(course_buttons)
+        try:
+            await query.edit_message_text(
+                script.MANUAL_TXT,
+                reply_markup=reply_markup
+            )
+        except MessageNotModified:
+            pass
+          
 # ------------------------------------------------------------------------------- #
 
     elif query.data=="maintainer_":
