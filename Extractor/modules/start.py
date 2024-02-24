@@ -1,4 +1,5 @@
-import re, random
+import re
+import random
 from pyrogram import filters
 from Extractor import app
 from Extractor.core import script
