@@ -1,4 +1,4 @@
-import re
+import re, random
 from pyrogram import filters
 from Extractor import app
 from Extractor.core import script
@@ -71,7 +71,7 @@ back_button  = [[
 
 @app.on_message(filters.command("start"))
 async def start(_,message):
-  await message.reply_photo(photo="https://graph.org/file/dbd48ba7093582ab20063.jpg", 
+  await message.reply_photo(photo=random.choice(script.IMG), 
                             caption=script.START_TXT.format(message.from_user.mention),
                             reply_markup=buttons)
 
