@@ -17,19 +17,29 @@ button = InlineKeyboardMarkup([
 
 course_buttons = [              
                 [
-                    InlineKeyboardButton("Ocean", callback_data="maintainer_"),   
-                    InlineKeyboardButton("Classplus", callback_data="maintainer_"),
-                    InlineKeyboardButton("winners", callback_data="maintainer_")
+                    InlineKeyboardButton("SSC MAKER", callback_data="maintainer_"),   
+                    InlineKeyboardButton("Perfect Academy", callback_data="maintainer_"),
+                    InlineKeyboardButton("Aman Sir", callback_data="maintainer_")
                 ],
                 [
-                    InlineKeyboardButton("khan", callback_data="maintainer_"),   
-                    InlineKeyboardButton("Mg concept", callback_data="maintainer_"),
-                    InlineKeyboardButton("Vidhya", callback_data="maintainer_")
+                    InlineKeyboardButton("Classplus", callback_data="maintainer_"),   
+                    InlineKeyboardButton("E1 Coaching", callback_data="maintainer_"),
+                    InlineKeyboardButton("Permar Ssc", callback_data="maintainer_")
                 ],
                 [
-                    InlineKeyboardButton("Vikramjeet", callback_data="maintainer_"),   
-                    InlineKeyboardButton("Neet Kakaji", callback_data="maintainer_"),
-                    InlineKeyboardButton("physics whalla", callback_data="maintainer_")
+                    InlineKeyboardButton("Samyak Ras", callback_data="maintainer_"),   
+                    InlineKeyboardButton("Vj Education", callback_data="maintainer_"),
+                    InlineKeyboardButton("Md Classes", callback_data="maintainer_")
+                ],
+                [
+                    InlineKeyboardButton("GYAN BINDU", callback_data="maintainer_"),   
+                    InlineKeyboardButton("DHANANJAY IAS", callback_data="maintainer_"),
+                    InlineKeyboardButton("SSC GURUKUL", callback_data="maintainer_")
+                ],
+                [
+                    InlineKeyboardButton("Think Ssc", callback_data="maintainer_"),   
+                    InlineKeyboardButton("Ashish Singh LC", callback_data="maintainer_"),
+                    InlineKeyboardButton("NG LEARNERS", callback_data="maintainer_")
                 ],
                 [
                     InlineKeyboardButton("⟲ ʙᴀᴄᴋ ⟳", callback_data="home_"),
@@ -43,9 +53,7 @@ back_buttons  = [[
                 ]]
 
 
-help_txt = """**
-**Multiple Course Extract commands** 
-"""
+
 # ------------------------------------------------------------------------------- #
 
 
