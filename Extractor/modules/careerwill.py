@@ -99,48 +99,23 @@ async def careerwill_account(_, message):
                     vid_id = data["id"]
                     lesson_name = data["lessonName"]
                     video_link = data["lessonUrl"]
-                    print(f" id : {vid_id}")
-                    print(lesson_name)
-                    print(f" link: {video_link}")
                     
-                    if video_link.startswith("62"):
-                        try:
-                            url = "https://elearn.crwilladmin.com/api/v5/livestreamToken"
-                            params = {
+                    
+                    if str(video_link).startswith("62") or str(video_link).startswith("63"):
+                        
+                        url = "https://elearn.crwilladmin.com/api/v5/livestreamToken"
+                        params = {
                                "base": "web",
                                "module": "batch",
                                "type": "brightcove",
                                "vid": vid_id
                             }
 
-                            response = requests.get(url, headers=headers, params=params)
-                            stoken = response.json()["data"]["token"]
+                        response = requests.get(url, headers=headers, params=params)
+                        stoken = response.json()["data"]["token"]
 
-                            link = bc_url + video_link + "/master.m3u8?bcov_auth=" + stoken
-       
-                        except Exception as e:
-                            print(str(e))
-                        
-                    
-                    elif video_link.startswith("63"):
-                        try:
-                            url = "https://elearn.crwilladmin.com/api/v5/livestreamToken"
-                            params = {
-                               "base": "web",
-                               "module": "batch",
-                               "type": "brightcove",
-                               "vid": vid_id
-                            }
-
-                            response = requests.get(url, headers=headers, params=params)
-                            stoken = response.json()["data"]["token"]
-
-                            link = bc_url + video_link + "/master.m3u8?bcov_auth=" + stoken
-         
-                        except Exception as e:
-                            print(str(e))
-                        
-                    
+                        link = bc_url + video_link + "/master.m3u8?bcov_auth=" + stoken
+                                       
                     else:
                         link = "https://www.youtube.com/embed/"+video_link
             
@@ -150,7 +125,7 @@ async def careerwill_account(_, message):
             except Exception as e:
                 await message.reply_text(str(e))
             c_txt = f"App: `CareerWill`\n`{batch_name}`"
-        await message.reply_document(f"{batch_name}{name}.txt")
+        await message.reply_document(document=f"{batch_name}{name}.txt", caption=c_txt)
         await prog.delete()
         os.remove(f"{batch_name}{name}.txt")
     except Exception as e:
