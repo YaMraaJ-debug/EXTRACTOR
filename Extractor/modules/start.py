@@ -59,7 +59,7 @@ course_buttons = [
                 ]
 
 
-back_buttons  = [[
+back_button  = [[
                     InlineKeyboardButton("ʙᴀᴄᴋ", callback_data="modes_"),                    
                 ]]
 
