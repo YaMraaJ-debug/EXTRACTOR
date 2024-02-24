@@ -102,7 +102,7 @@ async def cb_handler(client, query):
         reply_markup = InlineKeyboardMarkup(modes_button)
         try:
             await query.message.edit_text(
-                script.MODES_TXT,
+                "modessssss",
                 reply_markup=reply_markup
             )
         except MessageNotModified:
@@ -115,7 +115,7 @@ async def cb_handler(client, query):
         reply_markup = InlineKeyboardMarkup(back_button)
         try:
             await query.message.edit_text(
-                script.CUSTOM_TXT,
+                "custommm",
                 reply_markup=reply_markup
             )
         except MessageNotModified:
