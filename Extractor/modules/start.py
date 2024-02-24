@@ -1,3 +1,4 @@
+import re
 from pyrogram import filters
 from Extractor import app
 from Extractor.core import script
@@ -77,9 +78,9 @@ async def start(_,message):
 
 
 
+@app.on_callback_query(re.compile(r"^(home_|modes_|custom_|manual_|maintainer_|close_data.+)$"))
+async def handle_callback(_, query):
 
-@app.on_callback_query()
-async def cb_handler(client, query):
     if query.data=="home_":
         buttons = [[
                        InlineKeyboardButton("ᴍᴏᴅᴇs", callback_data="modes_")
@@ -88,60 +89,51 @@ async def cb_handler(client, query):
                        InlineKeyboardButton("sᴜᴘᴘᴏʀᴛ", url="https://t.me/DevsOops")
                   ]]
         reply_markup = InlineKeyboardMarkup(buttons)
-        try:
-            await query.edit_message_text(
+        await query.message.edit_text(
               script.START_TXT.format(query.from_user.mention),
               reply_markup=reply_markup
             )
-        except MessageNotModified:
-            pass
-
+        
 # ------------------------------------------------------------------------------- #
         
     elif query.data=="modes_":        
         reply_markup = InlineKeyboardMarkup(modes_button)
-        try:
-            await query.edit_message_text("modessssss",reply_markup=reply_markup)
-        except MessageNotModified:
-            pass
+        await query.message.edit_text(
+              scrip.MODES_TXT,
+              reply_markup=reply_markup)
+        
 
 
 # ------------------------------------------------------------------------------- #
         
     elif query.data=="custom_":        
         reply_markup = InlineKeyboardMarkup(back_button)
-        try:
-            await query.edit_message_text(
-                "custommm",
-                reply_markup=reply_markup
+        await query.message.edit_text(
+              script.CUSTOM_TXT,
+              reply_markup=reply_markup
             )
-        except MessageNotModified:
-            pass
+        
 
 
 # ------------------------------------------------------------------------------- #
         
     elif query.data=="manual_":        
         reply_markup = InlineKeyboardMarkup(course_buttons)
-        try:
-            await query.message.edit_text(
-                script.MANUAL_TXT,
-                reply_markup=reply_markup
+        await query.message.edit_text(
+              script.MANUAL_TXT,
+              reply_markup=reply_markup
             )
-        except MessageNotModified:
-            pass
+        
           
 # ------------------------------------------------------------------------------- #
 
-    elif query.data=="maintainer_":
-            await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
+    elif query.data=="maintainer_":     
+        await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
 
   
 # ------------------------------------------------------------------------------- #
  
     elif query.data=="close_data":
-        try:
-            await query.message.delete()
-            await query.message.reply_to_message.delete()
-        except:
-            pass
+        await query.message.delete()
+        await query.message.reply_to_message.delete()
+        
