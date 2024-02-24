@@ -101,7 +101,7 @@ async def cb_handler(client, query):
     elif query.data=="modes_":        
         reply_markup = InlineKeyboardMarkup(modes_button)
         try:
-            await query.edit_message_text(
+            await query.message.edit_text(
                 script.MODES_TXT,
                 reply_markup=reply_markup
             )
@@ -114,7 +114,7 @@ async def cb_handler(client, query):
     elif query.data=="custom_":        
         reply_markup = InlineKeyboardMarkup(back_button)
         try:
-            await query.edit_message_text(
+            await query.message.edit_text(
                 script.CUSTOM_TXT,
                 reply_markup=reply_markup
             )
@@ -127,7 +127,7 @@ async def cb_handler(client, query):
     elif query.data=="manual_":        
         reply_markup = InlineKeyboardMarkup(course_buttons)
         try:
-            await query.edit_message_text(
+            await query.message.edit_text(
                 script.MANUAL_TXT,
                 reply_markup=reply_markup
             )
