@@ -24,7 +24,7 @@ def decode(tn):
 
 
 @app.on_message(filters.command(["custom"]) & filters.user(SUDO_USERS))
-async def winners_account(_, message):
+async def custom_account(_, message):
     global cancel
     cancel = False
     editable = await message.reply_text("**SEND APPX API\n\n✅ Example:\nhttps://tcsexamzoneapi.classx.co.in**")
