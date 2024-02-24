@@ -23,8 +23,8 @@ def decode(tn):
 
 
 
-@app.on_message(filters.command(["perfect_accademy"]) & filters.user(SUDO_USERS))
-async def perfect_accademy_account(_, message):
+@app.on_message(filters.command(["perfect_academy"]) & filters.user(SUDO_USERS))
+async def perfect_academy_account(_, message):
     global cancel
     cancel = False
     editable = await message.reply_text("Send **ID & Password** in this manner otherwise bot will not respond.\n\nSend like this:-  **ID*Password**")
