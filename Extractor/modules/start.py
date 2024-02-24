@@ -121,15 +121,12 @@ async def cb_handler(client, query):
 @app.on_callback_query(re.compile(r"^(home_|modes_|custom_|manual_|maintainer_|close_data.+)$"))
 async def handle_callback(_, query):
 
-    if query.data=="home_":
-        
+    if query.data=="home_":        
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
               script.START_TXT.format(query.from_user.mention),
               reply_markup=reply_markup
             )
-        
-# ------------------------------------------------------------------------------- #
         
     elif query.data=="modes_":        
         reply_markup = InlineKeyboardMarkup(modes_button)
@@ -137,9 +134,6 @@ async def handle_callback(_, query):
               script.MODES_TXT,
               reply_markup=reply_markup)
         
-
-
-# ------------------------------------------------------------------------------- #
         
     elif query.data=="custom_":        
         reply_markup = InlineKeyboardMarkup(back_button)
@@ -148,9 +142,6 @@ async def handle_callback(_, query):
               reply_markup=reply_markup
             )
         
-
-
-# ------------------------------------------------------------------------------- #
         
     elif query.data=="manual_":        
         reply_markup = InlineKeyboardMarkup(course_buttons)
@@ -158,16 +149,12 @@ async def handle_callback(_, query):
               script.MANUAL_TXT,
               reply_markup=reply_markup
             )
-        
-          
-# ------------------------------------------------------------------------------- #
 
+        
     elif query.data=="maintainer_":     
         await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
 
-  
-# ------------------------------------------------------------------------------- #
- 
+
     elif query.data=="close_data":
         await query.message.delete()
         await query.message.reply_to_message.delete()
