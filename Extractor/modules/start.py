@@ -20,7 +20,7 @@ button = InlineKeyboardMarkup([
 modes_button = InlineKeyboardMarkup([
                 [
                   InlineKeyboardButton("ᴄᴜsᴛᴏᴍ", callback_data="custom_"),
-                  InlineKeyboardButton("ᴍᴀɴᴜᴀʟ", callback_data="manual_")
+                  InlineKeyboardButton("ᴍᴀɴᴜᴀʟ", callback_data="manual_"),
                 ],[
                   InlineKeyboardButton("𝐁 𝐀 𝐂 𝐊", callback_data="home_")
                 ]])
