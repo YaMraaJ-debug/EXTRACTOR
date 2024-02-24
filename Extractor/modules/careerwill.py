@@ -15,7 +15,7 @@ from config import SUDO_USERS
 
 ACCOUNT_ID = "6206459123001"
 BCOV_POLICY = "BCpkADawqM1474MvKwYlMRZNBPoqkJY-UWm7zE1U769d5r5kqTjG0v8L-THXuVZtdIQJpfMPB37L_VJQxTKeNeLO2Eac_yMywEgyV9GjFDQ2LTiT4FEiHhKAUvdbx9ku6fGnQKSMB8J5uIDd"
-bc_url = (f"https://edge.api.brightcove.com/playback/v1/accounts/{ACCOUNT_ID}/videos")
+bc_url = f"https://edge.api.brightcove.com/playback/v1/accounts/{ACCOUNT_ID}/videos"
 bc_hdr = {"BCOV-POLICY": BCOV_POLICY}
 
 
@@ -100,29 +100,43 @@ async def careerwill_account(_, message):
                     lesson_name = data["lessonName"]
                     video_link = data["lessonUrl"]
                     
-                    if vid_id.startswith("62"):
-                        """
+                    if video_link.startswith("62"):
                         try:
-                            html5 = requests.get("https://web.careerwill.com/api/v3/livestreamToken?type=brightcove&vid="+vidid+"&token="+token).content
-                            surl = json.loads(html5)
-                            stoken = surl["data"]["token"]
-                                           
-                            link = (video_url+"&bcov_auth="+stoken)       
+                            url = "https://elearn.crwilladmin.com/api/v5/livestreamToken"
+                            params = {
+                               "base": "web",
+                               "module": "batch",
+                               "type": "brightcove",
+                               "vid": vid_id
+                            }
+
+                            response = requests.get(url, headers=headers, params=params)
+                            stoken = response.json()["data"]["token"]
+
+                            link = bc_url + video_link + "/master.m3u8?bcov_auth=" + stoken
+       
                         except Exception as e:
                             print(str(e))
-                        """
+                        
                     
-                    elif vid_id.startswith("63"):
-                        """
+                    elif video_link.startswith("63"):
                         try:
-                            html8 = s.get("https://web.careerwill.com/api/v3/livestreamToken?type=brightcove&vid="+vidid+"&token="+token).content
-                            surl1 = json.loads(html8)
-                            stoken1 = surl1["data"]["token"]
-                            
-                            link = (video_url1+"&bcov_auth="+stoken1)  
+                            url = "https://elearn.crwilladmin.com/api/v5/livestreamToken"
+                            params = {
+                               "base": "web",
+                               "module": "batch",
+                               "type": "brightcove",
+                               "vid": vid_id
+                            }
+
+                            response = requests.get(url, headers=headers, params=params)
+                            stoken = response.json()["data"]["token"]
+
+                            link = bc_url + video_link + "/master.m3u8?bcov_auth=" + stoken
+         
                         except Exception as e:
                             print(str(e))
-                        """
+                        
                     
                     else:
                         link=("https://www.youtube.com/embed/"+video_link)
@@ -138,5 +152,9 @@ async def careerwill_account(_, message):
         os.remove(f"{batch_name}{name}.txt")
     except Exception as e:
         await message.reply_text(str(e))
+
+
+
+
 
 
