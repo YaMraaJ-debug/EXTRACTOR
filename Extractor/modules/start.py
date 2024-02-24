@@ -103,7 +103,7 @@ async def cb_handler(client, query):
 
 @app.on_callback_query(filters.regex("modes_"))
 async def cb_handler(client, query):
-    reply_markup = InlineKeyboardMarkup(back_button)
+    reply_markup = InlineKeyboardMarkup(modes_button)
     try:
         await query.edit_message_text(
             script.MODES_TXT,
