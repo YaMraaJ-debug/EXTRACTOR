@@ -103,7 +103,7 @@ async def aman_sir_account(_, message):
     await editable1.delete(True)
     prog = await editable.edit("**Extracting Videos Links Please Wait  📥 **")
     try:
-        mm = "winners-Institute"
+        mm = "Aman-Sir-English"
         xv = raw_text3.split('&')
         for y in range(0,len(xv)):
             raw_text3 =xv[y]
