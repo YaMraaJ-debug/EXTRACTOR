@@ -100,7 +100,7 @@ async def careerwill_account(_, message):
                     lesson_name = data["lessonName"]
                     video_link = data["lessonUrl"]
                     print(vid_id)
-                    print(leeson_name)
+                    print(lesson_name)
                     print(video_link)
                     
                     if video_link.startswith("62"):
