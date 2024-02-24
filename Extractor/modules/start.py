@@ -78,16 +78,51 @@ async def start(_,message):
 
 
 
-@app.on_callback_query(re.compile(r"^(home_|modes_|custom_|manual_|maintainer_|close_data.+)$"))
-async def handle_callback(_, query):
 
-    if query.data=="home_":
-        buttons = [[
+
+
+@app.on_callback_query(filters.regex("home_"))
+async def cb_handler(client, query):
+    buttons = [[
                        InlineKeyboardButton("ᴍᴏᴅᴇs", callback_data="modes_")
                   ],[
                        InlineKeyboardButton("ᴄʜᴀɴɴᴇʟ", url="https://t.me/DevsCreations"),
                        InlineKeyboardButton("sᴜᴘᴘᴏʀᴛ", url="https://t.me/DevsOops")
                   ]]
+    reply_markup = InlineKeyboardMarkup(buttons)
+    try:
+        await query.edit_message_text(
+            script.START_TXT.format(query.from_user.mention),
+            reply_markup=reply_markup
+        )
+    except:
+        pass
+
+
+# ------------------------------------------------------------------------------- #
+
+@app.on_callback_query(filters.regex("modes_"))
+async def cb_handler(client, query):
+    reply_markup = InlineKeyboardMarkup(back_button)
+    try:
+        await query.edit_message_text(
+            script.MODES_TXT,
+            reply_markup=reply_markup
+        )
+    except:
+        pass
+
+
+
+
+
+"""
+
+@app.on_callback_query(re.compile(r"^(home_|modes_|custom_|manual_|maintainer_|close_data.+)$"))
+async def handle_callback(_, query):
+
+    if query.data=="home_":
+        
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
               script.START_TXT.format(query.from_user.mention),
@@ -136,4 +171,6 @@ async def handle_callback(_, query):
     elif query.data=="close_data":
         await query.message.delete()
         await query.message.reply_to_message.delete()
-        
+
+
+"""
