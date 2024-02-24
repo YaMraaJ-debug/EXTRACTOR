@@ -103,7 +103,7 @@ async def gyan_bindu_account(_, message):
     await editable1.delete(True)
     prog = await editable.edit("**Extracting Videos Links Please Wait  📥 **")
     try:
-        mm = "winners-Institute"
+        mm = "Gyan-Bindu"
         xv = raw_text3.split('&')
         for y in range(0,len(xv)):
             raw_text3 =xv[y]
