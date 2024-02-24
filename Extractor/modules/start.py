@@ -59,7 +59,7 @@ course_button1 = [
                 ],
                 [
                     InlineKeyboardButton("𝐁 𝐀 𝐂 𝐊", callback_data="modes_"),
-                    InlineKeyboardButton("𝐍 𝐄 𝐗 𝐓", callback_data="close_data")
+                    InlineKeyboardButton("𝐍 𝐄 𝐗 𝐓", callback_data="next_")
                 ]
                 ]
 
@@ -97,7 +97,7 @@ course_button2 = [
                 ],
                 [
                     InlineKeyboardButton("𝐁 𝐀 𝐂 𝐊", callback_data="modes_"),
-                    InlineKeyboardButton("𝐏 𝐑 𝐄 𝐕", callback_data="close_data")
+                    InlineKeyboardButton("𝐏 𝐑 𝐄 𝐕", callback_data="manual_")
                 ]
                 ]
 
@@ -130,7 +130,7 @@ async def start(_,message):
 
 
 
-@app.on_callback_query(re.compile(r"^(home_|modes_|custom_|manual_|maintainer_|close_data.+)$"))
+@app.on_callback_query(re.compile(r"^(home_|modes_|custom_|manual_|maintainer_|close_data|next_.+)$"))
 async def handle_callback(_, query):
 
     if query.data=="home_":        
@@ -161,7 +161,14 @@ async def handle_callback(_, query):
               script.MANUAL_TXT,
               reply_markup=reply_markup
             )
-
+      
+    elif query.data=="next_":        
+        reply_markup = InlineKeyboardMarkup(course_button2)
+        await query.message.edit_text(
+              script.MANUAL_TXT,
+              reply_markup=reply_markup
+            )
+      
         
     elif query.data=="maintainer_":     
         await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
