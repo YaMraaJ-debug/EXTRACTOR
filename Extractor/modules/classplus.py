@@ -70,7 +70,7 @@ def get_course_content(session, course_id, folder_id=0):
 
 
 
-@app.on_message(filters.command(["classplus"])& filters.user(SUDO_USERS))
+@app.on_message(filters.command(["classplus"]))
 async def classplus_txt(app, message):   
 
     headers = {
