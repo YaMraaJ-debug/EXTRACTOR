@@ -132,4 +132,52 @@ RG_VIKRAMJEET_TXT = """
 ʀɢ ᴠɪᴋʀᴀᴍᴊᴇᴇᴛ
 """
 
+VIDYA_BIHAR_TXT = """
+ᴠɪᴅʏᴀ ʙɪʜᴀʀ
+"""
+
+AMAN_SIR_TXT = """
+ᴀᴍᴀɴ sɪʀ
+"""
+
+NIRMAN_IAS_TXT = """
+ɴɪʀᴍᴀɴ ɪᴀs
+"""
+
+PERMAR_SSC_TXT = """
+ᴘᴇʀᴍᴀʀ ssᴄ
+"""
+
+NEO_SPARK_TXT = """
+ɴᴇᴏ sᴘᴀʀᴋ
+"""
+
+MD_CLASSES_TXT = """
+ᴍᴅ ᴄʟᴀssᴇs
+"""
+
+NG_LEARNERS_TXT = """
+ɴɢ ʟᴇᴀʀɴᴇʀs
+"""
+
+SSC_GURUKUL_TEXT = """
+ssᴄ ɢᴜʀᴜᴋᴜʟ
+"""
+
+ARMY_STUDY_TXT = """
+ᴀʀᴍʏ sᴛᴜᴅʏ ʟɪᴠᴇ
+"""
+
+SANKALP_TXT = """
+sᴀɴᴋᴀʟᴘ
+"""
+
+TARGET_UPSC_TXT = """
+ᴛᴀʀɢᴇᴛ ᴜᴘsᴄ
+"""
+
+GK_CAFE_TXT = """
+ɢᴋ ᴄᴀғᴇ
+"""
+
 
