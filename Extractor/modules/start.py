@@ -52,7 +52,7 @@ course_button1 = [
                     InlineKeyboardButton("ɴɪᴍɪsʜᴀ ʙᴀɴsᴀʟ", callback_data="maintainer_"),          
                 ],
                 [
-                    InlineKeyboardButton("﹤", callback_data="next_2"),
+                    InlineKeyboardButton("﹤", callback_data="next_3"),
                     InlineKeyboardButton("ʙ ᴀ ᴄ ᴋ", callback_data="modes_"),
                     InlineKeyboardButton("﹥", callback_data="next_")
                 ]
@@ -115,13 +115,47 @@ course_button3 = [
                     InlineKeyboardButton("sᴀɴᴋᴀʟᴘ", callback_data="maintainer_")
                 ],
                 [              
-                    InlineKeyboardButton("ᴄᴀʀᴇᴇʀᴡɪʟʟ", callback_data="maintainer_"),
-                    InlineKeyboardButton("ᴋʜᴀɴ", callback_data="maintainer_")
+                    InlineKeyboardButton("ᴛᴀʀɢᴇᴛ ᴜᴘsᴄ", callback_data="maintainer_"),
+                    InlineKeyboardButton("ɢᴋ ᴄᴀғᴇ", callback_data="maintainer_")
                 ],
                 [
                     InlineKeyboardButton("﹤", callback_data="next_2"),
                     InlineKeyboardButton("ʙ ᴀ ᴄ ᴋ", callback_data="modes_"),
-                    InlineKeyboardButton("﹥", callback_data="modes_")
+                    InlineKeyboardButton("﹥", callback_data="next_3")
+                ]
+                ]
+
+
+
+course_button4 = [              
+                [   
+                    InlineKeyboardButton("ᴄᴀʀᴇᴇʀᴡɪʟʟ", callback_data="maintainer_"),
+                    InlineKeyboardButton("ᴋʜᴀɴ", callback_data="maintainer_")
+                ],
+                [   
+                    InlineKeyboardButton("ᴘʜʏsɪᴄs ᴡᴀʟʟᴀʜ", callback_data="maintainer_"),
+                    InlineKeyboardButton("sᴏᴏɴ", callback_data="maintainer_")
+                ],
+                [
+                    InlineKeyboardButton("sᴏᴏɴ", callback_data="maintainer_"),
+                    InlineKeyboardButton("sᴏᴏɴ", callback_data="maintainer_")
+                ],
+                [   
+                    InlineKeyboardButton("sᴏᴏɴ", callback_data="maintainer_"),
+                    InlineKeyboardButton("sᴏᴏɴ", callback_data="maintainer_")
+                ],
+                [
+                    InlineKeyboardButton("sᴏᴏɴ", callback_data="maintainer_"),
+                    InlineKeyboardButton("sᴏᴏɴ", callback_data="maintainer_")
+                ],
+                [              
+                    InlineKeyboardButton("sᴏᴏɴ", callback_data="maintainer_"),
+                    InlineKeyboardButton("sᴏᴏɴ", callback_data="maintainer_")
+                ],
+                [
+                    InlineKeyboardButton("﹤", callback_data="next_3"),
+                    InlineKeyboardButton("ʙ ᴀ ᴄ ᴋ", callback_data="modes_"),
+                    InlineKeyboardButton("﹥", callback_data="manual_")
                 ]
                 ]
 
@@ -152,7 +186,7 @@ async def start(_,message):
 
 
 
-@app.on_callback_query(re.compile(r"^(home_|modes_|custom_|manual_|maintainer_|close_data|next_|next_2.+)$"))
+@app.on_callback_query(re.compile(r"^(home_|modes_|custom_|manual_|maintainer_|close_data|next_|next_2|next_3.+)$"))
 async def handle_callback(_, query):
 
     if query.data=="home_":        
@@ -198,6 +232,14 @@ async def handle_callback(_, query):
               reply_markup=reply_markup
             )
       
+    elif query.data=="next_3":        
+        reply_markup = InlineKeyboardMarkup(course_button4)
+        await query.message.edit_text(
+              script.MANUAL_TXT,
+              reply_markup=reply_markup
+            )
+
+          
         
     elif query.data=="maintainer_":     
         await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
