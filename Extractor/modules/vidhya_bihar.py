@@ -23,7 +23,7 @@ def decode(tn):
 
 
 
-@app.on_message(filters.command(["vidhya_bihar"]) & filters.user(SUDO_USERS))
+@app.on_message(filters.command(["vidhya_bihar"]))
 async def vidhya_bihar_account(_, message):
     global cancel
     cancel = False
