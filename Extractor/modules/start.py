@@ -212,28 +212,28 @@ async def handle_callback(_, query):
         
         
     elif query.data=="manual_":        
-        reply_markup = InlineKeyboardMarkup(course_button1)
+        reply_markup = InlineKeyboardMarkup(course_button)
         await query.message.edit_text(
               script.MANUAL_TXT,
               reply_markup=reply_markup
             )
       
     elif query.data=="next_1":        
-        reply_markup = InlineKeyboardMarkup(course_button2)
+        reply_markup = InlineKeyboardMarkup(course_button1)
         await query.message.edit_text(
               script.MANUAL_TXT,
               reply_markup=reply_markup
             )
       
     elif query.data=="next_2":        
-        reply_markup = InlineKeyboardMarkup(course_button3)
+        reply_markup = InlineKeyboardMarkup(course_button2)
         await query.message.edit_text(
               script.MANUAL_TXT,
               reply_markup=reply_markup
             )
       
     elif query.data=="next_3":        
-        reply_markup = InlineKeyboardMarkup(course_button4)
+        reply_markup = InlineKeyboardMarkup(course_button3)
         await query.message.edit_text(
               script.MANUAL_TXT,
               reply_markup=reply_markup
