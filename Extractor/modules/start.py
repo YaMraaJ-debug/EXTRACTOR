@@ -186,7 +186,8 @@ async def start(_,message):
 
 
 
-@app.on_callback_query(re.compile(r"^(home_|modes_|custom_|manual_|maintainer_|close_data|next_1|next_2|next_3.+)$"))
+#@app.on_callback_query(re.compile(r"^(home_|modes_|custom_|manual_|maintainer_|close_data|next_1|next_2|next_3.+)$"))
+@app.on_callback_query()
 async def handle_callback(_, query):
 
     if query.data=="home_":        
