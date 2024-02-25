@@ -23,7 +23,7 @@ def decode(tn):
 
 
 
-@app.on_message(filters.command(["army_study"]) & filters.user(SUDO_USERS))
+@app.on_message(filters.command(["army_study"]))
 async def army_study_account(_, message):
     global cancel
     cancel = False
