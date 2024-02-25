@@ -299,29 +299,29 @@ async def handle_callback(_, query):
     elif query.data=="rg_vikramjeet":     
         await query.answer((script.RG_VIKRAMJEET_TXT), show_alert=True)
     elif query.data=="vidya_bihar":     
-        await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
+        await query.answer((script.VIDYA_BIHAR_TXT), show_alert=True)
     elif query.data=="aman_sir":     
-        await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
+        await query.answer((script.AMAN_SIR_TXT), show_alert=True)
     elif query.data=="nirman_ias":     
-        await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
+        await query.answer((script.NIRMAN_IAS_TXT), show_alert=True)
     elif query.data=="permar_ssc":     
-        await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
+        await query.answer((script.PERMAR_SSC_TXT), show_alert=True)
     elif query.data=="neo_spark":     
-        await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
+        await query.answer((script.NEO_SPARK_TXT), show_alert=True)
     elif query.data=="md_classes":     
-        await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
+        await query.answer((script.MD_CLASSES_TXT), show_alert=True)
     elif query.data=="ng_learners":     
-        await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
+        await query.answer((script.NG_LEARNERS_TXT), show_alert=True)
     elif query.data=="ssc_gurukul":     
-        await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
+        await query.answer((script.SSC_GURUKUL_TEXT), show_alert=True)
     elif query.data=="army_study":     
-        await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
+        await query.answer((script.ARMY_STUDY_TXT), show_alert=True)
     elif query.data=="sankalp_":     
-        await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
+        await query.answer((script.SANKALP_TXT), show_alert=True)
     elif query.data=="target_upsc":     
-        await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
+        await query.answer((script.TARGET_UPSC_TXT), show_alert=True)
     elif query.data=="gk_cafe":     
-        await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
+        await query.answer((script.GK_CAFE_TXT), show_alert=True)
     
 
 
