@@ -23,7 +23,7 @@ def decode(tn):
 
 
 
-@app.on_message(filters.command(["vj_education"]) & filters.user(SUDO_USERS))
+@app.on_message(filters.command(["vj_education"]))
 async def vj_education_account(_, message):
     global cancel
     cancel = False
