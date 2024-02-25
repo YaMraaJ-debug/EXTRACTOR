@@ -52,7 +52,7 @@ course_button1 = [
                     InlineKeyboardButton("ɴɪᴍɪsʜᴀ ʙᴀɴsᴀʟ", callback_data="maintainer_"),          
                 ],
                 [
-                    InlineKeyboardButton("﹤", callback_data="modes_"),
+                    InlineKeyboardButton("﹤", callback_data="next_2"),
                     InlineKeyboardButton("ʙ ᴀ ᴄ ᴋ", callback_data="modes_"),
                     InlineKeyboardButton("﹥", callback_data="next_")
                 ]
@@ -121,7 +121,7 @@ course_button3 = [
                 [
                     InlineKeyboardButton("﹤", callback_data="next_2"),
                     InlineKeyboardButton("ʙ ᴀ ᴄ ᴋ", callback_data="modes_"),
-                    InlineKeyboardButton("﹥", callback_data="next_3")
+                    InlineKeyboardButton("﹥", callback_data="modes_")
                 ]
                 ]
 
@@ -152,7 +152,7 @@ async def start(_,message):
 
 
 
-@app.on_callback_query(re.compile(r"^(home_|modes_|custom_|manual_|maintainer_|close_data|next_.+)$"))
+@app.on_callback_query(re.compile(r"^(home_|modes_|custom_|manual_|maintainer_|close_data|next_|next_2.+)$"))
 async def handle_callback(_, query):
 
     if query.data=="home_":        
@@ -186,6 +186,13 @@ async def handle_callback(_, query):
       
     elif query.data=="next_":        
         reply_markup = InlineKeyboardMarkup(course_button2)
+        await query.message.edit_text(
+              script.MANUAL_TXT,
+              reply_markup=reply_markup
+            )
+      
+    elif query.data=="next_2":        
+        reply_markup = InlineKeyboardMarkup(course_button3)
         await query.message.edit_text(
               script.MANUAL_TXT,
               reply_markup=reply_markup
