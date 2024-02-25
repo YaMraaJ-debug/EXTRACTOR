@@ -37,182 +37,183 @@ MANUAL_TXT = """
 
 
 SSC_MAKER_TXT = """
-ssᴄ ᴍᴀᴋᴇʀ
-/ssc_maker
+⌬ ﹝ssᴄ ᴍᴀᴋᴇʀ﹞
+
+ᴄᴏᴍᴍᴀɴᴅ /ssc_maker
 """
 
 PERFECT_ACADEMY_TXT = """
-ᴘᴇʀғᴇᴄᴛ ᴀᴄᴀᴅᴇᴍʏ
+⌬ ﹝ᴘᴇʀғᴇᴄᴛ ᴀᴄᴀᴅᴇᴍʏ﹞
 /perfect_academy
 """
 
 CLASSPLUS_TXT = """
-ᴄʟᴀssᴘʟᴜs
+⌬ ﹝ᴄʟᴀssᴘʟᴜs﹞
 /classplus
 """
 
 E1_COACHING_TXT = """
-ᴇ1 ᴄᴏᴀᴄʜɪɴɢ
+⌬ ﹝ᴇ1 ᴄᴏᴀᴄʜɪɴɢ﹞
 /e1_coaching
 """
 
 SAMYAK_RAS_TXT = """
-sᴀᴍʏᴀᴋ ʀᴀs
+⌬ ﹝sᴀᴍʏᴀᴋ ʀᴀs﹞
 /samyak
 """
 
 VJ_EDUCATION_TXT = """
-ᴠᴊ ᴇᴅᴜᴄᴀᴛɪᴏɴ
+⌬ ﹝ᴠᴊ ᴇᴅᴜᴄᴀᴛɪᴏɴ﹞
 /vj_education
 """
 
 GYAN_BINDU_TXT = """
-ɢʏᴀɴ ʙɪɴᴅᴜ
+⌬ ﹝ɢʏᴀɴ ʙɪɴᴅᴜ﹞
 /gyan_bindu
 """
 
 DHANANJAY_TXT = """
-ᴅʜᴀɴᴀɴᴊᴀʏ ɪᴀs
+⌬ ﹝ᴅʜᴀɴᴀɴᴊᴀʏ ɪᴀs﹞
 /dhananjay_ias
 """
 
 THINK_SSC_TXT = """
-ᴛʜɪɴᴋ ssᴄ
+⌬ ﹝ᴛʜɪɴᴋ ssᴄ﹞
 /think_ssc
 """
 
 ASHISH_SING_LEC_TXT = """
-ᴀsʜɪsʜ sɪɴɢ ʟᴇᴄ.
+⌬ ﹝ᴀsʜɪsʜ sɪɴɢ ʟᴇᴄ.﹞
 /ashihs_lec
 """
 
 TUTORS_ADDA_TXT = """
-ᴛᴜᴛᴏʀs ᴀᴅᴅᴀ
+⌬ ﹝ᴛᴜᴛᴏʀs ᴀᴅᴅᴀ﹞
 /tutors_adda
 """
 
 NIMISHA_BANSAL_TXT = """
-ɴɪᴍɪsʜᴀ ʙᴀɴsᴀʟ
+⌬ ﹝ɴɪᴍɪsʜᴀ ʙᴀɴsᴀʟ﹞
 /nimisha_bansal
 """
 
 SACHIN_ACADEMY_TXT = """
-sᴀᴄʜɪɴ ᴀᴄᴀᴅᴇᴍʏ
+⌬ ﹝sᴀᴄʜɪɴ ᴀᴄᴀᴅᴇᴍʏ﹞
 /sachin_academy
 """
 
 ACHARYA_CLASSES_TXT = """
-ᴀᴄʜᴀʀʏᴀ ᴄʟᴀssᴇs
+⌬ ﹝ᴀᴄʜᴀʀʏᴀ ᴄʟᴀssᴇs﹞
 /acharya_classes
 """
 
 TARGET_PLUS_TXT = """
-ᴛᴀʀɢᴇᴛ ᴘʟᴜs
+⌬ ﹝ᴛᴀʀɢᴇᴛ ᴘʟᴜs﹞
 /target_plus
 """
 
 RWA_TXT = """
-ʀᴡᴀ
+⌬ ﹝ʀᴡᴀ﹞
 /rwa
 """
 
 WINNERS_TXT = """
-ᴡɪɴɴᴇʀs
+⌬ ﹝ᴡɪɴɴᴇʀs﹞
 /winners
 """
 
 OCEAN_GURUKUL_TXT = """
-ᴏᴄᴇᴀɴ ɢᴜʀᴜᴋᴜʟ
+⌬ ﹝ᴏᴄᴇᴀɴ ɢᴜʀᴜᴋᴜʟ﹞
 /ocean_gurukul
 """
 
 MG_CONCEPT_TXT = """
-ᴍɢ ᴄᴏɴᴄᴇᴘᴛ
+⌬ ﹝ᴍɢ ᴄᴏɴᴄᴇᴘᴛ﹞
 /mg_concept
 """
 
 YODHA_TXT = """
-ʏᴏᴅʜᴀ
+⌬ ﹝ʏᴏᴅʜᴀ﹞
 /yodha
 """
 
 NOTE_BOOK_TXT = """
-ɴᴏᴛᴇ ʙᴏᴏᴋ
+⌬ ﹝ɴᴏᴛᴇ ʙᴏᴏᴋ﹞
 /note_book
 """
 
 UC_LIVE_TXT = """
-ᴜᴄ ʟɪᴠᴇ
+⌬ ﹝ᴜᴄ ʟɪᴠᴇ﹞
 /uc_live
 """
 
 SPACE_IAS_TXT = """
-sᴘᴀᴄᴇ ɪᴀs
+⌬ ﹝sᴘᴀᴄᴇ ɪᴀs﹞
 /space_ias
 """
 
 RG_VIKRAMJEET_TXT = """
-ʀɢ ᴠɪᴋʀᴀᴍᴊᴇᴇᴛ
+⌬ ﹝ʀɢ ᴠɪᴋʀᴀᴍᴊᴇᴇᴛ﹞
 /rg_vikramjeet
 """
 
 VIDYA_BIHAR_TXT = """
-ᴠɪᴅʏᴀ ʙɪʜᴀʀ
+⌬ ﹝ᴠɪᴅʏᴀ ʙɪʜᴀʀ﹞
 /vidya_bihar
 """
 
 AMAN_SIR_TXT = """
-ᴀᴍᴀɴ sɪʀ
+⌬ ﹝ᴀᴍᴀɴ sɪʀ﹞
 /aman_sir
 """
 
 NIRMAN_IAS_TXT = """
-ɴɪʀᴍᴀɴ ɪᴀs
+⌬ ﹝ɴɪʀᴍᴀɴ ɪᴀs﹞
 /nirman_ias
 """
 
 PERMAR_SSC_TXT = """
-ᴘᴇʀᴍᴀʀ ssᴄ
+⌬ ﹝ᴘᴇʀᴍᴀʀ ssᴄ﹞
 /permar_ssc
 """
 
 NEO_SPARK_TXT = """
-ɴᴇᴏ sᴘᴀʀᴋ
+⌬ ﹝ɴᴇᴏ sᴘᴀʀᴋ﹞
 /neo_spark
 """
 
 MD_CLASSES_TXT = """
-ᴍᴅ ᴄʟᴀssᴇs
+⌬ ﹝ᴍᴅ ᴄʟᴀssᴇs﹞
 /md_classes
 """
 
 NG_LEARNERS_TXT = """
-ɴɢ ʟᴇᴀʀɴᴇʀs
+⌬ ﹝ɴɢ ʟᴇᴀʀɴᴇʀs﹞
 /ng_learners
 """
 
 SSC_GURUKUL_TEXT = """
-ssᴄ ɢᴜʀᴜᴋᴜʟ
+⌬ ﹝ssᴄ ɢᴜʀᴜᴋᴜʟ﹞
 /ssc_gurukul
 """
 
 ARMY_STUDY_TXT = """
-ᴀʀᴍʏ sᴛᴜᴅʏ ʟɪᴠᴇ
+⌬ ﹝ᴀʀᴍʏ sᴛᴜᴅʏ ʟɪᴠᴇ﹞
 /army_study
 """
 
 SANKALP_TXT = """
-sᴀɴᴋᴀʟᴘ
+⌬ ﹝sᴀɴᴋᴀʟᴘ﹞
 /sankalp
 """
 
 TARGET_UPSC_TXT = """
-ᴛᴀʀɢᴇᴛ ᴜᴘsᴄ
+⌬ ﹝ᴛᴀʀɢᴇᴛ ᴜᴘsᴄ﹞
 /target_upsc
 """
 
 GK_CAFE_TXT = """
-ɢᴋ ᴄᴀғᴇ
+⌬ ﹝ɢᴋ ᴄᴀғᴇ﹞
 /gk_cafe
 """
 
