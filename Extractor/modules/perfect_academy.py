@@ -23,7 +23,7 @@ def decode(tn):
 
 
 
-@app.on_message(filters.command(["perfect_academy"]) & filters.user(SUDO_USERS))
+@app.on_message(filters.command(["perfect_academy"]))
 async def perfect_academy_account(_, message):
     global cancel
     cancel = False
