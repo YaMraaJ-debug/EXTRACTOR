@@ -52,8 +52,9 @@ course_button1 = [
                     InlineKeyboardButton("ɴɪᴍɪsʜᴀ ʙᴀɴsᴀʟ", callback_data="maintainer_"),          
                 ],
                 [
-                    InlineKeyboardButton("𝐁 𝐀 𝐂 𝐊", callback_data="modes_"),
-                    InlineKeyboardButton("𝐍 𝐄 𝐗 𝐓", callback_data="next_")
+                    InlineKeyboardButton("﹤", callback_data="modes_"),
+                    InlineKeyboardButton("ʙ ᴀ ᴄ ᴋ", callback_data="modes_"),
+                    InlineKeyboardButton("﹥", callback_data="next_")
                 ]
                 ]
 
@@ -84,8 +85,9 @@ course_button2 = [
                     InlineKeyboardButton("ʀɢ ᴠɪᴋʀᴀᴍᴊᴇᴇᴛ", callback_data="maintainer_"),       
                 ],
                 [
-                    InlineKeyboardButton("𝐁 𝐀 𝐂 𝐊", callback_data="modes_"),
-                    InlineKeyboardButton("𝐏 𝐑 𝐄 𝐕", callback_data="manual_")
+                    InlineKeyboardButton("﹤", callback_data="next_"),
+                    InlineKeyboardButton("ʙ ᴀ ᴄ ᴋ", callback_data="modes_"),
+                    InlineKeyboardButton("﹥", callback_data="next_2")
                 ]
                 ]
 
@@ -113,12 +115,13 @@ course_button3 = [
                     InlineKeyboardButton("sᴀɴᴋᴀʟᴘ", callback_data="maintainer_")
                 ],
                 [              
-                    InlineKeyboardButton("SOON", callback_data="maintainer_"),
-                    InlineKeyboardButton("SOON", callback_data="maintainer_")
+                    InlineKeyboardButton("ᴄᴀʀᴇᴇʀᴡɪʟʟ", callback_data="maintainer_"),
+                    InlineKeyboardButton("ᴋʜᴀɴ", callback_data="maintainer_")
                 ],
                 [
-                    InlineKeyboardButton("𝐁 𝐀 𝐂 𝐊", callback_data="modes_"),
-                    InlineKeyboardButton("𝐍 𝐄 𝐗 𝐓", callback_data="next_")
+                    InlineKeyboardButton("﹤", callback_data="next_2"),
+                    InlineKeyboardButton("ʙ ᴀ ᴄ ᴋ", callback_data="modes_"),
+                    InlineKeyboardButton("﹥", callback_data="next_3")
                 ]
                 ]
 
