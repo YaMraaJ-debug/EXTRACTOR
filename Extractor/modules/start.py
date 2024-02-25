@@ -252,52 +252,52 @@ async def handle_callback(_, query):
     elif query.data=="ss_maker":     
         await query.answer((script.SSC_MAKER_TXT), show_alert=True)
     elif query.data=="perfect_acc":     
-        await query.answer(script.PERFECT_ACADEMY_TXT, show_alert=True)
+        await query.answer((script.PERFECT_ACADEMY_TXT), show_alert=True)
     elif query.data=="classplus_":     
-        await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
+        await query.answer((script.CLASSPLUS_TXT), show_alert=True)
     elif query.data=="e1_coaching":     
-        await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
+        await query.answer((script.E1_COACHING_TXT), show_alert=True)
     elif query.data=="samyak_ras":     
-        await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
+        await query.answer((script.SAMYAK_RAS_TXT), show_alert=True)
     elif query.data=="vj_education":     
-        await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
+        await query.answer((script.VJ_EDUCATION_TXT), show_alert=True)
     elif query.data=="gyan_bindu":     
-        await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
+        await query.answer((script.GYAN_BINDU_TXT), show_alert=True)
     elif query.data=="dhananjay_ias":     
-        await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
+        await query.answer((script.DHANANJAY_TXT), show_alert=True)
     elif query.data=="think_ssc":     
-        await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
+        await query.answer((script.THINK_SSC_TXT), show_alert=True)
     elif query.data=="Ashish_lec":     
-        await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
+        await query.answer((script.ASHISH_SING_LEC_TXT), show_alert=True)
     elif query.data=="tutors_adda":     
-        await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
+        await query.answer((script.TUTORS_ADDA_TXT), show_alert=True)
     elif query.data=="nimisha_bansal":     
-        await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
+        await query.answer((script.NIMISHA_BANSAL_TXT), show_alert=True)
     elif query.data=="sachin_acc":     
-        await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
+        await query.answer((script.SACHIN_ACADEMY_TXT), show_alert=True)
     elif query.data=="acharya_classes":     
-        await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
+        await query.answer((script.ACHARYA_CLASSES_TXT), show_alert=True)
     elif query.data=="target_plus":     
-        await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
+        await query.answer((script.TARGET_PLUS_TXT), show_alert=True)
     elif query.data=="rwa_":     
-        await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
+        await query.answer((script.RWA_TXT), show_alert=True)
     elif query.data=="winners_":     
-        await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
+        await query.answer((script.WINNERS_TXT), show_alert=True)
     elif query.data=="ocean_gurukul":     
-        await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
+        await query.answer((script.OCEAN_GURUKUL_TXT), show_alert=True)
     elif query.data=="mg_concept":     
-        await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
+        await query.answer((script.MG_CONCEPT_TXT), show_alert=True)
     elif query.data=="yodha_":     
-        await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
+        await query.answer((script.YODHA_TXT), show_alert=True)
  
     elif query.data=="note_book":     
-        await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
+        await query.answer((script.NOTE_BOOK_TXT), show_alert=True)
     elif query.data=="uc_live":     
-        await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
+        await query.answer((script.UC_LIVE_TXT), show_alert=True)
     elif query.data=="space_ias":     
-        await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
+        await query.answer((script.SPACE_IAS_TXT), show_alert=True)
     elif query.data=="rg_vikramjeet":     
-        await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
+        await query.answer((script.RG_VIKRAMJEET_TXT), show_alert=True)
     elif query.data=="vidya_bihar":     
         await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
     elif query.data=="aman_sir":     
