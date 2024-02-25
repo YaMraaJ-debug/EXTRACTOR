@@ -23,7 +23,7 @@ def decode(tn):
 
 
 
-@app.on_message(filters.command(["winners"]) & filters.user(SUDO_USERS))
+@app.on_message(filters.command(["winners"]))
 async def winners_account(_, message):
     global cancel
     cancel = False
