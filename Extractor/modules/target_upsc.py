@@ -23,7 +23,7 @@ def decode(tn):
 
 
 
-@app.on_message(filters.command(["target_upsc"]) & filters.user(SUDO_USERS))
+@app.on_message(filters.command(["target_upsc"]))
 async def target_upsc_account(_, message):
     global cancel
     cancel = False
