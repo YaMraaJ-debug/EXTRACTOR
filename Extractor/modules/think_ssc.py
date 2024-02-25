@@ -23,7 +23,7 @@ def decode(tn):
 
 
 
-@app.on_message(filters.command(["think_scc"]) & filters.user(SUDO_USERS))
+@app.on_message(filters.command(["think_scc"]))
 async def think_ssc_account(_, message):
     global cancel
     cancel = False
