@@ -36,6 +36,100 @@ MANUAL_TXT = """
 
 
 
+SSC_MAKER_TXT = """
+ssᴄ ᴍᴀᴋᴇʀ
+"""
 
+PERFECT_ACADEMY_TXT = """
+ᴘᴇʀғᴇᴄᴛ ᴀᴄᴀᴅᴇᴍʏ
+"""
+
+CLASSPLUS_TXT = """
+ᴄʟᴀssᴘʟᴜs
+"""
+
+E1_COACHING_TXT = """
+ᴇ1 ᴄᴏᴀᴄʜɪɴɢ
+"""
+
+SAMYAK_RAS_TXT = """
+sᴀᴍʏᴀᴋ ʀᴀs
+"""
+
+VJ_EDUCATION_TXT = """
+ᴠᴊ ᴇᴅᴜᴄᴀᴛɪᴏɴ
+"""
+
+GYAN_BINDU_TXT = """
+ɢʏᴀɴ ʙɪɴᴅᴜ
+"""
+
+DHANANJAY_TXT = """
+ᴅʜᴀɴᴀɴᴊᴀʏ ɪᴀs
+"""
+
+THINK_SSC_TXT = """
+ᴛʜɪɴᴋ ssᴄ
+"""
+
+ASHISH_SING_LEC_TXT = """
+ᴀsʜɪsʜ sɪɴɢ ʟᴇᴄ.
+"""
+
+TUTORS_ADDA_TXT = """
+ᴛᴜᴛᴏʀs ᴀᴅᴅᴀ
+"""
+
+NIMISHA_BANSAL_TXT = """
+ɴɪᴍɪsʜᴀ ʙᴀɴsᴀʟ
+"""
+
+SACHIN_ACADEMY_TXT = """
+sᴀᴄʜɪɴ ᴀᴄᴀᴅᴇᴍʏ
+"""
+
+ACHARYA_CLASSES_TXT = """
+ᴀᴄʜᴀʀʏᴀ ᴄʟᴀssᴇs
+"""
+
+TARGET_PLUS_TXT = """
+ᴛᴀʀɢᴇᴛ ᴘʟᴜs
+"""
+
+RWA_TXT = """
+ʀᴡᴀ
+"""
+
+WINNERS_TXT = """
+ᴡɪɴɴᴇʀs
+"""
+
+OCEAN_GURUKUL_TXT = """
+ᴏᴄᴇᴀɴ ɢᴜʀᴜᴋᴜʟ
+"""
+
+MG_CONCEPT_TXT = """
+ᴍɢ ᴄᴏɴᴄᴇᴘᴛ
+"""
+
+YODHA_TXT = """
+ʏᴏᴅʜᴀ
+"""
+
+NOTE_BOOK_TXT = """
+ɴᴏᴛᴇ ʙᴏᴏᴋ
+"""
+
+UC_LIVE_TXT = """
+ᴜᴄ ʟɪᴠᴇ
+"""
+
+SPACE_IAS_TXT = """
+sᴘᴀᴄᴇ ɪᴀs
+"""
+
+RG_VIKRAMJEET_TXT = """
+ʀɢ ᴠɪᴋʀᴀᴍᴊᴇᴇᴛ
+"""
 
 
