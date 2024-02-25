@@ -23,7 +23,7 @@ def decode(tn):
 
 
 
-@app.on_message(filters.command(["ng_learner"]) & filters.user(SUDO_USERS))
+@app.on_message(filters.command(["ng_learner"]))
 async def ng_learner_account(_, message):
     global cancel
     cancel = False
