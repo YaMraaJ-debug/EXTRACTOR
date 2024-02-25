@@ -23,7 +23,7 @@ def decode(tn):
 
 
 
-@app.on_message(filters.command(["mg_concept"]) & filters.user(SUDO_USERS))
+@app.on_message(filters.command(["mg_concept"]))
 async def mg_concept_account(_, message):
     global cancel
     cancel = False
