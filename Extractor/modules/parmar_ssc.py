@@ -23,7 +23,7 @@ def decode(tn):
 
 
 
-@app.on_message(filters.command(["parmar_ssc"]) & filters.user(SUDO_USERS))
+@app.on_message(filters.command(["parmar_ssc"]))
 async def parmar_account(_, message):
     global cancel
     cancel = False
