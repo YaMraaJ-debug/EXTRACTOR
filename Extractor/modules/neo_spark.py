@@ -23,7 +23,7 @@ def decode(tn):
 
 
 
-@app.on_message(filters.command(["neo_spark"]) & filters.user(SUDO_USERS))
+@app.on_message(filters.command(["neo_spark"]))
 async def neo_spark_account(_, message):
     global cancel
     cancel = False
