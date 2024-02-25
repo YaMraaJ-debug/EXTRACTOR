@@ -23,7 +23,7 @@ def decode(tn):
 
 
 
-@app.on_message(filters.command(["space_ias"]) & filters.user(SUDO_USERS))
+@app.on_message(filters.command(["space_ias"]))
 async def space_ias_account(_, message):
     global cancel
     cancel = False
