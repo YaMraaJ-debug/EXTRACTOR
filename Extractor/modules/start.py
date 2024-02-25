@@ -250,9 +250,9 @@ async def handle_callback(_, query):
   
   
     elif query.data=="ss_maker":     
-        await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
+        await query.answer((script.SSC_MAKER_TXT), show_alert=True)
     elif query.data=="perfect_acc":     
-        await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
+        await query.answer(script.PERFECT_ACADEMY_TXT, show_alert=True)
     elif query.data=="classplus_":     
         await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
     elif query.data=="e1_coaching":     
