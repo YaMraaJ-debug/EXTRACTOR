@@ -23,7 +23,7 @@ def decode(tn):
 
 
 
-@app.on_message(filters.command(["custom"]) & filters.user(SUDO_USERS))
+@app.on_message(filters.command(["custom"]))
 async def custom_account(_, message):
     global cancel
     cancel = False
