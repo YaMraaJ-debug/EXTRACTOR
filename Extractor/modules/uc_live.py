@@ -23,7 +23,7 @@ def decode(tn):
 
 
 
-@app.on_message(filters.command(["uc_live"]) & filters.user(SUDO_USERS))
+@app.on_message(filters.command(["uc_live"]))
 async def uc_live_account(_, message):
     global cancel
     cancel = False
