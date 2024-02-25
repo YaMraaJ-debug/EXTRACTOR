@@ -23,7 +23,7 @@ def decode(tn):
 
 
 
-@app.on_message(filters.command(["yodha"]) & filters.user(SUDO_USERS))
+@app.on_message(filters.command(["yodha"]))
 async def yodha_account(_, message):
     global cancel
     cancel = False
