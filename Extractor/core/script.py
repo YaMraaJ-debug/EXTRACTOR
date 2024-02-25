@@ -39,182 +39,221 @@ MANUAL_TXT = """
 SSC_MAKER_TXT = """
 ⌬ ﹝ssᴄ ᴍᴀᴋᴇʀ﹞
 
-ᴄᴏᴍᴍᴀɴᴅ /ssc_maker
+ᴄᴏᴍᴍᴀɴᴅ - /ssc_maker
 """
 
 PERFECT_ACADEMY_TXT = """
 ⌬ ﹝ᴘᴇʀғᴇᴄᴛ ᴀᴄᴀᴅᴇᴍʏ﹞
-/perfect_academy
+
+ᴄᴏᴍᴍᴀɴᴅ - /perfect_academy
 """
 
 CLASSPLUS_TXT = """
 ⌬ ﹝ᴄʟᴀssᴘʟᴜs﹞
-/classplus
+
+ᴄᴏᴍᴍᴀɴᴅ - /classplus
 """
 
 E1_COACHING_TXT = """
 ⌬ ﹝ᴇ1 ᴄᴏᴀᴄʜɪɴɢ﹞
-/e1_coaching
+
+ᴄᴏᴍᴍᴀɴᴅ - /e1_coaching
 """
 
 SAMYAK_RAS_TXT = """
 ⌬ ﹝sᴀᴍʏᴀᴋ ʀᴀs﹞
-/samyak
+
+ᴄᴏᴍᴍᴀɴᴅ - /samyak
 """
 
 VJ_EDUCATION_TXT = """
 ⌬ ﹝ᴠᴊ ᴇᴅᴜᴄᴀᴛɪᴏɴ﹞
-/vj_education
+
+ᴄᴏᴍᴍᴀɴᴅ - /vj_education
 """
 
 GYAN_BINDU_TXT = """
 ⌬ ﹝ɢʏᴀɴ ʙɪɴᴅᴜ﹞
-/gyan_bindu
+
+ᴄᴏᴍᴍᴀɴᴅ - /gyan_bindu
 """
 
 DHANANJAY_TXT = """
 ⌬ ﹝ᴅʜᴀɴᴀɴᴊᴀʏ ɪᴀs﹞
-/dhananjay_ias
+
+ᴄᴏᴍᴍᴀɴᴅ - /dhananjay_ias
 """
 
 THINK_SSC_TXT = """
 ⌬ ﹝ᴛʜɪɴᴋ ssᴄ﹞
-/think_ssc
+
+ᴄᴏᴍᴍᴀɴᴅ - /think_ssc
 """
 
 ASHISH_SING_LEC_TXT = """
 ⌬ ﹝ᴀsʜɪsʜ sɪɴɢ ʟᴇᴄ.﹞
-/ashihs_lec
+
+ᴄᴏᴍᴍᴀɴᴅ - /ashihs_lec
 """
 
 TUTORS_ADDA_TXT = """
 ⌬ ﹝ᴛᴜᴛᴏʀs ᴀᴅᴅᴀ﹞
-/tutors_adda
+
+ᴄᴏᴍᴍᴀɴᴅ - /tutors_adda
 """
 
 NIMISHA_BANSAL_TXT = """
 ⌬ ﹝ɴɪᴍɪsʜᴀ ʙᴀɴsᴀʟ﹞
-/nimisha_bansal
+
+ᴄᴏᴍᴍᴀɴᴅ - /nimisha_bansal
 """
 
 SACHIN_ACADEMY_TXT = """
 ⌬ ﹝sᴀᴄʜɪɴ ᴀᴄᴀᴅᴇᴍʏ﹞
-/sachin_academy
+
+ᴄᴏᴍᴍᴀɴᴅ - /sachin_academy
 """
 
 ACHARYA_CLASSES_TXT = """
 ⌬ ﹝ᴀᴄʜᴀʀʏᴀ ᴄʟᴀssᴇs﹞
-/acharya_classes
+
+ᴄᴏᴍᴍᴀɴᴅ - /acharya_classes
 """
 
 TARGET_PLUS_TXT = """
 ⌬ ﹝ᴛᴀʀɢᴇᴛ ᴘʟᴜs﹞
-/target_plus
+
+ᴄᴏᴍᴍᴀɴᴅ - /target_plus
 """
 
 RWA_TXT = """
 ⌬ ﹝ʀᴡᴀ﹞
-/rwa
+
+ᴄᴏᴍᴍᴀɴᴅ - /rwa
 """
 
 WINNERS_TXT = """
 ⌬ ﹝ᴡɪɴɴᴇʀs﹞
-/winners
+
+ᴄᴏᴍᴍᴀɴᴅ - /winners
 """
 
 OCEAN_GURUKUL_TXT = """
 ⌬ ﹝ᴏᴄᴇᴀɴ ɢᴜʀᴜᴋᴜʟ﹞
-/ocean_gurukul
+
+ᴄᴏᴍᴍᴀɴᴅ - /ocean_gurukul
 """
 
 MG_CONCEPT_TXT = """
 ⌬ ﹝ᴍɢ ᴄᴏɴᴄᴇᴘᴛ﹞
-/mg_concept
+
+ᴄᴏᴍᴍᴀɴᴅ - /mg_concept
 """
 
 YODHA_TXT = """
 ⌬ ﹝ʏᴏᴅʜᴀ﹞
-/yodha
+
+ᴄᴏᴍᴍᴀɴᴅ - /yodha
 """
 
 NOTE_BOOK_TXT = """
 ⌬ ﹝ɴᴏᴛᴇ ʙᴏᴏᴋ﹞
-/note_book
+
+ᴄᴏᴍᴍᴀɴᴅ - /note_book
 """
 
 UC_LIVE_TXT = """
 ⌬ ﹝ᴜᴄ ʟɪᴠᴇ﹞
-/uc_live
+
+ᴄᴏᴍᴍᴀɴᴅ - /uc_live
 """
 
 SPACE_IAS_TXT = """
 ⌬ ﹝sᴘᴀᴄᴇ ɪᴀs﹞
-/space_ias
+
+ᴄᴏᴍᴍᴀɴᴅ - /space_ias
 """
 
 RG_VIKRAMJEET_TXT = """
 ⌬ ﹝ʀɢ ᴠɪᴋʀᴀᴍᴊᴇᴇᴛ﹞
-/rg_vikramjeet
+
+ᴄᴏᴍᴍᴀɴᴅ - /rg_vikramjeet
 """
 
 VIDYA_BIHAR_TXT = """
 ⌬ ﹝ᴠɪᴅʏᴀ ʙɪʜᴀʀ﹞
-/vidya_bihar
+
+ᴄᴏᴍᴍᴀɴᴅ - /vidya_bihar
 """
 
 AMAN_SIR_TXT = """
 ⌬ ﹝ᴀᴍᴀɴ sɪʀ﹞
-/aman_sir
+
+ᴄᴏᴍᴍᴀɴᴅ - /aman_sir
 """
 
 NIRMAN_IAS_TXT = """
 ⌬ ﹝ɴɪʀᴍᴀɴ ɪᴀs﹞
-/nirman_ias
+
+ᴄᴏᴍᴍᴀɴᴅ - /nirman_ias
 """
 
 PERMAR_SSC_TXT = """
 ⌬ ﹝ᴘᴇʀᴍᴀʀ ssᴄ﹞
-/permar_ssc
+
+ᴄᴏᴍᴍᴀɴᴅ - /permar_ssc
 """
 
 NEO_SPARK_TXT = """
 ⌬ ﹝ɴᴇᴏ sᴘᴀʀᴋ﹞
-/neo_spark
+
+ᴄᴏᴍᴍᴀɴᴅ - /neo_spark
 """
 
 MD_CLASSES_TXT = """
 ⌬ ﹝ᴍᴅ ᴄʟᴀssᴇs﹞
-/md_classes
+
+ᴄᴏᴍᴍᴀɴᴅ - /md_classes
 """
 
 NG_LEARNERS_TXT = """
 ⌬ ﹝ɴɢ ʟᴇᴀʀɴᴇʀs﹞
-/ng_learners
+
+ᴄᴏᴍᴍᴀɴᴅ - /ng_learners
 """
 
 SSC_GURUKUL_TEXT = """
 ⌬ ﹝ssᴄ ɢᴜʀᴜᴋᴜʟ﹞
-/ssc_gurukul
+
+ᴄᴏᴍᴍᴀɴᴅ - /ssc_gurukul
 """
 
 ARMY_STUDY_TXT = """
 ⌬ ﹝ᴀʀᴍʏ sᴛᴜᴅʏ ʟɪᴠᴇ﹞
-/army_study
+
+ᴄᴏᴍᴍᴀɴᴅ - /army_study
 """
 
 SANKALP_TXT = """
 ⌬ ﹝sᴀɴᴋᴀʟᴘ﹞
-/sankalp
+
+ᴄᴏᴍᴍᴀɴᴅ - /sankalp
 """
 
 TARGET_UPSC_TXT = """
 ⌬ ﹝ᴛᴀʀɢᴇᴛ ᴜᴘsᴄ﹞
-/target_upsc
+
+ᴄᴏᴍᴍᴀɴᴅ - /target_upsc
 """
 
 GK_CAFE_TXT = """
 ⌬ ﹝ɢᴋ ᴄᴀғᴇ﹞
-/gk_cafe
+
+ᴄᴏᴍᴍᴀɴᴅ - /gk_cafe
 """
+
+
+
+
 
 
