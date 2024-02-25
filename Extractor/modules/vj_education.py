@@ -29,7 +29,7 @@ async def vj_education_account(_, message):
     cancel = False
     editable = await message.reply_text("Send **ID & Password** in this manner otherwise bot will not respond.\n\nSend like this:-  **ID*Password**")
   
-    rwa_url = "https://vjeducationapi.classx.co.in/post/userLogin"
+    rwa_url = "https://vjeducationapi.appx.co.in/post/userLogin"
     hdr = {"Auth-Key": "appxapi",
            "User-Id": "-2",
            "Authorization": "",
@@ -54,7 +54,7 @@ async def vj_education_account(_, message):
     userid = output["data"]["userid"]
     token = output["data"]["token"]
     hdr1 = {
-        "Host": "vjeducationapi.classx.co.in",
+        "Host": "vjeducationapi.appx.co.in",
         "Client-Service": "Appx",
         "Auth-Key": "appxapi",
         "User-Id": userid,
@@ -63,7 +63,7 @@ async def vj_education_account(_, message):
     
     await editable.edit("**login Successful**")
     
-    res1 = requests.get("https://vjeducationapi.classx.co.in/get/mycourse?userid="+userid, headers=hdr1)
+    res1 = requests.get("https://vjeducationapi.appx.co.in/get/mycourse?userid="+userid, headers=hdr1)
     batch_data = res1.json()['data']
     
     FFF = "**BATCH-ID - BATCH NAME - INSTRUCTOR**"
@@ -79,10 +79,10 @@ async def vj_education_account(_, message):
     await input2.delete(True)
     await editable1.delete(True)
     
-    html = scraper.get("https://vjeducationapi.classx.co.in/get/course_by_id?id=" + raw_text2,headers=hdr1).json()
+    html = scraper.get("https://vjeducationapi.appx.co.in/get/course_by_id?id=" + raw_text2,headers=hdr1).json()
     course_title = html["data"][0]["course_name"]
     scraper = cloudscraper.create_scraper()
-    html = scraper.get("https://vjeducationapi.classx.co.in/get/allsubjectfrmlivecourseclass?courseid=" + raw_text2,headers=hdr1).content
+    html = scraper.get("https://vjeducationapi.appx.co.in/get/allsubjectfrmlivecourseclass?courseid=" + raw_text2,headers=hdr1).content
     output0 = json.loads(html)
     subjID = output0["data"]
     
@@ -107,21 +107,21 @@ async def vj_education_account(_, message):
         xv = raw_text3.split('&')
         for y in range(0,len(xv)):
             raw_text3 =xv[y]
-            res3 = requests.get("https://vjeducationapi.classx.co.in/get/alltopicfrmlivecourseclass?courseid=" + raw_text2,"&subjectid=" + raw_text3, headers=hdr1)
+            res3 = requests.get("https://vjeducationapi.appx.co.in/get/alltopicfrmlivecourseclass?courseid=" + raw_text2,"&subjectid=" + raw_text3, headers=hdr1)
             b_data2 = res3.json()['data']
             for data in b_data2:
                 t_name = (data["topic_name"])
                 tid = (data["topicid"])
                 print(tid,t_name)
                 hdr11 = {
-                        "Host": "vjeducationapi.classx.co.in",
+                        "Host": "vjeducationapi.appx.co.in",
                         "Client-Service": "Appx",
                         "Auth-Key": "appxapi",
                         "User-Id": userid,
                         "Authorization": token
                         }
                         
-                res4 = requests.get("https://vjeducationapi.classx.co.in/get/livecourseclassbycoursesubtopconceptapiv3?courseid=" + raw_text2 + "&subjectid=" + raw_text3 + "&topicid=" + tid + "&start=-1",headers=hdr11).json()
+                res4 = requests.get("https://vjeducationapi.appx.co.in/get/livecourseclassbycoursesubtopconceptapiv3?courseid=" + raw_text2 + "&subjectid=" + raw_text3 + "&topicid=" + tid + "&start=-1",headers=hdr11).json()
                 topicid = res4["data"]
                 print(topicid)
                 for data in topicid:
