@@ -26,7 +26,7 @@ modes_button = [[
                 ]]
 
 
-course_button1 = [              
+course_button = [              
                 [
                     InlineKeyboardButton("ssᴄ ᴍᴀᴋᴇʀ", callback_data="maintainer_"),   
                     InlineKeyboardButton("ᴘᴇʀғᴇᴄᴛ ᴀᴄᴀᴅᴇᴍʏ", callback_data="maintainer_"),
@@ -54,12 +54,12 @@ course_button1 = [
                 [
                     InlineKeyboardButton("﹤", callback_data="next_3"),
                     InlineKeyboardButton("ʙ ᴀ ᴄ ᴋ", callback_data="modes_"),
-                    InlineKeyboardButton("﹥", callback_data="next_")
+                    InlineKeyboardButton("﹥", callback_data="next_1")
                 ]
                 ]
 
 
-course_button2 = [
+course_button1 = [
                 [
                     InlineKeyboardButton("sᴀᴄʜɪɴ ᴀᴄᴀᴅᴇᴍʏ", callback_data="maintainer_"),   
                     InlineKeyboardButton("ᴀᴄʜᴀʀʏᴀ ᴄʟᴀssᴇs", callback_data="maintainer_"),
@@ -85,7 +85,7 @@ course_button2 = [
                     InlineKeyboardButton("ʀɢ ᴠɪᴋʀᴀᴍᴊᴇᴇᴛ", callback_data="maintainer_"),       
                 ],
                 [
-                    InlineKeyboardButton("﹤", callback_data="next_"),
+                    InlineKeyboardButton("﹤", callback_data="manual_"),
                     InlineKeyboardButton("ʙ ᴀ ᴄ ᴋ", callback_data="modes_"),
                     InlineKeyboardButton("﹥", callback_data="next_2")
                 ]
@@ -93,7 +93,7 @@ course_button2 = [
 
 
 
-course_button3 = [              
+course_button2 = [              
                 [   
                     InlineKeyboardButton("ᴠɪᴅʏᴀ ʙɪʜᴀʀ", callback_data="maintainer_"),
                     InlineKeyboardButton("ᴀᴍᴀɴ sɪʀ", callback_data="maintainer_")
@@ -119,7 +119,7 @@ course_button3 = [
                     InlineKeyboardButton("ɢᴋ ᴄᴀғᴇ", callback_data="maintainer_")
                 ],
                 [
-                    InlineKeyboardButton("﹤", callback_data="next_2"),
+                    InlineKeyboardButton("﹤", callback_data="next_1"),
                     InlineKeyboardButton("ʙ ᴀ ᴄ ᴋ", callback_data="modes_"),
                     InlineKeyboardButton("﹥", callback_data="next_3")
                 ]
@@ -127,7 +127,7 @@ course_button3 = [
 
 
 
-course_button4 = [              
+course_button3 = [              
                 [   
                     InlineKeyboardButton("ᴄᴀʀᴇᴇʀᴡɪʟʟ", callback_data="maintainer_"),
                     InlineKeyboardButton("ᴋʜᴀɴ", callback_data="maintainer_")
@@ -153,7 +153,7 @@ course_button4 = [
                     InlineKeyboardButton("sᴏᴏɴ", callback_data="maintainer_")
                 ],
                 [
-                    InlineKeyboardButton("﹤", callback_data="next_3"),
+                    InlineKeyboardButton("﹤", callback_data="next_2"),
                     InlineKeyboardButton("ʙ ᴀ ᴄ ᴋ", callback_data="modes_"),
                     InlineKeyboardButton("﹥", callback_data="manual_")
                 ]
@@ -186,7 +186,7 @@ async def start(_,message):
 
 
 
-@app.on_callback_query(re.compile(r"^(home_|modes_|custom_|manual_|maintainer_|close_data|next_|next_2|next_3.+)$"))
+@app.on_callback_query(re.compile(r"^(home_|modes_|custom_|manual_|maintainer_|close_data|next_1|next_2|next_3.+)$"))
 async def handle_callback(_, query):
 
     if query.data=="home_":        
@@ -218,7 +218,7 @@ async def handle_callback(_, query):
               reply_markup=reply_markup
             )
       
-    elif query.data=="next_":        
+    elif query.data=="next_1":        
         reply_markup = InlineKeyboardMarkup(course_button2)
         await query.message.edit_text(
               script.MANUAL_TXT,
