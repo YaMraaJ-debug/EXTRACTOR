@@ -30,32 +30,26 @@ course_button1 = [
                 [
                     InlineKeyboardButton("ssᴄ ᴍᴀᴋᴇʀ", callback_data="maintainer_"),   
                     InlineKeyboardButton("ᴘᴇʀғᴇᴄᴛ ᴀᴄᴀᴅᴇᴍʏ", callback_data="maintainer_"),
-                    InlineKeyboardButton("ᴀᴍᴀɴ sɪʀ", callback_data="maintainer_")
                 ],
                 [
                     InlineKeyboardButton("ᴄʟᴀssᴘʟᴜs", callback_data="maintainer_"),   
-                    InlineKeyboardButton("ᴇ1 ᴄᴏᴀᴄʜɪɴɢ", callback_data="maintainer_"),
-                    InlineKeyboardButton("ᴘᴇʀᴍᴀʀ ssᴄ", callback_data="maintainer_")
+                    InlineKeyboardButton("ᴇ1 ᴄᴏᴀᴄʜɪɴɢ", callback_data="maintainer_"),     
                 ],
                 [
                     InlineKeyboardButton("sᴀᴍʏᴀᴋ ʀᴀs", callback_data="maintainer_"),   
-                    InlineKeyboardButton("ᴠᴊ ᴇᴅᴜᴄᴀᴛɪᴏɴ", callback_data="maintainer_"),
-                    InlineKeyboardButton("ᴍᴅ ᴄʟᴀssᴇs", callback_data="maintainer_")
+                    InlineKeyboardButton("ᴠᴊ ᴇᴅᴜᴄᴀᴛɪᴏɴ", callback_data="maintainer_"),              
                 ],
                 [
                     InlineKeyboardButton("ɢʏᴀɴ ʙɪɴᴅᴜ", callback_data="maintainer_"),   
-                    InlineKeyboardButton("ᴅʜᴀɴᴀɴᴊᴀʏ ɪᴀs", callback_data="maintainer_"),
-                    InlineKeyboardButton("ssᴄ ɢᴜʀᴜᴋᴜʟ", callback_data="maintainer_")
+                    InlineKeyboardButton("ᴅʜᴀɴᴀɴᴊᴀʏ ɪᴀs", callback_data="maintainer_"),                   
                 ],
                 [
                     InlineKeyboardButton("ᴛʜɪɴᴋ ssᴄ", callback_data="maintainer_"),   
-                    InlineKeyboardButton("ᴀsʜɪsʜ sɪɴɢ ʟᴇᴄ.", callback_data="maintainer_"),
-                    InlineKeyboardButton("ɴɢ ʟᴇᴀʀɴᴇʀs", callback_data="maintainer_")
+                    InlineKeyboardButton("ᴀsʜɪsʜ sɪɴɢ ʟᴇᴄ.", callback_data="maintainer_"),                    
                 ],
                 [
                     InlineKeyboardButton("ᴛᴜᴛᴏʀs ᴀᴅᴅᴀ", callback_data="maintainer_"),   
-                    InlineKeyboardButton("ɴɪᴍɪsʜᴀ ʙᴀɴsᴀʟ", callback_data="maintainer_"),
-                    InlineKeyboardButton("sᴀɴᴋᴀʟᴘ", callback_data="maintainer_")
+                    InlineKeyboardButton("ɴɪᴍɪsʜᴀ ʙᴀɴsᴀʟ", callback_data="maintainer_"),          
                 ],
                 [
                     InlineKeyboardButton("𝐁 𝐀 𝐂 𝐊", callback_data="modes_"),
@@ -68,32 +62,26 @@ course_button2 = [
                 [
                     InlineKeyboardButton("sᴀᴄʜɪɴ ᴀᴄᴀᴅᴇᴍʏ", callback_data="maintainer_"),   
                     InlineKeyboardButton("ᴀᴄʜᴀʀʏᴀ ᴄʟᴀssᴇs", callback_data="maintainer_"),
-                    InlineKeyboardButton("sᴘᴀᴄᴇ ɪᴀs", callback_data="maintainer_")
                 ],
                 [
                     InlineKeyboardButton("ᴛᴀʀɢᴇᴛ ᴘʟᴜs", callback_data="maintainer_"),   
                     InlineKeyboardButton("ʀᴡᴀ", callback_data="maintainer_"),
-                    InlineKeyboardButton("ʀɢ ᴠɪᴋʀᴀᴍᴊᴇᴇᴛ", callback_data="maintainer_")
                 ],
                 [
                     InlineKeyboardButton("ᴡɪɴɴᴇʀs", callback_data="maintainer_"),   
-                    InlineKeyboardButton("ᴏᴄᴇᴀɴ ɢᴜʀᴜᴋᴜʟ", callback_data="maintainer_"),
-                    InlineKeyboardButton("ᴠɪᴅʏᴀ ʙɪʜᴀʀ", callback_data="maintainer_")
+                    InlineKeyboardButton("ᴏᴄᴇᴀɴ ɢᴜʀᴜᴋᴜʟ", callback_data="maintainer_"),     
                 ],
                 [
                     InlineKeyboardButton("ᴍɢ ᴄᴏɴᴄᴇᴘᴛ", callback_data="maintainer_"),   
-                    InlineKeyboardButton("ʏᴏᴅʜᴀ", callback_data="maintainer_"),
-                    InlineKeyboardButton("ɴɪʀᴍᴀɴ ɪᴀs", callback_data="maintainer_")
+                    InlineKeyboardButton("ʏᴏᴅʜᴀ", callback_data="maintainer_"),              
                 ],
                 [
                     InlineKeyboardButton("ɴᴏᴛᴇ ʙᴏᴏᴋ", callback_data="maintainer_"),   
-                    InlineKeyboardButton("ᴜᴄ ʟɪᴠᴇ", callback_data="maintainer_"),
-                    InlineKeyboardButton("ɴᴇᴏ sᴘᴀʀᴋ", callback_data="maintainer_")
+                    InlineKeyboardButton("ᴜᴄ ʟɪᴠᴇ", callback_data="maintainer_"),      
                 ],
                 [
-                    InlineKeyboardButton("ᴄᴀʀᴇᴇʀᴡɪʟʟ", callback_data="maintainer_"),   
-                    InlineKeyboardButton("ᴘʜʏsɪᴄs ᴡᴀʟʟᴀʜ", callback_data="maintainer_"),
-                    InlineKeyboardButton("ᴋʜᴀɴ sɪʀ", callback_data="maintainer_")
+                    InlineKeyboardButton("sᴘᴀᴄᴇ ɪᴀs", callback_data="maintainer_"),   
+                    InlineKeyboardButton("ʀɢ ᴠɪᴋʀᴀᴍᴊᴇᴇᴛ", callback_data="maintainer_"),       
                 ],
                 [
                     InlineKeyboardButton("𝐁 𝐀 𝐂 𝐊", callback_data="modes_"),
@@ -102,6 +90,37 @@ course_button2 = [
                 ]
 
 
+
+course_button3 = [              
+                [   
+                    InlineKeyboardButton("ᴠɪᴅʏᴀ ʙɪʜᴀʀ", callback_data="maintainer_"),
+                    InlineKeyboardButton("ᴀᴍᴀɴ sɪʀ", callback_data="maintainer_")
+                ],
+                [   
+                    InlineKeyboardButton("ɴɪʀᴍᴀɴ ɪᴀs", callback_data="maintainer_"),
+                    InlineKeyboardButton("ᴘᴇʀᴍᴀʀ ssᴄ", callback_data="maintainer_")
+                ],
+                [
+                    InlineKeyboardButton("ɴᴇᴏ sᴘᴀʀᴋ", callback_data="maintainer_"),
+                    InlineKeyboardButton("ᴍᴅ ᴄʟᴀssᴇs", callback_data="maintainer_")
+                ],
+                [   
+                    InlineKeyboardButton("ɴɢ ʟᴇᴀʀɴᴇʀs", callback_data="maintainer_"),
+                    InlineKeyboardButton("ssᴄ ɢᴜʀᴜᴋᴜʟ", callback_data="maintainer_")
+                ],
+                [
+                    InlineKeyboardButton("ᴀʀᴍʏ sᴛᴜᴅʏ ʟɪᴠᴇ", callback_data="maintainer_"),
+                    InlineKeyboardButton("sᴀɴᴋᴀʟᴘ", callback_data="maintainer_")
+                ],
+                [              
+                    InlineKeyboardButton("SOON", callback_data="maintainer_"),
+                    InlineKeyboardButton("SOON", callback_data="maintainer_")
+                ],
+                [
+                    InlineKeyboardButton("𝐁 𝐀 𝐂 𝐊", callback_data="modes_"),
+                    InlineKeyboardButton("𝐍 𝐄 𝐗 𝐓", callback_data="next_")
+                ]
+                ]
 
 
 
