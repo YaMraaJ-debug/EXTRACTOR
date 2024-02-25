@@ -23,7 +23,7 @@ def decode(tn):
 
 
 
-@app.on_message(filters.command(["gk_cafe"]) & filters.user(SUDO_USERS))
+@app.on_message(filters.command(["gk_cafe"]))
 async def gk_cafe_account(_, message):
     global cancel
     cancel = False
