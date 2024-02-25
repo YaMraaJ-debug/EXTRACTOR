@@ -23,7 +23,7 @@ def decode(tn):
 
 
 
-@app.on_message(filters.command(["note_book"]) & filters.user(SUDO_USERS))
+@app.on_message(filters.command(["note_book"]))
 async def note_book_account(_, message):
     global cancel
     cancel = False
