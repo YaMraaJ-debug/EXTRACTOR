@@ -23,7 +23,7 @@ def decode(tn):
 
 
 
-@app.on_message(filters.command(["rwa"]) & filters.user(SUDO_USERS))
+@app.on_message(filters.command(["rwa"]))
 async def rozgar_account(_, message):
     global cancel
     cancel = False
