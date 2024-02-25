@@ -23,13 +23,13 @@ def decode(tn):
 
 
 
-@app.on_message(filters.command(["winners"]) & filters.user(SUDO_USERS))
-async def winners_account(_, message):
+@app.on_message(filters.command(["target_plus"]) & filters.user(SUDO_USERS))
+async def target_plus_account(_, message):
     global cancel
     cancel = False
     editable = await message.reply_text("Send **ID & Password** in this manner otherwise bot will not respond.\n\nSend like this:-  **ID*Password**")
   
-    rwa_url = "https://winnersinstituteapi.classx.co.in/post/userLogin"
+    rwa_url = "https://targetpluscoachingapi.classx.co.in/post/userLogin"
     hdr = {"Auth-Key": "appxapi",
            "User-Id": "-2",
            "Authorization": "",
@@ -54,7 +54,7 @@ async def winners_account(_, message):
     userid = output["data"]["userid"]
     token = output["data"]["token"]
     hdr1 = {
-        "Host": "winnersinstituteapi.classx.co.in",
+        "Host": "targetpluscoachingapi.classx.co.in",
         "Client-Service": "Appx",
         "Auth-Key": "appxapi",
         "User-Id": userid,
@@ -63,7 +63,7 @@ async def winners_account(_, message):
     
     await editable.edit("**login Successful**")
     
-    res1 = requests.get("https://winnersinstituteapi.classx.co.in/get/mycourse?userid="+userid, headers=hdr1)
+    res1 = requests.get("https://targetpluscoachingapi.classx.co.in/get/mycourse?userid="+userid, headers=hdr1)
     batch_data = res1.json()['data']
     
     FFF = "**BATCH-ID - BATCH NAME - INSTRUCTOR**"
@@ -79,10 +79,10 @@ async def winners_account(_, message):
     await input2.delete(True)
     await editable1.delete(True)
     
-    html = scraper.get("https://winnersinstituteapi.classx.co.in/get/course_by_id?id=" + raw_text2,headers=hdr1).json()
+    html = scraper.get("https://targetpluscoachingapi.classx.co.in/get/course_by_id?id=" + raw_text2,headers=hdr1).json()
     course_title = html["data"][0]["course_name"]
     scraper = cloudscraper.create_scraper()
-    html = scraper.get("https://winnersinstituteapi.classx.co.in/get/allsubjectfrmlivecourseclass?courseid=" + raw_text2,headers=hdr1).content
+    html = scraper.get("https://targetpluscoachingapi.classx.co.in/get/allsubjectfrmlivecourseclass?courseid=" + raw_text2,headers=hdr1).content
     output0 = json.loads(html)
     subjID = output0["data"]
     
@@ -103,25 +103,25 @@ async def winners_account(_, message):
     await editable1.delete(True)
     prog = await editable.edit("**Extracting Videos Links Please Wait  📥 **")
     try:
-        mm = "winners-Institute"
+        mm = "Target-Plus"
         xv = raw_text3.split('&')
         for y in range(0,len(xv)):
             raw_text3 =xv[y]
-            res3 = requests.get("https://winnersinstituteapi.classx.co.in/get/alltopicfrmlivecourseclass?courseid=" + raw_text2,"&subjectid=" + raw_text3, headers=hdr1)
+            res3 = requests.get("https://targetpluscoachingapi.classx.co.in/get/alltopicfrmlivecourseclass?courseid=" + raw_text2,"&subjectid=" + raw_text3, headers=hdr1)
             b_data2 = res3.json()['data']
             for data in b_data2:
                 t_name = (data["topic_name"])
                 tid = (data["topicid"])
                 print(tid,t_name)
                 hdr11 = {
-                        "Host": "winnersinstituteapi.classx.co.in",
+                        "Host": "targetpluscoachingapi.classx.co.in",
                         "Client-Service": "Appx",
                         "Auth-Key": "appxapi",
                         "User-Id": userid,
                         "Authorization": token
                         }
                         
-                res4 = requests.get("https://winnersinstituteapi.classx.co.in/get/livecourseclassbycoursesubtopconceptapiv3?courseid=" + raw_text2 + "&subjectid=" + raw_text3 + "&topicid=" + tid + "&start=-1",headers=hdr11).json()
+                res4 = requests.get("https://targetpluscoachingapi.classx.co.in/get/livecourseclassbycoursesubtopconceptapiv3?courseid=" + raw_text2 + "&subjectid=" + raw_text3 + "&topicid=" + tid + "&start=-1",headers=hdr11).json()
                 topicid = res4["data"]
                 print(topicid)
                 for data in topicid:
