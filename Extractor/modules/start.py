@@ -28,28 +28,28 @@ modes_button = [[
 
 course_button = [              
                 [
-                    InlineKeyboardButton("ssᴄ ᴍᴀᴋᴇʀ", callback_data="maintainer_"),   
-                    InlineKeyboardButton("ᴘᴇʀғᴇᴄᴛ ᴀᴄᴀᴅᴇᴍʏ", callback_data="maintainer_"),
+                    InlineKeyboardButton("ssᴄ ᴍᴀᴋᴇʀ", callback_data="ss_maker"),   
+                    InlineKeyboardButton("ᴘᴇʀғᴇᴄᴛ ᴀᴄᴀᴅᴇᴍʏ", callback_data="perfect_acc"),
                 ],
                 [
-                    InlineKeyboardButton("ᴄʟᴀssᴘʟᴜs", callback_data="maintainer_"),   
-                    InlineKeyboardButton("ᴇ1 ᴄᴏᴀᴄʜɪɴɢ", callback_data="maintainer_"),     
+                    InlineKeyboardButton("ᴄʟᴀssᴘʟᴜs", callback_data="classplus_"),   
+                    InlineKeyboardButton("ᴇ1 ᴄᴏᴀᴄʜɪɴɢ", callback_data="e1_coaching"),     
                 ],
                 [
-                    InlineKeyboardButton("sᴀᴍʏᴀᴋ ʀᴀs", callback_data="maintainer_"),   
-                    InlineKeyboardButton("ᴠᴊ ᴇᴅᴜᴄᴀᴛɪᴏɴ", callback_data="maintainer_"),              
+                    InlineKeyboardButton("sᴀᴍʏᴀᴋ ʀᴀs", callback_data="samyak_ras"),   
+                    InlineKeyboardButton("ᴠᴊ ᴇᴅᴜᴄᴀᴛɪᴏɴ", callback_data="vj_education"),              
                 ],
                 [
-                    InlineKeyboardButton("ɢʏᴀɴ ʙɪɴᴅᴜ", callback_data="maintainer_"),   
-                    InlineKeyboardButton("ᴅʜᴀɴᴀɴᴊᴀʏ ɪᴀs", callback_data="maintainer_"),                   
+                    InlineKeyboardButton("ɢʏᴀɴ ʙɪɴᴅᴜ", callback_data="gyan_bindu"),   
+                    InlineKeyboardButton("ᴅʜᴀɴᴀɴᴊᴀʏ ɪᴀs", callback_data="dhananjay_ias"),                   
                 ],
                 [
-                    InlineKeyboardButton("ᴛʜɪɴᴋ ssᴄ", callback_data="maintainer_"),   
-                    InlineKeyboardButton("ᴀsʜɪsʜ sɪɴɢ ʟᴇᴄ.", callback_data="maintainer_"),                    
+                    InlineKeyboardButton("ᴛʜɪɴᴋ ssᴄ", callback_data="think_ssc"),   
+                    InlineKeyboardButton("ᴀsʜɪsʜ sɪɴɢ ʟᴇᴄ.", callback_data="Ashish_lec"),                    
                 ],
                 [
-                    InlineKeyboardButton("ᴛᴜᴛᴏʀs ᴀᴅᴅᴀ", callback_data="maintainer_"),   
-                    InlineKeyboardButton("ɴɪᴍɪsʜᴀ ʙᴀɴsᴀʟ", callback_data="maintainer_"),          
+                    InlineKeyboardButton("ᴛᴜᴛᴏʀs ᴀᴅᴅᴀ", callback_data="tutors_adda"),   
+                    InlineKeyboardButton("ɴɪᴍɪsʜᴀ ʙᴀɴsᴀʟ", callback_data="nimisha_bansal"),          
                 ],
                 [
                     InlineKeyboardButton("﹤", callback_data="next_3"),
@@ -61,28 +61,28 @@ course_button = [
 
 course_button1 = [
                 [
-                    InlineKeyboardButton("sᴀᴄʜɪɴ ᴀᴄᴀᴅᴇᴍʏ", callback_data="maintainer_"),   
-                    InlineKeyboardButton("ᴀᴄʜᴀʀʏᴀ ᴄʟᴀssᴇs", callback_data="maintainer_"),
+                    InlineKeyboardButton("sᴀᴄʜɪɴ ᴀᴄᴀᴅᴇᴍʏ", callback_data="sachin_acc"),   
+                    InlineKeyboardButton("ᴀᴄʜᴀʀʏᴀ ᴄʟᴀssᴇs", callback_data="acharya_classes"),
                 ],
                 [
-                    InlineKeyboardButton("ᴛᴀʀɢᴇᴛ ᴘʟᴜs", callback_data="maintainer_"),   
-                    InlineKeyboardButton("ʀᴡᴀ", callback_data="maintainer_"),
+                    InlineKeyboardButton("ᴛᴀʀɢᴇᴛ ᴘʟᴜs", callback_data="target_plus"),   
+                    InlineKeyboardButton("ʀᴡᴀ", callback_data="rwa_"),
                 ],
                 [
-                    InlineKeyboardButton("ᴡɪɴɴᴇʀs", callback_data="maintainer_"),   
-                    InlineKeyboardButton("ᴏᴄᴇᴀɴ ɢᴜʀᴜᴋᴜʟ", callback_data="maintainer_"),     
+                    InlineKeyboardButton("ᴡɪɴɴᴇʀs", callback_data="winners_"),   
+                    InlineKeyboardButton("ᴏᴄᴇᴀɴ ɢᴜʀᴜᴋᴜʟ", callback_data="ocean_gurukul"),     
                 ],
                 [
-                    InlineKeyboardButton("ᴍɢ ᴄᴏɴᴄᴇᴘᴛ", callback_data="maintainer_"),   
-                    InlineKeyboardButton("ʏᴏᴅʜᴀ", callback_data="maintainer_"),              
+                    InlineKeyboardButton("ᴍɢ ᴄᴏɴᴄᴇᴘᴛ", callback_data="mg_concept"),   
+                    InlineKeyboardButton("ʏᴏᴅʜᴀ", callback_data="yodha_"),              
                 ],
                 [
-                    InlineKeyboardButton("ɴᴏᴛᴇ ʙᴏᴏᴋ", callback_data="maintainer_"),   
-                    InlineKeyboardButton("ᴜᴄ ʟɪᴠᴇ", callback_data="maintainer_"),      
+                    InlineKeyboardButton("ɴᴏᴛᴇ ʙᴏᴏᴋ", callback_data="note_book"),   
+                    InlineKeyboardButton("ᴜᴄ ʟɪᴠᴇ", callback_data="uc_live"),      
                 ],
                 [
-                    InlineKeyboardButton("sᴘᴀᴄᴇ ɪᴀs", callback_data="maintainer_"),   
-                    InlineKeyboardButton("ʀɢ ᴠɪᴋʀᴀᴍᴊᴇᴇᴛ", callback_data="maintainer_"),       
+                    InlineKeyboardButton("sᴘᴀᴄᴇ ɪᴀs", callback_data="space_ias"),   
+                    InlineKeyboardButton("ʀɢ ᴠɪᴋʀᴀᴍᴊᴇᴇᴛ", callback_data="rg_vikramjeet"),       
                 ],
                 [
                     InlineKeyboardButton("﹤", callback_data="manual_"),
@@ -95,28 +95,28 @@ course_button1 = [
 
 course_button2 = [              
                 [   
-                    InlineKeyboardButton("ᴠɪᴅʏᴀ ʙɪʜᴀʀ", callback_data="maintainer_"),
-                    InlineKeyboardButton("ᴀᴍᴀɴ sɪʀ", callback_data="maintainer_")
+                    InlineKeyboardButton("ᴠɪᴅʏᴀ ʙɪʜᴀʀ", callback_data="vidya_bihar"),
+                    InlineKeyboardButton("ᴀᴍᴀɴ sɪʀ", callback_data="aman_sir")
                 ],
                 [   
-                    InlineKeyboardButton("ɴɪʀᴍᴀɴ ɪᴀs", callback_data="maintainer_"),
-                    InlineKeyboardButton("ᴘᴇʀᴍᴀʀ ssᴄ", callback_data="maintainer_")
+                    InlineKeyboardButton("ɴɪʀᴍᴀɴ ɪᴀs", callback_data="nirman_ias"),
+                    InlineKeyboardButton("ᴘᴇʀᴍᴀʀ ssᴄ", callback_data="permar_ssc")
                 ],
                 [
-                    InlineKeyboardButton("ɴᴇᴏ sᴘᴀʀᴋ", callback_data="maintainer_"),
-                    InlineKeyboardButton("ᴍᴅ ᴄʟᴀssᴇs", callback_data="maintainer_")
+                    InlineKeyboardButton("ɴᴇᴏ sᴘᴀʀᴋ", callback_data="neo_spark"),
+                    InlineKeyboardButton("ᴍᴅ ᴄʟᴀssᴇs", callback_data="md_classes")
                 ],
                 [   
-                    InlineKeyboardButton("ɴɢ ʟᴇᴀʀɴᴇʀs", callback_data="maintainer_"),
-                    InlineKeyboardButton("ssᴄ ɢᴜʀᴜᴋᴜʟ", callback_data="maintainer_")
+                    InlineKeyboardButton("ɴɢ ʟᴇᴀʀɴᴇʀs", callback_data="ng_learners"),
+                    InlineKeyboardButton("ssᴄ ɢᴜʀᴜᴋᴜʟ", callback_data="ssc_gurukul")
                 ],
                 [
-                    InlineKeyboardButton("ᴀʀᴍʏ sᴛᴜᴅʏ ʟɪᴠᴇ", callback_data="maintainer_"),
-                    InlineKeyboardButton("sᴀɴᴋᴀʟᴘ", callback_data="maintainer_")
+                    InlineKeyboardButton("ᴀʀᴍʏ sᴛᴜᴅʏ ʟɪᴠᴇ", callback_data="army_study"),
+                    InlineKeyboardButton("sᴀɴᴋᴀʟᴘ", callback_data="sankalp_")
                 ],
                 [              
-                    InlineKeyboardButton("ᴛᴀʀɢᴇᴛ ᴜᴘsᴄ", callback_data="maintainer_"),
-                    InlineKeyboardButton("ɢᴋ ᴄᴀғᴇ", callback_data="maintainer_")
+                    InlineKeyboardButton("ᴛᴀʀɢᴇᴛ ᴜᴘsᴄ", callback_data="target_upsc"),
+                    InlineKeyboardButton("ɢᴋ ᴄᴀғᴇ", callback_data="gk_cafe")
                 ],
                 [
                     InlineKeyboardButton("﹤", callback_data="next_1"),
