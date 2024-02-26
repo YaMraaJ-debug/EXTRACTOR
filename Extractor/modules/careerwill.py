@@ -45,19 +45,23 @@ async def khan_login(_, message):
       "deviceVersion": "Chrome+119",
       "email": ""
     }
-
-    data["email"] = raw_text.split("*")[0]
-    data["password"] = raw_text.split("*")[1]
+    
+    if "*" in raw_text:
+        data["email"] = raw_text.split("*")[0]
+        data["password"] = raw_text.split("*")[1]
+    else:
+        token = raw_text
+        
     await input1.delete(True)
-
     response = requests.post(login_url, headers=headers, data=data)
+        
     if response.status_code == 200:
         data = response.json()
         token = data["data"]["token"]
         await editable.edit("**Login Successful**")
     else:
         await message.reply_text("Go back to response")
-        token = raw_text
+        
     
     
     headers = {
