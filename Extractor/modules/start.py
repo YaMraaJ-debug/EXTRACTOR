@@ -10,7 +10,8 @@ from Extractor.modules.pw import pw_mobile, pw_token
 from Extractor.modules.exampur import exampur_txt
 from Extractor.modules.nk import neetkaka_txt
 from Extractor.modules.app_exampur import appexampur_txt
-
+from Extractor.module.careerwill import career_will
+from Extractor.module.khan import khan_login
 
 # ------------------------------------------------------------------------------- #
 
@@ -141,7 +142,7 @@ button3 = [
 
 button4 = [              
                 [   
-                    InlineKeyboardButton("ᴄᴀʀᴇᴇʀᴡɪʟʟ", callback_data="maintainer_"),
+                    InlineKeyboardButton("ᴄᴀʀᴇᴇʀᴡɪʟʟ", callback_data="careerwill_"),
                     InlineKeyboardButton("ᴋʜᴀɴ", callback_data="khan_")
                 ],
                 [   
@@ -264,8 +265,12 @@ async def handle_callback(_, query):
         await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
 
 
-    
+    elif query.data=="careerwill_":
+        await career_will(app, query.message)
   
+    elif query.data=="khan_"
+        await khan_login(app, query.message)
+
     elif query.data=="ss_maker":     
         api = "sscmakerexampreparationapi.classx.co.in"
         name = "SSC Makers"
