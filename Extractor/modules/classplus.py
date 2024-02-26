@@ -15,28 +15,29 @@ api = 'https://api.classplusapp.com/v2'
 
 # ------------------------------------------------------------------------------------------------------------------------------- #
 
-
-def get_datetime_str():
-    now = datetime.datetime.now()
-    return now.strftime("%Y%m%d%H%M%S")
-
 def create_html_file(file_name, batch_name, contents):
     tbody = ''
-    for line in contents:
-        text, url = [item.strip('\n').strip() for item in line.split(':', 1)]
-        tbody += f'<tr><td><a href="{url}">{text}</a></td></tr>'
+    parts = contents.split('\n')
+    for part in parts:
+        split_part = [item.strip() for item in part.split(':', 1)]
+    
+        text = split_part[0] if split_part[0] else 'Untitled'
+        url = split_part[1].strip() if len(split_part) > 1 and split_part[1].strip() else 'No URL'
 
-    with open('template.html') as fp:
+        tbody += f'<tr><td>{text}</td><td><a href="{url}" target="_blank">{url}</a></td></tr>'
+
+    with open('TXT/core/template.html', 'r') as fp:
         file_content = fp.read()
-
+    title = batch_name.strip()
     with open(file_name, 'w') as fp:
-        fp.write(file_content.replace('tbody_content', tbody).replace('batch_name', batch_name))
+        fp.write(file_content.replace('{{tbody_content}}', tbody).replace('{{batch_name}}', title))
+
 
  # ------------------------------------------------------------------------------------------------------------------------------- #
 
 
 def get_course_content(session, course_id, folder_id=0):
-        fetched_contents = []
+        fetched_contents = ""
 
         params = {
             'courseId': course_id,
@@ -57,10 +58,44 @@ def get_course_content(session, course_id, folder_id=0):
                     if resources.get('videos') or resources.get('files'):
                         sub_contents = get_course_content(session, course_id, content['id'])
                         fetched_contents += sub_contents
+                
+                elif content['contentType'] == 2:
+                    name = content.get('name', '')
+                    id = content.get('contentHashId', '')
+
+                    headers = {
+                        "Host": "api.classplusapp.com",
+                        "x-access-token": "eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJpZCI6OTIzNDIwMDUsIm9yZ0lkIjo1NDI0MjEsInR5cGUiOjEsIm1vYmlsZSI6IjkxODI5ODczMDAzNiIsIm5hbWUiOiJTdWRoYW5zaHUgSmhhIiwiZW1haWwiOiJzdWRoYW5zaHVqaGExNTFAZ21haWwuY29tIiwiaXNJbnRlcm5hdGlvbmFsIjowLCJkZWZhdWx0TGFuZ3VhZ2UiOiJFTiIsImNvdW50cnlDb2RlIjoiSU4iLCJjb3VudHJ5SVNPIjoiOTEiLCJ0aW1lem9uZSI6IkdNVCs1OjMwIiwiaXNEaXkiOnRydWUsIm9yZ0NvZGUiOiJ1Y3Z2YW8iLCJpc0RpeVN1YmFkbWluIjowLCJmaW5nZXJwcmludElkIjoiOGE5NTlhMGQ1Y2UyNjBkNzJhMDVhMzcxYTBhYzk5YmUiLCJpYXQiOjE3MDc0OTc2OTAsImV4cCI6MTcwODEwMjQ5MH0.68JhYbWAjf1B0a6hD4OGSmVhhH2WF97DX8DMJAfo5CkIwIVWABMugHN0Mz43LUoY",
+                        "User-Agent": "Mobile-Android",
+                        "Accept": "application/json, text/plain, */*",
+                        "Accept-Encoding": "gzip, deflate, br",
+                        "Accept-Language": "en",
+                        "Origin": "https://web.classplusapp.com",
+                        "Referer": "https://web.classplusapp.com/",
+                        "Region": "IN",
+                        "Sec-Ch-Ua": "\"Not A(Brand\";v=\"99\", \"Microsoft Edge\";v=\"121\", \"Chromium\";v=\"121\"",
+                        "Sec-Ch-Ua-Mobile": "?0",
+                        "Sec-Ch-Ua-Platform": "\"Windows\"",
+                        "Sec-Fetch-Dest": "empty",
+                        "Sec-Fetch-Mode": "cors",
+                        "Sec-Fetch-Site": "same-site",
+                    }
+
+                    params = {
+                        'contentId': id
+                    }
+
+                    r = requests.get('https://api.classplusapp.com/cams/uploader/video/jw-signed-url', headers=headers, params=params)
+                    url = r.json()['url']
+
+                    content = f'{name}:{url}\n'
+                    fetched_contents += content
+
                 else:
                     name = content.get('name', '')
                     url = content.get('url', '')
-                    fetched_contents.append(f'{name}:{url}\n')
+                    content = f'{name}:{url}\n'
+                    fetched_contents += content
 
         return fetched_contents
 
@@ -68,9 +103,6 @@ def get_course_content(session, course_id, folder_id=0):
 
 # ------------------------------------------------------------------------------------------------------------------------------- #
 
-
-
-@app.on_message(filters.command(["classplus"]))
 async def classplus_txt(app, message):   
 
     headers = {
@@ -89,14 +121,21 @@ async def classplus_txt(app, message):
         'webengage-luid' : '00000187-6fe4-5d41-a530-26186858be4c'
     }
 
+    headers2 = {
+        "Api-Version": "43",
+        "Content-Type": "application/json;charset=UTF-8",
+        "Device-Id": "1706954623055",
+        "Origin": "https://web.classplusapp.com",
+        "Referer": "https://web.classplusapp.com/",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+    }
     
     try:
-        editable = await message.reply_text("SEND YOUR CREDENTIALS AS SHOWN BELOW\n\nORGANISATION CODE:\n\nPHONE NUMBER:\n\nACCESS TOKEN:")
-        input : message = await app.listen(editable.chat.id)
+        input = await app.ask(message.chat.id, text="SEND YOUR CREDENTIALS AS SHOWN BELOW\n\nORGANISATION CODE:\n\nPHONE NUMBER:\n\nOR SEND\nACCESS TOKEN:")
 
         creds = input.text
         session = requests.Session()
-        session.headers.update(headers)
+        session.headers.update(headers2)
 
         logged_in = False
 
@@ -114,10 +153,9 @@ async def classplus_txt(app, message):
                     data = {
                         'countryExt': '91',
                         'mobile'    : phone_no,
-                        'viaSms'    : 1,
+                        'orgCode'   : org_code,
                         'orgId'     : org_id,
-                        'eventType' : 'login',
-                        'otpHash'   : 'j7ej6eW5VO'
+                        'viaSms'    : 1,
                     }
         
                     res = session.post(f'{api}/otp/generate', data=json.dumps(data))
@@ -127,26 +165,24 @@ async def classplus_txt(app, message):
 
                         session_id = res['data']['sessionId']
 
-                        editable = await message.reply_text("Send your otp ")
-                        user_otp : message = await app.listen(editable.chat.id)
+                        user_otp = await app.ask(message.chat.id, text="Send your otp ")
 
                         if user_otp.text.isdigit():
                             otp = user_otp.text.strip()
 
                             data = {
-                                'otp'          : otp,
-                                'sessionId'    : session_id,
-                                'orgId'        : org_id,
-                                'fingerprintId': 'a3ee05fbde3958184f682839be4fd0f7',
-                                'countryExt'   : '91',
-                                'mobile'       : phone_no,
+                                "otp": otp,
+                                "countryExt": "91",
+                                "sessionId": session_id,
+                                "orgId": org_id,
+                                "fingerprintId": "",
+                                "mobile": phone_no
                             }
 
                             res = session.post(f'{api}/users/verify', data=json.dumps(data))
-
-                            if res.status_code == 200:
-                                res = res.json()
-
+                            res = res.json()
+                            if res['status'] == 'success':
+                                await app.send_message(message.chat.id, res)
                                 user_id = res['data']['user']['id']
                                 token = res['data']['token']
                                 session.headers['x-access-token'] = token
@@ -201,8 +237,7 @@ async def classplus_txt(app, message):
                         name = course['name']
                         text += f'{cnt + 1}. {name}\n'
 
-                    editable = await message.reply_text(f"send index number of the course to download\n\n{text}")
-                    num : message = await app.listen(editable.chat.id)
+                    num = await app.ask(message.chat.id, text=f"send index number of the course to download\n\n{text}")
                         
                     if num.text.isdigit() and len(num.text) <= len(courses):
 
@@ -224,21 +259,17 @@ async def classplus_txt(app, message):
                             caption = (f"App Name : Classplus\nBatch Name : {selected_course_name}")
 
                             
-                            text_file = f'downloads/{get_datetime_str()}.txt'
-                            open(text_file, 'w').writelines(course_content)
+                            text_file = "Classplus"
+                            with open(f'{text_file}.txt', 'w') as f:
+                                f.write(f"{course_content}")
 
-                            await app.send_document(message.chat.id, text_file, caption=caption,
-                                file_name=f"{selected_course_name}.txt",
-                            )
+                            await app.send_document(message.chat.id, document=f"{text_file}.txt", caption=caption)
 
-                            html_file = f'downloads/{get_datetime_str()}.html'
+                            html_file = f'{text_file}.html'
                             create_html_file(html_file, selected_course_name, course_content)
 
-                            await app.send_document(message.chat.id, html_file, caption=caption,
-                                file_name=f"{selected_course_name}.html",
-                            )
-
-                            os.remove(text_file)
+                            await app.send_document(message.chat.id, html_file, caption=caption)
+                            os.remove(f'{text_file}.txt')
                             os.remove(html_file)
                             
 
@@ -251,11 +282,4 @@ async def classplus_txt(app, message):
 
    
     except Exception as e:
-        await message.reply_text(f"Error: {e}")
-            
-
-
-
-
-
-          
+        print(f"Error: {e}")
