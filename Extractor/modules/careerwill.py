@@ -52,8 +52,9 @@ async def khan_login(_, message):
         response = requests.post(login_url, headers=headers, data=data)
         if response.status_code == 200:
             data = response.json()
-            token = data["data"]["token"]
-            await editable.edit(f"**Login Successful**\n\n{token}")
+           # token = data["data"]["token"]
+            await message.reply(data)
+          #  await editable.edit(f"**Login Successful**\n\n{token}")
         else:
             await message.reply_text("Go back to response")
                             
