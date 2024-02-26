@@ -64,7 +64,7 @@ async def khan_login(_, message):
     "Host": "elearn.crwilladmin.com",
     "origintype": "web",
     "usertype": "2",
-    "token": raw_text,
+    "token": token,
     "accept-encoding": "gzip",
     "user-agent": "okhttp/3.9.1"
     }
