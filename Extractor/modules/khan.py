@@ -10,7 +10,7 @@ from base64 import b64decode
 from Extractor import app
 from config import SUDO_USERS
 
-@app.on_message(filters.command(["test"]))
+@app.on_message(filters.command(["khan"]))
 async def khan_login(_, message):
     editable = await message.reply_text("Send ID & Password in this manner otherwise bot will not respond.\n\nSend like this:-  ID*Password")
 
@@ -90,8 +90,8 @@ async def khan_login(_, message):
 
         for video in videos: 
             try:
-                class_title = video.get('name'))
-                class_url = video.get('video_url'))
+                class_title = video.get('name')
+                class_url = video.get('video_url')
                 
                 with open(f"{mm}-test.txt", 'a') as f:
                     f.write(f"{class_title}: {class_url}\n")
