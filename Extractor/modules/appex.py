@@ -9,7 +9,7 @@ from Crypto.Cipher import AES
 from Crypto.Util.Padding import unpad
 from base64 import b64decode
 import config
-from TXT import app
+from Extractor import app
 
 
 def decrypt_data(encoded_data, key, iv):
