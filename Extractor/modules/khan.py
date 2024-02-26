@@ -2,20 +2,15 @@ import json
 import os
 import requests
 from pyrogram import filters
-from pyromod import listen
-import cloudscraper
-from Crypto.Cipher import AES
-from Crypto.Util.Padding import unpad
-from base64 import b64decode
 from Extractor import app
 from config import SUDO_USERS
 
-@app.on_message(filters.command(["khan"]))
-async def khan_login(_, message):
-    editable = await message.reply_text("Send ID & Password in this manner otherwise bot will not respond.\n\nSend like this:-  ID*Password")
+
+
+async def khan_login(app, message):
+    input1 = await app.ask(message.chat.id, text="Send ID & Password in this manner otherwise bot will not respond.\n\nSend like this:-  ID*Password")
 
     login_url = "https://khanglobalstudies.com/api/login-with-password"
-    input1 = await _.listen(editable.chat.id)
     raw_text = input1.text
 
     headers = {
@@ -38,7 +33,7 @@ async def khan_login(_, message):
     if response.status_code == 200:
         data = response.json()
         token = data["token"]
-        await editable.edit("**Login Successful**")
+        await message.reply_text("**Login Successful**")
     else:
         await message.reply_text("Go back to response")
 
@@ -61,23 +56,22 @@ async def khan_login(_, message):
     for course_id, course_title in courses:
         FFF += f"{course_id} - {course_title}\n\n"
 
-    await editable.edit(FFF)
+    await message.reply_text(FFF)
 
-    editable1 = await message.reply_text("Now send the Batch ID to Download")    
-    input3: message = await _.listen(editable1.chat.id)
+    input3 = await app.ask(message.chat.id, text="Now send the Batch ID to Download")    
     raw_text3 = input3.text
 
     url = "https://khanglobalstudies.com/api/user/courses/"+raw_text3+"/v2-lessons"
     response2 = requests.get(url, headers=headers)
     
-    msg = await message.reply_text("Prepared your course id")
+    msg = await message.reply_text("**Prepared your course id**")
     bat_id = ""
     for data in response2.json():
         baid = f"{data['id']}&"
         bat_id += baid
         
     print(bat_id)    
-    await msg.edit_text("Done your course id\n Now Extracting your course")
+    await msg.edit_text("**Done your course id\n Now Extracting your course**")
     full = ""
     try:
         xv = bat_id.split('&')
