@@ -115,7 +115,7 @@ async def career_will(_, message):
             batch_class = details_list["classes"]
             
             batch_class.reverse()
-            count = 1
+            
             
             try:
                 for data in batch_class:
@@ -124,7 +124,7 @@ async def career_will(_, message):
                     video_link = data["lessonUrl"]
                     
                     
-                    if str(video_link).startswith("62") or str(video_link).startswith("63"):
+                    if video_link.startswith("62") or video_link.startswith("63"):
                         
                         url = "https://elearn.crwilladmin.com/api/v5/livestreamToken"
                         params = {
@@ -138,16 +138,17 @@ async def career_will(_, message):
                         stoken = response.json()["data"]["token"]
 
                         link = bc_url + video_link + "/master.m3u8?bcov_auth=" + stoken
-                        print(link)               
+                        print(link)    
+                        
                     else:
                         link = "https://www.youtube.com/embed/"+video_link
             
-                    with open(f"{batch_name}{name}.txt", 'a') as f:
-                        f.write(f"{lesson_name}: {link}\n")
+                with open(f"{batch_name}{name}.txt", 'a') as f:
+                    f.write(f"{lesson_name}: {link}\n")
                     
             except Exception as e:
                 await message.reply_text(str(e))
-            c_txt = f"**App Name: CareerWill\n\n{batch_name}**"
+            c_txt = f"**App Name: CareerWill\n{batch_name}**"
         await message.reply_document(document=f"{batch_name}{name}.txt", caption=c_txt)
         await prog.delete()
         os.remove(f"{batch_name}{name}.txt")
