@@ -73,7 +73,7 @@ async def khan_login(_, message):
     msg = await message.reply_text("Prepared your course id")
     bat_id = ""
     for data in response2:
-        baid=f"{dat['_id']}&"
+        baid = f"{data['_id']}&"
         bat_id +=baid
         
     await msg.edit_text("Done your course id\n Now Extracting your course")
@@ -84,13 +84,13 @@ async def khan_login(_, message):
       response = requests.get(url, headers=headers)  
       response.reverse()  
       for dat in response:
-        try:
-            class_title = dat["name"]
-            class_url = dat["video_url"]
-            with open(f"{mm}-{test}.txt", 'a') as f:
-                f.write(f"{class_title}:{class_url}\n")
-        except KeyError:
-            pass
+          try:
+              class_title = dat["name"]
+              class_url = dat["video_url"]
+              with open(f"{mm}-{test}.txt", 'a') as f:
+                  f.write(f"{class_title}:{class_url}\n")
+          except KeyError:
+              pass
     await message.reply_document(f"{mm}-{test}.txt")
     await msg.delete()
 
