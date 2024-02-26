@@ -153,8 +153,8 @@ button4 = [
                     InlineKeyboardButton("ɴᴇᴇᴛ ᴋᴀᴋᴀJee", callback_data="neet_kakajee")
                 ],
                 [   
-                    InlineKeyboardButton("sᴏᴏɴ", callback_data="maintainer_"),
-                    InlineKeyboardButton("sᴏᴏɴ", callback_data="maintainer_")
+                    InlineKeyboardButton("ᴏғғɪᴄᴇʀs ᴀᴄᴀᴅᴇᴍʏ", callback_data="officers_acc"),
+                    InlineKeyboardButton("ʀᴋ sɪʀ", callback_data="rk_sir")
                 ],
                 [
                     InlineKeyboardButton("sᴏᴏɴ", callback_data="maintainer_"),
@@ -441,7 +441,15 @@ async def handle_callback(_, query):
         name = "GK Cafe"
         await appex_txt(app, query.message, api, name)
 
+    elif query.data == 'officers_acc':
+        api = "theofficersacademyapi.classx.co.in"
+        name = "Officers Academy"
+        await appex_txt(app, query.message, api, name)
 
+    elif query.data == 'rk_sir':
+        api = "rksirofficialapi.classx.co.in"
+        name = "Rk Sir Official"
+        await appex_txt(app, query.message, api, name)  
   
     elif query.data == 'exampur_':
         await exampur_txt(app, query.message)
@@ -462,9 +470,7 @@ async def handle_callback(_, query):
                 [
                     InlineKeyboardButton("Mobile No.", callback_data='mobile_'),
                     InlineKeyboardButton("Token", callback_data='token_'),
-                ]
-            ])
-        )
+                ]]))
 
     elif query.data == 'mobile_':
         await pw_mobile(app, query.message)
