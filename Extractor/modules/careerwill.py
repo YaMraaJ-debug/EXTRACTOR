@@ -25,7 +25,6 @@ async def career_will(_, message):
         input1 = await app.ask(message.chat.id, text="Send ID & Password in this manner otherwise bot will not respond.\n\nSend like this:-  ID*Password")
         login_url = "https://elearn.crwilladmin.com/api/v3/login-other"
         raw_text = input1.text
-        s = requests.Session()
         if "*" in raw_text:
             headers = {
                 "Host": "elearn.crwilladmin.com",
@@ -45,7 +44,7 @@ async def career_will(_, message):
                 "email": email
             }
 
-            response = s.post(login_url, headers=headers, json=data)
+            response = requests.post(login_url, headers=headers, json=data)
             response.raise_for_status()  # Raise an error if the request was unsuccessful
             token = response.json()["data"]["token"]
             await message.reply_text(f"**Login Successful**\n\n`{token}`")
@@ -118,12 +117,13 @@ async def career_will(_, message):
             fuck = ""
             try:
                 for data in batch_class:
-                    vid_id = data["id"]
-                    lesson_name = data["lessonName"]
-                    video_link = data["lessonUrl"]
+                    vid_id = data['id']
+                    lesson_name = data['lessonName']
+                    lessonExt = data['lessonExt']
+                    url = "https://elearn.crwilladmin.com/api/v5/class-detail/"+vid_id
+                    lessonUrl = requests.get(url, headers=headers).json()['data']['class_detail']['lessonUrl']
                     
-                    
-                    if video_link.startswith("62"):             
+                    if lessonExt == 'brightcove':             
                         url = "https://elearn.crwilladmin.com/api/v5/livestreamToken"
                         params = {
                                "base": "web",
@@ -135,27 +135,12 @@ async def career_will(_, message):
                         response = requests.get(url, headers=headers, params=params)
                         stoken = response.json()["data"]["token"]
 
-                        link = bc_url + video_link + "/master.m3u8?bcov_auth=" + stoken
+                        link = bc_url + lessonUrl + "/master.m3u8?bcov_auth=" + stoken
                         fuck += f"{lesson_name}: {link}\n"   
-
-                    elif video_link.startswith("63"):             
-                        url = "https://elearn.crwilladmin.com/api/v5/livestreamToken"
-                        params = {
-                               "base": "web",
-                               "module": "batch",
-                               "type": "brightcove",
-                               "vid": vid_id
-                            }
-
-                        response = requests.get(url, headers=headers, params=params)
-                        stoken = response.json()["data"]["token"]
                         
-                        link = bc_url + video_link + "/master.m3u8?bcov_auth=" + stoken
+                    elif lessonExt == 'youtube':
+                        link = "https://www.youtube.com/embed/"+lessonUrl
                         fuck += f"{lesson_name}: {link}\n"
-                        
-                    else:
-                        link = "https://www.youtube.com/embed/"+video_link
-                        fuck += "{lesson_name}: {link}\n"
             
                 with open(f"{batch_name}{name}.txt", 'a') as f:
                     f.write(f"{fuck}")
