@@ -23,41 +23,37 @@ bc_hdr = {"BCOV-POLICY": BCOV_POLICY}
 
 @app.on_message(filters.command(["cw"]))
 async def khan_login(_, message):
-    editable = await message.reply_text("Send ID & Password in this manner otherwise bot will not respond.\n\nSend like this:-  ID*Password")
-
+    input1 = await app.ask(message.chat.id, text="Send ID & Password in this manner otherwise bot will not respond.\n\nSend like this:-  ID*Password")
     login_url = "https://elearn.crwilladmin.com/api/v3/login-other"
-    input1 = await _.listen(editable.chat.id)
     raw_text = input1.text
 
-    headers = {
-      "Host": "elearn.crwilladmin.com",
-      "origintype": "web",
-      "accept": "application/json",
-      "content-type": "application/json; charset=utf-8",
-      "accept-encoding": "gzip",
-      "user-agent": "okhttp/3.9.1"
-    }
-
-    data = {
-      "deviceType": "web",
-      "password": "",
-      "deviceModel": "chrome",
-      "deviceVersion": "Chrome+119",
-      "email": ""
-    }
-    
     if "*" in raw_text:
-        data["email"] = raw_text.split("*")[0]
-        data["password"] = raw_text.split("*")[1]
+        headers = {
+            "Host": "elearn.crwilladmin.com",
+            "origintype": "web",
+            "accept": "application/json",
+            "content-type": "application/json; charset=utf-8",
+            "accept-encoding": "gzip",
+            "user-agent": "okhttp/3.9.1"
+        }
+
+        email = raw_text.split("*")[0]
+        passw = raw_text.split("*")[1]
+
+        data = {
+          "deviceType": "web",
+          "password": passw,
+          "deviceModel": "chrome",
+          "deviceVersion": "Chrome+119",
+          "email": email
+       }
         
-        response = requests.post(login_url, headers=headers, data=data)
-        
-        data = response.json() #test
-        await message.reply(data)
+        response = requests.post(login_url, headers=headers, data=data) 
+        data = response.json()
+
         if response.status_code == 200:
-            data = response.json()
             token = data["data"]["token"]
-            await editable.edit(f"**Login Successful**\n\n{token}")
+            await message.reply_text(f"**Login Successful**\n\n{token}")
         else:
             await message.reply_text("Go back to response")
                             
@@ -79,21 +75,18 @@ async def khan_login(_, message):
     batch_url = "https://elearn.crwilladmin.com/api/v3/my-batch"
     response = requests.get(batch_url, headers=headers)
     data = response.json()
-    print(data)
     topicid = data["data"]["batchData"]
     
     FFF = "**BATCH-ID - BATCH NAME - INSTRUCTOR**\n\n"
     for data in topicid:       
         FFF += f"`{data['id']}`  - `{data['batchName']}` \n{data['instructorName']}\n\n"
        
-    await editable.edit(f"HERE IS YOUR BATCH\n\n{FFF}")
-    editable1= await message.reply_text("**Now send the Batch ID to Download**")
-    input2 = message = await _.listen(editable1.chat.id)
+    await message.reply_text(f"HERE IS YOUR BATCH\n\n{FFF}")
+    input2 = await app.ask("**Now send the Batch ID to Download**")
     raw_text2 = input2.text
     topic_url = "https://elearn.crwilladmin.com/api/v3/batch-topic/"+raw_text2+"?type=class"
     response = requests.get(topic_url, headers=headers)
     topic_data = response.json()
-    print(data)
     batch_data = topic_data['data']['batch_topic']
     name = topic_data["data"]["batch_detail"]["name"]
     
@@ -106,8 +99,7 @@ async def khan_login(_, message):
         BBB += f"{topic_id} -  {topic_name} \n\n"
 
     await message.reply_text(f"Batches details of {name}\n\n{BBB}")
-    editable = await message.reply_text(f"Now send the **Topic IDs** to Download\n\nSend like this **1&2&3&4** so on\nor copy paste or edit **below ids** according to you :\n\n**Enter this to download full batch :-**\n`{id_num}`")    
-    input3 : message = await _.listen(editable.chat.id)
+    input3 = await app.ask(message.chat.id, text=f"Now send the **Topic IDs** to Download\n\nSend like this **1&2&3&4** so on\nor copy paste or edit **below ids** according to you :\n\n**Enter this to download full batch :-**\n`{id_num}`")    
     raw_text3 = input3.text
     
     prog = await message.reply_text("**Extracting Videos Links Please Wait  📥 **")
