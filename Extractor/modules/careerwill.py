@@ -115,6 +115,7 @@ async def career_will(_, message):
             batch_class = details_list["classes"]
             
             batch_class.reverse()
+            await message.reply_text(batch_class)
             
             
             try:
