@@ -86,10 +86,13 @@ async def khan_login(_, message):
         response = requests.get(url, headers=headers)
         data = response.json()
         
-        for dat in data:
+        videos = data.get('videos', [])
+
+        for video in videos: 
             try:
-                class_title = dat["name"]
-                class_url = dat["video_url"]
+                class_title = video.get('name'))
+                class_url = video.get('video_url'))
+                
                 with open(f"{mm}-test.txt", 'a') as f:
                     f.write(f"{class_title}: {class_url}\n")
             except KeyError:
