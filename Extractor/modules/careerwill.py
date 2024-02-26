@@ -104,7 +104,7 @@ async def career_will(_, message):
         for x in range(0,len(num_id)):
             id_text = num_id[x]
         
-            details_url = "https://elearn.crwilladmin.com/api/v5/batch-detail/"+raw_text2+"?topicId="+id_text
+            details_url = "https://elearn.crwilladmin.com/api/v3/batch-detail/"+raw_text2+"?topicId="+id_text
             response = requests.get(details_url, headers=headers)
             data = response.json()
             
@@ -120,11 +120,11 @@ async def career_will(_, message):
                     vid_id = data['id']
                     lesson_name = data['lessonName']
                     lessonExt = data['lessonExt']
-                    url = "https://elearn.crwilladmin.com/api/v5/class-detail/"+vid_id
+                    url = "https://elearn.crwilladmin.com/api/v3/class-detail/"+vid_id
                     lessonUrl = requests.get(url, headers=headers).json()['data']['class_detail']['lessonUrl']
                     
                     if lessonExt == 'brightcove':             
-                        url = "https://elearn.crwilladmin.com/api/v5/livestreamToken"
+                        url = "https://elearn.crwilladmin.com/api/v3/livestreamToken"
                         params = {
                                "base": "web",
                                "module": "batch",
