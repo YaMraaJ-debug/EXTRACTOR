@@ -22,7 +22,7 @@ def decrypt_data(encoded_data):
     return decrypted_data.decode('utf-8')
 
 async def appex_down(app, message, api, raw_text2, fuk, batch_name, prog):
-    vt + ""
+    vt = ""
     try:
         xx = fuk.split('&')
         for v in range(len(xx)):
