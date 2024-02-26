@@ -101,8 +101,17 @@ async def khan_login(_, message):
         for x in range(0, len(num_id)):
             id_text = num_id[x]
 
+            hdr2 = {
+                "Host": "elearn.crwilladmin.com",
+                "Origintype": "web",
+                "Usertype": "2",
+                "Token": token,
+                "Accept-Encoding": "gzip, deflate, br, zstd",
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+            }
+
             details_url = "https://elearn.crwilladmin.com/api/v5/batch-detail/" + raw_text2 + "?topicId=" + id_text
-            response = requests.get(details_url, headers=headers)
+            response = requests.get(details_url, headers=hdr2)
             response.raise_for_status()  # Raise an error if the request was unsuccessful
             data = response.json()
 
