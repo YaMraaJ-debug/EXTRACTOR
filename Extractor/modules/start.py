@@ -4,7 +4,7 @@ from pyrogram import filters
 from Extractor import app
 from Extractor.core import script
 from pyrogram.types import CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton
-
+from Extractor.modules.appex import appex_txt
 
 
 # ------------------------------------------------------------------------------- #
