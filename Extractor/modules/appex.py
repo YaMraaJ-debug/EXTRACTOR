@@ -2,11 +2,13 @@ import json
 import os
 import requests
 from pyrogram import filters
+from pyrogram.types import Message
 from pyromod import listen
 import cloudscraper
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import unpad
 from base64 import b64decode
+import config
 from Extractor import app
 
 
@@ -74,7 +76,6 @@ async def appex_txt(app, message, api, name):
     output0 = json.loads(html)
     subjID = output0["data"]
     subjID_data = output0["data"]
-    
     cool = ""
     fuk = ""
     for sub in subjID:
@@ -82,7 +83,6 @@ async def appex_txt(app, message, api, name):
         fuk += f"{subjid}&"
 
     vt = ""
-    sup = await message.reply_text("Extracting Videos Links Please Wait  📥")
     try:
         xx = fuk.split('&')
         for v in range(0,len(xx)):
@@ -159,10 +159,11 @@ async def appex_txt(app, message, api, name):
         with open(f'{mm}.txt', 'a') as f:
             f.write(f"{vt}")
         await app.send_document(message.chat.id, document=f"{mm}.txt", caption=cap)
-        await sup.delete()
         file_path = f"{mm}.txt"
         os.remove(file_path)
 
     except Exception as e:
         await message.reply_text(str(e))
     await message.reply_text("Done")
+
+
