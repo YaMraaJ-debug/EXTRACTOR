@@ -268,7 +268,7 @@ async def handle_callback(_, query):
     elif query.data=="careerwill_":
         await career_will(app, query.message)
   
-    elif query.data=="khan_"
+    elif query.data=="khan_":
         await khan_login(app, query.message)
 
     elif query.data=="ss_maker":     
