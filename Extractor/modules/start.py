@@ -246,82 +246,146 @@ async def handle_callback(_, query):
         await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
 
 
-
+    elif query.data=="classplus_":     
+        await query.answer((script.CLASSPLUS_TXT), show_alert=True)
   
   
     elif query.data=="ss_maker":     
-        await query.answer((script.SSC_MAKER_TXT), show_alert=True)
+        api = "sscmakerexampreparationapi.classx.co.in"
+        name = "SSC Makers"
+        await appex_txt(app, query.message, api, name)
     elif query.data=="perfect_acc":     
-        await query.answer((script.PERFECT_ACADEMY_TXT), show_alert=True)
-    elif query.data=="classplus_":     
-        await query.answer((script.CLASSPLUS_TXT), show_alert=True)
+        api = "perfectionacademyapi.appx.co.in"
+        name = "Perfection Academy"
+        await appex_txt(app, query.message, api, name)
     elif query.data=="e1_coaching":     
-        await query.answer((script.E1_COACHING_TXT), show_alert=True)
+        api = "e1coachingcenterapi.classx.co.in"
+        name = "e1 coaching"
+        await appex_txt(app, query.message, api, name)
     elif query.data=="samyak_ras":     
-        await query.answer((script.SAMYAK_RAS_TXT), show_alert=True)
+        api = "samyakapi.classx.co.in"
+        name = "Samyak"
+        await appex_txt(app, query.message, api, name)
     elif query.data=="vj_education":     
-        await query.answer((script.VJ_EDUCATION_TXT), show_alert=True)
+        api = "vjeducationapi.appx.co.in"
+        name = "VJ Education"
+        await appex_txt(app, query.message, api, name)
     elif query.data=="gyan_bindu":     
-        await query.answer((script.GYAN_BINDU_TXT), show_alert=True)
+        api = "gyanbinduapi.appx.co.in"
+        name = "Gyan Bindu"
+        await appex_txt(app, query.message, api, name)
     elif query.data=="dhananjay_ias":     
-        await query.answer((script.DHANANJAY_TXT), show_alert=True)
+        api = "dhananjayiasacademyapi.classx.co.in"
+        name = "Dhananjay IAS"
+        await appex_txt(app, query.message, api, name)
     elif query.data=="think_ssc":     
-        await query.answer((script.THINK_SSC_TXT), show_alert=True)
+        api = "thinksscapi.classx.co.in"
+        name = "Think SSC"
+        await appex_txt(app, query.message, api, name)
     elif query.data=="Ashish_lec":     
-        await query.answer((script.ASHISH_SING_LEC_TXT), show_alert=True)
+        api = "ashishsinghlecturesapi.classx.co.in"
+        name = "Ashish Singh"
+        await appex_txt(app, query.message, api, name)
     elif query.data=="tutors_adda":     
-        await query.answer((script.TUTORS_ADDA_TXT), show_alert=True)
+        api = "tutorsaddaapi.classx.co.in"
+        name = "Tutors Adda"
+        await appex_txt(app, query.message, api, name)
     elif query.data=="nimisha_bansal":     
-        await query.answer((script.NIMISHA_BANSAL_TXT), show_alert=True)
+        api = "nimishabansalapi.appx.co.in"
+        name = "Nimisha Bansal"
+        await appex_txt(app, query.message, api, name)
     elif query.data=="sachin_acc":     
-        await query.answer((script.SACHIN_ACADEMY_TXT), show_alert=True)
+        api = "sachinacademyapi.classx.co.in"
+        name = "Sachin Academy"
+        await appex_txt(app, query.message, api, name)
     elif query.data=="acharya_classes":     
-        await query.answer((script.ACHARYA_CLASSES_TXT), show_alert=True)
+        api = "acharyaclassesapi.classx.co.in"
+        name = "Acharya Classes"
+        await appex_txt(app, query.message, api, name)
     elif query.data=="target_plus":     
-        await query.answer((script.TARGET_PLUS_TXT), show_alert=True)
+        api = "targetpluscoachingapi.classx.co.in"
+        name = "Target Plus Coaching"
+        await appex_txt(app, query.message, api, name)
     elif query.data=="rwa_":     
-        await query.answer((script.RWA_TXT), show_alert=True)
+        api = "rozgarapinew.teachx.in"
+        name = "Rojgar with Ankit"
+        await appex_txt(app, query.message, api, name)
     elif query.data=="winners_":     
-        await query.answer((script.WINNERS_TXT), show_alert=True)
+        api = "winnersinstituteapi.classx.co.in"
+        name = "Winners"
+        await appex_txt(app, query.message, api, name)
     elif query.data=="ocean_gurukul":     
-        await query.answer((script.OCEAN_GURUKUL_TXT), show_alert=True)
+        api = "oceangurukulsapi.classx.co.in"
+        name = "Ocean Gurukul"
+        await appex_txt(app, query.message, api, name)
     elif query.data=="mg_concept":     
-        await query.answer((script.MG_CONCEPT_TXT), show_alert=True)
+        api = "mgconceptapi.classx.co.in"
+        name = "MG Concept"
+        await appex_txt(app, query.message, api, name)
     elif query.data=="yodha_":     
-        await query.answer((script.YODHA_TXT), show_alert=True)
- 
+        api = "yodhaappapi.classx.co.in"
+        name = "Yodha"
+        await appex_txt(app, query.message, api, name)
     elif query.data=="note_book":     
-        await query.answer((script.NOTE_BOOK_TXT), show_alert=True)
+        api = "notebookapi.classx.co.in"
+        name = "Note Book"
+        await appex_txt(app, query.message, api, name)
     elif query.data=="uc_live":     
-        await query.answer((script.UC_LIVE_TXT), show_alert=True)
+        api = "ucliveapi.classx.co.in"
+        name = "UC LIVE"
+        await appex_txt(app, query.message, api, name)
     elif query.data=="space_ias":     
-        await query.answer((script.SPACE_IAS_TXT), show_alert=True)
+        api = "spaceiasapi.classx.co.in"
+        name = "Space IAS"
+        await appex_txt(app, query.message, api, name)
     elif query.data=="rg_vikramjeet":     
         await query.answer((script.RG_VIKRAMJEET_TXT), show_alert=True)
     elif query.data=="vidya_bihar":     
-        await query.answer((script.VIDYA_BIHAR_TXT), show_alert=True)
+        api = "vidyabiharapi.teachx.in"
+        name = "Vidya Vihar"
+        await appex_txt(app, query.message, api, name)
     elif query.data=="aman_sir":     
-        await query.answer((script.AMAN_SIR_TXT), show_alert=True)
+        api = "amansirenglishapi.classx.co.in"
+        name = "Aman Sir English"
+        await appex_txt(app, query.message, api, name)
     elif query.data=="nirman_ias":     
-        await query.answer((script.NIRMAN_IAS_TXT), show_alert=True)
+        api = "nirmaniasapi.classx.co.in"
+        name = "Nirman IAS"
+        await appex_txt(app, query.message, api, name)
     elif query.data=="permar_ssc":     
         await query.answer((script.PERMAR_SSC_TXT), show_alert=True)
     elif query.data=="neo_spark":     
-        await query.answer((script.NEO_SPARK_TXT), show_alert=True)
+        api = "neosparkapi.classx.co.in"
+        name = "Neo Spark"
+        await appex_txt(app, query.message, api, name)
     elif query.data=="md_classes":     
-        await query.answer((script.MD_CLASSES_TXT), show_alert=True)
+        api = "mdclassesapi.classx.co.in"
+        name = "MD Classes"
+        await appex_txt(app, query.message, api, name)
     elif query.data=="ng_learners":     
-        await query.answer((script.NG_LEARNERS_TXT), show_alert=True)
+        api = "nglearnersapi.classx.co.in"
+        name = "NG Learners"
+        await appex_txt(app, query.message, api, name)
     elif query.data=="ssc_gurukul":     
-        await query.answer((script.SSC_GURUKUL_TEXT), show_alert=True)
+        api = "ssggurukulapi.appx.co.in"
+        name = "SSC Gurukul"
+        await appex_txt(app, query.message, api, name)
     elif query.data=="army_study":     
-        await query.answer((script.ARMY_STUDY_TXT), show_alert=True)
+        api = "armystudyliveclassesapi.classx.co.in"
+        name = "Army Study Live"
+        await appex_txt(app, query.message, api, name)
     elif query.data=="sankalp_":     
-        await query.answer((script.SANKALP_TXT), show_alert=True)
+        api = "sankalpclassesapi.classx.co.in"
+        name = "Sankalp"
+        await appex_txt(app, query.message, api, name)
     elif query.data=="target_upsc":     
-        await query.answer((script.TARGET_UPSC_TXT), show_alert=True)
+        api = "targetupscapi.classx.co.in"
+        name = "Target UPSC"
+        await appex_txt(app, query.message, api, name)
     elif query.data=="gk_cafe":     
-        await query.answer((script.GK_CAFE_TXT), show_alert=True)
+        api = "gkcafeapi.classx.co.in"
+        name = "GK Cafe"
+        await appex_txt(app, query.message, api, name)
     
 
 
