@@ -81,7 +81,7 @@ async def khan_login(_, message):
     xv = bat_id.split('&')
     full = ""
     for y in range(0,len(xv)):
-        t =xv[y]
+        t =xv[y].strip()
         
         url = "https://khanglobalstudies.com/api/lessons/"+t  
         response = requests.get(url, headers=headers)
