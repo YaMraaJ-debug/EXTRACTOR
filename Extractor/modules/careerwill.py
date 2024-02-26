@@ -23,42 +23,41 @@ bc_hdr = {"BCOV-POLICY": BCOV_POLICY}
 
 @app.on_message(filters.command(["cw"]))
 async def khan_login(_, message):
-    input1 = await app.ask(message.chat.id, text="Send ID & Password in this manner otherwise bot will not respond.\n\nSend like this:-  ID*Password")
-    login_url = "https://elearn.crwilladmin.com/api/v3/login-other"
-    raw_text = input1.text
+    try:
+        input1 = await app.ask(message.chat.id, text="Send ID & Password in this manner otherwise bot will not respond.\n\nSend like this:-  ID*Password")
+        login_url = "https://elearn.crwilladmin.com/api/v3/login-other"
+        raw_text = input1.text
 
-    if "*" in raw_text:
-        headers = {
-            "Host": "elearn.crwilladmin.com",
-            "origintype": "web",
-            "accept": "application/json",
-            "content-type": "application/json; charset=utf-8",
-            "accept-encoding": "gzip",
-            "user-agent": "okhttp/3.9.1"
-        }
+        if "*" in raw_text:
+            headers = {
+                "Host": "elearn.crwilladmin.com",
+                "origintype": "web",
+                "accept": "application/json",
+                "content-type": "application/json; charset=utf-8",
+                "accept-encoding": "gzip",
+                "user-agent": "okhttp/3.9.1"
+            }
 
-        email = raw_text.split("*")[0]
-        passw = raw_text.split("*")[1]
+            email, password = raw_text.split("*")
+            data = {
+                "deviceType": "web",
+                "password": password,
+                "deviceModel": "chrome",
+                "deviceVersion": "Chrome+119",
+                "email": email
+            }
 
-        data = {
-          "deviceType": "web",
-          "password": passw,
-          "deviceModel": "chrome",
-          "deviceVersion": "Chrome+119",
-          "email": email
-       }
-        
-        response = requests.post(login_url, headers=headers, data=data) 
-        data = response.json()
-
-        if response.status_code == 200:
-            token = data["data"]["token"]
-            await message.reply_text(f"**Login Successful**\n\n{token}")
+            response = requests.post(login_url, headers=headers, json=data)
+            if response.status_code == 200:
+                token = response.json()["data"]["token"]
+                await message.reply_text(f"**Login Successful**\n\n{token}")
+            else:
+                await message.reply_text("Failed to login")
         else:
-            await message.reply_text("Go back to response")
-                            
-    else:
-        token = raw_text        
+            token = raw_text
+    except Exception as e:
+        await message.reply_text(f"An error occurred: {e}")
+  
 
     
     headers = {
