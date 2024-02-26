@@ -73,7 +73,7 @@ async def khan_login(_, message):
     msg = await message.reply_text("Prepared your course id")
     bat_id = ""
     for data in response2.json():
-        baid = f"{data['_id']}&"
+        baid = f"{data['id']}&"
         bat_id +=baid
         
     print(bat_id)    
