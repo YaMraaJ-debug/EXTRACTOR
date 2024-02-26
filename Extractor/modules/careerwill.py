@@ -15,7 +15,7 @@ from config import SUDO_USERS
 
 ACCOUNT_ID = "6206459123001"
 BCOV_POLICY = "BCpkADawqM1474MvKwYlMRZNBPoqkJY-UWm7zE1U769d5r5kqTjG0v8L-THXuVZtdIQJpfMPB37L_VJQxTKeNeLO2Eac_yMywEgyV9GjFDQ2LTiT4FEiHhKAUvdbx9ku6fGnQKSMB8J5uIDd"
-bc_url = f"https://edge.api.brightcove.com/playback/v1/accounts/{ACCOUNT_ID}/videos"
+bc_url = f"https://edge.api.brightcove.com/playback/v1/accounts/{ACCOUNT_ID}/videos/"
 bc_hdr = {"BCOV-POLICY": BCOV_POLICY}
 
 
@@ -95,7 +95,7 @@ async def khan_login(_, message):
         topic_id = data['id']
         topic_name = data['topicName']
         id_num += f"{topic_id}&"
-        BBB += f"{topic_id} -  {topic_name} \n\n"
+        BBB += f"`{topic_id}` -  {topic_name} \n\n"
 
     await message.reply_text(f"Batches details of {name}\n\n{BBB}")
     input3 = await app.ask(message.chat.id, text=f"Now send the **Topic IDs** to Download\n\nSend like this **1&2&3&4** so on\nor copy paste or edit **below ids** according to you :\n\n**Enter this to download full batch :-**\n`{id_num}`")    
@@ -114,7 +114,6 @@ async def khan_login(_, message):
             
             details_list = data['data']['class_list']
             batch_name = details_list['batchName']
-            batch_descript = details_list['batchDescription']
             batch_class = details_list['classes']
             
             batch_class.reverse()
@@ -124,26 +123,19 @@ async def khan_login(_, message):
                 for data in batch_class:
                     vid_id = data['id']
                     lesson_name = data['lessonName']
-                    video_link = data['lessonUrl']
-                    
-                    
-                    if str(video_link).startswith("62") or str(video_link).startswith("63"):
-                        
-                        url = "https://elearn.crwilladmin.com/api/v5/livestreamToken"
-                        params = {
-                               "base": "web",
-                               "module": "batch",
-                               "type": "brightcove",
-                               "vid": vid_id
-                            }
+                    lessonExt = data['lessonExt']
 
-                        response = requests.get(url, headers=headers, params=params)
-                        stoken = response.json()['data']['token']
-
-                        link = bc_url + video_link + "/master.m3u8?bcov_auth=" + stoken
-                        print(link)               
+                    url1 = f"https://elearn.crwilladmin.com/api/v5/class-detail/{vid_id}"
+                    lessonUrl = requests.get(url1, headers=headers).json()['data']['class_detail']['lessonUrl']
+                   
+                    if lessonExt == 'brightcove':    
+                        url2 = f"https://elearn.crwilladmin.com/api/v5/livestreamToken?base=web&module=batch&type=brightcove&vid={vid_id}"
+                        token = requests.get(url2, headers=headers).json()['data']['token']
+                        link = bc_url + lessonUrl + "/master.m3u8?bcov_auth=" + token 
+                    elif lessonExt == 'youtube':
+                        link = "https://www.youtube.com/embed/"+lessonUrl          
                     else:
-                        link = "https://www.youtube.com/embed/"+video_link
+                        link = "https://www.youtube.com/embed/"+lessonUrl
             
                     with open(f"{batch_name}{name}.txt", 'a') as f:
                         f.write(f"{lesson_name}: {link}\n")
