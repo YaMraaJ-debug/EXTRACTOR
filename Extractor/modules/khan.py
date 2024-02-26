@@ -82,7 +82,7 @@ async def khan_login(_, message):
     for y in range(0,len(xv)):
         t =xv[y].strip()
         
-        url = "https://khanglobalstudies.com/api/lessons/1"+t  
+        url = "https://khanglobalstudies.com/api/lessons/"+t  
         response = requests.get(url, headers=headers)  
         for dat in reversed(response.json()):
             try:
