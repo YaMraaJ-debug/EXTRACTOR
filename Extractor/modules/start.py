@@ -6,6 +6,7 @@ from Extractor.core import script
 from pyrogram.types import CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton
 from Extractor.modules.appex import appex_txt
 from Extractor.modules.classplus import classplus_txt
+from Extractor.modules.pw import pw_mobile, pw_token
 
 # ------------------------------------------------------------------------------- #
 
