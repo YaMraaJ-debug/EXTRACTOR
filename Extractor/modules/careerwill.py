@@ -76,9 +76,8 @@ async def career_will(_, message):
     for data in topicid:       
         FFF += f"`{data['id']}`  - `{data['batchName']}` \n{data['instructorName']}\n\n"
        
-    await editable.edit(f"HERE IS YOUR BATCH\n\n{FFF}")
-    editable1= await message.reply_text("**Now send the Batch ID to Download**")
-    input2 = message = await _.listen(editable1.chat.id)
+    await message.reply_text(f"HERE IS YOUR BATCH\n\n{FFF}")
+    input2 = await app.ask(message.chat.id, text="**Now send the Batch ID to Download**")
     raw_text2 = input2.text
     topic_url = "https://elearn.crwilladmin.com/api/v3/batch-topic/"+raw_text2+"?type=class"
     response = requests.get(topic_url, headers=headers)
@@ -96,8 +95,7 @@ async def career_will(_, message):
         BBB += f"{topic_id} -  {topic_name} \n\n"
 
     await message.reply_text(f"Batches details of {name}\n\n{BBB}")
-    editable = await message.reply_text(f"Now send the **Topic IDs** to Download\n\nSend like this **1&2&3&4** so on\nor copy paste or edit **below ids** according to you :\n\n**Enter this to download full batch :-**\n`{id_num}`")    
-    input3 : message = await _.listen(editable.chat.id)
+    input3 = await app.ask(message.chat.id, text=f"Now send the **Topic IDs** to Download\n\nSend like this **1&2&3&4** so on\nor copy paste or edit **below ids** according to you :\n\n**Enter this to download full batch :-**\n`{id_num}`")    
     raw_text3 = input3.text
     
     prog = await message.reply_text("**Extracting Videos Links Please Wait  📥 **")
