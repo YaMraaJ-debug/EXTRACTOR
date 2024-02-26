@@ -21,7 +21,7 @@ async def khan_login(_, message):
         input1 = await app.ask(message.chat.id, text="Send ID & Password in this manner otherwise bot will not respond.\n\nSend like this:-  ID*Password")
         login_url = "https://elearn.crwilladmin.com/api/v3/login-other"
         raw_text = input1.text
-
+        s = requests.Session()
         if "*" in raw_text:
             headers = {
                 "Host": "elearn.crwilladmin.com",
@@ -41,7 +41,7 @@ async def khan_login(_, message):
                 "email": email
             }
 
-            response = requests.post(login_url, headers=headers, json=data)
+            response = s.post(login_url, headers=headers, json=data)
             response.raise_for_status()  # Raise an error if the request was unsuccessful
             token = response.json()["data"]["token"]
             await message.reply_text(f"**Login Successful**\n\n`{token}`")
@@ -63,7 +63,7 @@ async def khan_login(_, message):
 
         await input1.delete(True)
         batch_url = "https://elearn.crwilladmin.com/api/v3/my-batch"
-        response = requests.get(batch_url, headers=headers)
+        response = s.get(batch_url, headers=headers)
         response.raise_for_status()  # Raise an error if the request was unsuccessful
         data = response.json()
         topicid = data['data']['batchData']
@@ -76,7 +76,7 @@ async def khan_login(_, message):
         input2 = await app.ask(message.chat.id, text="**Now send the Batch ID to Download**")
         raw_text2 = input2.text
         topic_url = "https://elearn.crwilladmin.com/api/v3/batch-topic/" + raw_text2 + "?type=class"
-        response = requests.get(topic_url, headers=headers)
+        response = s.get(topic_url, headers=headers)
         response.raise_for_status()  # Raise an error if the request was unsuccessful
         topic_data = response.json()
         batch_data = topic_data['data']['batch_topic']
@@ -111,7 +111,7 @@ async def khan_login(_, message):
             }
 
             details_url = "https://elearn.crwilladmin.com/api/v3/batch-detail/"+raw_text2+"?topicId="+id_text
-            response = requests.get(details_url, headers=headers)
+            response = s.get(details_url, headers=headers)
             data = response.json()
 
             details_list = data['data']['class_list']
@@ -127,12 +127,12 @@ async def khan_login(_, message):
                 lessonExt = Class['lessonExt']
 
                 url1 = "https://elearn.crwilladmin.com/api/v3/class-detail/"+vid_id
-                data1 = requests.get(url1, headers=headers).json()
+                data1 = s.get(url1, headers=headers).json()
                 lessonUrl = data1['data']['class_detail']['lessonUrl']
 
                 if lessonExt == 'brightcove':
                     url2 = f"https://elearn.crwilladmin.com/api/v5/livestreamToken?base=web&module=batch&type=brightcove&vid={vid_id}"
-                    data3 = requests.get(url2, headers=headers).json()
+                    data3 = s.get(url2, headers=headers).json()
                     token = data3['data']['token']
                     link = bc_url + lessonUrl + "/master.m3u8?bcov_auth=" + token
                 elif lessonExt == 'youtube':
