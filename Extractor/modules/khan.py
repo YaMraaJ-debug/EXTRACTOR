@@ -93,11 +93,11 @@ async def khan_login(_, message):
             try:
                 class_title = video.get('name')
                 class_url = video.get('video_url')
-                fuck += {class_title}: {class_url}\n
+                fuck += f"{class_title}: {class_url}\n"
             except KeyError:
                 pass
         
-    full += fuck
+        full += f"{fuck}"
     with open(f"{mm}-test.txt", 'a') as f:
         f.write(f"{full}")
 
