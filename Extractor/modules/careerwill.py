@@ -147,7 +147,7 @@ async def career_will(_, message):
                     
             except Exception as e:
                 await message.reply_text(str(e))
-            c_txt = f"App: `CareerWill`\n\n`{batch_name}`"
+            c_txt = f"**App Name: CareerWill\n\n{batch_name}**"
         await message.reply_document(document=f"{batch_name}{name}.txt", caption=c_txt)
         await prog.delete()
         os.remove(f"{batch_name}{name}.txt")
