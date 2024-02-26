@@ -353,7 +353,9 @@ async def handle_callback(_, query):
         name = "Nirman IAS"
         await appex_txt(app, query.message, api, name)
     elif query.data=="permar_ssc":     
-        await query.answer((script.PERMAR_SSC_TXT), show_alert=True)
+        api = "parmaracademyapi.classx.co.in"
+        name = "Parmar Academy"
+        await appex_txt(app, query.message, api, name)
     elif query.data=="neo_spark":     
         api = "neosparkapi.classx.co.in"
         name = "Neo Spark"
