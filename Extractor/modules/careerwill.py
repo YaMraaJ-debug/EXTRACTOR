@@ -126,12 +126,14 @@ async def khan_login(_, message):
                 lesson_name = Class['lessonName']
                 lessonExt = Class['lessonExt']
 
-                url1 = f"https://elearn.crwilladmin.com/api/v3/class-detail/{vid_id}"
-                lessonUrl = requests.get(url1, headers=headers).json()['data']['class_detail']['lessonUrl']
+                url1 = "https://elearn.crwilladmin.com/api/v3/class-detail/"+vid_id
+                data1 = requests.get(url1, headers=headers).json()
+                lessonUrl = data1['data']['class_detail']['lessonUrl']
 
                 if lessonExt == 'brightcove':
                     url2 = f"https://elearn.crwilladmin.com/api/v5/livestreamToken?base=web&module=batch&type=brightcove&vid={vid_id}"
-                    token = requests.get(url2, headers=headers).json()['data']['token']
+                    data3 = requests.get(url2, headers=headers).json()
+                    token = data3['data']['token']
                     link = bc_url + lessonUrl + "/master.m3u8?bcov_auth=" + token
                 elif lessonExt == 'youtube':
                     link = "https://www.youtube.com/embed/" + lessonUrl
