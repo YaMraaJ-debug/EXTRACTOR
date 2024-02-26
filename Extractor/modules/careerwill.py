@@ -115,6 +115,7 @@ async def career_will(_, message):
             batch_class = details_list["classes"]
             
             batch_class.reverse()
+            fuck = ""
             try:
                 for data in batch_class:
                     vid_id = data["id"]
@@ -135,7 +136,7 @@ async def career_will(_, message):
                         stoken = response.json()["data"]["token"]
 
                         link = bc_url + video_link + "/master.m3u8?bcov_auth=" + stoken
-                           
+                        fuck += f"{lesson_name}: {link}\n"   
 
                     elif video_link.startswith("63"):             
                         url = "https://elearn.crwilladmin.com/api/v5/livestreamToken"
@@ -150,13 +151,14 @@ async def career_will(_, message):
                         stoken = response.json()["data"]["token"]
                         
                         link = bc_url + video_link + "/master.m3u8?bcov_auth=" + stoken
-                        
+                        fuck += f"{lesson_name}: {link}\n"
                         
                     else:
                         link = "https://www.youtube.com/embed/"+video_link
+                        fuck += "{lesson_name}: {link}\n"
             
                 with open(f"{batch_name}{name}.txt", 'a') as f:
-                    f.write(f"{lesson_name}: {link}\n")
+                    f.write(f"{fuck}")
                     
             except Exception as e:
                 await message.reply_text(str(e))
