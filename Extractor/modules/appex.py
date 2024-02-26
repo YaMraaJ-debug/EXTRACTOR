@@ -21,7 +21,7 @@ def decrypt_data(encoded_data):
     decrypted_data = unpad(cipher.decrypt(decoded_data), AES.block_size)
     return decrypted_data.decode('utf-8')
 
-async def appex_down(app, message, hdr1, api, raw_text2, fuk, batch_name, prog):
+async def appex_down(app, message, hdr1, api, raw_text2, fuk, batch_name, name, prog):
     vt = ""
     try:
         xx = fuk.split('&')
@@ -159,5 +159,5 @@ async def appex_txt(app, message, api, name):
         fuk += f"{subjid}&"
 
     prog = await message.reply_text("**Extracting Videos Links Please Wait  📥 **") 
-    thread = threading.Thread(target=lambda: asyncio.run(appex_down(app, message, hdr1, api, raw_text2, fuk, batch_name, prog)))
+    thread = threading.Thread(target=lambda: asyncio.run(appex_down(app, message, hdr1, api, raw_text2, fuk, batch_name, name, prog)))
     thread.start()
