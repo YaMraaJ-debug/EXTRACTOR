@@ -131,6 +131,7 @@ async def career_will(_, message):
     response = requests.get(topic_url, headers=headers)
     topic_data = response.json()
     batch_data = topic_data['data']['batch_topic']
+    name = topic_data["data"]["batch_detail"]["name"]
 
     BBB = "**TOPIC-ID - TOPIC - VIDEOS**\n\n"
     id_num = ""
