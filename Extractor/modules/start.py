@@ -10,8 +10,8 @@ from Extractor.modules.pw import pw_mobile, pw_token
 from Extractor.modules.exampur import exampur_txt
 from Extractor.modules.nk import neetkaka_txt
 from Extractor.modules.app_exampur import appexampur_txt
-from Extractor.module.careerwill import career_will
-from Extractor.module.khan import khan_login
+from Extractor.modules.careerwill import career_will
+from Extractor.modules.khan import khan_login
 
 # ------------------------------------------------------------------------------- #
 
