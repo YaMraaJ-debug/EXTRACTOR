@@ -53,6 +53,7 @@ async def khan_login(_, message):
     response = requests.get(course_url, headers=headers)
 
     data = response.json()
+    mm = "Khan-Sir"
     courses = [(course['id'], course['title']) for course in data]
 
     FFF = "BATCH-ID  - BATCH-NAME\n\n"
@@ -69,29 +70,29 @@ async def khan_login(_, message):
     url = "https://khanglobalstudies.com/api/user/courses/"+raw_text3+"/v2-lessons"
     response2 = requests.get(url, headers=headers)
     
-    
+    msg = await message.reply_text("Prepared your course id")
     bat_id = ""
     for data in response2:
         baid=f"{dat['_id']}&"
         bat_id +=baid
         
-    
+    await msg.edit_text("Done your course id\n Now Extracting your course")
     xv = bat_id.split('&')
     for y in range(0,len(xv)):
       t =xv[y].strip()
       url = "https://khanglobalstudies.com/api/lessons/1"+t  
       response = requests.get(url, headers=headers)  
       response.reverse()  
-      for dat in html4:
+      for dat in response:
         try:
-            class_title=(dat["topic"])
-            class_url=dat["url"].replace("d1d34p8vz63oiq", "d3nzo6itypaz07").replace("mpd", "m3u8").strip()
-            cc = f"{dat['topic']}:{dat['url']}"
-            with open(f"{mm}-{batch}.txt", 'a') as f:
+            class_title = dat["name"]
+            class_url = dat["video_url"]
+            with open(f"{mm}-{test}.txt", 'a') as f:
                 f.write(f"{class_title}:{class_url}\n")
         except KeyError:
             pass
-    await m.reply_document(f"{mm}-{batch}.txt")
+    await message.reply_document(f"{mm}-{test}.txt")
+    await msg.delete()
 
 
 
