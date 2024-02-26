@@ -117,6 +117,7 @@ async def career_will(_, message):
     batch_url = "https://elearn.crwilladmin.com/api/v3/my-batch"
     response = requests.get(batch_url, headers=headers)
     data = response.json()
+    print(data)
     topicid = data["data"]["batchData"]
 
     FFF = "**BATCH-ID - BATCH NAME - INSTRUCTOR**\n\n"
@@ -129,6 +130,7 @@ async def career_will(_, message):
     topic_url = "https://elearn.crwilladmin.com/api/v3/batch-topic/" + raw_text2 + "?type=class"
     response = requests.get(topic_url, headers=headers)
     topic_data = response.json()
+    print(data)
     batch_data = topic_data['data']['batch_topic']
     name = topic_data["data"]["batch_detail"]["name"]
 
