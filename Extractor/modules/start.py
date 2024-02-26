@@ -226,9 +226,9 @@ async def handle_callback(_, query):
             )
       
     elif query.data=="c_mode":        
-        api = await app.ask(query.message.chat.id, text="**Send your api\n\n Eg:-** `sscmakerexampreparationapi.classx.co.in`")
+        api = await app.ask(query.message.chat.id, text="**SEND APPX API\n\n✅ Example:\ntcsexamzoneapi.classx.co.in**")
         name = api.split('.')[0]
-        await appex_txt(app, query.message, api, name)
+        await appex_txt(app, query, api, name)
 
       
     elif query.data=="next_1":        
