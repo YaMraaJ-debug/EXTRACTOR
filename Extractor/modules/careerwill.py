@@ -57,7 +57,7 @@ async def careerdl(app, message, headers, raw_text2, raw_text3, prog):
                     link = "https://www.youtube.com/embed/" + lessonUrl
                     fuck += f"{lesson_name}: {link}\n"
 
-            with open(f"{batch_name}{name}.txt", 'a') as f:
+            with open(f"{batch_name}.txt", 'a') as f:
                 f.write(f"{fuck}")
 
         except Exception as e:
