@@ -87,7 +87,7 @@ async def khan_login(_, message):
                 url = "https://khanglobalstudies.com/api/lessons/"+t  
                 response = requests.get(url, headers=headers)
                 data = response.json()
-                data.reverse()
+                
         
                 videos = data.get('videos', [])
                 fuck = ""
