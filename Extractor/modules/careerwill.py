@@ -19,17 +19,47 @@ bc_url = f"https://edge.api.brightcove.com/playback/v1/accounts/{ACCOUNT_ID}/vid
 bc_hdr = {"BCOV-POLICY": BCOV_POLICY}
 
 
-@app.on_message(filters.command(["cw"]) & filters.user(SUDO_USERS))
-async def careerwill_account(_, message):
-    global cancel
-    cancel = False
 
 
-    editable = await message.reply_text("Send **TOKEN** like This this:-  **TOKEN**" )
-    input1: message = await _.listen(editable.chat.id)
+@app.on_message(filters.command(["cw"]))
+async def khan_login(_, message):
+    editable = await message.reply_text("Send ID & Password in this manner otherwise bot will not respond.\n\nSend like this:-  ID*Password")
+
+    login_url = "https://elearn.crwilladmin.com/api/v3/login-other"
+    input1 = await _.listen(editable.chat.id)
     raw_text = input1.text
+
+    headers = {
+      "Host": "elearn.crwilladmin.com",
+      "origintype": "web",
+      "accept": "application/json",
+      "content-type": "application/json; charset=utf-8",
+      "accept-encoding": "gzip",
+      "user-agent": "okhttp/3.9.1"
+    }
+
+    data = {
+      "deviceType": "web",
+      "password": "",
+      "deviceModel": "chrome",
+      "deviceVersion": "Chrome+119",
+      "email": ""
+    }
+
+    data["email"] = raw_text.split("*")[0]
+    data["password"] = raw_text.split("*")[1]
+    await input1.delete(True)
+
+    response = requests.post(login_url, headers=headers, data=data)
+    if response.status_code == 200:
+        data = response.json()
+        token = data["token"]
+        await editable.edit("**Login Successful**")
+    else:
+        await message.reply_text("Go back to response")
+
     token = raw_text
-    print(token)
+    
     headers = {
     "Host": "elearn.crwilladmin.com",
     "origintype": "web",
@@ -37,7 +67,7 @@ async def careerwill_account(_, message):
     "token": raw_text,
     "accept-encoding": "gzip",
     "user-agent": "okhttp/3.9.1"
-}
+    }
 
       
         
