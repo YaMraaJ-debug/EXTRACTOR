@@ -11,13 +11,87 @@ from base64 import b64decode
 import config
 from Extractor import app
 
-
-
-def decrypt_data(encoded_data, key, iv):
+def decrypt_data(encoded_data):
+    key = "638udh3829162018".encode("utf8")
+    iv = "fedcba9876543210".encode("utf8")
     decoded_data = b64decode(encoded_data)
     cipher = AES.new(key, AES.MODE_CBC, iv)
     decrypted_data = unpad(cipher.decrypt(decoded_data), AES.block_size)
     return decrypted_data.decode('utf-8')
+
+async def appex_down(app, message, api, raw_text2, fuk, batch_name, prog):
+    vt + ""
+    try:
+        xx = fuk.split('&')
+        for v in range(len(xx)):
+            f = xx[v]
+            res3 = requests.get(f"https://{api}/get/alltopicfrmlivecourseclass?courseid=" + raw_text2 + "&subjectid=" + f, headers=hdr1)
+            b_data2 = res3.json()['data']
+            vp = ""
+            for data in b_data2:
+                tid = data["topicid"]
+                vp += f"{tid}&"
+
+            vj = ""
+            try:
+                xv = vp.split('&')
+                for y in range(len(xv)):
+                    t = xv[y]
+                    res4 = requests.get(f"https://{api}/get/livecourseclassbycoursesubtopconceptapiv3?topicid=" + t + "&start=-1&courseid=" + raw_text2 + "&subjectid=" + f, headers=hdr1).json()
+                    topicid = res4["data"]
+                    for data in topicid:
+                        tids = (data["Title"])
+                        plinks = [data["pdf_link"]]
+                        dlin = [data['download_links']]
+
+                        idid = f"{tids}"
+                        vs = ""
+                        if plinks:
+                            for plink in plinks:
+                                parts = plink.split(':')
+                                if len(parts) == 2:
+                                    encoded_part, encrypted_part = parts
+                                    bp = decrypt_data(encoded_part)
+                                    vs = f"{bp}"
+                                else:
+                                    print(f"Unexpected format: {plink}")
+                                    vs = "NO PDF LINK"
+
+                        cool2 = ""
+                        if dlin:
+                            dlinks = [link['path'] for link in data['download_links'] if link['quality'] == "720p"]
+                            for dlink in dlinks:
+                                try:
+                                    parts = dlink.split(':')
+                                    if len(parts) == 2:
+                                        encoded_part, encrypted_part = parts
+                                        b = decrypt_data(encoded_part)
+                                        cool2 = f"{b}"
+                                    else:
+                                        print(f"Unexpected format: {dlink}")
+                                        cool2 = "NO DOWNLOAD LINK"
+                                except Exception as e:
+                                    print(f"Error decrypting data: {e}")
+                                    cool2 = "ERROR DECRYPTING LINK"
+
+                        msg = f"{idid} : {cool2}\n{idid} : {vs}\n"
+                        vj += msg
+            except Exception as e:
+                print(str(e))  
+  
+            vt += vj
+
+        mm = batch_name
+        cap = f"**App Name :- {name}\nBatch Name :-** `{batch_name}`"
+        with open(f'{mm}.txt', 'a') as f:
+            f.write(f"{vt}")
+        await app.send_document(message.chat.id, document=f"{mm}.txt", caption=cap)
+        await prog.delete()
+        file_path = f"{mm}.txt"
+        os.remove(file_path)
+        await message.reply_text("Done")
+    except Exception as e:
+        print(str(e))
 
 
 
@@ -82,90 +156,6 @@ async def appex_txt(app, message, api, name):
         subjid = sub["subjectid"]
         fuk += f"{subjid}&"
 
-    vt = ""
     prog = await message.reply_text("**Extracting Videos Links Please Wait  📥 **") 
-    try:
-        xx = fuk.split('&')
-        for v in range(0,len(xx)):
-            f = xx[v]
-            res3 = requests.get(f"https://{api}/get/alltopicfrmlivecourseclass?courseid=" +raw_text2+"&subjectid="+ f, headers=hdr1)
-            b_data2 = res3.json()['data']
-            vp = ""
-            for data in b_data2:
-                tid = data["topicid"]
-                vp += f"{tid}&"
-
-            vj = ""
-            try:
-                xv = vp.split('&')
-                for y in range(0,len(xv)):
-                    t =xv[y]
-                    res4 = requests.get(f"https://{api}/get/livecourseclassbycoursesubtopconceptapiv3?topicid=" + t + "&start=-1&courseid=" + raw_text2 + "&subjectid=" + f,headers=hdr1).json()
-                    topicid = res4["data"]
-
-                    for data in topicid:
-                        tids = (data["Title"])
-                        plinks = [data["pdf_link"]]
-                        dlin = [data['download_links']]
-                        key = "638udh3829162018".encode("utf8")
-                        iv = "fedcba9876543210".encode("utf8")
-
-                        idid = f"{tids}"
-                        if plinks:
-                            for plink in plinks:
-                                parts = plink.split(':')
-                                if len(parts) == 2:
-                                    encoded_part, encrypted_part = parts
-                                    bp = decrypt_data(encoded_part, key, iv)
-                                    vs = f"{bp}"
-                                else:
-                                    print(f"Unexpected format: {plink}")
-                                    vs = "NO PDF LINK"
-#                        if dlin:
-#                            dlinks = [link['path'] for link in data['download_links'] if link['quality'] == f"720p"]
-#                            for dlink in dlinks:
-#                                parts = dlink.split(':')
-#                                if len(parts) == 2:
-#                                    encoded_part, encrypted_part = parts
-#                                    b = decrypt_data(encoded_part, key, iv)
-#                                    cool2 = f"{b}"
-#                                else:
-#                                    print(f"Unexpected format: {dlink}")
-#                                    cool2 = "NO DOWNLOAD LINK"
-                        if dlin:
-                            dlinks = [link['path'] for link in data['download_links'] if link['quality'] == f"720p"]
-                            for dlink in dlinks:
-                                try:
-                                    parts = dlink.split(':')
-                                    if len(parts) == 2:
-                                        encoded_part, encrypted_part = parts
-                                        b = decrypt_data(encoded_part, key, iv)
-                                        cool2 = f"{b}"
-                                    else:
-                                        print(f"Unexpected format: {dlink}")
-                                        cool2 = "NO DOWNLOAD LINK"
-                                except Exception as e:
-                                    print(f"Error decrypting data: {e}")
-                                    cool2 = "ERROR DECRYPTING LINK"
-
-                        msg = f"{idid} : {cool2}\n{idid} : {vs}\n"
-                        vj += msg
-            except Exception as e:
-                print(str(e))  
-  
-            vt += vj
-
-        mm = batch_name
-        cap = f"**App Name :- {name}\nBatch Name :-** `{batch_name}`"
-        with open(f'{mm}.txt', 'a') as f:
-            f.write(f"{vt}")
-        await app.send_document(message.chat.id, document=f"{mm}.txt", caption=cap)
-        await prog.delete()
-        file_path = f"{mm}.txt"
-        os.remove(file_path)
-
-    except Exception as e:
-        await message.reply_text(str(e))
-    await message.reply_text("Done")
-
-
+    thread = threading.Thread(target=lambda: asyncio.run(appex_down(app, message, api, raw_text2, fuk, batch_name, prog)))
+    thread.start()
