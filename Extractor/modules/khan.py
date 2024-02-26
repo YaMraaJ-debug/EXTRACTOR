@@ -1,86 +1,58 @@
-import requests
 import json
-import subprocess
-from pyrogram.types.messages_and_media import message
-import helper
-from pyromod import listen
-from pyrogram.types import Message
-import tgcrypto
-import pyrogram
-from pyrogram import Client, filters
-from pyrogram.types.messages_and_media import message
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-from pyrogram.errors import FloodWait
-import time
-from pyrogram.types import User, Message
-from p_bar import progress_bar
-from subprocess import getstatusoutput
-import logging
 import os
-import sys
-import re
-from pyrogram import Client as bot
-import time
+import requests
+from pyrogram import filters
+from pyromod import listen
+import cloudscraper
+from Crypto.Cipher import AES
+from Crypto.Util.Padding import unpad
+from base64 import b64decode
+from Extractor import app
+from config import SUDO_USERS
 
 
 
-@bot.on_message(filters.command(["khan"]))
-async def account_login(bot: Client, m: Message):
-    editable = await m.reply_text(
-        "Send **ID & Password** in this manner otherwise bot will not respond.\n\nSend like this:-  **ID*Password**")
-    rwa_url = "https://api.penpencil.xyz/v1/oauth/token"  
-    input1: Message = await bot.listen(editable.chat.id)
+@app.on_message(filters.command(["khan"]))
+async def khan_login(_, message):
+    editable = await message.reply_text"Send **ID & Password** in this manner otherwise bot will not respond.\n\nSend like this:-  **ID*Password**")
+    
+    login_url = "https://khanglobalstudies.com/api/login-with-password"  
+    input1: message = await _.listen(editable.chat.id)
     raw_text = input1.text
     
     headers = {
-            'Host': 'api.penpencil.xyz',
-            'authorization': 'Bearer c5c5e9c5721a1c4e322250fb31825b62f9715a4572318de90cfc93b02a8a8a75',
-            'client-id': '5f439b64d553cc02d283e1b4',
-            'client-version': '21.0',
-            'user-agent': 'Android',
-            'randomid': '385bc0ce778e8d0b',
-            'client-type': 'MOBILE',
-            'device-meta': '{APP_VERSION:19.0,DEVICE_MAKE:Asus,DEVICE_MODEL:ASUS_X00TD,OS_VERSION:6,PACKAGE_NAME:xyz.penpencil.khansirofficial}',
-            'content-type': 'application/json; charset=UTF-8'}
+    "Host": "khanglobalstudies.com",
+    "content-type": "application/x-www-form-urlencoded",
+    "content-length": "36",
+    "accept-encoding": "gzip",
+    "user-agent": "okhttp/3.9.1"
+    }
 
-    info = {
-  "username": "",
-  "otp": "",
-  "organizationId": "5f439b64d553cc02d283e1b4",
-  "password": "",
-  "client_id": "system-admin",
-  "client_secret": "KjPXuAVfC5xbmgreETNMaL7z",
-  "grant_type": "password"}
-    info["username"] = raw_text.split("*")[0]
-    info["password"] = raw_text.split("*")[1]
+    data = {
+    "password": "",
+    "phone": ""
+    }
+    data["username"] = raw_text.split("*")[0]
+    data["password"] = raw_text.split("*")[1]
     await input1.delete(True)
-    s = requests.Session()
-    response = s.post(url = rwa_url, headers=headers, json=info, timeout=10)
+    
+    response = requests.post(login_url, headers=headers, data=data)
     if response.status_code == 200:
         data = response.json()
-        token = data["data"]["access_token"]
-        await editable.edit(f"**Login Successful:** ```{token}```")
+        token = data["token"]
+        await editable.edit(f"**Login Successful")
     else:
          await m.reply_text("Go back to response")
+    
     headers = {
-            'Host': 'api.penpencil.xyz',
-            'authorization': f"Bearer {token}",
-            'client-id': '5f439b64d553cc02d283e1b4',
-            'client-version': '21.0',
-            'user-agent': 'Android',
-            'randomid': '385bc0ce778e8d0b',
-            'client-type': 'MOBILE',
-            'device-meta': '{APP_VERSION:19.0,DEVICE_MAKE:Asus,DEVICE_MODEL:ASUS_X00TD,OS_VERSION:6,PACKAGE_NAME:xyz.penpencil.khansirofficial}',
-            'content-type': 'application/json; charset=UTF-8',
+    "Host": "khanglobalstudies.com",
+    "authorization": f"Bearer {token}",
+    "accept-encoding": "gzip",
+    "user-agent": "okhttp/3.9.1")
     }
-    params = {
-       'mode': '1',
-       'batchCategoryIds': '619bedc3394f824a71d8e721',
-       'organisationId': '5f439b64d553cc02d283e1b4',
-       'page': '1',
-       'programId': '5f476e70a64b4a00ddd81379',
-    }
-    response = s.get('https://api.penpencil.xyz/v3/batches/my-batches', params=params, headers=headers).json()["data"]
+    course_url = "https://khanglobalstudies.com/api/user/v2/courses"
+    response = requests.get(url, headers=headers)
+    
     cool = ""
     mm = "KhanSir"
     for data in response:
