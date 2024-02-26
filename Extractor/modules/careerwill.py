@@ -49,12 +49,15 @@ async def khan_login(_, message):
     if "*" in raw_text:
         data["email"] = raw_text.split("*")[0]
         data["password"] = raw_text.split("*")[1]
+        
         response = requests.post(login_url, headers=headers, data=data)
+        
+        data = response.json() #test
+        await message.reply(data)
         if response.status_code == 200:
             data = response.json()
-           # token = data["data"]["token"]
-            await message.reply(data)
-          #  await editable.edit(f"**Login Successful**\n\n{token}")
+            token = data["data"]["token"]
+            await editable.edit(f"**Login Successful**\n\n{token}")
         else:
             await message.reply_text("Go back to response")
                             
