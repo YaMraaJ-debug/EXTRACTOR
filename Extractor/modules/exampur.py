@@ -2,14 +2,13 @@ import json
 import os
 import requests
 from pyrogram import filters
-from pyrogram.types import Message
 from pyromod import listen
+from Extractor import app
 import cloudscraper
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import unpad
 from base64 import b64decode
-import config
-from TXT import app
+
 
 
 def decrypt_data(encoded_data, key, iv):
