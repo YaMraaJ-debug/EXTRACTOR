@@ -84,13 +84,14 @@ async def khan_login(_, message):
         
         url = "https://khanglobalstudies.com/api/lessons/"+t  
         response = requests.get(url, headers=headers)
-        print(response)
-        for dat in response:
+        data = response.json()
+        
+        for dat in data:
             try:
                 class_title = dat["name"]
                 class_url = dat["video_url"]
                 with open(f"{mm}-test.txt", 'a') as f:
-                    f.write(f"{class_title}:{class_url}\n")
+                    f.write(f"{class_title}: {class_url}\n")
             except KeyError:
                 pass
     await message.reply_document(f"{mm}-test.txt")
