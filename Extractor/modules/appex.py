@@ -150,7 +150,7 @@ async def appex_txt(app, message, api, name):
                         msg = f"{idid} : {cool2}\n{idid} : {vs}\n"
                         vj += msg
             except Exception as e:
-                await message.reply_text(str(e))  
+                print(str(e))  
   
             vt += vj
 
