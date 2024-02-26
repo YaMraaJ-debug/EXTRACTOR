@@ -79,6 +79,7 @@ async def khan_login(_, message):
     print(bat_id)    
     await msg.edit_text("Done your course id\n Now Extracting your course")
     xv = bat_id.split('&')
+    full = ""
     for y in range(0,len(xv)):
         t =xv[y].strip()
         
@@ -87,18 +88,20 @@ async def khan_login(_, message):
         data = response.json()
         
         videos = data.get('videos', [])
-
+        fuck = ""
         for video in videos: 
             try:
                 class_title = video.get('name')
                 class_url = video.get('video_url')
-                
-                with open(f"{mm}-test.txt", 'a') as f:
-                    f.write(f"{class_title}: {class_url}\n")
+                fuck += {class_title}: {class_url}\n
             except KeyError:
                 pass
-    with open(f"{mm}-test.txt", "rb") as f:
-        await message.reply_document(f)
-        await msg.delete()
-        os.remove(f"{mm}-test.txt")
+        
+    full += fuck
+    with open(f"{mm}-test.txt", 'a') as f:
+        f.write(f"{full}")
+
+    await message.reply_document(f"{mm}-test.txt")
+    await msg.delete()
+    os.remove(f"{mm}-test.txt")
 
