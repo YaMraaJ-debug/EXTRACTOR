@@ -126,7 +126,7 @@ async def khan_login(_, message):
                 lesson_name = Class['lessonName']
                 lessonExt = Class['lessonExt']
 
-                url1 = f"https://elearn.crwilladmin.com/api/v5/class-detail/{vid_id}"
+                url1 = f"https://elearn.crwilladmin.com/api/v3/class-detail/{vid_id}"
                 lessonUrl = requests.get(url1, headers=headers).json()['data']['class_detail']['lessonUrl']
 
                 if lessonExt == 'brightcove':
