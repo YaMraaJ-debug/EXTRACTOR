@@ -101,7 +101,7 @@ async def khan_login(_, message):
         for x in range(0, len(num_id)):
             id_text = num_id[x]
 
-            details_url = "https://elearn.crwilladmin.com/api/v3/batch-detail/" + raw_text2 + "?topicId=" + id_text
+            details_url = "https://elearn.crwilladmin.com/api/v5/batch-detail/" + raw_text2 + "?topicId=" + id_text
             response = requests.get(details_url, headers=headers)
             response.raise_for_status()  # Raise an error if the request was unsuccessful
             data = response.json()
