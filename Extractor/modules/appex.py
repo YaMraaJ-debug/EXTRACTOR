@@ -74,9 +74,9 @@ async def appex_txt(app, message, api, name):
     output0 = json.loads(html)
     subjID = output0["data"]
     subjID_data = output0["data"]
+    
     cool = ""
     fuk = ""
-    msg = await message.reply_text("Generate your course id...")
     for sub in subjID:
         subjid = sub["subjectid"]
         fuk += f"{subjid}&"
@@ -94,7 +94,7 @@ async def appex_txt(app, message, api, name):
                 vp += f"{tid}&"
 
             vj = ""
-            await msg.edit_text("Extracting Videos Links Please Wait  📥")
+            msg = await message.reply_text("Extracting Videos Links Please Wait  📥")
             try:
                 xv = vp.split('&')
                 for y in range(0,len(xv)):
