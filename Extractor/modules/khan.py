@@ -74,34 +74,34 @@ async def khan_login(_, message):
     bat_id = ""
     for data in response2.json():
         baid = f"{data['id']}&"
-        bat_id +=baid
+        bat_id += baid
         
     print(bat_id)    
     await msg.edit_text("Done your course id\n Now Extracting your course")
-    xv = bat_id.split('&')
     full = ""
-    for y in range(0,len(xv)):
-        t =xv[y].strip()
+    try:
+        xv = bat_id.split('&')
+        for y in range(0,len(xv)):
+            t =xv[y]
         
-        url = "https://khanglobalstudies.com/api/lessons/"+t  
-        response = requests.get(url, headers=headers)
-        data = response.json()
+            url = "https://khanglobalstudies.com/api/lessons/"+t  
+            response = requests.get(url, headers=headers)
+            data = response.json()
         
-        videos = data.get('videos', [])
-        fuck = ""
-        for video in videos: 
-            try:
+            videos = data.get('videos', [])
+            fuck = ""
+            for video in videos: 
                 class_title = video.get('name')
                 class_url = video.get('video_url')
                 fuck += f"{class_title}: {class_url}\n"
-            except KeyError:
-                pass
         
-        full += f"{fuck}"
-    with open(f"{mm}-test.txt", 'a') as f:
-        f.write(f"{full}")
+            full += fuck
+        with open(f"{mm}-test.txt", 'a') as f:
+            f.write(f"{full}")
 
-    await message.reply_document(f"{mm}-test.txt")
-    await msg.delete()
-    os.remove(f"{mm}-test.txt")
+        await message.reply_document(f"{mm}-test.txt")
+        await msg.delete()
+        os.remove(f"{mm}-test.txt")
 
+    except Exception as e:
+        await message.reply_text(str(e))
