@@ -69,10 +69,9 @@ async def careerdl(app, message, headers, raw_text2, raw_text3, prog):
 
 
 
-@app.on_message(filters.command(["cw"]))
-async def career_will(_, message):
+async def career_will(app, message):
     try:
-        input1 = await app.ask(message.chat.id, text="Send ID & Password in this manner otherwise bot will not respond.\n\nSend like this:-  ID*Password")
+        input1 = await app.ask(message.chat.id, text="**Send ID & Password in this manner otherwise bot will not respond.\n\nSend like this:-  ID*Password\n\n OR Send Your Token**")
         login_url = "https://elearn.crwilladmin.com/api/v3/login-other"
         raw_text = input1.text
         if "*" in raw_text:
@@ -117,7 +116,6 @@ async def career_will(_, message):
     batch_url = "https://elearn.crwilladmin.com/api/v3/my-batch"
     response = requests.get(batch_url, headers=headers)
     data = response.json()
-    print(data)
     topicid = data["data"]["batchData"]
 
     FFF = "**BATCH-ID - BATCH NAME - INSTRUCTOR**\n\n"
