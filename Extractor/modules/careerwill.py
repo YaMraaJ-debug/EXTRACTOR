@@ -113,7 +113,8 @@ async def career_will(_, message):
             batch_name = details_list["batchName"]
             batch_descript = details_list["batchDescription"]
             batch_class = details_list["classes"]
-                      
+            
+            batch_class.reverse()
             try:
                 for data in batch_class:
                     vid_id = data["id"]
