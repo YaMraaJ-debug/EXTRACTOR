@@ -19,7 +19,6 @@ bc_hdr = {"BCOV-POLICY": BCOV_POLICY}
 async def khan_login(_, message):
     try:
         input1 = await app.ask(message.chat.id, text="Send ID & Password in this manner otherwise bot will not respond.\n\nSend like this:-  ID*Password")
-        login_url = "https://elearn.crwilladmin.com/api/v3/login-other"
         raw_text = input1.text
 
         if "*" in raw_text:
@@ -42,11 +41,9 @@ async def khan_login(_, message):
             }
 
             response = requests.post(login_url, headers=headers, json=data)
-            if response.status_code == 200:
-                token = response.json()["data"]["token"]
-                await message.reply_text(f"**Login Successful**\n\n`{token}`")
-            else:
-                await message.reply_text("Failed to login")
+            response.raise_for_status()  # Raise an error if the request was unsuccessful
+            token = response.json()["data"]["token"]
+            await message.reply_text(f"**Login Successful**\n\n`{token}`")
         else:
             token = raw_text
     except Exception as e:
@@ -63,9 +60,10 @@ async def khan_login(_, message):
             "user-agent": "okhttp/3.9.1"
         }
 
-        input1.delete(True)
+        await input1.delete(True)
         batch_url = "https://elearn.crwilladmin.com/api/v3/my-batch"
         response = requests.get(batch_url, headers=headers)
+        response.raise_for_status()  # Raise an error if the request was unsuccessful
         data = response.json()
         topicid = data['data']['batchData']
 
@@ -78,6 +76,7 @@ async def khan_login(_, message):
         raw_text2 = input2.text
         topic_url = "https://elearn.crwilladmin.com/api/v3/batch-topic/" + raw_text2 + "?type=class"
         response = requests.get(topic_url, headers=headers)
+        response.raise_for_status()  # Raise an error if the request was unsuccessful
         topic_data = response.json()
         batch_data = topic_data['data']['batch_topic']
         name = topic_data['data']['batch_detail']['name']
@@ -103,6 +102,7 @@ async def khan_login(_, message):
 
             details_url = "https://elearn.crwilladmin.com/api/v3/batch-detail/" + raw_text2 + "?topicId=" + id_text
             response = requests.get(details_url, headers=headers)
+            response.raise_for_status()  # Raise an error if the request was unsuccessful
             data = response.json()
 
             details_list = data['data']['class_list']
