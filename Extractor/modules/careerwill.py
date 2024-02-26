@@ -74,7 +74,7 @@ async def khan_login(_, message):
     batch_url = "https://elearn.crwilladmin.com/api/v3/my-batch"
     response = requests.get(batch_url, headers=headers)
     data = response.json()
-    topicid = data["data"]["batchData"]
+    topicid = data['data']['batchData']
     
     FFF = "**BATCH-ID - BATCH NAME - INSTRUCTOR**\n\n"
     for data in topicid:       
@@ -87,13 +87,13 @@ async def khan_login(_, message):
     response = requests.get(topic_url, headers=headers)
     topic_data = response.json()
     batch_data = topic_data['data']['batch_topic']
-    name = topic_data["data"]["batch_detail"]["name"]
+    name = topic_data['data']['batch_detail']['name']
     
     BBB = "**TOPIC-ID - TOPIC - VIDEOS**\n\n"
     id_num = ""
     for data in batch_data:
-        topic_id = data["id"]
-        topic_name = data["topicName"]
+        topic_id = data['id']
+        topic_name = data['topicName']
         id_num += f"{topic_id}&"
         BBB += f"{topic_id} -  {topic_name} \n\n"
 
@@ -112,19 +112,19 @@ async def khan_login(_, message):
             response = requests.get(details_url, headers=headers)
             data = response.json()
             
-            details_list = data["data"]["class_list"]
-            batch_name = details_list["batchName"]
-            batch_descript = details_list["batchDescription"]
-            batch_class = details_list["classes"]
+            details_list = data['data']['class_list']
+            batch_name = details_list['batchName']
+            batch_descript = details_list['batchDescription']
+            batch_class = details_list['classes']
             
             batch_class.reverse()
             count = 1
             
             try:
                 for data in batch_class:
-                    vid_id = data["id"]
-                    lesson_name = data["lessonName"]
-                    video_link = data["lessonUrl"]
+                    vid_id = data['id']
+                    lesson_name = data['lessonName']
+                    video_link = data['lessonUrl']
                     
                     
                     if str(video_link).startswith("62") or str(video_link).startswith("63"):
@@ -138,7 +138,7 @@ async def khan_login(_, message):
                             }
 
                         response = requests.get(url, headers=headers, params=params)
-                        stoken = response.json()["data"]["token"]
+                        stoken = response.json()['data']['token']
 
                         link = bc_url + video_link + "/master.m3u8?bcov_auth=" + stoken
                         print(link)               
