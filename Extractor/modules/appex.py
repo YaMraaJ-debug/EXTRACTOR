@@ -2,14 +2,13 @@ import json
 import os
 import requests
 from pyrogram import filters
-from pyrogram.types import Message
 from pyromod import listen
 import cloudscraper
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import unpad
 from base64 import b64decode
-import config
 from Extractor import app
+
 
 
 def decrypt_data(encoded_data, key, iv):
@@ -64,7 +63,7 @@ async def appex_txt(app, message, api, name):
             print(aa)
             cool = ""
         cool += aa
-    await message.reply_text(f'{"**You have these batches :-"}\n\n{FFF}\n\n{cool}')
+    await message.reply_text(f"**YOU HAVE THESE BATCHES:**\n\n{FFF}\n\n{cool}")
     input2 = await app.ask(message.chat.id, text="**Now send the Batch ID to Download**")
     raw_text2 = input2.text
     for data in b_data:
@@ -77,6 +76,7 @@ async def appex_txt(app, message, api, name):
     subjID_data = output0["data"]
     cool = ""
     fuk = ""
+    msg = await message.reply_text("Generate your course id...")
     for sub in subjID:
         subjid = sub["subjectid"]
         fuk += f"{subjid}&"
@@ -94,6 +94,7 @@ async def appex_txt(app, message, api, name):
                 vp += f"{tid}&"
 
             vj = ""
+            await msg.edit_text("Extracting Videos Links Please Wait  📥")
             try:
                 xv = vp.split('&')
                 for y in range(0,len(xv)):
@@ -158,6 +159,7 @@ async def appex_txt(app, message, api, name):
         with open(f'{mm}.txt', 'a') as f:
             f.write(f"{vt}")
         await app.send_document(message.chat.id, document=f"{mm}.txt", caption=cap)
+        await msg.delete()
         file_path = f"{mm}.txt"
         os.remove(file_path)
 
