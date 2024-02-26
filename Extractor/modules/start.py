@@ -7,6 +7,10 @@ from pyrogram.types import CallbackQuery, InlineKeyboardMarkup, InlineKeyboardBu
 from Extractor.modules.appex import appex_txt
 from Extractor.modules.classplus import classplus_txt
 from Extractor.modules.pw import pw_mobile, pw_token
+from Extractor.modules.exampur import exampur_txt
+from Extractor.modules.nk import neetkaka_txt
+from Extractor.modules.app_exampur import appexampur_txt
+
 
 # ------------------------------------------------------------------------------- #
 
