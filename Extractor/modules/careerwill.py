@@ -53,12 +53,12 @@ async def khan_login(_, message):
     response = requests.post(login_url, headers=headers, data=data)
     if response.status_code == 200:
         data = response.json()
-        token = data["token"]
+        token = data["data"]["token"]
         await editable.edit("**Login Successful**")
     else:
         await message.reply_text("Go back to response")
-
-    token = raw_text
+        token = raw_text
+    
     
     headers = {
     "Host": "elearn.crwilladmin.com",
