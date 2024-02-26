@@ -118,11 +118,11 @@ async def career_will(app, message):
     data = response.json()
     topicid = data["data"]["batchData"]
 
-    FFF = "**BATCH-ID - BATCH NAME - INSTRUCTOR**\n\n"
+    FFF = "**BATCH-ID     -     BATCH NAME**\n\n"
     for data in topicid:
-        FFF += f"`{data['id']}`  - `{data['batchName']}` \n{data['instructorName']}\n\n"
+        FFF += f"`{data['id']}`     -    **{data['batchName']}**\n\n"
 
-    await message.reply_text(f"HERE IS YOUR BATCH\n\n{FFF}")
+    await message.reply_text(f"**HERE IS YOUR BATCH**\n\n{FFF}")
     input2 = await app.ask(message.chat.id, text="**Now send the Batch ID to Download**")
     raw_text2 = input2.text
     topic_url = "https://elearn.crwilladmin.com/api/v3/batch-topic/" + raw_text2 + "?type=class"
@@ -131,15 +131,15 @@ async def career_will(app, message):
     batch_data = topic_data['data']['batch_topic']
     name = topic_data["data"]["batch_detail"]["name"]
 
-    BBB = "**TOPIC-ID - TOPIC - VIDEOS**\n\n"
+    BBB = "**TOPIC-ID - TOPIC**\n\n"
     id_num = ""
     for data in batch_data:
         topic_id = data["id"]
         topic_name = data["topicName"]
         id_num += f"{topic_id}&"
-        BBB += f"`{topic_id}` -  {topic_name} \n\n"
+        BBB += f"`{topic_id}` -  **{topic_name}** \n\n"
 
-    await message.reply_text(f"Batches details of {name}\n\n{BBB}")
+    await message.reply_text(f"**Batches details of {name}**\n\n{BBB}")
     input3 = await app.ask(message.chat.id, text=f"Now send the **Topic IDs** to Download\n\nSend like this **1&2&3&4** so on\nor copy paste or edit **below ids** according to you :\n\n**Enter this to download full batch :-**\n`{id_num}`")
     raw_text3 = input3.text
 
