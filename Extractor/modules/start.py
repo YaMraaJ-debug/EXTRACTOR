@@ -339,7 +339,9 @@ async def handle_callback(_, query):
         name = "Space IAS"
         await appex_txt(app, query.message, api, name)
     elif query.data=="rg_vikramjeet":     
-        await query.answer((script.RG_VIKRAMJEET_TXT), show_alert=True)
+        api = "rgvikramjeetapi.classx.co.in"
+        name = "RG Vikramjeet"
+        await appex_txt(app, query.message, api, name)
     elif query.data=="vidya_bihar":     
         api = "vidyabiharapi.teachx.in"
         name = "Vidya Vihar"
