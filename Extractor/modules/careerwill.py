@@ -50,7 +50,7 @@ async def khan_login(_, message):
             response = requests.post(login_url, headers=headers, json=data)
             if response.status_code == 200:
                 token = response.json()["data"]["token"]
-                await message.reply_text(f"**Login Successful**\n\n{token}")
+                await message.reply_text(f"**Login Successful**\n\n`{token}`")
             else:
                 await message.reply_text("Failed to login")
         else:
@@ -81,7 +81,7 @@ async def khan_login(_, message):
         FFF += f"`{data['id']}`  - `{data['batchName']}` \n{data['instructorName']}\n\n"
        
     await message.reply_text(f"HERE IS YOUR BATCH\n\n{FFF}")
-    input2 = await app.ask("**Now send the Batch ID to Download**")
+    input2 = await app.ask(message.chat.id, text="**Now send the Batch ID to Download**")
     raw_text2 = input2.text
     topic_url = "https://elearn.crwilladmin.com/api/v3/batch-topic/"+raw_text2+"?type=class"
     response = requests.get(topic_url, headers=headers)
