@@ -52,21 +52,19 @@ async def khan_login(_, message):
     }
     course_url = "https://khanglobalstudies.com/api/user/v2/courses"
     response = requests.get(url, headers=headers)
+
+    data = response.json()
+    courses = [(course['id'], course['title']) for course in data]
     
-    cool = ""
-    mm = "KhanSir"
-    for data in response:
-        FFF = "**BATCH-ID  -  BATCH NAME**"
-        #batch=(data["name"])
-        aa = f" ```{data['_id']}```      - **{data['name']}**\n\n"
-        #aa=f"```{data['name']}```  :  ```{data['_id']}\n```"
-        if len(f'{cool}{aa}') > 4096:
-            cool = ""
-        cool += aa
-    await editable.edit(f'{"**You have these batches :-**"}\n\n{FFF}\n\n{cool}')
-    #await editable.edit(f'{"**You have these batches :-**"}\n\n{FFF}\n\n{cool}')
-    editable1= await m.reply_text("**Now send the Batch ID to Download**")
-    input3 = message = await bot.listen(editable.chat.id)
+    FFF = "**BATCH-ID  - BATCH-NAME**"
+    
+    for course_id, course_title in courses:
+        FFF += f"{course_id} - {course_title}"
+    
+    await editable.edit(FFF)
+    
+    editable1= await message.reply_text("**Now send the Batch ID to Download**")
+    input3: message = await bot.listen(editable1.chat.id)
     raw_text3 = input3.text
     response2 = s.get(f'https://api.penpencil.xyz/v3/batches/{raw_text3}/details', headers=headers).json()["data"]
     response3 = s.get(f'https://api.penpencil.xyz/v3/batches/{raw_text3}/details', headers=headers).json()["data"]["subjects"]
