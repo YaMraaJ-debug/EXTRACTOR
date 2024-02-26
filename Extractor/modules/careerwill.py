@@ -104,7 +104,7 @@ async def career_will(_, message):
         for x in range(0,len(num_id)):
             id_text = num_id[x]
         
-            details_url = "https://elearn.crwilladmin.com/api/v3/batch-detail/"+raw_text2+"?topicId="+id_text
+            details_url = "https://elearn.crwilladmin.com/api/v5/batch-detail/"+raw_text2+"?topicId="+id_text
             response = requests.get(details_url, headers=headers)
             data = response.json()
             
