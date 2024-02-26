@@ -8,7 +8,7 @@ from config import SUDO_USERS
 
 
 async def khan_login(app, message):
-    input1 = await app.ask(message.chat.id, text="Send ID & Password in this manner otherwise bot will not respond.\n\nSend like this:-  ID*Password")
+    input1 = await app.ask(message.chat.id, text="**Send ID & Password in this manner otherwise bot will not respond.\n\nSend like this:-  ID*Password**")
 
     login_url = "https://khanglobalstudies.com/api/login-with-password"
     raw_text = input1.text
@@ -48,19 +48,20 @@ async def khan_login(app, message):
     response = requests.get(course_url, headers=headers)
 
     data = response.json()
-    mm = "Khan-Sir"
     courses = [(course['id'], course['title']) for course in data]
 
     FFF = "BATCH-ID  - BATCH-NAME\n\n"
 
     for course_id, course_title in courses:
-        FFF += f"{course_id} - {course_title}\n\n"
+        FFF += f"`{course_id}` - **{course_title}**\n\n"
 
     await message.reply_text(FFF)
 
-    input3 = await app.ask(message.chat.id, text="Now send the Batch ID to Download")    
+    input3 = await app.ask(message.chat.id, text="**Now send the Batch ID to Download**")    
     raw_text3 = input3.text
-
+    for course_id, course_title in courses:
+        if course_id == raw_text3:
+            batch_name = course_title
     url = "https://khanglobalstudies.com/api/user/courses/"+raw_text3+"/v2-lessons"
     response2 = requests.get(url, headers=headers)
     
@@ -69,8 +70,7 @@ async def khan_login(app, message):
     for data in response2.json():
         baid = f"{data['id']}&"
         bat_id += baid
-        
-    print(bat_id)    
+          
     await msg.edit_text("**Done your course id\n Now Extracting your course**")
     full = ""
     try:
@@ -95,12 +95,12 @@ async def khan_login(app, message):
                 print(str(e))
                 pass
                 
-        with open(f"{mm}-test.txt", 'a') as f:
+        with open(f"{batch_name}.txt", 'a') as f:
             f.write(f"{full}")
         
-        c_txt = "**App Name: Khan-Sir\nidk**"
-        await message.reply_document(document=f"{mm}-test.txt", caption=c_txt)
-        os.remove(f"{mm}-test.txt")
+        c_txt = f"**App Name: Khan-Sir\nBatch Name: `{batch_name}`**"
+        await message.reply_document(document=f"{batch_name}.txt", caption=c_txt)
+        os.remove(f"{batch_name}.txt")
 
     except Exception as e:
         await message.reply_text(str(e))
