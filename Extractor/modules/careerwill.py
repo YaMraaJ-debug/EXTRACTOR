@@ -116,15 +116,15 @@ async def khan_login(_, message):
 
             details_list = data['data']['class_list']
             batch_name = details_list['batchName']
-            batch_class = details_list['classes']
+            Classes = details_list['classes']
 
-            batch_class.reverse()
+            Classes.reverse()
             count = 1
 
-            for data in batch_class:
-                vid_id = data['id']
-                lesson_name = data['lessonName']
-                lessonExt = data['lessonExt']
+            for Class in Classes:
+                vid_id = Class['id']
+                lesson_name = Class['lessonName']
+                lessonExt = Class['lessonExt']
 
                 url1 = f"https://elearn.crwilladmin.com/api/v5/class-detail/{vid_id}"
                 lessonUrl = requests.get(url1, headers=headers).json()['data']['class_detail']['lessonUrl']
