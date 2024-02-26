@@ -97,6 +97,8 @@ async def khan_login(_, message):
                     f.write(f"{class_title}: {class_url}\n")
             except KeyError:
                 pass
+                
     await message.reply_document(f"{mm}-test.txt")
     await msg.delete()
+    os.remove(f"{mm}-test.txt")
 
