@@ -140,7 +140,7 @@ button4 = [
                     InlineKeyboardButton("ᴋʜᴀɴ", callback_data="maintainer_")
                 ],
                 [   
-                    InlineKeyboardButton("ᴘʜʏsɪᴄs ᴡᴀʟʟᴀʜ", callback_data="maintainer_"),
+                    InlineKeyboardButton("ᴘʜʏsɪᴄs ᴡᴀʟʟᴀʜ", callback_data="pw_"),
                     InlineKeyboardButton("sᴏᴏɴ", callback_data="maintainer_")
                 ],
                 [
@@ -259,9 +259,7 @@ async def handle_callback(_, query):
         await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
 
 
-    elif query.data=="classplus_":          
-        await classplus_txt(app, query.message)
-  
+    
   
     elif query.data=="ss_maker":     
         api = "sscmakerexampreparationapi.classx.co.in"
@@ -319,7 +317,7 @@ async def handle_callback(_, query):
         api = "targetpluscoachingapi.classx.co.in"
         name = "Target Plus Coaching"
         await appex_txt(app, query.message, api, name)
-    elif query.data=="rwa_":     
+    elif query.data=="rwa_":   
         api = "rozgarapinew.teachx.in"
         name = "Rojgar with Ankit"
         await appex_txt(app, query.message, api, name)
@@ -403,8 +401,27 @@ async def handle_callback(_, query):
         api = "gkcafeapi.classx.co.in"
         name = "GK Cafe"
         await appex_txt(app, query.message, api, name)
-    
+      
+    elif query.data=="classplus_":          
+        await classplus_txt(app, query.message)
+  
+    elif query.data == 'pw_':
+        await query.message.reply_text(
+            "**CHHOSE FROM BELOW **",
+            reply_markup=InlineKeyboardMarkup([
+                [
+                    InlineKeyboardButton("Mobile No.", callback_data='mobile_'),
+                    InlineKeyboardButton("Token", callback_data='token_'),
+                ]
+            ])
+        )
 
+    elif query.data == 'mobile_':
+        await pw_mobile(app, query.message)
+
+    elif query.data == 'token_':
+        await pw_token(app, query.message)
+        
 
 
 
