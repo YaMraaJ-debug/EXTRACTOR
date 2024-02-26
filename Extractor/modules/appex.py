@@ -82,6 +82,7 @@ async def appex_txt(app, message, api, name):
         fuk += f"{subjid}&"
 
     vt = ""
+    sup = await message.reply_text("Extracting Videos Links Please Wait  📥")
     try:
         xx = fuk.split('&')
         for v in range(0,len(xx)):
@@ -94,7 +95,6 @@ async def appex_txt(app, message, api, name):
                 vp += f"{tid}&"
 
             vj = ""
-            msg = await message.reply_text("Extracting Videos Links Please Wait  📥")
             try:
                 xv = vp.split('&')
                 for y in range(0,len(xv)):
@@ -159,7 +159,7 @@ async def appex_txt(app, message, api, name):
         with open(f'{mm}.txt', 'a') as f:
             f.write(f"{vt}")
         await app.send_document(message.chat.id, document=f"{mm}.txt", caption=cap)
-        await msg.delete()
+        await sup.delete()
         file_path = f"{mm}.txt"
         os.remove(file_path)
 
