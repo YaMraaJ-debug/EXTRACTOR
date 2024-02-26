@@ -49,20 +49,17 @@ async def khan_login(_, message):
     if "*" in raw_text:
         data["email"] = raw_text.split("*")[0]
         data["password"] = raw_text.split("*")[1]
+        response = requests.post(login_url, headers=headers, data=data)
+        if response.status_code == 200:
+            data = response.json()
+            token = data["data"]["token"]
+            await editable.edit(f"**Login Successful**\n\n{token}")
+        else:
+            await message.reply_text("Go back to response")
+                            
     else:
-        token = raw_text
-        
-    await input1.delete(True)
-    response = requests.post(login_url, headers=headers, data=data)
-        
-    if response.status_code == 200:
-        data = response.json()
-        token = data["data"]["token"]
-        await editable.edit(f"**Login Successful**\n\n{token}")
-    else:
-        await message.reply_text("Go back to response")
-        
-    
+        token = raw_text        
+
     
     headers = {
     "Host": "elearn.crwilladmin.com",
@@ -74,7 +71,7 @@ async def khan_login(_, message):
     }
 
       
-        
+    await input1.delete(True)    
     batch_url = "https://elearn.crwilladmin.com/api/v3/my-batch"
     response = requests.get(batch_url, headers=headers)
     data = response.json()
