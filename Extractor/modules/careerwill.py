@@ -113,11 +113,7 @@ async def career_will(_, message):
             batch_name = details_list["batchName"]
             batch_descript = details_list["batchDescription"]
             batch_class = details_list["classes"]
-            
-            batch_class.reverse()
-            await message.reply_text(batch_class)
-            
-            
+                      
             try:
                 for data in batch_class:
                     vid_id = data["id"]
@@ -125,8 +121,7 @@ async def career_will(_, message):
                     video_link = data["lessonUrl"]
                     
                     
-                    if video_link.startswith("62") or video_link.startswith("63"):
-                        
+                    if video_link.startswith("62"):             
                         url = "https://elearn.crwilladmin.com/api/v5/livestreamToken"
                         params = {
                                "base": "web",
@@ -139,7 +134,22 @@ async def career_will(_, message):
                         stoken = response.json()["data"]["token"]
 
                         link = bc_url + video_link + "/master.m3u8?bcov_auth=" + stoken
-                        print(link)    
+                           
+
+                    elif video_link.startswith("63"):             
+                        url = "https://elearn.crwilladmin.com/api/v5/livestreamToken"
+                        params = {
+                               "base": "web",
+                               "module": "batch",
+                               "type": "brightcove",
+                               "vid": vid_id
+                            }
+
+                        response = requests.get(url, headers=headers, params=params)
+                        stoken = response.json()["data"]["token"]
+                        
+                        link = bc_url + video_link + "/master.m3u8?bcov_auth=" + stoken
+                        
                         
                     else:
                         link = "https://www.youtube.com/embed/"+video_link
