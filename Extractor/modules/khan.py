@@ -87,6 +87,7 @@ async def khan_login(_, message):
                 url = "https://khanglobalstudies.com/api/lessons/"+t  
                 response = requests.get(url, headers=headers)
                 data = response.json()
+                data.reverse()
         
                 videos = data.get('videos', [])
                 fuck = ""
@@ -102,8 +103,9 @@ async def khan_login(_, message):
                 
         with open(f"{mm}-test.txt", 'a') as f:
             f.write(f"{full}")
-
-        await message.reply_document(document=f"{mm}-test.txt")
+        
+        c_txt = "**App Name: Khan-Sir\nidk**"
+        await message.reply_document(document=f"{mm}-test.txt", caption=c_txt)
         os.remove(f"{mm}-test.txt")
 
     except Exception as e:
