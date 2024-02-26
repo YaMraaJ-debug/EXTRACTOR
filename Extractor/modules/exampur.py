@@ -5,7 +5,7 @@ from pyrogram import filters
 from pyrogram import Client, filters
 from pyrogram.types import *
 import cloudscraper
-from Exractor import app
+from Extractor import app
 
 
 
