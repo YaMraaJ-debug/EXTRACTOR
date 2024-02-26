@@ -83,8 +83,9 @@ async def khan_login(_, message):
         t =xv[y].strip()
         
         url = "https://khanglobalstudies.com/api/lessons/"+t  
-        response = requests.get(url, headers=headers)  
-        for dat in reversed(response.json()):
+        response = requests.get(url, headers=headers)
+        response.reverse()
+        for dat in response:
             try:
                 class_title = dat["name"]
                 class_url = dat["video_url"]
