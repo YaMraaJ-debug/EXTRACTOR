@@ -210,24 +210,27 @@ async def handle_callback(_, query):
               reply_markup=reply_markup)
         
         
-#    elif query.data=="custom_":        
-#        reply_markup = InlineKeyboardMarkup(custom_button)
-#        await query.message.edit_text(
-#              script.CUSTOM_TXT,
-#              reply_markup=reply_markup
-#            )
-        
     elif query.data=="custom_":        
-        api = await app.ask(query.message.chat.id, text="**Send your api\n\n Eg:-** `sscmakerexampreparationapi.classx.co.in`")
-        name = api.split('.')[0]
-        await appex_txt(app, query.message, api, name)
+        reply_markup = InlineKeyboardMarkup(custom_button)
+        await query.message.edit_text(
+              script.CUSTOM_TXT,
+              reply_markup=reply_markup
+            )
         
+    
+  
     elif query.data=="manual_":        
         reply_markup = InlineKeyboardMarkup(button1)
         await query.message.edit_text(
               script.MANUAL_TXT,
               reply_markup=reply_markup
             )
+      
+    elif query.data=="c_mode":        
+        api = await app.ask(query.message.chat.id, text="**Send your api\n\n Eg:-** `sscmakerexampreparationapi.classx.co.in`")
+        name = api.split('.')[0]
+        await appex_txt(app, query.message, api, name)
+
       
     elif query.data=="next_1":        
         reply_markup = InlineKeyboardMarkup(button2)
