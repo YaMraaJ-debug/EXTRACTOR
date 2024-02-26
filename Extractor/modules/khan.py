@@ -30,7 +30,7 @@ async def khan_login(_, message):
         "password": "",
         "phone": ""
     }
-    data["username"] = raw_text.split("*")[0]
+    data["phone"] = raw_text.split("*")[0]
     data["password"] = raw_text.split("*")[1]
     await input1.delete(True)
 
