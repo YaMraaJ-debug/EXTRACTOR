@@ -26,7 +26,14 @@ modes_button = [[
                 ]]
 
 
-course_button = [              
+custom_button = [[
+                  InlineKeyboardButton("ᴄʟɪᴄᴋ", callback_data="c_mode")
+                ],[
+                  InlineKeyboardButton("ʙ ᴀ ᴄ ᴋ", callback_data="modes_")
+                ]]
+
+
+button1 = [              
                 [
                     InlineKeyboardButton("ssᴄ ᴍᴀᴋᴇʀ", callback_data="ss_maker"),   
                     InlineKeyboardButton("ᴘᴇʀғᴇᴄᴛ ᴀᴄᴀᴅᴇᴍʏ", callback_data="perfect_acc"),
@@ -59,7 +66,7 @@ course_button = [
                 ]
 
 
-course_button1 = [
+button2 = [
                 [
                     InlineKeyboardButton("sᴀᴄʜɪɴ ᴀᴄᴀᴅᴇᴍʏ", callback_data="sachin_acc"),   
                     InlineKeyboardButton("ᴀᴄʜᴀʀʏᴀ ᴄʟᴀssᴇs", callback_data="acharya_classes"),
@@ -93,7 +100,7 @@ course_button1 = [
 
 
 
-course_button2 = [              
+button3 = [              
                 [   
                     InlineKeyboardButton("ᴠɪᴅʏᴀ ʙɪʜᴀʀ", callback_data="vidya_bihar"),
                     InlineKeyboardButton("ᴀᴍᴀɴ sɪʀ", callback_data="aman_sir")
@@ -127,7 +134,7 @@ course_button2 = [
 
 
 
-course_button3 = [              
+button4 = [              
                 [   
                     InlineKeyboardButton("ᴄᴀʀᴇᴇʀᴡɪʟʟ", callback_data="maintainer_"),
                     InlineKeyboardButton("ᴋʜᴀɴ", callback_data="maintainer_")
@@ -186,7 +193,6 @@ async def start(_,message):
 
 
 
-#@app.on_callback_query(re.compile(r"^(home_|modes_|custom_|manual_|maintainer_|close_data|next_1|next_2|next_3.+)$"))
 @app.on_callback_query()
 async def handle_callback(_, query):
 
@@ -205,7 +211,7 @@ async def handle_callback(_, query):
         
         
     elif query.data=="custom_":        
-        reply_markup = InlineKeyboardMarkup(back_button)
+        reply_markup = InlineKeyboardMarkup(custom_button)
         await query.message.edit_text(
               script.CUSTOM_TXT,
               reply_markup=reply_markup
@@ -213,28 +219,28 @@ async def handle_callback(_, query):
         
         
     elif query.data=="manual_":        
-        reply_markup = InlineKeyboardMarkup(course_button)
+        reply_markup = InlineKeyboardMarkup(button1)
         await query.message.edit_text(
               script.MANUAL_TXT,
               reply_markup=reply_markup
             )
       
     elif query.data=="next_1":        
-        reply_markup = InlineKeyboardMarkup(course_button1)
+        reply_markup = InlineKeyboardMarkup(button2)
         await query.message.edit_text(
               script.MANUAL_TXT,
               reply_markup=reply_markup
             )
       
     elif query.data=="next_2":        
-        reply_markup = InlineKeyboardMarkup(course_button2)
+        reply_markup = InlineKeyboardMarkup(button3)
         await query.message.edit_text(
               script.MANUAL_TXT,
               reply_markup=reply_markup
             )
       
     elif query.data=="next_3":        
-        reply_markup = InlineKeyboardMarkup(course_button3)
+        reply_markup = InlineKeyboardMarkup(button4)
         await query.message.edit_text(
               script.MANUAL_TXT,
               reply_markup=reply_markup
