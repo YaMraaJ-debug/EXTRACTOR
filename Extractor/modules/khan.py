@@ -99,7 +99,7 @@ async def khan_login(_, message):
         with open(f"{mm}-test.txt", 'a') as f:
             f.write(f"{full}")
 
-        await message.reply_document(f"{mm}-test.txt")
+        await app.send_document(message.chat.id, document=f"{mm}-test.txt")
         await msg.delete()
         os.remove(f"{mm}-test.txt")
 
