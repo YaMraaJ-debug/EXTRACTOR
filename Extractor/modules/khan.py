@@ -83,24 +83,27 @@ async def khan_login(_, message):
         xv = bat_id.split('&')
         for y in range(0,len(xv)):
             t =xv[y]
+            try:
+                url = "https://khanglobalstudies.com/api/lessons/"+t  
+                response = requests.get(url, headers=headers)
+                data = response.json()
         
-            url = "https://khanglobalstudies.com/api/lessons/"+t  
-            response = requests.get(url, headers=headers)
-            data = response.json()
+                videos = data.get('videos', [])
+                fuck = ""
+                for video in videos: 
+                    class_title = video.get('name')
+                    class_url = video.get('video_url')
+                    fuck += f"{class_title}: {class_url}\n"
         
-            videos = data.get('videos', [])
-            fuck = ""
-            for video in videos: 
-                class_title = video.get('name')
-                class_url = video.get('video_url')
-                fuck += f"{class_title}: {class_url}\n"
-        
-            full += fuck
+                full += fuck
+            except Exception as e:
+                print(str(e))
+                pass
+                
         with open(f"{mm}-test.txt", 'a') as f:
             f.write(f"{full}")
 
-        await app.send_document(message.chat.id, document=f"{mm}-test.txt")
-        await msg.delete()
+        await message.reply_document(document=f"{mm}-test.txt")
         os.remove(f"{mm}-test.txt")
 
     except Exception as e:
