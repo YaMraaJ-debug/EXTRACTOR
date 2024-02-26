@@ -5,7 +5,7 @@ from Extractor import app
 from Extractor.core import script
 from pyrogram.types import CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton
 from Extractor.modules.appex import appex_txt
-
+from Extractor.modules.classplus import classplus_txt
 
 # ------------------------------------------------------------------------------- #
 
@@ -210,13 +210,17 @@ async def handle_callback(_, query):
               reply_markup=reply_markup)
         
         
-    elif query.data=="custom_":        
-        reply_markup = InlineKeyboardMarkup(custom_button)
-        await query.message.edit_text(
-              script.CUSTOM_TXT,
-              reply_markup=reply_markup
-            )
+#    elif query.data=="custom_":        
+#        reply_markup = InlineKeyboardMarkup(custom_button)
+#        await query.message.edit_text(
+#              script.CUSTOM_TXT,
+#              reply_markup=reply_markup
+#            )
         
+    elif query.data=="custom_":        
+        api = await app.ask(query.message.chat.id, text="**Send your api\n\n Eg:-** `sscmakerexampreparationapi.classx.co.in`")
+        name = api.split('.')[0]
+        await appex_txt(app, query.message, api, name)
         
     elif query.data=="manual_":        
         reply_markup = InlineKeyboardMarkup(button1)
@@ -252,8 +256,8 @@ async def handle_callback(_, query):
         await query.answer(("sᴏᴏɴ.... \n ʙᴏᴛ ᴜɴᴅᴇʀ ɪɴ ᴍᴀɪɴᴛᴀɪɴᴀɴᴄᴇ "), show_alert=True)
 
 
-    elif query.data=="classplus_":     
-        await query.answer((script.CLASSPLUS_TXT), show_alert=True)
+    elif query.data=="classplus_":          
+        await classplus_txt(app, query.message)
   
   
     elif query.data=="ss_maker":     
