@@ -15,7 +15,10 @@ async def remove_premium(client, message):
     if len(message.command) == 2:
         user_id = int(message.command[1])  
         user = await client.get_users(user_id)
-        if await plans_db.remove_premium(user_id):
+        data = await plans_db.check_premium(user_id)  
+        
+        if data and data.get("_id"):
+            await plans_db.remove_premium(user_id)
             await message.reply_text("ᴜꜱᴇʀ ʀᴇᴍᴏᴠᴇᴅ ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟʟʏ !")
             await client.send_message(
                 chat_id=user_id,
