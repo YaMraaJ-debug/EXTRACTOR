@@ -1,7 +1,7 @@
 from config import CHANNEL_ID 
 from Extractor.core import script
 from pyrogram.errors import UserNotParticipant
-
+from pyrogram.types import *
 
 
 async def gen_link(app,chat_id):
