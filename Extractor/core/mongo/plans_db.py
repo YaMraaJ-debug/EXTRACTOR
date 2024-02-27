@@ -16,8 +16,8 @@ async def remove_premium(user_id):
 
 
 async def check_premium(user_id):
-    x = await t.find_one({"_id": user_id})
-    return x["_id"]
+    x = await db.find_one({"_id": user_id})
+    return x
 
 
 async def premium_users():
