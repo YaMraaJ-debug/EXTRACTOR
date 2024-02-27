@@ -2,6 +2,7 @@ import re
 import random
 from pyrogram import filters
 from Extractor import app
+from config import OWNER_ID, SUDO_USERS
 from Extractor.core import script
 from pyrogram.types import CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton
 from Extractor.modules.appex import appex_txt
