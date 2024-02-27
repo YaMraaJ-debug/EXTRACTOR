@@ -487,7 +487,102 @@ async def handle_callback(_, query):
 
 
 
+    elif query.data == "give_trial":
+            user_id = query.from_user.id
+       #     has_free_trial = await db.check_trial_status(user_id)
+            if has_free_trial:
+                await query.answer("🚸 ʏᴏᴜ'ᴠᴇ ᴀʟʀᴇᴀᴅʏ ᴄʟᴀɪᴍᴇᴅ ʏᴏᴜʀ ꜰʀᴇᴇ ᴛʀɪᴀʟ ᴏɴᴄᴇ !\n\n📌 ᴄʜᴇᴄᴋᴏᴜᴛ ᴏᴜʀ ᴘʟᴀɴꜱ ʙʏ : /plans", show_alert=True)
+                return
+            else: 
+          #     await db.give_free_trial(user_id)
+                await query.message.reply_text(
+                 text="<b>🥳 ᴄᴏɴɢʀᴀᴛᴜʟᴀᴛɪᴏɴꜱ\n\n🎉 ʏᴏᴜ ᴄᴀɴ ᴜsᴇ ꜰʀᴇᴇ ᴛʀᴀɪʟ ꜰᴏʀ <u>5 ᴍɪɴᴜᴛᴇs</u> ꜰʀᴏᴍ ɴᴏᴡ !</b>",
+                 quote=False,
+                 disable_web_page_preview=True,                  
+                 reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("ᴄʜᴇᴄᴋᴏᴜᴛ ᴘʟᴀɴꜱ", callback_data='see_plans')]]))
+                return    
 
+    elif query.data == "premium_":
+            buttons = [[
+              InlineKeyboardButton(' ꜰʀᴇᴇ ᴛʀɪᴀʟ ', callback_data='free_')
+            ],[
+              InlineKeyboardButton(' ʙʀᴏɴᴢᴇ ', callback_data='bronze_'),
+              InlineKeyboardButton(' ꜱɪʟᴠᴇʀ ', callback_data='silver_')
+            ],[
+              InlineKeyboardButton(' ɢᴏʟᴅ ', callback_data='gold_'),
+              InlineKeyboardButton(' ᴏᴛʜᴇʀ ', callback_data='other_')
+            ],[            
+              InlineKeyboardButton(' ʙ ᴀ ᴄ ᴋ ', callback_data='home_')
+            ]]
+        
+            reply_markup = InlineKeyboardMarkup(buttons)
+            await query.message.edit_text(
+             text=script.PLANS_TXT,
+             reply_markup=reply_markup
+            )
+            
+    elif query.data == "free_":
+            buttons = [[
+              InlineKeyboardButton('ᴄʟɪᴄᴋ', callback_data="give_trial")
+            ],[
+              InlineKeyboardButton('⋞', callback_data='other_'),
+              InlineKeyboardButton('ʙ ᴀ ᴄ ᴋ', callback_data='premium_'),
+              InlineKeyboardButton('⋟', callback_data='bronze_')
+            ]]
+      
+            reply_markup = InlineKeyboardMarkup(buttons)
+            await query.message.edit_text(
+             text=script.FREE_TXT,
+             reply_markup=reply_markup
+            )
+    
+          
+    elif query.data == "bronze_":
+            buttons = [[
+              InlineKeyboardButton('🔐 ʙᴜʏ ᴘʀᴇᴍɪᴜᴍ', callback_data='purchase')
+            ],[
+              InlineKeyboardButton('⋞', callback_data='free_'),
+              InlineKeyboardButton('ʙ ᴀ ᴄ ᴋ', callback_data='premium_'),
+              InlineKeyboardButton('⋟', callback_data='silver_')
+            ]]
+      
+            reply_markup = InlineKeyboardMarkup(buttons)
+            await query.message.edit_text(
+             text=script.BRONZE_TXT,
+             reply_markup=reply_markup             
+            )
+
+    elif query.data == "silver_":
+            buttons = [[
+              InlineKeyboardButton('🔐 ʙᴜʏ ᴘʀᴇᴍɪᴜᴍ', callback_data='purchase_')
+            ],[
+              InlineKeyboardButton('⋞', callback_data='bronze_'),
+              InlineKeyboardButton('ʙ ᴀ ᴄ ᴋ', callback_data='pages'),
+              InlineKeyboardButton('⋟', callback_data='gold_')
+            ]]
+      
+            reply_markup = InlineKeyboardMarkup(buttons)
+            await query.message.edit_text(
+             text=script.SILVER_TXT,
+             reply_markup=reply_markup             
+            )
+            
+    elif query.data == "gold_":
+            buttons = [[
+              InlineKeyboardButton('🔐 ʙᴜʏ ᴘʀᴇᴍɪᴜᴍ', callback_data='purchase')
+            ],[
+              InlineKeyboardButton('⋞', callback_data='silver_'),
+              InlineKeyboardButton('ʙ ᴀ ᴄ ᴋ', callback_data='premium_'),
+              InlineKeyboardButton('⋟', callback_data='other_')
+            ]]
+      
+            reply_markup = InlineKeyboardMarkup(buttons)
+            await query.message.edit_text(
+             text=script.GOLD_TXT,
+             reply_markup=reply_markup
+            )
+
+  
 
     elif query.data=="close_data":
         await query.message.delete()
