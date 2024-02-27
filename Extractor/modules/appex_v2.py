@@ -62,26 +62,16 @@ async def appex_down(app, message, hdr1, api, raw_text2, fuk, batch_name, name, 
                                         else:
                                             print(f"Unexpected format: {plink}\n{tid}")
 
-                                elif data.get('ytFlag') == 1 and data.get('ytFlagWeb') == 1:
+                                elif data.get('ytFlag') == 1:
                                     dlink = data.get('file_link')
                                     if dlink:
                                         encoded_part, encrypted_part = dlink.split(':')
                                         b = decrypt_data(encoded_part)
-                                        cool2 = f"https://youtu.be/{b}"
+                                        cool2 = f"{b}"
                                     else:
-                                        print(f"Missing video_id for {b}")
-                                elif data.get('ytFlag') == 1 and data.get('ytFlagWeb') == 0:
-                                    dlink = data.get('file_link')
-                                    if dlink:
-                                        encoded_part, encrypted_part = dlink.split(':')
-                                        b = decrypt_data(encoded_part)
-                                        video_id = re.search(r'[?&]v=([^&]+)', b).group(1)
-                                        cool2 = f"https://youtu.be/{video_id}"
-                                    else:
-                                        print(f"Missing video_id for {video_id}")
+                                        print(f"Missing video_id for {tid}")
                                 else:
                                     print("Unknown ytFlag value")
-
                                 msg = f"{tid} : {cool2}\n{tid} : {vs}\n"
                                 vj += msg
 
