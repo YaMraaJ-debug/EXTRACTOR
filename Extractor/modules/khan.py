@@ -59,9 +59,11 @@ async def khan_login(app, message):
 
     input3 = await app.ask(message.chat.id, text="**Now send the Batch ID to Download**")    
     raw_text3 = input3.text
-    for course_id, course_title in courses:
-        if course_id == raw_text3:
-            batch_name = course_title
+    for course in data:
+        if course['id'] == raw_text3:
+            batch_name = course['title']
+        else:
+            batch_name = "KHAN-SIR"
     url = "https://khanglobalstudies.com/api/user/courses/"+raw_text3+"/v2-lessons"
     response2 = requests.get(url, headers=headers)
     
@@ -95,12 +97,12 @@ async def khan_login(app, message):
                 print(str(e))
                 pass
                 
-        with open(f"KHAN-SIR.txt", 'a') as f:
+        with open(f"{batch_name}.txt", 'a') as f:
             f.write(f"{full}")
         
-        c_txt = f"**App Name: Khan-Sir\nBatch Name: `.....`**"
-        await message.reply_document(document=f"KHAN-SIR.txt", caption=c_txt)
-        os.remove(f"KHAN-SIR.txt")
+        c_txt = f"**App Name: Khan-Sir\nBatch Name:** `{batch_name}`"
+        await message.reply_document(document=f"{batch_name}.txt", caption=c_txt)
+        os.remove(f"{batch_name}.txt")
 
     except Exception as e:
         await message.reply_text(str(e))
