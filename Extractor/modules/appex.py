@@ -63,7 +63,7 @@ async def appex_down(app, message, hdr1, api, raw_text2, fuk, batch_name, name, 
                                             print(f"Unexpected format: {plink}\n{tid}")
 
                                 elif data.get('ytFlag') == 1:
-                                    dlink = data.get('video_id')
+                                    dlink = data.get('file_link')
                                     if dlink:
                                         encoded_part, encrypted_part = dlink.split(':')
                                         b = decrypt_data(encoded_part)
