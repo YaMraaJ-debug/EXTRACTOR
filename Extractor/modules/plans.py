@@ -31,6 +31,7 @@ async def remove_premium(client, message):
 @app.on_message(filters.command("myplan"))
 async def myplan(client, message):
     user_id = message.from_user.id
+    user = message.from_user.mention
     data = await plans_db.check_premium(user_id)  
     if data and data.get("expire_date"):
         expiry = data.get("expire_date")
