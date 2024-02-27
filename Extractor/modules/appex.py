@@ -5,7 +5,6 @@ import threading
 import asyncio
 from pyrogram import filters
 from pyrogram.types import Message
-from pyromod import listen
 import cloudscraper
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import unpad
