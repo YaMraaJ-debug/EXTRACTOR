@@ -1,7 +1,6 @@
 import json
 import os
 import requests
-from pyromod import listen
 from pyrogram import filters
 from Extractor import app
 from config import SUDO_USERS
