@@ -2,7 +2,6 @@ import json
 import os
 import requests
 from pyrogram import filters
-from pyromod import listen
 from Extractor import app
 import cloudscraper
 from Crypto.Cipher import AES
