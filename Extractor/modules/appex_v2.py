@@ -111,7 +111,7 @@ async def appex_down(app, message, hdr1, api, raw_text2, fuk, batch_name, name, 
 
 
 
-async def appex_v2_txt(app, message, api, name):
+async def appex_txt(app, message, api, name):
     global cancel
     cancel = False
     raw_url = f"https://{api}/post/userLogin"
