@@ -498,12 +498,8 @@ async def handle_callback(_, query):
                 return
             else: 
           #     await db.give_free_trial(user_id)
-                await query.message.reply_text(
-                 text="<b>🥳 ᴄᴏɴɢʀᴀᴛᴜʟᴀᴛɪᴏɴꜱ\n\n🎉 ʏᴏᴜ ᴄᴀɴ ᴜsᴇ ꜰʀᴇᴇ ᴛʀᴀɪʟ ꜰᴏʀ <u>5 ᴍɪɴᴜᴛᴇs</u> ꜰʀᴏᴍ ɴᴏᴡ !</b>",
-                 quote=False,
-                 disable_web_page_preview=True,                  
-                 reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("ᴄʜᴇᴄᴋᴏᴜᴛ ᴘʟᴀɴꜱ", callback_data='see_plans')]]))
-                return    
+                await query.answer("🥳 ᴄᴏɴɢʀᴀᴛᴜʟᴀᴛɪᴏɴꜱ\n\n🎉 ʏᴏᴜ ᴄᴀɴ ᴜsᴇ ꜰʀᴇᴇ ᴛʀᴀɪʟ ꜰᴏʀ <u>5 ᴍɪɴᴜᴛᴇs</u> ꜰʀᴏᴍ ɴᴏᴡ !", show_alert=True)
+                
 
   
     elif query.data == "premium_":
@@ -590,7 +586,7 @@ async def handle_callback(_, query):
             button = [[
               InlineKeyboardButton('☎️ ᴄᴏɴᴛᴀᴄᴛ ', user_id=int(OWNER_ID))
             ],[
-              InlineKeyboardButton('⋞', callback_data='other_'),
+              InlineKeyboardButton('⋞', callback_data='gold_'),
               InlineKeyboardButton('ʙ ᴀ ᴄ ᴋ', callback_data='premium_'),
               InlineKeyboardButton('⋟', callback_data='free_')
             ]]
