@@ -27,11 +27,12 @@ async def appex_down(app, message, hdr1, api, raw_text2, fuk, batch_name, name, 
         for v in range(len(xx)):
             f = xx[v]
             res3 = requests.get(f"https://{api}/get/alltopicfrmlivecourseclass?courseid=" + raw_text2 + "&subjectid=" + f, headers=hdr1)
-            b_data2 = res3.json()['data']
+            b_data2 = res3.json().get('data', [])
             vp = ""
             for data in b_data2:
-                tid = data["topicid"]
-                vp += f"{tid}&"
+                tid = data.get("topicid")
+                if tid:
+                    vp += f"{tid}&"
 
             vj = ""
             try:
@@ -39,46 +40,49 @@ async def appex_down(app, message, hdr1, api, raw_text2, fuk, batch_name, name, 
                 for y in range(len(xv)):
                     t = xv[y]
                     res4 = requests.get(f"https://{api}/get/livecourseclassbycoursesubtopconceptapiv3?topicid=" + t + "&start=-1&courseid=" + raw_text2 + "&subjectid=" + f, headers=hdr1).json()
-                    topicid = res4["data"]
+                    topicid = res4.get("data", [])
                     for data in topicid:
-                        type = data['material_type']
-                        tid = data["Title"]
-                        idid = f"{tid}"
-                        if type == 'VIDEO':
-                            plink = data["pdf_link"].split(':')
-                            encoded_part, encrypted_part = plink
-                            bp = decrypt_data(encoded_part)
-                            vs = f"{bp}"
+                        type = data.get('material_type')
+                        tid = data.get("Title")
+                        if type == 'VIDEO' and tid:
+                            plink = data.get("pdf_link", "").split(':')
+                            if len(plink) == 2:
+                                encoded_part, encrypted_part = plink
+                                bp = decrypt_data(encoded_part)
+                                vs = f"{bp}"
 
-                            if data['ytFlag'] == 0:
-                                for link in data['download_links']:
-                                    if link['quality'] == "720p":
-                                        dlink = link['path']
+                                if data.get('ytFlag') == 0:
+                                    dlink = next((link['path'] for link in data.get('download_links', []) if link.get('quality') == "720p"), None)
+                                    if dlink:
                                         parts = dlink.split(':')
                                         if len(parts) == 2:   
                                             encoded_part, encrypted_part = parts
                                             b = decrypt_data(encoded_part)
                                             cool2 = f"{b}"
                                         else:
-                                            print(f"Unexpected format: {plink}\n{idid}")
+                                            print(f"Unexpected format: {plink}\n{tid}")
 
-                            elif data['ytFlag'] == 1:
-                                dlink = data['video_id']
-                                encoded_part, encrypted_part = dlink.split(':')
-                                b = decrypt_data(encoded_part)
-                                cool2 = f"{b}"
-                            else:
-                                print("Unknown ytFlag value")
-                            msg = f"{idid} : {cool2}\n{idid} : {vs}\n"
-                            vj += msg
+                                elif data.get('ytFlag') == 1:
+                                    dlink = data.get('video_id')
+                                    if dlink:
+                                        encoded_part, encrypted_part = dlink.split(':')
+                                        b = decrypt_data(encoded_part)
+                                        cool2 = f"{b}"
+                                    else:
+                                        print(f"Missing video_id for {tid}")
+                                else:
+                                    print("Unknown ytFlag value")
+                                msg = f"{tid} : {cool2}\n{tid} : {vs}\n"
+                                vj += msg
 
-                        elif type == 'PDF':
-                            plink = data["pdf_link"].split(':')
-                            encoded_part, encrypted_part = plink
-                            bp = decrypt_data(encoded_part)
-                            vs = f"{bp}"
-                            msg = f"{idid} : {vs}\n"
-                            vj += msg
+                        elif type == 'PDF' and tid:
+                            plink = data.get("pdf_link", "").split(':')
+                            if len(plink) == 2:
+                                encoded_part, encrypted_part = plink
+                                bp = decrypt_data(encoded_part)
+                                vs = f"{bp}"
+                                msg = f"{tid} : {vs}\n"
+                                vj += msg
             except Exception as e:
                 print(str(e))  
   
@@ -95,6 +99,8 @@ async def appex_down(app, message, hdr1, api, raw_text2, fuk, batch_name, name, 
         await message.reply_text("Done")
     except Exception as e:
         print(str(e))
+        await message.reply_text("An error occurred. Please try again later.")
+
 
 
 
