@@ -7,10 +7,12 @@ db = mongo.premium
 db = db.premium_db
 
 
+
+
 async def add_premium(user_id, expire_date):
     data = await check_premium(user_id)
     if data and data.get("_id"):
-        await db.update_one({"_id": user_id, "expire_date": expire_date})
+        await db.update_one({"_id": user_id}, {"$set": {"expire_date": expire_date}})
     else:
         await db.insert_one({"_id": user_id, "expire_date": expire_date})
 
