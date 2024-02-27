@@ -17,11 +17,22 @@ def decrypt_data(encoded_data, key, iv):
     return decrypted_data.decode('utf-8')
 
 
+async def course_content(
+    scraper = cloudscraper.create_scraper()
+    html = scraper.get(f"https://exampurapi.classx.co.in/get/folder_contentsv2?course_id={hh}&parent_id={ii}", headers=hdr1).content
+    output = json.loads(html)
+    fuck = output['data']
+    for data in fuck:
+        if data['material_type'] == 'FOLDER':
+            id = data["id"]
+            await course_content(hh, id)
+        elif data['material_type'] == 'VIDEO':
 
-async def appexampur_txt(app, message):
+
+async def appex_v3_txt(app, message, api, name):
     global cancel
     cancel = False
-    raw_url = "https://exampurapi.classx.co.in/post/userLogin"
+    raw_url = f"https://exampurapi.classx.co.in/post/userLogin"
     hdr = {
         "Auth-Key": "appxapi",
         "User-Id": "-2",
