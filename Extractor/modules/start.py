@@ -285,7 +285,7 @@ async def handle_callback(_, query):
         api = await app.ask(query.message.chat.id, text="**SEND APPX API\n\n✅ Example:\ntcsexamzoneapi.classx.co.in**")
         api_txt = api.text
         name = api_txt.split('.')[0].replace("api", "") if api else api_txt.split('.')[0]
-        await appex_v3_txt(app, query.message, api_txt, name)
+#        await appex_v3_txt(app, query.message, api_txt, name)
       
     elif query.data=="next_1":        
         reply_markup = InlineKeyboardMarkup(button2)
