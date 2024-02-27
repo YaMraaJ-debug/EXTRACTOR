@@ -170,7 +170,7 @@ button4 = [
                 [
                     InlineKeyboardButton("﹤", callback_data="next_2"),
                     InlineKeyboardButton("ʙ ᴀ ᴄ ᴋ", callback_data="modes_"),
-                    InlineKeyboardButton("﹥", callback_data="next_3")
+                    InlineKeyboardButton("﹥", callback_data="next_4")
                 ]
                 ]
 
