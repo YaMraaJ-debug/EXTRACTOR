@@ -594,17 +594,7 @@ async def handle_callback(_, query):
 
   
 
-    elif query.data == "give_trial":
-            user_id = query.from_user.id
-       #     has_free_trial = await db.check_trial_status(user_id)
-            if has_free_trial:
-                await query.answer("🚸 ʏᴏᴜ'ᴠᴇ ᴀʟʀᴇᴀᴅʏ ᴄʟᴀɪᴍᴇᴅ ʏᴏᴜʀ ꜰʀᴇᴇ ᴛʀɪᴀʟ ᴏɴᴄᴇ !\n\n📌 ᴄʜᴇᴄᴋᴏᴜᴛ ᴏᴜʀ ᴘʟᴀɴꜱ ʙʏ : /plans", show_alert=True)
-                return
-            else: 
-          #     await db.give_free_trial(user_id)
-                await query.answer("🥳 ᴄᴏɴɢʀᴀᴛᴜʟᴀᴛɪᴏɴꜱ\n\n🎉 ʏᴏᴜ ᴄᴀɴ ᴜsᴇ ꜰʀᴇᴇ ᴛʀᴀɪʟ ꜰᴏʀ <u>5 ᴍɪɴᴜᴛᴇs</u> ꜰʀᴏᴍ ɴᴏᴡ !", show_alert=True)
                 
-
   
     elif query.data == "premium_":
             button = [[
@@ -627,7 +617,7 @@ async def handle_callback(_, query):
           
     elif query.data == "bronze_":
             button = [[
-              InlineKeyboardButton('🔐 ʙᴜʏ ᴘʀᴇᴍɪᴜᴍ', callback_data='purchase')
+              InlineKeyboardButton('🔐 ʙᴜʏ ᴘʀᴇᴍɪᴜᴍ', callback_data='purchase_')
             ],[
               InlineKeyboardButton('⋞', callback_data='other_'),
               InlineKeyboardButton('ʙ ᴀ ᴄ ᴋ', callback_data='premium_'),
@@ -657,7 +647,7 @@ async def handle_callback(_, query):
             
     elif query.data == "gold_":
             button = [[
-              InlineKeyboardButton('🔐 ʙᴜʏ ᴘʀᴇᴍɪᴜᴍ', callback_data='purchase')
+              InlineKeyboardButton('🔐 ʙᴜʏ ᴘʀᴇᴍɪᴜᴍ', callback_data='purchase_')
             ],[
               InlineKeyboardButton('⋞', callback_data='silver_'),
               InlineKeyboardButton('ʙ ᴀ ᴄ ᴋ', callback_data='premium_'),
