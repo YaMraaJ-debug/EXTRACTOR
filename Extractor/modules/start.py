@@ -10,7 +10,7 @@ from Extractor.modules.appex_v2 import appex_txt
 from Extractor.modules.classplus import classplus_txt
 #from Extractor.modules.pw import pw_mobile, pw_token
 from Extractor.modules.exampur import exampur_txt
-from Extractor.modules.app_exampur import appexampur_txt
+from Extractor.modules.appex_v3 import appex_v3_txt
 from Extractor.modules.careerwill import career_will
 from Extractor.modules.khan import khan_login
 
@@ -288,7 +288,7 @@ async def handle_callback(_, query):
         api = await app.ask(query.message.chat.id, text="**SEND APPX API\n\n✅ Example:\ntcsexamzoneapi.classx.co.in**")
         api_txt = api.text
         name = api_txt.split('.')[0].replace("api", "") if api else api_txt.split('.')[0]
-#        await appex_v3_txt(app, query.message, api_txt, name)
+        await appex_v3_txt(app, query.message, api_txt, name)
       
     elif query.data=="next_1":        
         reply_markup = InlineKeyboardMarkup(button2)
@@ -565,7 +565,9 @@ async def handle_callback(_, query):
         await appex_txt(app, query.message, api, name) 
 
     elif query.data == 'app_exampur':
-        await appexampur_txt(app, query.message)
+        api = "exampurapi.classx.co.in"
+        name = "App Exampur"
+        await appex_v3_txt(app, query.message, api, name) 
   
     elif query.data=="classplus_":          
         await classplus_txt(app, query.message)
