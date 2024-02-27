@@ -1,4 +1,6 @@
 from config import CHANNEL_ID 
+from Extractor.core import script
+
 
 
 async def subscribe(app, message):
@@ -10,7 +12,7 @@ async def subscribe(app, message):
             await message.reply_text("Sorry Sir, You are Banned. Contact My Support Group @DevsOops")
             return 1
       except UserNotParticipant:
-         await message.reply_photo(photo="https://telegra.ph/file/b7a933f423c153f866699.jpg",caption="**ᴘʟᴇᴀsᴇ ᴊᴏɪɴ ᴍʏ ᴜᴘᴅᴀᴛᴇs ᴄʜᴀɴɴᴇʟ ᴛᴏ ᴜsᴇ ᴍᴇ ᴀғᴛᴇʀ ᴊᴏɪɴ ᴍʏ ᴜᴘᴅᴀᴛᴇs ᴄʜᴀɴɴᴇʟ ᴛʜᴇɴ sᴇɴᴅ /start ǫᴜᴇʀʏ**", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🤖 ᴊᴏɪɴ ᴜᴘᴅᴀᴛᴇs ᴄʜᴀɴɴᴇʟ 🤖", url=f"https://t.me/DevsOops")]]))
+         await message.reply_photo(photo="https://telegra.ph/file/b7a933f423c153f866699.jpg",caption=script.FORCE_MSG.format(message.from_user.mention), reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🤖 ᴊᴏɪɴ ᴜᴘᴅᴀᴛᴇs ᴄʜᴀɴɴᴇʟ 🤖", url=f"https://t.me/DevsOops")]]))
          return 1
       except Exception:
          await message.reply_text("Something Went Wrong. Contact My Support Group")
