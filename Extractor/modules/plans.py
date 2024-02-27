@@ -4,7 +4,7 @@ import datetime, time
 from Extractor import app
 from config import SUDO_USERS, PREMIUM_LOGS, OWNER_ID
 from Extractor.core.utils import get_seconds
-from Extractor.core.mongo.plans_db import db 
+from Extractor.core.mongo import plans_db  
 from pyrogram import filters 
 from pyrogram.errors.exceptions.bad_request_400 import MessageTooLong
 
@@ -15,11 +15,11 @@ async def remove_premium(client, message):
     if len(message.command) == 2:
         user_id = int(message.command[1])  
         user = await client.get_users(user_id)
-        if await db.remove_premium_access(user_id):
+        if await plans_db.remove_premium(user_id):
             await message.reply_text("ᴜꜱᴇʀ ʀᴇᴍᴏᴠᴇᴅ ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟʟʏ !")
             await client.send_message(
                 chat_id=user_id,
-                text=f"<b>ʜᴇʏ {user.mention},\n\nʏᴏᴜʀ ᴘʀᴇᴍɪᴜᴍ ᴀᴄᴄᴇss ʜᴀs ʙᴇᴇɴ ʀᴇᴍᴏᴠᴇᴅ.\nᴛʜᴀɴᴋ ʏᴏᴜ ꜰᴏʀ ᴜsɪɴɢ ᴏᴜʀ sᴇʀᴠɪᴄᴇ 😊\nᴄʟɪᴄᴋ ᴏɴ /plan ᴛᴏ ᴄʜᴇᴄᴋ ᴏᴜᴛ ᴏᴛʜᴇʀ ᴘʟᴀɴꜱ.</b>"
+                text=f"<b>ʜᴇʏ {user.mention},\n\nʏᴏᴜʀ ᴘʀᴇᴍɪᴜᴍ ᴀᴄᴄᴇss ʜᴀs ʙᴇᴇɴ ʀᴇᴍᴏᴠᴇᴅ.\nᴛʜᴀɴᴋ ʏᴏᴜ ꜰᴏʀ ᴜsɪɴɢ ᴏᴜʀ sᴇʀᴠɪᴄᴇ 😊.</b>"
             )
         else:
             await message.reply_text("ᴜɴᴀʙʟᴇ ᴛᴏ ʀᴇᴍᴏᴠᴇ ᴜꜱᴇᴅ !\nᴀʀᴇ ʏᴏᴜ ꜱᴜʀᴇ, ɪᴛ ᴡᴀꜱ ᴀ ᴘʀᴇᴍɪᴜᴍ ᴜꜱᴇʀ ɪᴅ ?")
@@ -31,7 +31,7 @@ async def remove_premium(client, message):
 @app.on_message(filters.command("myplan"))
 async def myplan(client, message):
     user_id = message.from_user.id
-    data = await db.get_user(user_id)  
+    data = await plans_db.check_premium(user_id)  
     if data and data.get("expiry_time"):
         expiry = data.get("expiry_time")
         expiry_ist = expiry.astimezone(pytz.timezone("Asia/Kolkata"))
@@ -58,7 +58,7 @@ async def get_premium(client, message):
     if len(message.command) == 2:
         user_id = int(message.command[1])
         user = await client.get_users(user_id)
-        data = await db.get_user(user_id)  
+        data = await plans_db.check_premium(user_id)  
         if data and data.get("expiry_time"):
             expiry = data.get("expiry_time") 
             expiry_ist = expiry.astimezone(pytz.timezone("Asia/Kolkata"))
@@ -91,10 +91,9 @@ async def give_premium_cmd_handler(client, message):
         time = message.command[2]+" "+message.command[3]
         seconds = await get_seconds(time)
         if seconds > 0:
-            expiry_time = datetime.datetime.now() + datetime.timedelta(seconds=seconds)
-            user_data = {"id": user_id, "expiry_time": expiry_time}  
-            await db.update_one(user_data)  
-            data = await db.get_user(user_id)
+            expiry_time = datetime.datetime.now() + datetime.timedelta(seconds=seconds)  
+            await plans_db.add_premium(user_id, expiry_time)  
+            data = await plans_db.check_premium(user_id)
             expiry = data.get("expiry_time")   
             expiry_str_in_ist = expiry.astimezone(pytz.timezone("Asia/Kolkata")).strftime("%d-%m-%Y\n⏱️ ᴇxᴘɪʀʏ ᴛɪᴍᴇ : %I:%M:%S %p")         
             await message.reply_text(f"ᴘʀᴇᴍɪᴜᴍ ᴀᴅᴅᴇᴅ ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟʟʏ ✅\n\n👤 ᴜꜱᴇʀ : {user.mention}\n⚡ ᴜꜱᴇʀ ɪᴅ : <code>{user_id}</code>\n⏰ ᴘʀᴇᴍɪᴜᴍ ᴀᴄᴄᴇꜱꜱ : <code>{time}</code>\n\n⏳ ᴊᴏɪɴɪɴɢ ᴅᴀᴛᴇ : {current_time}\n\n⌛️ ᴇxᴘɪʀʏ ᴅᴀᴛᴇ : {expiry_str_in_ist}", disable_web_page_preview=True)
@@ -110,7 +109,7 @@ async def give_premium_cmd_handler(client, message):
         await message.reply_text("Usage : /add_premium user_id time (e.g., '1 day for days', '1 hour for hours', or '1 min for minutes', or '1 month for months' or '1 year for year')")
 
 
-
+"""
 @app.on_message(filters.command("premium_users") & filters.user(SUDO_USERS))
 async def premium_user(client, message):
     aa = await message.reply_text("<i>ꜰᴇᴛᴄʜɪɴɢ...</i>")
@@ -140,5 +139,5 @@ async def premium_user(client, message):
             outfile.write(new)
         await message.reply_document('usersplan.txt', caption="Paid Users:")
 
-
+"""
 
