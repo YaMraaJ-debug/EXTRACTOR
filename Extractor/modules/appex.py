@@ -115,7 +115,6 @@ async def appex_txt(app, message, api, name):
     global cancel
     cancel = False
     raw_url = f"https://{api}/post/userLogin"
-    print(raw_url)
     hdr = {
         "Auth-Key": "appxapi",
         "User-Id": "-2",
@@ -127,16 +126,20 @@ async def appex_txt(app, message, api, name):
         "User-Agent": "okhttp/4.9.1"
     }
     info = {"email": "", "password": ""}
-    input1 = await app.ask(message.chat.id, text="Send **ID & Password** in this manner, otherwise, the bot will not respond.\n\nSend like this: **ID*Password**")
+    input1 = await app.ask(message.chat.id, text="Send **ID & Password** in this manner, otherwise, the bot will not respond.\n\nSend like this: **ID*Password**\n\nOr Send Your Token")
     raw_text = input1.text
-    info["email"] = raw_text.split("*")[0]
-    info["password"] = raw_text.split("*")[1]
-    await input1.delete(True)
-    scraper = cloudscraper.create_scraper()
-    res = scraper.post(raw_url, data=info, headers=hdr).content
-    output = json.loads(res)
-    userid = output["data"]["userid"]
-    token = output["data"]["token"]
+    if '*' in raw_text:
+        info = {"email": "", "password": ""}
+        info["email"] = raw_text.split("*")[0]
+        info["password"] = raw_text.split("*")[1]
+        await input1.delete(True)
+        scraper = cloudscraper.create_scraper()
+        res = scraper.post(raw_url, data=info, headers=hdr).content
+        output = json.loads(res)
+        userid = output["data"]["userid"]
+        token = output["data"]["token"]
+    else:
+        token = raw_text
     hdr1 = {
             "Host": api,
             "Client-Service": "Appx",
