@@ -67,7 +67,15 @@ async def appex_down(app, message, hdr1, api, raw_text2, fuk, batch_name, name, 
                                     if dlink:
                                         encoded_part, encrypted_part = dlink.split(':')
                                         b = decrypt_data(encoded_part)
-                                        cool2 = f"{b}"
+                                        if 'youtube.com' in b:
+                                            video_id_match = re.search(r'[?&]v=([^&]+)', b)
+                                            if video_id_match:
+                                                video_id = video_id_match.group(1)
+                                                cool2 = f"https://youtu.be/{video_id}"
+                                        elif 'youtu.be' in b:
+                                            cool2 = f"{b}"
+                                        else:
+                                            cool2 = f"https://youtu.be/{b}"
                                     else:
                                         print(f"Missing video_id for {tid}")
                                 else:
