@@ -4,6 +4,7 @@ from pyrogram import filters
 from Extractor import app
 from config import OWNER_ID, SUDO_USERS
 from Extractor.core import script
+from Extractor.core.func import subscribe
 from pyrogram.types import CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton
 from Extractor.modules.appex import appex_txt
 from Extractor.modules.classplus import classplus_txt
@@ -13,7 +14,12 @@ from Extractor.modules.app_exampur import appexampur_txt
 from Extractor.modules.careerwill import career_will
 from Extractor.modules.khan import khan_login
 
+
+
 # ------------------------------------------------------------------------------- #
+
+
+
 
 buttons = InlineKeyboardMarkup([
                 [
@@ -223,6 +229,9 @@ back_button  = [[
 
 @app.on_message(filters.command("start"))
 async def start(_,message):
+  join = await subscribe(_,message)
+  if join ==1:
+    return
   await message.reply_photo(photo=random.choice(script.IMG), 
                             caption=script.START_TXT.format(message.from_user.mention),
                             reply_markup=buttons)
