@@ -1,5 +1,6 @@
 from config import CHANNEL_ID 
 from Extractor.core import script
+from Extractor import app
 
 
 async def gen_link(chat_id):
@@ -11,7 +12,7 @@ async def subscribe(app, message):
    url = await gen_link(update_channel)
    if update_channel:
       try:
-         user = await app.get_chat_member(update_channel, message.chat.id)
+         user = await app.get_chat_member(update_channel, message.from_user.id)
          if user.status == "kicked":
             await message.reply_text("Sorry Sir, You are Banned. Contact My Support Group @DevsOops")
             return 1
