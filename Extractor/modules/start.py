@@ -160,15 +160,48 @@ button4 = [
                     InlineKeyboardButton("ʀᴋ sɪʀ", callback_data="rk_sir")
                 ],
                 [
-                    InlineKeyboardButton("sᴏᴏɴ", callback_data="maintainer_"),
-                    InlineKeyboardButton("sᴏᴏɴ", callback_data="maintainer_")
+                    InlineKeyboardButton("Study Mantra", callback_data="study_mantra"),
+                    InlineKeyboardButton("Science Fun", callback_data="science_fun")
                 ],
                 [              
-                    InlineKeyboardButton("sᴏᴏɴ", callback_data="maintainer_"),
-                    InlineKeyboardButton("sᴏᴏɴ", callback_data="maintainer_")
+                    InlineKeyboardButton("Grow Academy", callback_data="grow_acc"),
+                    InlineKeyboardButton("Goal Yaan", callback_data="goal_yaan")
                 ],
                 [
                     InlineKeyboardButton("﹤", callback_data="next_2"),
+                    InlineKeyboardButton("ʙ ᴀ ᴄ ᴋ", callback_data="modes_"),
+                    InlineKeyboardButton("﹥", callback_data="next_3")
+                ]
+                ]
+
+
+button5 = [              
+                [   
+                    InlineKeyboardButton("Anil Siriti", callback_data="anil_siriti"),
+                    InlineKeyboardButton("Education Adda", callback_data="education_adda")
+                ],
+                [   
+                    InlineKeyboardButton("Achievers Academy", callback_data="achievers_acc"),
+                    InlineKeyboardButton("Cammando Academy", callback_data="cammando_acc")
+                ],
+                [
+                    InlineKeyboardButton("Soon", callback_data="maintainer_"),
+                    InlineKeyboardButton("Soon", callback_data="maintainer_")
+                ],
+                [   
+                    InlineKeyboardButton("Soon", callback_data="maintainer_"),
+                    InlineKeyboardButton("Soon", callback_data="maintainer_")
+                ],
+                [
+                    InlineKeyboardButton("Soon", callback_data="maintainer_"),
+                    InlineKeyboardButton("Soon", callback_data="maintainer_")
+                ],
+                [              
+                    InlineKeyboardButton("Soon", callback_data="maintainer_"),
+                    InlineKeyboardButton("Soon", callback_data="maintainer_")
+                ],
+                [
+                    InlineKeyboardButton("﹤", callback_data="next_3"),
                     InlineKeyboardButton("ʙ ᴀ ᴄ ᴋ", callback_data="modes_"),
                     InlineKeyboardButton("﹥", callback_data="manual_")
                 ]
