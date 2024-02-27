@@ -95,12 +95,12 @@ async def khan_login(app, message):
                 print(str(e))
                 pass
                 
-        with open(f"{batch_name}.txt", 'a') as f:
+        with open(f"KHAN-SIR.txt", 'a') as f:
             f.write(f"{full}")
         
-        c_txt = f"**App Name: Khan-Sir\nBatch Name: `{batch_name}`**"
-        await message.reply_document(document=f"{batch_name}.txt", caption=c_txt)
-        os.remove(f"{batch_name}.txt")
+        c_txt = f"**App Name: Khan-Sir\nBatch Name: `.....`**"
+        await message.reply_document(document=f"KHAN-SIR.txt", caption=c_txt)
+        os.remove(f"KHAN-SIR.txt")
 
     except Exception as e:
         await message.reply_text(str(e))
