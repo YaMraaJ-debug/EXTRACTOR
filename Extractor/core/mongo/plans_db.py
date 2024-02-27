@@ -27,6 +27,9 @@ async def check_premium(user_id):
 
 
 async def premium_users():
+    id_list = []
     async for data in db.find():
-        return data["_id"]
+        id_list.append(data["_id"])
+    return id_list
+
 
