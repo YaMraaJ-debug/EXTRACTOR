@@ -32,8 +32,8 @@ async def remove_premium(client, message):
 async def myplan(client, message):
     user_id = message.from_user.id
     data = await plans_db.check_premium(user_id)  
-    if data and data.get("expiry_time"):
-        expiry = data.get("expiry_time")
+    if data and data.get("expire_date"):
+        expiry = data.get("expire_date")
         expiry_ist = expiry.astimezone(pytz.timezone("Asia/Kolkata"))
         expiry_str_in_ist = expiry.astimezone(pytz.timezone("Asia/Kolkata")).strftime("%d-%m-%Y\n⏱️ ᴇxᴘɪʀʏ ᴛɪᴍᴇ : %I:%M:%S %p")            
         
@@ -59,8 +59,8 @@ async def get_premium(client, message):
         user_id = int(message.command[1])
         user = await client.get_users(user_id)
         data = await plans_db.check_premium(user_id)  
-        if data and data.get("expiry_time"):
-            expiry = data.get("expiry_time") 
+        if data and data.get("expire_date"):
+            expiry = data.get("expire_date") 
             expiry_ist = expiry.astimezone(pytz.timezone("Asia/Kolkata"))
             expiry_str_in_ist = expiry.astimezone(pytz.timezone("Asia/Kolkata")).strftime("%d-%m-%Y\n⏱️ ᴇxᴘɪʀʏ ᴛɪᴍᴇ : %I:%M:%S %p")            
             
@@ -94,7 +94,7 @@ async def give_premium_cmd_handler(client, message):
             expiry_time = datetime.datetime.now() + datetime.timedelta(seconds=seconds)  
             await plans_db.add_premium(user_id, expiry_time)  
             data = await plans_db.check_premium(user_id)
-            expiry = data.get("expiry_time")   
+            expiry = data.get("expire_date")   
             expiry_str_in_ist = expiry.astimezone(pytz.timezone("Asia/Kolkata")).strftime("%d-%m-%Y\n⏱️ ᴇxᴘɪʀʏ ᴛɪᴍᴇ : %I:%M:%S %p")         
             await message.reply_text(f"ᴘʀᴇᴍɪᴜᴍ ᴀᴅᴅᴇᴅ ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟʟʏ ✅\n\n👤 ᴜꜱᴇʀ : {user.mention}\n⚡ ᴜꜱᴇʀ ɪᴅ : <code>{user_id}</code>\n⏰ ᴘʀᴇᴍɪᴜᴍ ᴀᴄᴄᴇꜱꜱ : <code>{time}</code>\n\n⏳ ᴊᴏɪɴɪɴɢ ᴅᴀᴛᴇ : {current_time}\n\n⌛️ ᴇxᴘɪʀʏ ᴅᴀᴛᴇ : {expiry_str_in_ist}", disable_web_page_preview=True)
             await client.send_message(
