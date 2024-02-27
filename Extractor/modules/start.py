@@ -4,7 +4,7 @@ from pyrogram import filters
 from Extractor import app
 from config import OWNER_ID, SUDO_USERS
 from Extractor.core import script
-from Extractor.core.func import subscribe
+from Extractor.core.func import subscribe, chk_user
 from pyrogram.types import CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton
 from Extractor.modules.appex_v2 import appex_txt
 from Extractor.modules.classplus import classplus_txt
@@ -253,7 +253,10 @@ async def handle_callback(_, query):
               reply_markup=buttons
             )
         
-    elif query.data=="modes_":        
+    elif query.data=="modes_":
+        lol = await chk_user(query, query.from_user.id)
+        if lol == 1:
+          return
         reply_markup = InlineKeyboardMarkup(modes_button)
         await query.message.edit_text(
               script.MODES_TXT,
