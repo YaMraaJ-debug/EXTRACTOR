@@ -148,7 +148,7 @@ button4 = [
                     InlineKeyboardButton("Khan", callback_data="khan_")
                 ],
                 [   
-                    InlineKeyboardButton("Physics Wallah", callback_data="pw_"),
+                    InlineKeyboardButton("Physics Wallah", callback_data="maintainer_"),
                     InlineKeyboardButton("Exampur", callback_data="exampur_")
                 ],
                 [
@@ -553,20 +553,20 @@ async def handle_callback(_, query):
     elif query.data=="classplus_":          
         await classplus_txt(app, query.message)
   
-    elif query.data == 'pw_':
-        await query.message.reply_text(
-            "**CHHOSE FROM BELOW **",
-            reply_markup=InlineKeyboardMarkup([
-                [
-                    InlineKeyboardButton("Mobile No.", callback_data='mobile_'),
-                    InlineKeyboardButton("Token", callback_data='token_'),
-                ]]))
+#    elif query.data == 'pw_':
+#        await query.message.reply_text(
+#            "**CHHOSE FROM BELOW **",
+#            reply_markup=InlineKeyboardMarkup([
+#                [
+#                    InlineKeyboardButton("Mobile No.", callback_data='mobile_'),
+#                    InlineKeyboardButton("Token", callback_data='token_'),
+#                ]]))
 
-    elif query.data == 'mobile_':
-        await pw_mobile(app, query.message)
+#    elif query.data == 'mobile_':
+#        await pw_mobile(app, query.message)
 
-    elif query.data == 'token_':
-        await pw_token(app, query.message)
+#    elif query.data == 'token_':
+#        await pw_token(app, query.message)
         
 
 
