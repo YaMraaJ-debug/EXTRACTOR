@@ -6,7 +6,7 @@ from config import OWNER_ID, SUDO_USERS
 from Extractor.core import script
 from Extractor.core.func import subscribe
 from pyrogram.types import CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton
-from Extractor.modules.appex import appexv2_txt
+from Extractor.modules.appex_v2 import appex_v2_txt
 from Extractor.modules.classplus import classplus_txt
 #from Extractor.modules.pw import pw_mobile, pw_token
 from Extractor.modules.exampur import exampur_txt
@@ -279,13 +279,13 @@ async def handle_callback(_, query):
         api = await app.ask(query.message.chat.id, text="**SEND APPX API\n\n✅ Example:\ntcsexamzoneapi.classx.co.in**")
         api_txt = api.text
         name = api_txt.split('.')[0].replace("api", "") if api else api_txt.split('.')[0]
-        await appexv2_txt(app, query.message, api_txt, name)
+        await appex_v2_txt(app, query.message, api_txt, name)
 
     elif query.data=="v3_": 
         api = await app.ask(query.message.chat.id, text="**SEND APPX API\n\n✅ Example:\ntcsexamzoneapi.classx.co.in**")
         api_txt = api.text
         name = api_txt.split('.')[0].replace("api", "") if api else api_txt.split('.')[0]
-        await appexv3_txt(app, query.message, api_txt, name)
+        await appex_v3_txt(app, query.message, api_txt, name)
       
     elif query.data=="next_1":        
         reply_markup = InlineKeyboardMarkup(button2)
