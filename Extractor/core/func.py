@@ -1,7 +1,24 @@
-from config import CHANNEL_ID 
+from config import CHANNEL_ID, SUDO_USERS 
 from Extractor.core import script
 from pyrogram.errors import UserNotParticipant
 from pyrogram.types import *
+from Extractor.core.mongo.plans_db import premium_users
+
+
+
+
+async def chk_user(query, user_id):
+   user = await premium_users()
+   if user_id in user or SUDO_USERS:
+      await query.answer("Premium User!!")
+      return 1
+   else:
+      await query.answer("Sir You don't have premium access !!", show_alert=True)
+      return 1
+
+
+
+
 
 
 async def gen_link(app,chat_id):
