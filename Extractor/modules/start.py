@@ -294,6 +294,13 @@ async def handle_callback(_, query):
               reply_markup=reply_markup
             )
 
+    elif query.data=="next_4":        
+        reply_markup = InlineKeyboardMarkup(button5)
+        await query.message.edit_text(
+              script.MANUAL_TXT,
+              reply_markup=reply_markup
+            )
+
           
         
     elif query.data=="maintainer_":     
@@ -563,6 +570,12 @@ async def handle_callback(_, query):
         
 
 
+
+
+
+
+
+  
 
     elif query.data == "give_trial":
             user_id = query.from_user.id
