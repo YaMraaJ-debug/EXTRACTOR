@@ -53,21 +53,19 @@ async def appexampur_txt(app, message):
     await message.reply_text("**login Successful**")
     res1 = requests.get(f"https://exampurapi.classx.co.in/get/get_all_purchases?userid="+userid+"&item_type=10", headers=hdr1)
     b_data = res1.json()['data']
-    cool = ""
+    
+    FFF = "BATCH-ID - BATCH NAME\n\n"
     for data in b_data:
         cdatas = data['coursedt']
         for cdata in cdatas:
-            t_name = cdata['course_name']
-            FFF = "BATCH-ID - BATCH NAME"
-            aa = f"**`{cdata['id']}`      - `{cdata['course_name']}`**\n\n"
-            if len(f'{cool}{aa}') > 4096:
-                print(aa)
-                cool = ""
-            cool += aa
+            t_name = cdata['course_name']         
+            FFF += f"**`{cdata['id']}`      - `{cdata['course_name']}`**\n\n"
+            
             btch = cdata['course_name']
-    await message.reply_text(f'{"**You have these batches :-"}\n\n{FFF}\n\n{cool}')
+    await message.reply_text(f"**YOU HAVE THESE BATCHES:\n\n{FFF}")
     input2 = await app.ask(message.chat.id, text="**Now send the Batch ID to Download**")
     raw_text2 = input2.text
+    
     scraper = cloudscraper.create_scraper()
     html = scraper.get(f"https://exampurapi.classx.co.in/get/folder_contentsv2?course_id={raw_text2}&parent_id=-1", headers=hdr1).content
     output0 = json.loads(html)
@@ -76,13 +74,14 @@ async def appexampur_txt(app, message):
     html2 = scraper2.get(f"https://exampurapi.classx.co.in/get/folder_contentsv2?course_id={raw_text2}&parent_id={parent_Id}", headers=hdr1).content
     output1 = json.loads(html2)
     subjID = output1['data']
-    cool = ""
+    
+    FFF = "BATCH-ID - BATCH NAME\n\n"
     for sub in subjID:
         subjid = sub["id"]
         subjname = sub["Title"]
-        aa = f"`{subjid}` - `{subjname}`\n\n"
-        cool += aa
-    await message.reply_text(cool)
+        FFF += f"`{subjid}` - `{subjname}`\n\n"
+        
+    await message.reply_text(FFF)
     input3 = await app.ask(message.chat.id, text="**Enter the Subject Id Show in above Response**")
     raw_text3 = input3.text
     try:
@@ -90,24 +89,17 @@ async def appexampur_txt(app, message):
         html3 = scraper3.get(f"https://exampurapi.classx.co.in/get/folder_contentsv2?course_id={raw_text2}&parent_id={raw_text3}", headers=hdr1).content
         output2 = json.loads(html3)
         b_data2 = output2['data']
-        vj = ""
-        lol = ""   
+        
+
+        lol_id = ""
         for data in b_data2:
             if data['material_type'] == 'FOLDER':
-                t_name = data["Title"]
-                tid = data["id"]
-                zz = data['videos_count']
-                BBB = f"{'**TOPIC-ID    - TOPIC     - VIDEOS**'}\n"
-                hh = f'`{tid}`     - **{t_name} - ({zz})**\n'
-                vj += f"{tid}&"
+                tid = data["id"]           
+                lol += f"{tid}&"
 
-                if len(f'{lol}{hh}') > 4096:
-                    lol = ""
-                lol += hh
+                
 
-        await message.reply_text(f"Batch details of **{t_name}** are:\n\n{BBB}\n\n{lol}")
-        input4 = await app.ask(message.chat.id, text=f"**Now send the **Subject Ids** to Download\n\nSend like this **1&2&3&4** so on\nor copy paste or edit **below ids** according to you :\n\n**Enter this to download full batch :-**\n`{vj}`")
-        raw_text4 = input4.text
+        
     except:
         raw_text4 = raw_text3
     input5 = await app.ask(message.chat.id, text="**Now send the Resolution**")
@@ -115,7 +107,7 @@ async def appexampur_txt(app, message):
 
     vj = ""
     try:
-        xv = raw_text4.split('&')
+        xv = lol_id.split('&')
         for y in range(0,len(xv)):
             t =xv[y]
             hdr11 = {
