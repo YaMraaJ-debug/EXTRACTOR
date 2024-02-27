@@ -153,7 +153,7 @@ button4 = [
                 ],
                 [
                     InlineKeyboardButton("ᴀᴘᴘ ᴇxᴀᴍᴘᴜʀ", callback_data="app_exampur"),
-                    InlineKeyboardButton("ɴᴇᴇᴛ ᴋᴀᴋᴀJee", callback_data="neet_kakajee")
+                    InlineKeyboardButton("ɴᴇᴇᴛ ᴋᴀᴋᴀᴊᴇᴇ", callback_data="neet_kakajee")
                 ],
                 [   
                     InlineKeyboardButton("ᴏғғɪᴄᴇʀs ᴀᴄᴀᴅᴇᴍʏ", callback_data="officers_acc"),
@@ -505,8 +505,9 @@ async def handle_callback(_, query):
                  reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("ᴄʜᴇᴄᴋᴏᴜᴛ ᴘʟᴀɴꜱ", callback_data='see_plans')]]))
                 return    
 
+  
     elif query.data == "premium_":
-            buttons = [[
+            button = [[
               InlineKeyboardButton(' ꜰʀᴇᴇ ᴛʀɪᴀʟ ', callback_data='free_')
             ],[
               InlineKeyboardButton(' ʙʀᴏɴᴢᴇ ', callback_data='bronze_'),
@@ -518,14 +519,14 @@ async def handle_callback(_, query):
               InlineKeyboardButton(' ʙ ᴀ ᴄ ᴋ ', callback_data='home_')
             ]]
         
-            reply_markup = InlineKeyboardMarkup(buttons)
+            reply_markup = InlineKeyboardMarkup(button)
             await query.message.edit_text(
              text=script.PLANS_TXT,
              reply_markup=reply_markup
             )
             
     elif query.data == "free_":
-            buttons = [[
+            button = [[
               InlineKeyboardButton('ᴄʟɪᴄᴋ', callback_data="give_trial")
             ],[
               InlineKeyboardButton('⋞', callback_data='other_'),
@@ -533,7 +534,7 @@ async def handle_callback(_, query):
               InlineKeyboardButton('⋟', callback_data='bronze_')
             ]]
       
-            reply_markup = InlineKeyboardMarkup(buttons)
+            reply_markup = InlineKeyboardMarkup(button)
             await query.message.edit_text(
              text=script.FREE_TXT,
              reply_markup=reply_markup
@@ -541,7 +542,7 @@ async def handle_callback(_, query):
     
           
     elif query.data == "bronze_":
-            buttons = [[
+            button = [[
               InlineKeyboardButton('🔐 ʙᴜʏ ᴘʀᴇᴍɪᴜᴍ', callback_data='purchase')
             ],[
               InlineKeyboardButton('⋞', callback_data='free_'),
@@ -549,29 +550,29 @@ async def handle_callback(_, query):
               InlineKeyboardButton('⋟', callback_data='silver_')
             ]]
       
-            reply_markup = InlineKeyboardMarkup(buttons)
+            reply_markup = InlineKeyboardMarkup(button)
             await query.message.edit_text(
              text=script.BRONZE_TXT,
              reply_markup=reply_markup             
             )
 
     elif query.data == "silver_":
-            buttons = [[
+            button = [[
               InlineKeyboardButton('🔐 ʙᴜʏ ᴘʀᴇᴍɪᴜᴍ', callback_data='purchase_')
             ],[
               InlineKeyboardButton('⋞', callback_data='bronze_'),
-              InlineKeyboardButton('ʙ ᴀ ᴄ ᴋ', callback_data='pages'),
+              InlineKeyboardButton('ʙ ᴀ ᴄ ᴋ', callback_data='premium_'),
               InlineKeyboardButton('⋟', callback_data='gold_')
             ]]
       
-            reply_markup = InlineKeyboardMarkup(buttons)
+            reply_markup = InlineKeyboardMarkup(button)
             await query.message.edit_text(
              text=script.SILVER_TXT,
              reply_markup=reply_markup             
             )
             
     elif query.data == "gold_":
-            buttons = [[
+            button = [[
               InlineKeyboardButton('🔐 ʙᴜʏ ᴘʀᴇᴍɪᴜᴍ', callback_data='purchase')
             ],[
               InlineKeyboardButton('⋞', callback_data='silver_'),
@@ -579,14 +580,14 @@ async def handle_callback(_, query):
               InlineKeyboardButton('⋟', callback_data='other_')
             ]]
       
-            reply_markup = InlineKeyboardMarkup(buttons)
+            reply_markup = InlineKeyboardMarkup(button)
             await query.message.edit_text(
              text=script.GOLD_TXT,
              reply_markup=reply_markup
             )
       
     elif query.data == "other_":
-            buttons = [[
+            button = [[
               InlineKeyboardButton('☎️ ᴄᴏɴᴛᴀᴄᴛ ', user_id=int(OWNER_ID))
             ],[
               InlineKeyboardButton('⋞', callback_data='other_'),
@@ -594,21 +595,21 @@ async def handle_callback(_, query):
               InlineKeyboardButton('⋟', callback_data='free_')
             ]]
       
-            reply_markup = InlineKeyboardMarkup(buttons)
+            reply_markup = InlineKeyboardMarkup(button)
             await query.message.edit_text(
              text=script.OTHER_TXT,
              reply_markup=reply_markup         
             )
 
     elif query.data == "purchase_":
-            buttons = [[
+            button = [[
                           InlineKeyboardButton('ᴘᴀʏᴍᴇɴᴛ ꜱᴄʀᴇᴇɴꜱʜᴏᴛ', user_id=int(OWNER_ID))
 
                       ],[
                           InlineKeyboardButton('𝐁 𝐀 𝐂 𝐊', callback_data='premium_')
                       ]]
           
-            reply_markup = InlineKeyboardMarkup(buttons)
+            reply_markup = InlineKeyboardMarkup(button)
             await query.message.edit_text(
              text=script.PAYMENT_TXT,
              reply_markup=reply_markup,           
