@@ -581,6 +581,37 @@ async def handle_callback(_, query):
              text=script.GOLD_TXT,
              reply_markup=reply_markup
             )
+      
+    elif query.data == "other_":
+            buttons = [[
+              InlineKeyboardButton('☎️ ᴄᴏɴᴛᴀᴄᴛ ', user_id=int(OWNER_ID))
+            ],[
+              InlineKeyboardButton('⋞', callback_data='other_'),
+              InlineKeyboardButton('ʙ ᴀ ᴄ ᴋ', callback_data='premium_'),
+              InlineKeyboardButton('⋟', callback_data='free_')
+            ]]
+      
+            reply_markup = InlineKeyboardMarkup(buttons)
+            await query.message.edit_text(
+             text=script.OTHER_TXT,
+             reply_markup=reply_markup         
+            )
+
+    elif query.data == "purchase_":
+            buttons = [[
+                          InlineKeyboardButton('ᴘᴀʏᴍᴇɴᴛ ꜱᴄʀᴇᴇɴꜱʜᴏᴛ', user_id=int(OWNER_ID))
+
+                      ],[
+                          InlineKeyboardButton('𝐁 𝐀 𝐂 𝐊', callback_data='premium_')
+                      ]]
+          
+            reply_markup = InlineKeyboardMarkup(buttons)
+            await query.message.edit_text(
+             text=script.PAYMENT_TXT,
+             reply_markup=reply_markup,           
+            )
+
+  
 
   
 
