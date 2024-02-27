@@ -10,3 +10,4 @@ wget
 hachoir
 cloudscraper
 pycryptodome
+pytz
