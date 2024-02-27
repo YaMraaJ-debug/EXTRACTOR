@@ -51,11 +51,17 @@ async def appex_down(app, message, hdr1, api, raw_text2, fuk, batch_name, name, 
                             vs = f"{bp}"
 
                             if data['ytFlag'] == 0:
-                                dlin = [data['download_links']]
-                                dlink = [link['path'] for link in data['download_links'] if link['quality'] == "720p"]
-                                encoded_part, encrypted_part = dlink.split(':')
-                                b = decrypt_data(encoded_part)
-                                cool2 = f"{b}"
+                                for link in data['download_links']:
+                                    if link['quality'] == "720p":
+                                        dlink = link['path']
+                                        parts = dlink.split(':')
+                                        if len(parts) == 2:   
+                                            encoded_part, encrypted_part = parts
+                                            b = decrypt_data(encoded_part)
+                                            cool2 = f"{b}"
+                                        else:
+                                            print(f"Unexpected format: {plink}\n{idid}")
+
                             elif data['ytFlag'] == 1:
                                 dlink = data['video_id']
                                 encoded_part, encrypted_part = dlink.split(':')
