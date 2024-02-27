@@ -17,7 +17,7 @@ from Extractor.modules.khan import khan_login
 
 buttons = InlineKeyboardMarkup([
                 [
-                  InlineKeyboardButton("ᴍᴏᴅᴇs", callback_data="modes_")
+                  InlineKeyboardButton("ᴍ ᴏ ᴅ ᴇ s", callback_data="modes_")
                 ],[
                   InlineKeyboardButton("ᴄʜᴀɴɴᴇʟ", url="https://t.me/DevsCreations"),
                   InlineKeyboardButton("sᴜᴘᴘᴏʀᴛ", url="https://t.me/DevsOops")
