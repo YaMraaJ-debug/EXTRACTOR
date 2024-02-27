@@ -6,7 +6,7 @@ from config import OWNER_ID, SUDO_USERS
 from Extractor.core import script
 from Extractor.core.func import subscribe
 from pyrogram.types import CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton
-from Extractor.modules.appex import appex_txt
+from Extractor.modules.appex import appexv2_txt
 from Extractor.modules.classplus import classplus_txt
 #from Extractor.modules.pw import pw_mobile, pw_token
 from Extractor.modules.exampur import exampur_txt
@@ -41,11 +41,11 @@ modes_button = [[
 
 
 custom_button = [[
-                  InlineKeyboardButton("ᴄʟɪᴄᴋ", callback_data="c_mode")
+                  InlineKeyboardButton("Appex V2", callback_data="v2_"),
+                  InlineKeyboardButton("Appex V3", callback_data="v3_"),
                 ],[
-                  InlineKeyboardButton("ʙ ᴀ ᴄ ᴋ", callback_data="modes_")
+                  InlineKeyboardButton("𝐁 𝐀 𝐂 𝐊", callback_data="modes_")
                 ]]
-
 
 button1 = [              
                 [
@@ -274,13 +274,18 @@ async def handle_callback(_, query):
               script.MANUAL_TXT,
               reply_markup=reply_markup
             )
-      
-    elif query.data=="c_mode":        
+
+    elif query.data=="v2_": 
         api = await app.ask(query.message.chat.id, text="**SEND APPX API\n\n✅ Example:\ntcsexamzoneapi.classx.co.in**")
         api_txt = api.text
         name = api_txt.split('.')[0].replace("api", "") if api else api_txt.split('.')[0]
-        await appex_txt(app, query.message, api_txt, name)
+        await appexv2_txt(app, query.message, api_txt, name)
 
+    elif query.data=="v3_": 
+        api = await app.ask(query.message.chat.id, text="**SEND APPX API\n\n✅ Example:\ntcsexamzoneapi.classx.co.in**")
+        api_txt = api.text
+        name = api_txt.split('.')[0].replace("api", "") if api else api_txt.split('.')[0]
+        await appexv3_txt(app, query.message, api_txt, name)
       
     elif query.data=="next_1":        
         reply_markup = InlineKeyboardMarkup(button2)
