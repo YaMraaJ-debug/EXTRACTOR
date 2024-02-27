@@ -1,15 +1,16 @@
 from config import CHANNEL_ID 
 from Extractor.core import script
-from Extractor import app
+from pyrogram.errors import UserNotParticipant
 
 
-async def gen_link(chat_id):
+
+async def gen_link(app,chat_id):
    link = await app.export_chat_invite_link(chat_id)
    return link
 
 async def subscribe(app, message):
    update_channel = CHANNEL_ID
-   url = await gen_link(update_channel)
+   url = await gen_link(app, update_channel)
    if update_channel:
       try:
          user = await app.get_chat_member(update_channel, message.from_user.id)
