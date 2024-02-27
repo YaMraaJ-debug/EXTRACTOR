@@ -115,6 +115,7 @@ async def appex_txt(app, message, api, name):
     global cancel
     cancel = False
     raw_url = f"https://{api}/post/userLogin"
+    print(raw_url)
     hdr = {
         "Auth-Key": "appxapi",
         "User-Id": "-2",
