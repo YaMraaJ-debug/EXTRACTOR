@@ -14,7 +14,7 @@ bc_hdr = {"BCOV-POLICY": BCOV_POLICY}
 
 
 
-async def careerdl(app, message, headers, raw_text2, raw_text3, prog):
+async def careerdl(app, message, headers, raw_text2, raw_text3, prog, name):
     num_id = raw_text3.split('&')
     for x in range(0, len(num_id)):
         id_text = num_id[x]
@@ -24,8 +24,6 @@ async def careerdl(app, message, headers, raw_text2, raw_text3, prog):
         data = response.json()
 
         details_list = data["data"]["class_list"]
-        batch_name = details_list["batchName"]
-        batch_descript = details_list["batchDescription"]
         batch_class = details_list["classes"]
 
         batch_class.reverse()
@@ -57,15 +55,15 @@ async def careerdl(app, message, headers, raw_text2, raw_text3, prog):
                     link = "https://www.youtube.com/embed/" + lessonUrl
                     fuck += f"{lesson_name}: {link}\n"
 
-            with open(f"{batch_name}.txt", 'a') as f:
+            with open(f"{name}.txt", 'a') as f:
                 f.write(f"{fuck}")
 
         except Exception as e:
             await message.reply_text(str(e))
-        c_txt = f"**App Name: CareerWill\nBatch Name: `{batch_name}`**"
-        await message.reply_document(document=f"{batch_name}.txt", caption=c_txt)
+        c_txt = f"**App Name: CareerWill\nBatch Name: `{name}`**"
+        await message.reply_document(document=f"{name}.txt", caption=c_txt)
         await prog.delete()
-        os.remove(f"{batch_name}.txt")
+        os.remove(f"{name}.txt")
 
 
 
@@ -146,7 +144,7 @@ async def career_will(app, message):
     prog = await message.reply_text("**Extracting Videos Links Please Wait  📥 **")
 
     try:
-        thread = threading.Thread(target=lambda: asyncio.run(careerdl(app, message, headers, raw_text2, raw_text3, prog)))
+        thread = threading.Thread(target=lambda: asyncio.run(careerdl(app, message, headers, raw_text2, raw_text3, prog, name)))
         thread.start()
 
     except Exception as e:
