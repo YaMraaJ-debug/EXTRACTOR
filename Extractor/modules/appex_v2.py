@@ -42,17 +42,17 @@ async def appex_down(app, message, hdr1, api, raw_text2, fuk, batch_name, name, 
                     res4 = requests.get(f"https://{api}/get/livecourseclassbycoursesubtopconceptapiv3?topicid=" + t + "&start=-1&courseid=" + raw_text2 + "&subjectid=" + f, headers=hdr1).json()
                     topicid = res4.get("data", [])
                     for data in topicid:
-                        type = data.get('material_type')
-                        tid = data.get("Title")
-                        if type == 'VIDEO' and tid:
-                            plink = data.get("pdf_link", "").split(':')
+                        type = data['material_type']
+                        tid = data["Title"]
+                        if type == 'VIDEO':
+                            plink = data["pdf_link"].split(':')
                             if len(plink) == 2:
                                 encoded_part, encrypted_part = plink
                                 bp = decrypt_data(encoded_part)
                                 vs = f"{bp}"
 
-                                if data.get('ytFlag') == 0:
-                                    dlink = next((link['path'] for link in data.get('download_links', []) if link.get('quality') == "720p"), None)
+                                if data['ytFlag'] == 0:
+                                    dlink = (link['path'] for link in data['download_links'] if link['quality'] == "720p")
                                     if dlink:
                                         parts = dlink.split(':')
                                         if len(parts) == 2:   
@@ -62,8 +62,8 @@ async def appex_down(app, message, hdr1, api, raw_text2, fuk, batch_name, name, 
                                         else:
                                             print(f"Unexpected format: {plink}\n{tid}")
 
-                                elif data.get('ytFlag') == 1:
-                                    dlink = data.get('file_link')
+                                elif data['ytFlag'] == 1:
+                                    dlink = data['file_link']
                                     if dlink:
                                         encoded_part, encrypted_part = dlink.split(':')
                                         b = decrypt_data(encoded_part)
@@ -82,8 +82,8 @@ async def appex_down(app, message, hdr1, api, raw_text2, fuk, batch_name, name, 
                                 msg = f"{tid} : {cool2}\n{tid} : {vs}\n"
                                 vj += msg
 
-                        elif type == 'PDF' and tid:
-                            plink = data.get("pdf_link", "").split(':')
+                        elif type == 'PDF':
+                            plink = data["pdf_link"].split(':')
                             if len(plink) == 2:
                                 encoded_part, encrypted_part = plink
                                 bp = decrypt_data(encoded_part)
