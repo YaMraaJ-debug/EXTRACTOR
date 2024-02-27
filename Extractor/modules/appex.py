@@ -41,42 +41,38 @@ async def appex_down(app, message, hdr1, api, raw_text2, fuk, batch_name, name, 
                     res4 = requests.get(f"https://{api}/get/livecourseclassbycoursesubtopconceptapiv3?topicid=" + t + "&start=-1&courseid=" + raw_text2 + "&subjectid=" + f, headers=hdr1).json()
                     topicid = res4["data"]
                     for data in topicid:
-                        tids = (data["Title"])
-                        plinks = [data["pdf_link"]]
-                        dlin = [data['download_links']]
+                        type = data['material_type']
+                        tid = data["Title"]
+                        idid = f"{tid}"
+                        if type == 'VIDEO':
+                            plink = data["pdf_link"].split(':')
+                            encoded_part, encrypted_part = plink
+                            bp = decrypt_data(encoded_part)
+                            vs = f"{bp}"
 
-                        idid = f"{tids}"
-                        vs = ""
-                        if plinks:
-                            for plink in plinks:
-                                parts = plink.split(':')
-                                if len(parts) == 2:
-                                    encoded_part, encrypted_part = parts
-                                    bp = decrypt_data(encoded_part)
-                                    vs = f"{bp}"
-                                else:
-                                    print(f"Unexpected format: {plink}")
-                                    vs = "NO PDF LINK"
+                            if data['ytFlag'] == '0':
+                                dlin = [data['download_links']]
+                                dlinks = [link['path'] for link in data['download_links'] if link['quality'] == "720p"]
+                                for dlink in dlinks:
+                                    encoded_part, encrypted_part = dlink.split(':')
+                                    b = decrypt_data(encoded_part)
+                                    cool2 = f"{b}"
+                            elif data['ytFlag'] == '1':
+                                dlink = data['video_id']
+                                encoded_part, encrypted_part = dlink.split(':')
+                                b = decrypt_data(encoded_part)
+                                cool2 = f"{b}"
 
-                        cool2 = ""
-                        if dlin:
-                            dlinks = [link['path'] for link in data['download_links'] if link['quality'] == "720p"]
-                            for dlink in dlinks:
-                                try:
-                                    parts = dlink.split(':')
-                                    if len(parts) == 2:
-                                        encoded_part, encrypted_part = parts
-                                        b = decrypt_data(encoded_part)
-                                        cool2 = f"{b}"
-                                    else:
-                                        print(f"Unexpected format: {dlink}")
-                                        cool2 = "NO DOWNLOAD LINK"
-                                except Exception as e:
-                                    print(f"Error decrypting data: {e}")
-                                    cool2 = "ERROR DECRYPTING LINK"
+                            msg = f"{idid} : {cool2}\n{idid} : {vs}\n"
+                            vj += msg
 
-                        msg = f"{idid} : {cool2}\n{idid} : {vs}\n"
-                        vj += msg
+                        elif type == 'PDF':
+                            plink = data["pdf_link"].split(':')
+                            encoded_part, encrypted_part = plink
+                            bp = decrypt_data(encoded_part)
+                            vs = f"{bp}"
+                            msg = f"{idid} : {vs}\n"
+                            vj += msg
             except Exception as e:
                 print(str(e))  
   
