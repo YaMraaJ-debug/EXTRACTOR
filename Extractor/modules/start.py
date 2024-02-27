@@ -177,12 +177,12 @@ button4 = [
 
 button5 = [              
                 [   
-                    InlineKeyboardButton("Anil Siriti", callback_data="anil_siriti"),
+                    InlineKeyboardButton("Anil Sir iti", callback_data="anilsir_iti"),
                     InlineKeyboardButton("Education Adda", callback_data="education_adda")
                 ],
                 [   
                     InlineKeyboardButton("Achievers Academy", callback_data="achievers_acc"),
-                    InlineKeyboardButton("Cammando Academy", callback_data="cammando_acc")
+                    InlineKeyboardButton("Cammando Academy", callback_data="commando_acc")
                 ],
                 [
                     InlineKeyboardButton("Soon", callback_data="maintainer_"),
@@ -489,8 +489,49 @@ async def handle_callback(_, query):
     elif query.data == 'rk_sir':
         api = "rksirofficialapi.classx.co.in"
         name = "Rk Sir Official"
-        await appex_txt(app, query.message, api, name)  
-  
+        await appex_txt(app, query.message, api, name) 
+      
+    elif query.data == 'study_mantra':
+        api = "studymantraapi.classx.co.in"
+        name = "Study Mantra"
+        await appex_txt(app, query.message, api, name) 
+
+    elif query.data == 'science_fun':
+        api = "sciencefunapi.classx.co.in"
+        name = "Science Fun"
+        await appex_txt(app, query.message, api, name) 
+
+    elif query.data == 'grow_acc':
+        api = "growacademyapi.classx.co.in"
+        name = "Grow Academy"
+        await appex_txt(app, query.message, api, name) 
+
+    elif query.data == 'goal_yaan':
+        api = "goalyaanapi.appx.co.in"
+        name = "Goal Yaan"
+        await appex_txt(app, query.message, api, name) 
+
+    elif query.data == 'anilsir_iti':
+        api = "anilsiritiapi.classx.co.in"
+        name = "Anil Sir Iti"
+        await appex_txt(app, query.message, api, name) 
+
+    elif query.data == 'education_adda':
+        api = "educationaddaplusapi.classx.co.in"
+        name = "Education Adda Plus"
+        await appex_txt(app, query.message, api, name) 
+
+    elif query.data == 'achievers_acc':
+        api = "achieversacademyapi.classx.co.in"
+        name = "Achievers Academy"
+        await appex_txt(app, query.message, api, name) 
+
+    elif query.data == 'commando_acc':
+        api = "commandoacademyapi.appx.co.in"
+        name = "Commando Academy"
+        await appex_txt(app, query.message, api, name) 
+
+
     elif query.data == 'exampur_':
         await exampur_txt(app, query.message)
 
