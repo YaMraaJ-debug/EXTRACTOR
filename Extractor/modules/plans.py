@@ -3,7 +3,7 @@ import pytz
 import datetime, time
 from Extractor import app
 from config import SUDO_USERS, PREMIUM_LOGS, OWNER_ID
-from Extractor.core.utils import get_seconds
+from Extractor.core.func import get_seconds
 from Extractor.core.mongo import plans_db  
 from pyrogram import filters 
 from pyrogram.errors.exceptions.bad_request_400 import MessageTooLong
