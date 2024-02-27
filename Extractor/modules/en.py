@@ -13,17 +13,21 @@ async def en_login(app, message):
     login_url = "https://khanglobalstudies.com/api/login-with-password"
     raw_text = input1.text
 
+    
     headers = {
-        "Host": "khanglobalstudies.com",
-        "content-type": "application/x-www-form-urlencoded",
-        "content-length": "36",
-        "accept-encoding": "gzip",
-        "user-agent": "okhttp/3.9.1"
+        "Auth-Key": "appxapi",
+        "User-Id": "-2",
+        "Authorization": "",
+        "User_app_category": "",
+        "Language": "en",
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Accept-Encoding": "gzip, deflate",
+        "User-Agent": "okhttp/4.9.1"
     }
 
     data = {
-        "password": "",
-        "phone": ""
+        "email": "",
+        "password": ""      
     }
     data["email"] = raw_text.split("*")[0]
     data["password"] = raw_text.split("*")[1]
@@ -32,16 +36,18 @@ async def en_login(app, message):
     response = requests.post(login_url, headers=headers, data=data)
     if response.status_code == 200:
         data = response.json()
-        token = data["token"]
+        userid = output["data"]["userid"]
+        token = output["data"]["token"]
         await message.reply_text("**Login Successful**")
     else:
         await message.reply_text("Go back to response")
 
     headers = {
-        "Host": "khanglobalstudies.com",
-        "authorization": f"Bearer {token}",
-        "accept-encoding": "gzip",
-        "user-agent": "okhttp/3.9.1"
-    }
+            "Host": "exampurapi.classx.co.in",
+            "Client-Service": "Appx",
+            "Auth-Key": "appxapi",
+            "User-Id": userid,
+            "Authorization": token
+            }
 
   
