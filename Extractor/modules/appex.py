@@ -61,7 +61,8 @@ async def appex_down(app, message, hdr1, api, raw_text2, fuk, batch_name, name, 
                                 encoded_part, encrypted_part = dlink.split(':')
                                 b = decrypt_data(encoded_part)
                                 cool2 = f"{b}"
-
+                            else:
+                                print("Unknown ytFlag value")
                             msg = f"{idid} : {cool2}\n{idid} : {vs}\n"
                             vj += msg
 
