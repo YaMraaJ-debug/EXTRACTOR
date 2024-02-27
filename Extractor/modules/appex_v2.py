@@ -42,17 +42,17 @@ async def appex_down(app, message, hdr1, api, raw_text2, fuk, batch_name, name, 
                     res4 = requests.get(f"https://{api}/get/livecourseclassbycoursesubtopconceptapiv3?topicid=" + t + "&start=-1&courseid=" + raw_text2 + "&subjectid=" + f, headers=hdr1).json()
                     topicid = res4.get("data", [])
                     for data in topicid:
-                        type = data['material_type']
-                        tid = data["Title"]
-                        if type == 'VIDEO':
-                            plink = data["pdf_link"].split(':')
+                        type = data.get('material_type')
+                        tid = data.get("Title")
+                        if type == 'VIDEO' and tid:
+                            plink = data.get("pdf_link", "").split(':')
                             if len(plink) == 2:
                                 encoded_part, encrypted_part = plink
                                 bp = decrypt_data(encoded_part)
                                 vs = f"{bp}"
 
-                                if data['ytFlag'] == 0:
-                                    dlink = (link['path'] for link in data['download_links'] if link['quality'] == "720p")
+                                if data.get('ytFlag') == 0:
+                                    dlink = next((link['path'] for link in data.get('download_links', []) if link.get('quality') == "720p"), None)
                                     if dlink:
                                         parts = dlink.split(':')
                                         if len(parts) == 2:   
@@ -62,19 +62,12 @@ async def appex_down(app, message, hdr1, api, raw_text2, fuk, batch_name, name, 
                                         else:
                                             print(f"Unexpected format: {plink}\n{tid}")
 
-                                elif data['ytFlag'] == 1:
-                                    dlink = data['file_link']
+                                elif data.get('ytFlag') == 1:
+                                    dlink = data.get('file_link')
                                     if dlink:
                                         encoded_part, encrypted_part = dlink.split(':')
                                         b = decrypt_data(encoded_part)
-                                        if 'www.youtube.com' in b:
-                                            video_id = re.search(r'[?&]v=([^&]+)', b).group(1)
-                                            bs = f"https://youtu.be/{video_id}"
-                                        elif 'youtu.be' in b:
-                                            bs = f"{b}"
-                                        else:
-                                            bs = f"https://youtu.be/{b}"
-                                        cool2 = f"{bs}"
+                                        cool2 = f"{b}"
                                     else:
                                         print(f"Missing video_id for {tid}")
                                 else:
@@ -82,8 +75,8 @@ async def appex_down(app, message, hdr1, api, raw_text2, fuk, batch_name, name, 
                                 msg = f"{tid} : {cool2}\n{tid} : {vs}\n"
                                 vj += msg
 
-                        elif type == 'PDF':
-                            plink = data["pdf_link"].split(':')
+                        elif type == 'PDF' and tid:
+                            plink = data.get("pdf_link", "").split(':')
                             if len(plink) == 2:
                                 encoded_part, encrypted_part = plink
                                 bp = decrypt_data(encoded_part)
@@ -126,20 +119,16 @@ async def appex_txt(app, message, api, name):
         "User-Agent": "okhttp/4.9.1"
     }
     info = {"email": "", "password": ""}
-    input1 = await app.ask(message.chat.id, text="Send **ID & Password** in this manner, otherwise, the bot will not respond.\n\nSend like this: **ID*Password**\n\nOr Send Your Token")
+    input1 = await app.ask(message.chat.id, text="Send **ID & Password** in this manner, otherwise, the bot will not respond.\n\nSend like this: **ID*Password**")
     raw_text = input1.text
-    if '*' in raw_text:
-        info = {"email": "", "password": ""}
-        info["email"] = raw_text.split("*")[0]
-        info["password"] = raw_text.split("*")[1]
-        await input1.delete(True)
-        scraper = cloudscraper.create_scraper()
-        res = scraper.post(raw_url, data=info, headers=hdr).content
-        output = json.loads(res)
-        userid = output["data"]["userid"]
-        token = output["data"]["token"]
-    else:
-        token = raw_text
+    info["email"] = raw_text.split("*")[0]
+    info["password"] = raw_text.split("*")[1]
+    await input1.delete(True)
+    scraper = cloudscraper.create_scraper()
+    res = scraper.post(raw_url, data=info, headers=hdr).content
+    output = json.loads(res)
+    userid = output["data"]["userid"]
+    token = output["data"]["token"]
     hdr1 = {
             "Host": api,
             "Client-Service": "Appx",
