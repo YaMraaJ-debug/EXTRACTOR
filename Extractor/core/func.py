@@ -8,15 +8,13 @@ from Extractor.core.mongo.plans_db import premium_users
 
 
 async def chk_user(query, user_id):
-   user = await premium_users()
-   if user_id in user or SUDO_USERS:
-      await query.answer("Premium User!!")
-      return 1
-   else:
-      await query.answer("Sir You don't have premium access !!", show_alert=True)
-      return 1
-
-
+    user = await premium_users()
+    if user_id in user or user_id in SUDO_USERS:
+        await query.answer("Premium User!!")
+        return 0
+    else:
+        await query.answer("Sir, you don't have premium access!!", show_alert=True)
+        return 1
 
 
 
