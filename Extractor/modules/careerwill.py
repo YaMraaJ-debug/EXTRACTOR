@@ -55,15 +55,15 @@ async def careerdl(app, message, headers, raw_text2, raw_text3, prog, name):
                     link = "https://www.youtube.com/embed/" + lessonUrl
                     fuck += f"{lesson_name}: {link}\n"
 
-            with open(f"{name}.txt", 'a') as f:
+            with open("mm.txt", 'a') as f:
                 f.write(f"{fuck}")
 
         except Exception as e:
             await message.reply_text(str(e))
     c_txt = f"**App Name: CareerWill\nBatch Name: `{name}`**"
-    await app.send_document(message.chat.id, document=f"{name}.txt", caption=c_txt)
+    await app.send_document(message.chat.id, document="mm.txt", caption=c_txt)
     await prog.delete()
-    os.remove(f"{name}.txt")
+    os.remove("mm.txt")
 
 
 
