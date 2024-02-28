@@ -31,6 +31,7 @@ async def course_content(app, api, message, raw_text2, parent_Id, hdr1):
                 id = data["id"]
                 await course_content(app, api, message, raw_text2, id, hdr1)
             elif data['material_type'] == 'VIDEO':
+                tid = data.get("Title")
                 plink = data.get("pdf_link", "").split(':')
                 if len(plink) == 2:
                     encoded_part, encrypted_part = plink
@@ -57,12 +58,13 @@ async def course_content(app, api, message, raw_text2, parent_Id, hdr1):
                 vj += msg
 
             elif data['material_type'] == 'PDF':
+                tid = data.get("Title")
                 plink = data.get("pdf_link", "").split(':')
                 if len(plink) == 2:
                     encoded_part, encrypted_part = plink
                     vs = decrypt_data(encoded_part)
-                    msg = f"{tid} : {vs}\n"
-                    vj += msg
+                msg = f"{tid} : {vs}\n"
+                vj += msg
 
         mm = "mm"
         cap = f"**App Name :- ff\nBatch Name :-** `ff`"
