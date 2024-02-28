@@ -21,7 +21,7 @@ def decrypt_data(encoded_data):
         raise ValueError(f"Error decrypting data: {str(e)}")
 
 
-async def course_content(app, api, message, raw_text2, parent_Id, hdr1):
+async def course_content(app, api, message, raw_text2, batch_name, name, parent_Id, hdr1):
     try:
         scraper = cloudscraper.create_scraper()
         html = scraper.get(f"https://{api}/get/folder_contentsv2?course_id={raw_text2}&parent_id={parent_Id}", headers=hdr1).content
@@ -71,12 +71,11 @@ async def course_content(app, api, message, raw_text2, parent_Id, hdr1):
             except Exception as e:
                 print(f"Error processing data: {str(e)}")
                 
-        mm = "mm"
-        cap = f"**App Name :- ff\nBatch Name :-** `ff`"
+        mm = f"{batch_name}"
+        cap = f"**App Name :- {name}\nBatch Name :-** `{batch_name}`"
         with open(f'{mm}.txt', 'a') as f:
             f.write(f"{vj}")
         await app.send_document(message.chat.id, document=f"{mm}.txt", caption=cap)
-        await prog.delete()
         file_path = f"{mm}.txt"
         os.remove(file_path)
         await message.reply_text("Done")
@@ -133,11 +132,16 @@ async def appex_v3_txt(app, message, api, name):
         await message.reply_text(f"**YOU HAVE THESE BATCHES:\n\n{FFF}")
         input2 = await app.ask(message.chat.id, text="**Now send the Batch ID to Download**")
         raw_text2 = input2.text
+        for data in b_data:
+            cdatas = data['coursedt']
+            for cdata in cdatas:      
+                if cdata['id'] == raw_text2:
+                    batch_name = cdata['course_name']
         scraper = cloudscraper.create_scraper()
         html = scraper.get(f"https://{api}/get/folder_contentsv2?course_id={raw_text2}&parent_id=-1", headers=hdr1).content
         output0 = json.loads(html)
         parent_Id = output0['data'][0]['id']
-        await course_content(app, api, message, raw_text2, parent_Id, hdr1)
+        await course_content(app, api, message, raw_text2, batch_name, name, parent_Id, hdr1)
     except Exception as e:
         print(f"An error occurred: {str(e)}")
         await message.reply_text("An error occurred. Please try again later.")
