@@ -171,7 +171,7 @@ async def pw_login(app, message, token):
 
             for i in range(1,rr):
                 params = {'page': str(i)}
-                response3 = requests.get(f"https://api.penpencil.co/v3/batches/{raw_text3}/subject/{id}/topics", params=params1, headers=headers).json()["data"]
+                response3 = requests.get(f"https://api.penpencil.co/v3/batches/{raw_text3}/subject/{id}/topics", params=params, headers=headers).json()["data"]
 #                for data in response3:
                 with open(f"mm.txt", 'a') as f:
                     f.write(f"{response3}")   
