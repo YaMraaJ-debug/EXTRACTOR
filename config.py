@@ -9,6 +9,6 @@ SUDO_USERS = list(map(int, getenv("SUDO_USERS", "6050277919 6881758615 578350808
 MONGO_URL = getenv("MONGO_DB", "mongodb+srv://teamdaxx123:teamdaxx123@cluster0.ysbpgcp.mongodb.net/?retryWrites=true&w=majority")
 
 CHANNEL_ID = int(getenv("CHANNEL_ID", "-1002054493556"))
-PREMIUM_LOGS = int(getenv("PREMIUM_LOGS", "-1002005441647"))
+PREMIUM_LOGS = int(getenv("PREMIUM_LOGS", "-1002091053529"))
 
 
