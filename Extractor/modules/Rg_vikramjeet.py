@@ -26,7 +26,7 @@ async def rgvikram_down(app, message, hdr1, api, raw_text2, fuk, batch_name, nam
     try:
         xx = fuk.split('&')
         for f in xx:
-            res3 = requests.get(f"https://{api}/get/alltopicfrmlivecourseclass?courseid={raw_text2}&subjectid={f}&start=-1", headers=hdr1)
+            res3 = requests.get(f"https://{api}/get/alltopicfrmlivecourseclass?courseid=" + raw_text2 + "&subjectid=" + f + "&start=-1", headers=hdr1)
             b_data2 = res3.json().get('data', [])
             vp = ""
             for data in b_data2:
@@ -37,60 +37,96 @@ async def rgvikram_down(app, message, hdr1, api, raw_text2, fuk, batch_name, nam
             vj = ""
             try:
                 xv = vp.split('&')
-                for t in xv:
-                    res4 = requests.get(f"https://{api}/get/allconceptfrmlivecourseclass?courseid={raw_text2}&subjectid={f}&topicid={t}&start=-1", headers=hdr1).json()
-                    concept = res4.get("data", [])
-                    vk = ""
-                    for data in concept:
-                        conceptid = data.get('conceptid')
-                        vk += f"{conceptid}&"
+                for y in range(len(xv)):
+                    t = xv[y]
+                    res4 = requests.get(f"https://{api}/get/livecourseclassbycoursesubtopconceptapiv3?courseid=" + raw_text2 + "&subjectid=" + f + "&topicid=" + t + "&conceptid=1&start=-1", headers=hdr1).json()
+                    topicid1 = res4.get("data", [])
+                    for data in topicid1:
+                        type = data.get('material_type')
+                        tid = data.get("Title")
+                        if type == 'VIDEO':
+                            plink = data.get("pdf_link", "").split(':')
+                            if len(plink) == 2:
+                                encoded_part, encrypted_part = plink
+                                bp = decrypt_data(encoded_part)
+                                vs = f"{bp}"
 
-                    xy = vk.split('&')
-                    for p in xy:
-                        res5 = requests.get(f"https://{api}/get/allconceptfrmlivecourseclass?courseid={raw_text2}&subjectid={f}&topicid={t}&conceptid={p}&start=-1", headers=hdr1).json()
-                        topicid = res5.get("data", [])
-                        for data in topicid:
-                            type = data.get('material_type')
-                            tid = data.get("Title")
-                            if type == 'VIDEO':
-                                plink = data.get("pdf_link", "").split(':')
-                                if len(plink) == 2:
-                                    encoded_part, encrypted_part = plink
-                                    bp = decrypt_data(encoded_part)
-                                    vs = f"{bp}"
-
-                                if data.get('ytFlag') == 0:
-                                    dlink = next((link['path'] for link in data.get('download_links', []) if link.get('quality') == "720p"), None)
-                                    if dlink:
-                                        parts = dlink.split(':')
-                                        if len(parts) == 2:   
-                                            encoded_part, encrypted_part = parts
-                                            b = decrypt_data(encoded_part)
-                                            cool2 = f"{b}"
-                                        else:
-                                            print(f"Unexpected format: {plink}\n{tid}")
-
-                                elif data.get('ytFlag') == 1:
-                                    dlink = data.get('file_link')
-                                    if dlink:
-                                        encoded_part, encrypted_part = dlink.split(':')
+                            if data.get('ytFlag') == 0:
+                                dlink = next((link['path'] for link in data.get('download_links', []) if link.get('quality') == "720p"), None)
+                                if dlink:
+                                    parts = dlink.split(':')
+                                    if len(parts) == 2:   
+                                        encoded_part, encrypted_part = parts
                                         b = decrypt_data(encoded_part)
                                         cool2 = f"{b}"
                                     else:
-                                        print(f"Missing video_id for {tid}")
-                                else:
-                                    print("Unknown ytFlag value")
-                                msg = f"{tid} : {cool2}\n{tid} : {vs}\n"
-                                vj += msg
+                                        print(f"Unexpected format: {plink}\n{tid}")
 
-                            elif type == 'PDF':
-                                plink = data.get("pdf_link", "").split(':')
-                                if len(plink) == 2:
-                                    encoded_part, encrypted_part = plink
-                                    bp = decrypt_data(encoded_part)
-                                    vs = f"{bp}"
-                                    msg = f"{tid} : {vs}\n"
-                                    vj += msg
+                            elif data.get('ytFlag') == 1:
+                                dlink = data.get('file_link')
+                                if dlink:
+                                    encoded_part, encrypted_part = dlink.split(':')
+                                    b = decrypt_data(encoded_part)
+                                    cool2 = f"{b}"
+                                else:
+                                    print(f"Missing video_id for {tid}")
+                            else:
+                                print("Unknown ytFlag value")
+                            msg = f"{tid} : {cool2}\n{tid} : {vs}\n"
+                            vj += msg
+
+                        elif type == 'PDF':
+                            plink = data.get("pdf_link", "").split(':')
+                            if len(plink) == 2:
+                                encoded_part, encrypted_part = plink
+                                bp = decrypt_data(encoded_part)
+                                vs = f"{bp}"
+                                msg = f"{tid} : {vs}\n"
+                                vj += msg
+                    res5 = requests.get(f"https://{api}/get/livecourseclassbycoursesubtopconceptapiv3?courseid=" + raw_text2 + "&subjectid=" + f + "&topicid=" + t + "&conceptid=2&start=-1", headers=hdr1).json()
+                    topicid2 = res5.get("data", [])
+                    for data in topicid2:
+                        type = data.get('material_type')
+                        tid = data.get("Title")
+                        if type == 'VIDEO':
+                            plink = data.get("pdf_link", "").split(':')
+                            if len(plink) == 2:
+                                encoded_part, encrypted_part = plink
+                                bp = decrypt_data(encoded_part)
+                                vs = f"{bp}"
+
+                            if data.get('ytFlag') == 0:
+                                dlink = next((link['path'] for link in data.get('download_links', []) if link.get('quality') == "720p"), None)
+                                if dlink:
+                                    parts = dlink.split(':')
+                                    if len(parts) == 2:   
+                                        encoded_part, encrypted_part = parts
+                                        b = decrypt_data(encoded_part)
+                                        cool2 = f"{b}"
+                                    else:
+                                        print(f"Unexpected format: {plink}\n{tid}")
+
+                            elif data.get('ytFlag') == 1:
+                                dlink = data.get('file_link')
+                                if dlink:
+                                    encoded_part, encrypted_part = dlink.split(':')
+                                    b = decrypt_data(encoded_part)
+                                    cool2 = f"{b}"
+                                else:
+                                    print(f"Missing video_id for {tid}")
+                            else:
+                                print("Unknown ytFlag value")
+                            msg = f"{tid} : {cool2}\n{tid} : {vs}\n"
+                            vj += msg
+
+                        elif type == 'PDF':
+                            plink = data.get("pdf_link", "").split(':')
+                            if len(plink) == 2:
+                                encoded_part, encrypted_part = plink
+                                bp = decrypt_data(encoded_part)
+                                vs = f"{bp}"
+                                msg = f"{tid} : {vs}\n"
+                                vj += msg
             except Exception as e:
                 print(str(e))  
   
