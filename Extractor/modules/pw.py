@@ -166,7 +166,7 @@ async def pw_login(app, message, token):
         for y in range(0,len(xv)):
             t =xv[y]
             id, tagcount = t.split(':')
-            r = tagcount / 20
+            r = int(tagcount) / 20
             rr = math.ceil(r)
 
             for i in range(1,rr):
