@@ -73,7 +73,7 @@ button1 = [
                     InlineKeyboardButton("E1 Coaching", callback_data="e1_coaching"),          
                 ],
                 [
-                    InlineKeyboardButton("﹤", callback_data="next_3"),
+                    InlineKeyboardButton("﹤", callback_data="next_4"),
                     InlineKeyboardButton("ʙ ᴀ ᴄ ᴋ", callback_data="modes_"),
                     InlineKeyboardButton("﹥", callback_data="next_1")
                 ]
