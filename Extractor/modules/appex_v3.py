@@ -9,7 +9,7 @@ from pyrogram import filters
 from Extractor import app
 
 
-async def decrypt_data(encoded_data):
+def decrypt_data(encoded_data):
     key = "638udh3829162018".encode("utf8")
     iv = "fedcba9876543210".encode("utf8")
     decoded_data = b64decode(encoded_data)
