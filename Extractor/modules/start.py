@@ -129,7 +129,7 @@ button3 = [
                 ],
                 [   
                     InlineKeyboardButton("Parmar Ssc", callback_data="permar_ssc"),
-                    InlineKeyboardButton("Physics Wallah", callback_data="pw_")
+                    InlineKeyboardButton("Physics Wallah", callback_data="maintainer_")
                 ],
                 [
                     InlineKeyboardButton("Rg Vikramjeet", callback_data="rg_vikramjeet"),
