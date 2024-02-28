@@ -6,7 +6,7 @@ from config import OWNER_ID, SUDO_USERS
 from Extractor.core import script
 from Extractor.core.func import subscribe, chk_user
 from pyrogram.types import CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton
-from Extractor.modules.appex_v2 import appex_txt
+from Extractor.modules.appex_v2 import appex_v2_txt
 from Extractor.modules.classplus import classplus_txt
 #from Extractor.modules.pw import pw_mobile, pw_token
 from Extractor.modules.exampur import exampur_txt
