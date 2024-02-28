@@ -61,7 +61,7 @@ async def careerdl(app, message, headers, raw_text2, raw_text3, prog, name):
         except Exception as e:
             await message.reply_text(str(e))
     c_txt = f"**App Name: CareerWill\nBatch Name: `{name}`**"
-    await message.reply_document(document=f"{name}.txt", caption=c_txt)
+    await app.send_document(message.chat.id, document=f"{name}.txt", caption=c_txt)
     await prog.delete()
     os.remove(f"{name}.txt")
 
