@@ -1,4 +1,5 @@
 import requests, os, sys, re
+import math
 import json, asyncio
 import subprocess
 import datetime
@@ -147,16 +148,47 @@ async def pw_login(app, message, token):
     await message.reply_text(bb)
     input4 = await app.ask(message.chat.id, text=f"Now send the **Subject IDs** to Download\n\nSend like this **1&2&3&4** so on\nor copy paste or edit **below ids** according to you :\n\n**Enter this to download full batch :-**\n`{vj}`")
     raw_text4 = input4.text
+    xu = raw_text4.split('&')
+    hh = ""
+    for x in range(0,len(xu)):
+        s =xu[x]
+        for subject in subjects:
+            if subject.get('subjectId') == s:
+                hh += f"{subject.get('subjectId')}:{subject.get('tagCount')}&"
+
     input5 = await app.ask(message.chat.id, text="**Enter resolution**")
     raw_text5 = input5.text
     
     try:
-        xv = raw_text4.split('&')
+        xv = hh.split('&')
         cc = ""
         cv = ""
         for y in range(0,len(xv)):
             t =xv[y]
-            params1 = {'page': '1','tag': '','contentType': 'videos'}
+            id, tagcount = t.split(':')
+            r = tagcount / 20
+            rr = math.ceil(r)
+
+            for i in range(1,rr):
+                params = {'page': str(i)}
+                response3 = requests.get(f"https://api.penpencil.co/v3/batches/{raw_text3}/subject/{id}/topics", params=params1, headers=headers).json()["data"]
+#                for data in response3:
+                with open(f"mm.txt", 'a') as f:
+                    f.write(f"{response3}")   
+            
+
+            except Exception as e:
+               await message.reply_text(str(e))
+            await app.send_document(message.chat.id, document=f"mm.txt")
+    except Exception as e:
+        await message.reply_text(str(e))
+
+
+
+
+
+"""
+params1 = {'page': '1','tag': '','contentType': 'videos'}
             response3 = requests.get(f'https://api.penpencil.co/v3/batches/{raw_text3}/subject/{t}/contents', params=params1, headers=headers).json()["data"]
             
             params2 = {'page': '1','tag': '','contentType': 'notes'}
@@ -177,11 +209,4 @@ async def pw_login(app, message, token):
                     cv += f"{data['topic']}:{data['url']}\n"
                     with open(f"{batch}.txt", 'a') as f:
                         f.write(f"{cv}")
-
-            except Exception as e:
-               await message.reply_text(str(e))
-            await app.send_document(message.chat.id, document=f"{batch}.txt")
-    except Exception as e:
-        await message.reply_text(str(e))
-
-
+"""
