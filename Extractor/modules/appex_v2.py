@@ -86,7 +86,7 @@ async def course_content(app, api, message, raw_text2, batch_name, name, parent_
 
 
 
-async def appex_v3_txt(app, message, api, name):
+async def appex_v2_txt(app, message, api, name):
     try:
         global cancel
         cancel = False
