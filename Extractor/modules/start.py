@@ -8,7 +8,7 @@ from Extractor.core.func import subscribe, chk_user
 from pyrogram.types import CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton
 from Extractor.modules.appex_v2 import appex_v2_txt
 from Extractor.modules.classplus import classplus_txt
-#from Extractor.modules.pw import pw_mobile, pw_token
+from Extractor.modules.pw import pw_mobile, pw_token
 from Extractor.modules.exampur import exampur_txt
 from Extractor.modules.appex_v3 import appex_v3_txt
 from Extractor.modules.careerwill import career_will
@@ -129,7 +129,7 @@ button3 = [
                 ],
                 [   
                     InlineKeyboardButton("Parmar Ssc", callback_data="permar_ssc"),
-                    InlineKeyboardButton("Physics Wallah", callback_data="maintainer_")
+                    InlineKeyboardButton("Physics Wallah", callback_data="pw_")
                 ],
                 [
                     InlineKeyboardButton("Rg Vikramjeet", callback_data="rg_vikramjeet"),
@@ -572,20 +572,20 @@ async def handle_callback(_, query):
     elif query.data=="classplus_":          
         await classplus_txt(app, query.message)
   
-#    elif query.data == 'pw_':
-#        await query.message.reply_text(
-#            "**CHHOSE FROM BELOW **",
-#            reply_markup=InlineKeyboardMarkup([
-#                [
-#                    InlineKeyboardButton("Mobile No.", callback_data='mobile_'),
-#                    InlineKeyboardButton("Token", callback_data='token_'),
-#                ]]))
+    elif query.data == 'pw_':
+        await query.message.reply_text(
+            "**CHHOSE FROM BELOW **",
+            reply_markup=InlineKeyboardMarkup([
+                [
+                    InlineKeyboardButton("Mobile No.", callback_data='mobile_'),
+                    InlineKeyboardButton("Token", callback_data='token_'),
+                ]]))
 
-#    elif query.data == 'mobile_':
-#        await pw_mobile(app, query.message)
+    elif query.data == 'mobile_':
+        await pw_mobile(app, query.message)
 
-#    elif query.data == 'token_':
-#        await pw_token(app, query.message)
+    elif query.data == 'token_':
+        await pw_token(app, query.message)
         
 
 
