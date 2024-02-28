@@ -177,8 +177,6 @@ async def pw_login(app, message, token):
                     f.write(f"{response3}")   
             
 
-            except Exception as e:
-               await message.reply_text(str(e))
             await app.send_document(message.chat.id, document=f"mm.txt")
     except Exception as e:
         await message.reply_text(str(e))
@@ -209,4 +207,6 @@ params1 = {'page': '1','tag': '','contentType': 'videos'}
                     cv += f"{data['topic']}:{data['url']}\n"
                     with open(f"{batch}.txt", 'a') as f:
                         f.write(f"{cv}")
+            except Exception as e:
+               await message.reply_text(str(e))
 """
