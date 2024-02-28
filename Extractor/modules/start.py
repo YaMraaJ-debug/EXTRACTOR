@@ -13,7 +13,7 @@ from Extractor.modules.exampur import exampur_txt
 from Extractor.modules.appex_v3 import appex_v3_txt
 from Extractor.modules.careerwill import career_will
 from Extractor.modules.khan import khan_login
-
+from Extractor.modules.Rg_vikramjeet import rgvikram_txt
 
 
 # ------------------------------------------------------------------------------- #
@@ -443,7 +443,7 @@ async def handle_callback(_, query):
     elif query.data=="rg_vikramjeet":     
         api = "rgvikramjeetapi.classx.co.in"
         name = "RG Vikramjeet"
-        await appex_v3_txt(app, query.message, api, name)
+        await rgvikram_txt(app, query.message, api, name)
       
     elif query.data=="vidya_bihar":     
         api = "vidyabiharapi.teachx.in"
