@@ -45,11 +45,6 @@ async def rgvikram_down(app, message, hdr1, api, raw_text2, fuk, batch_name, nam
                         type = data.get('material_type')
                         tid = data.get("Title")
                         if type == 'VIDEO':
-                            plink = data.get("pdf_link", "").split(':')
-                            if len(plink) == 2:
-                                encoded_part, encrypted_part = plink
-                                bp = decrypt_data(encoded_part)
-                                vs = f"{bp}"
 
                             if data.get('ytFlag') == 0:
                                 dlink = next((link['path'] for link in data.get('download_links', []) if link.get('quality') == "720p"), None)
@@ -72,7 +67,7 @@ async def rgvikram_down(app, message, hdr1, api, raw_text2, fuk, batch_name, nam
                                     print(f"Missing video_id for {tid}")
                             else:
                                 print("Unknown ytFlag value")
-                            msg = f"{tid} : {cool2}\n{tid} : {vs}\n"
+                            msg = f"{tid} : {cool2}\n"
                             vj += msg
 
                         elif type == 'PDF':
@@ -89,11 +84,6 @@ async def rgvikram_down(app, message, hdr1, api, raw_text2, fuk, batch_name, nam
                         type = data.get('material_type')
                         tid = data.get("Title")
                         if type == 'VIDEO':
-                            plink = data.get("pdf_link", "").split(':')
-                            if len(plink) == 2:
-                                encoded_part, encrypted_part = plink
-                                bp = decrypt_data(encoded_part)
-                                vs = f"{bp}"
 
                             if data.get('ytFlag') == 0:
                                 dlink = next((link['path'] for link in data.get('download_links', []) if link.get('quality') == "720p"), None)
@@ -116,7 +106,7 @@ async def rgvikram_down(app, message, hdr1, api, raw_text2, fuk, batch_name, nam
                                     print(f"Missing video_id for {tid}")
                             else:
                                 print("Unknown ytFlag value")
-                            msg = f"{tid} : {cool2}\n{tid} : {vs}\n"
+                            msg = f"{tid} : {cool2}\n"
                             vj += msg
 
                         elif type == 'PDF':
