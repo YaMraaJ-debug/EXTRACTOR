@@ -14,7 +14,7 @@ bc_hdr = {"BCOV-POLICY": BCOV_POLICY}
 
 
 
-async def careerdl(app, message, headers, raw_text2, raw_text3, prog, name):
+async def careerdl(app, message, headers, raw_text2, raw_text3, prog):
     num_id = raw_text3.split('&')
     for x in range(0, len(num_id)):
         id_text = num_id[x]
@@ -55,15 +55,15 @@ async def careerdl(app, message, headers, raw_text2, raw_text3, prog, name):
                     link = "https://www.youtube.com/embed/" + lessonUrl
                     fuck += f"{lesson_name}: {link}\n"
 
-            with open("mm.txt", 'a') as f:
+            with open("Careerwill.txt", 'a') as f:
                 f.write(f"{fuck}")
 
         except Exception as e:
             await message.reply_text(str(e))
     c_txt = f"**App Name: CareerWill\nBatch Name: `{name}`**"
-    await app.send_document(message.chat.id, document="mm.txt", caption=c_txt)
+    await app.send_document(message.chat.id, document="Careerwill.txt", caption=c_txt)
     await prog.delete()
-    os.remove("mm.txt")
+    os.remove("Careerwill.txt")
 
 
 
@@ -144,7 +144,7 @@ async def career_will(app, message):
     prog = await message.reply_text("**Extracting Videos Links Please Wait  📥 **")
 
     try:
-        thread = threading.Thread(target=lambda: asyncio.run(careerdl(app, message, headers, raw_text2, raw_text3, prog, name)))
+        thread = threading.Thread(target=lambda: asyncio.run(careerdl(app, message, headers, raw_text2, raw_text3, prog)))
         thread.start()
 
     except Exception as e:
