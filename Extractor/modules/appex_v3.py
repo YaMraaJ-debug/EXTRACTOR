@@ -45,13 +45,16 @@ async def appex_down(app, message, hdr1, api, raw_text2, fuk, batch_name, name, 
                         type = data.get('material_type')
                         tid = data.get("Title")
                         if type == 'VIDEO':
-                            plink = data.get("pdf_link", "").split(':')
-                            if len(plink) == 2:
-                                encoded_part, encrypted_part = plink
-                                bp = decrypt_data(encoded_part)
-                                vs = f"{bp}"
+                            if data.get('pdf_link'):
+                                plink = data.get('pdf_link').split(':')
+                                if len(plink) == 2:
+                                    encoded_part, encrypted_part = plink
+                                    bp = decrypt_data(encoded_part)
+                                    vs = f"{bp}"
+                                else:
+                                    print(f"Unexpected format: {plink}\n{tid}")
 
-                            if data.get('ytFlag') == 0:
+                            if data.get('ytFlag') == 0 and data.get('ytFlagWeb') == 0:
                                 dlink = next((link['path'] for link in data.get('download_links', []) if link.get('quality') == "720p"), None)
                                 if dlink:
                                     parts = dlink.split(':')
@@ -60,14 +63,24 @@ async def appex_down(app, message, hdr1, api, raw_text2, fuk, batch_name, name, 
                                         b = decrypt_data(encoded_part)
                                         cool2 = f"{b}"
                                     else:
-                                        print(f"Unexpected format: {plink}\n{tid}")
+                                        print(f"Unexpected format: {dlink}\n{tid}")
 
-                            elif data.get('ytFlag') == 1:
+                            elif data.get('ytFlag') == 1 and data.get('ytFlagWeb') == 0:
                                 dlink = data.get('file_link')
                                 if dlink:
                                     encoded_part, encrypted_part = dlink.split(':')
                                     b = decrypt_data(encoded_part)
-                                    cool2 = f"{b}"
+                                    video_id = b.split('/')[-1]
+                                    cool2 = f"https://youtu.be/{video_id}"
+                                else:
+                                    print(f"Missing video_id for {tid}")
+
+                            elif data.get('ytFlag') == 1 and data.get('ytFlagWeb') == 1:
+                                dlink = data.get('file_link')
+                                if dlink:
+                                    encoded_part, encrypted_part = dlink.split(':')
+                                    b = decrypt_data(encoded_part)
+                                    cool2 = f"https://youtu.be/{b}"
                                 else:
                                     print(f"Missing video_id for {tid}")
                             else:
