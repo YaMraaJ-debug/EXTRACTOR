@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <style>
+        body {
+            margin: 0;
+        }
+
+        summary {
+            justify-content: center;
+            font-family: Verdana, Cursive;
+            margin: 13px 10px 5px 10px;
+            font-weight: 600;
+            padding: 15px;
+            background-color: #FFFFFF;
+            font-size: 18px;
+            list-style: none;
+            border: 0.2px solid #320001;
+            border-radius: 50px;
+            text-align: center;
+            box-shadow: 0 0 10px 0 #000;
+            color: #4c002c;
+            transition: 1s;
+        }
+
+        td {
+            font-size: 13px;
+            padding: 13px;
+            width: 50%;
+        }
+
+        table {
+            word-break: break-word;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        h1 {
+            color: #FF9900;
+            text-align: center;
+            font-size: 25px;
+        }
+
+        tr:nth-child(2n) {
+            background-color: #f2f2f2;
+        }
+
+        details[open] summary {
+            border-radius: 10px;
+            font-weight: 900;
+            color: #4f4f4f;
+            font-size: 20px;
+            box-shadow: 0px 8px 0px #ff0037;
+            background-color: #fff;
+            border-style: inset;
+            border-width: 1px 1px 0;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{batch_name}}</title>
+</head>
+<body>
+    <header>
+        <h1><i class="fa-solid fa-book-open-reader"></i>{{batch_name}}</h1>
+        <hr id="line" />
+    </header>
+    <hr id="line" />
+
+    <table>
+        <tbody>
+            {{tbody_content}}
+        </tbody>
+    </table>
+</body>
+</html>
+
