@@ -25,7 +25,7 @@ def create_html_file(file_name, batch_name, contents):
 
         tbody += f'<tr><td>{text}</td><td><a href="{url}" target="_blank">{url}</a></td></tr>'
 
-    with open('TXT/core/template.html', 'r') as fp:
+    with open('Extractor/core/template.html', 'r') as fp:
         file_content = fp.read()
     title = batch_name.strip()
     with open(file_name, 'w') as fp:
