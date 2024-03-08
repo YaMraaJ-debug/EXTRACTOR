@@ -1,0 +1,53 @@
+{
+  "name": "𝖤𝖣𝖴𝖢𝖠𝖳𝖨𝖮𝖭 𝖧𝖴𝖡",
+  "description": "Telegram Bot using Pyrogram",
+  "repository": "https://github.com/DAXXTEAM",
+  "env": {
+    "API_ID": {
+      "description": "Your Telegram API ID",
+      "required": true
+    },
+    "API_HASH": {
+      "description": "Your Telegram API Hash",
+      "required": true
+    },
+    "BOT_TOKEN": {
+      "description": "Your Telegram Bot Token",
+      "required": true
+    },
+    "BOT_USERNAME": {
+      "description": "Your Bot Username",
+      "required": true
+    },
+    "OWNER_ID": {
+      "description": "Your Telegram User ID (Owner)",
+      "required": true
+    },
+    "SUDO_USERS": {
+      "description": "Comma-separated list of sudo users' IDs",
+      "required": false
+    },
+    "CHANNEL_ID": {
+      "description": "Your channel ID",
+      "required": true
+    },
+    "MONGO_URL": {
+      "description": "Your MongoDB URL",
+      "required": true
+    },
+    "PREMIUM_LOGS": {
+      "description": "Flag for premium logs (0 for off, 1 for on)",
+      "required": true
+    }
+  },
+  "stack": "heroku-22",
+  "addons": [],
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    },
+    {
+      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git"
+    }
+  ]
+}
