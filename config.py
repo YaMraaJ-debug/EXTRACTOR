@@ -1,4 +1,4 @@
-"""
+
 from os import getenv
 
 
@@ -41,3 +41,5 @@ CHANNEL_ID = int(os.environ.get("CHANNEL_ID"))
 MONGO_URL = os.environ.get("MONGO_URL")
 # -----------------------------------------------
 PREMIUM_LOGS = int(os.environ.get("PREMIUM_LOGS"))
+
+"""
