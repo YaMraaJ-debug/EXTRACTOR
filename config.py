@@ -23,22 +23,22 @@ PREMIUM_LOGS = int(getenv("PREMIUM_LOGS", "-1002155787742"))
 import os
 from os import getenv
 # ---------------R---------------------------------
-API_ID = int(os.environ.get("API_ID"))
+API_ID = int(os.environ.get("23031620"))
 # ------------------------------------------------
-API_HASH = os.environ.get("API_HASH")
+API_HASH = os.environ.get("31cb00c1cbe580394778b43105864bca)
 # ----------------D--------------------------------
-BOT_TOKEN = os.environ.get("BOT_TOKEN")
+BOT_TOKEN = os.environ.get("6865731231:AAEDdXn48VOzOf0jRo0CvxkU0VxIFsikTvg)
 # -----------------A-------------------------------
-BOT_USERNAME = os.environ.get("BOT_USERNAME")
+BOT_USERNAME = os.environ.get("pathansavebot")
 # ------------------X------------------------------
-OWNER_ID = int(os.environ.get("OWNER_ID"))
+OWNER_ID = int(os.environ.get("502980590"))
 # ------------------X------------------------------
 
-SUDO_USERS = list(map(int, getenv("SUDO_USERS", "").split()))
+SUDO_USERS = list(map(int, getenv("SUDO_USERS", "502980590").split()))
 # ------------------------------------------------
-CHANNEL_ID = int(os.environ.get("CHANNEL_ID"))
+CHANNEL_ID = int(os.environ.get("-1002155787742"))
 # ------------------------------------------------
-MONGO_URL = os.environ.get("MONGO_URL")
+MONGO_URL = os.environ.get("mongodb+srv://altafpathan65012:<password>@cluster0.aztmome.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 # -----------------------------------------------
-PREMIUM_LOGS = int(os.environ.get("PREMIUM_LOGS"))
+PREMIUM_LOGS = int(os.environ.get("-1002155787742"))
 
