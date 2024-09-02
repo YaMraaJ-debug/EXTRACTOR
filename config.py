@@ -23,7 +23,7 @@ PREMIUM_LOGS = int(getenv("PREMIUM_LOGS", "-1002155787742"))
 import os
 from os import getenv
 # ---------------R---------------------------------
-API_ID = int(os.environ.get(23031620))
+API_ID = int(os.environ.get("23031620"))
 # ------------------------------------------------
 API_HASH = os.environ.get("31cb00c1cbe580394778b43105864bca")
 # ----------------D--------------------------------
