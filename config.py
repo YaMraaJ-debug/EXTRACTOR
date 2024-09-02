@@ -25,7 +25,7 @@ from os import getenv
 # ---------------R---------------------------------
 API_ID = int(os.environ.get("23031620"))
 # ------------------------------------------------
-API_HASH = os.environ.get("31cb00c1cbe580394778b43105864bca)
+API_HASH = os.environ.get("31cb00c1cbe580394778b43105864bca")
 # ----------------D--------------------------------
 BOT_TOKEN = os.environ.get("6865731231:AAEDdXn48VOzOf0jRo0CvxkU0VxIFsikTvg)
 # -----------------A-------------------------------
