@@ -21,24 +21,23 @@ PREMIUM_LOGS = int(getenv("PREMIUM_LOGS", "-1002155787742"))
 # --------------M----------------------------------
 
 import os
+import os
 from os import getenv
 # ---------------R---------------------------------
-API_ID = int(os.environ.get(23031620))
+API_ID = int(os.environ.get("API_ID"))
 # ------------------------------------------------
-API_HASH = os.environ.get("31cb00c1cbe580394778b43105864bca")
+API_HASH = os.environ.get("API_HASH")
 # ----------------D--------------------------------
-BOT_TOKEN = os.environ.get("7035220759:AAEQcpQXZOd8aWgJkXQMmUzoeFuU_ufYego")
+BOT_TOKEN = os.environ.get("BOT_TOKEN")
 # -----------------A-------------------------------
-BOT_USERNAME = os.environ.get("Verceltxtbot")
+BOT_USERNAME = os.environ.get("BOT_USERNAME")
 # ------------------X------------------------------
-OWNER_ID = int(os.environ.get("502980590"))
+OWNER_ID = int(os.environ.get("OWNER_ID"))
 # ------------------X------------------------------
-
-SUDO_USERS = list(map(int, getenv("SUDO_USERS", "502980590").split()))
+SUDO_USERS = list(map(int, getenv("SUDO_USERS", "").split()))
 # ------------------------------------------------
-CHANNEL_ID = int(os.environ.get("-1002155787742"))
+CHANNEL_ID = int(os.environ.get("CHANNEL_ID"))
 # ------------------------------------------------
-MONGO_URL = os.environ.get("mongodb+srv://altafpathan65012:<password>@cluster0.aztmome.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+MONGO_URL = os.environ.get("MONGO_URL")
 # -----------------------------------------------
-PREMIUM_LOGS = int(os.environ.get("-1002155787742"))
-
+PREMIUM_LOGS = int(os.environ.get("PREMIUM_LOGS"))
