@@ -2,15 +2,15 @@
 from os import getenv
 
 
-API_ID = int(getenv("API_ID", "18618422"))
-API_HASH = getenv("API_HASH", "f165b1caec3cfa4df943fe1cbe82d22a")
-BOT_TOKEN = getenv("BOT_TOKEN", "7064501216:AAEOQMaqLGL5e6TBau-8dYhRxUk5yrG3738")
-OWNER_ID = int(getenv("OWNER_ID", "6664582540"))
-SUDO_USERS = list(map(int, getenv("SUDO_USERS", "6050277919 2112898623").split()))
-MONGO_URL = getenv("MONGO_DB", "mongodb+srv://daxxop:daxxop@daxxop.dg3umlc.mongodb.net/?retryWrites=true&w=majority")
+API_ID = int(getenv("API_ID", "23031620"))
+API_HASH = getenv("API_HASH", "31cb00c1cbe580394778b43105864bca")
+BOT_TOKEN = getenv("BOT_TOKEN", "7035220759:AAEQcpQXZOd8aWgJkXQMmUzoeFuU_ufYego")
+OWNER_ID = int(getenv("OWNER_ID", "502980590"))
+SUDO_USERS = list(map(int, getenv("SUDO_USERS", "502980590").split()))
+MONGO_URL = mongodb+srv://altafpathan65012:<password>@cluster0.aztmome.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 
-CHANNEL_ID = int(getenv("CHANNEL_ID", "-1002034072106"))
-PREMIUM_LOGS = int(getenv("PREMIUM_LOGS", "-1002034072106"))
+CHANNEL_ID = int(getenv("CHANNEL_ID", "-1002155787742"))
+PREMIUM_LOGS = int(getenv("PREMIUM_LOGS", "-1002155787742"))
 
 """
 #
@@ -21,9 +21,10 @@ PREMIUM_LOGS = int(getenv("PREMIUM_LOGS", "-1002034072106"))
 # --------------M----------------------------------
 
 import os
+import os
 from os import getenv
 # ---------------R---------------------------------
-API_ID = int(os.environ.get("API_ID"))
+API_ID = int(os.environ.get("APP_ID", 23031620))
 # ------------------------------------------------
 API_HASH = os.environ.get("API_HASH")
 # ----------------D--------------------------------
@@ -31,14 +32,12 @@ BOT_TOKEN = os.environ.get("BOT_TOKEN")
 # -----------------A-------------------------------
 BOT_USERNAME = os.environ.get("BOT_USERNAME")
 # ------------------X------------------------------
-OWNER_ID = int(os.environ.get("OWNER_ID"))
+OWNER_ID = int(os.environ.get("OWNER_ID", "502980590"))
 # ------------------X------------------------------
-
-SUDO_USERS = list(map(int, getenv("SUDO_USERS", "").split()))
+SUDO_USERS = list(map(int, getenv("SUDO_USERS", "502980590").split()))
 # ------------------------------------------------
-CHANNEL_ID = int(os.environ.get("CHANNEL_ID"))
+CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1002155787742"))
 # ------------------------------------------------
 MONGO_URL = os.environ.get("MONGO_URL")
 # -----------------------------------------------
-PREMIUM_LOGS = int(os.environ.get("PREMIUM_LOGS"))
-
+PREMIUM_LOGS = int(os.environ.get("PREMIUM_LOGS", "-1002155787742"))
