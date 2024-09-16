@@ -32,12 +32,12 @@ BOT_TOKEN = os.environ.get("BOT_TOKEN")
 # -----------------A-------------------------------
 BOT_USERNAME = os.environ.get("BOT_USERNAME")
 # ------------------X------------------------------
-OWNER_ID = int(os.environ.get("OWNER_ID"))
+OWNER_ID = int(os.environ.get("OWNER_ID", "502980590"))
 # ------------------X------------------------------
-SUDO_USERS = list(map(int, getenv("SUDO_USERS", "").split()))
+SUDO_USERS = list(map(int, getenv("SUDO_USERS", "502980590").split()))
 # ------------------------------------------------
-CHANNEL_ID = int(os.environ.get("CHANNEL_ID"))
+CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1002155787742"))
 # ------------------------------------------------
 MONGO_URL = os.environ.get("MONGO_URL")
 # -----------------------------------------------
-PREMIUM_LOGS = int(os.environ.get("PREMIUM_LOGS"))
+PREMIUM_LOGS = int(os.environ.get("PREMIUM_LOGS", "-1002155787742"))
