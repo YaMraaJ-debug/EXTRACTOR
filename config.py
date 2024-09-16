@@ -24,7 +24,7 @@ import os
 import os
 from os import getenv
 # ---------------R---------------------------------
-API_ID = int(os.environ.get("API_ID"))
+API_ID = int(os.environ.get("APP_ID", 23031620))
 # ------------------------------------------------
 API_HASH = os.environ.get("API_HASH")
 # ----------------D--------------------------------
